@@ -7,7 +7,7 @@ Seja bem-vindo! Este desafio foi projetado para avaliar a sua capacidade técnic
 - Faça um fork deste repositório;
 - Utilize alguma das tecnologias (front-end e back-end) informadas na proposta desse desafio;
 - Crie um passo a passo de como rodar a sua aplicação;
-- Após finalizar, submeta um pull request e aguarde nossa avaliação.
+- Após finalizar, submeta um pull request com um comentário informando o seu e-mail de contato e aguarde nossa avaliação.
 
 ## Proposta
 Você deverá desenvolver um blog. Para isso, separaremos a proposta desse desafio em duas etapas:
