@@ -1,0 +1,52 @@
+.formWrite{
+    margin-top: 1rem;
+}
+
+.imgWrite{
+    margin-top: 1.5rem;
+    border-radius: 20px;
+    width: 50vw;
+    height: 50vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.writeFormGroup{
+    text-align: center;
+}
+
+.fileInputIcon{
+    font-size: 2.5rem;
+    padding: 1rem;
+    color: rgb(59,59,59);
+}
+
+.titleInput, .writeFormTextArea, .writeSubmit{
+    font-family: 'Josefin Sans', sans-serif;
+    border: none;
+}
+
+.titleInput{
+    font-size: 2.5rem;
+    width: 50vw;
+}
+
+.writeFormTextArea{
+    width: 55vw;
+    height: 60vh;
+    font-size: 2.5rem;
+}
+
+.writeSubmit{
+    position: absolute;
+    top: 27.2rem;
+    right: 12.7em;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: #16A085;
+    color: #FFF;
+}
+

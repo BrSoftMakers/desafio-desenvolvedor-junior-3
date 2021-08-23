@@ -1,0 +1,21 @@
+.category{
+    flex: 3;
+    margin: .5rem;
+}
+
+.menuCategoryTitle{
+    margin-top: 1.4rem;
+    margin-bottom: 1rem;
+    font-family: 'Josefin Slab', serif;
+}
+
+.menuCategory{
+    list-style: none;
+    font-family: 'Josefin Sans', sans-serif; 
+}
+
+.menuCategoryList{
+    font-size: 1rem;
+    margin: .7rem 0;
+    cursor: pointer;
+}

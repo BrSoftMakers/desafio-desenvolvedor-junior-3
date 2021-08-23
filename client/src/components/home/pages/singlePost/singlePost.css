@@ -1,0 +1,57 @@
+.singlePost{
+    flex: 9;
+}
+
+.singlePostControl{
+    margin-top: 1rem;
+}
+
+.singlePostImage{
+    width: 900px;
+    height: 450px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.singlePostControlTitle{
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.singlePostControlEditIcon{
+    margin: .5rem;
+}
+
+.iconEdit{
+    color: #2980B9;
+}
+
+.iconDelete{
+    color: #E74C3C;
+}
+
+.singlePostControlTitle, .singlePostInfo, .singlePostTextPost{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.singlePostInfo{
+    margin-left: 1rem;
+}
+
+.singlePostAuthor{
+    margin-right: .3rem;
+}
+
+.singlePostDate{
+    margin-left: .3rem; 
+}
+
+.singlePostTextPost{
+    width: 900px;
+    justify-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+}
