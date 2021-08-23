@@ -1,0 +1,60 @@
+.settings{
+    display: flex;
+}
+
+.settingPage{
+    flex: 9;
+    padding: 2rem;
+}
+
+.settingTitle{
+    display: flex;
+    justify-content: space-around;
+}
+
+.settingTitleUpdate{
+    font-size: 2rem;
+}
+
+.settingTitleDelete{
+    font-size: 1.3rem;
+}
+
+.settingTitleUpdate, .settingTitleDelete{
+    font-family: 'Josefin Slab', serif;
+    font-weight: bold;
+    color: #d2527f;
+}
+
+.settingsPP{
+    margin-bottom: 1rem;
+}
+
+.settingImgPP{
+    width: 5vw;
+    height: 5vw;
+    border-radius: 25%;
+}
+
+.settingsForm{
+    padding: 2rem;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.settingsSubmit{
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #16A085;
+    color: #FFF;
+    padding: .3rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.settingsLabels{
+    display: flex;
+    flex-direction: column;
+}
+
+.settingsInput{
+    margin-bottom: .5rem;
+}

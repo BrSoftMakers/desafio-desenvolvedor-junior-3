@@ -1,0 +1,24 @@
+.headerTitles{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: .6rem 0;
+}
+
+.headerTitleFirst, .headerTitleSecond{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.headerTitleFirst{
+    font-size: 1.7rem;
+}
+
+.headerTitleSecond{
+    font-size: 1.4rem;
+}
+
+.imgHeaderImg{
+    height: 450px;
+    width: 100%;
+    transform: scaleX(-1);
+}
