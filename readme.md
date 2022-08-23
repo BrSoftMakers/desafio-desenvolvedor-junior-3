@@ -9,7 +9,7 @@ Seja bem-vindo! Este desafio foi projetado para avaliar a sua capacidade técnic
 ## Proposta
 Você deverá desenvolver um blog. Para isso, separamos a proposta desse desafio em duas etapas:
 **Back-end:**
-Desenvolva uma API utilizando Node.js com o framework de sua preferência que contenha as seguintes rotas:
+Desenvolva uma API utilizando Node JS (ExpressJS ou NestJS) com um dos framework informados, que contenha as seguintes rotas:
 - `/register` - [POST] - esta rota deve cadastrar um usuário;
 - `/login` - [POST] - esta rota deve autenticar um usuário;
 - `/posts` - [POST] - esta rota deve cadastrar uma postagem mantendo a referência do autor. (requer autenticação);
@@ -18,7 +18,7 @@ Desenvolva uma API utilizando Node.js com o framework de sua preferência que co
 - `/posts/{id}` - [GET] - esta rota deve retornar a postagem do ID especificado com todos os seus dados (requer autenticação);
 - `/posts/{id}` - [DELETE] - esta rota deve deletar a postagem do ID especificado.
 **Front-end:**
-Desenvolva uma aplicação web utilizando o framework front-end react e esta deve atender as seguintes histórias:
+Desenvolva uma aplicação web utilizando o framework front-end react (React cli ou NextJs) e esta deve atender as seguintes histórias:
 - Eu como usuário desejo me cadastrar;
 - Eu como usuário desejo realizar login;
 - Eu como usuário autenticado desejo visualizar todas as postagens;
@@ -28,4 +28,12 @@ Desenvolva uma aplicação web utilizando o framework front-end react e esta dev
 - Eu como usuário autenticado desejo deletar uma postagem que eu criei.
 > **Observações:**
 > - Sua aplicação web DEVE se comunicar com sua API;
-> - Você pode utilizar o banco de dados relacional preferencialmente MySQL / PostgreSQL.
+> - Você pode utilizar o banco de dados relacional preferencialmente MySQL ou PostgreSQL com ORM como prisma ou sequelize.
+## Diferenciais
+Será considerado como diferenciais a utilização ou o conhecimento nas seguintes tecnologias:
+- Sequelize ou prisma
+- React Native
+- Firebase
+- Docker
+- Cloud bucket storage ( google ou AWS)
+- Serviços de arquitetura em nuvem do Google ou AWS
