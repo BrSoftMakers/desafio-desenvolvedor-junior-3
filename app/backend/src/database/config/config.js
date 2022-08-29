@@ -5,7 +5,7 @@ const options = {
   port: process.env.MYSQL_PORT || '3306',
   database: process.env.MYSQL_DATABASE || 'desafio_blog',
   username: process.env.MYSQL_USERNAME || 'root',
-  password: process.env.MYSQL_PASSWORD || '89@Marilia',
+  password: process.env.MYSQL_PASSWORD || 'password',
   dialect: 'mysql',
   dialectOptions: {
     timezone: 'Z',
