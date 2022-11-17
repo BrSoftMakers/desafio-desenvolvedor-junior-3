@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/api/index.js",
+  "scripts": {
+    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate",
+    "dev": "nodemon .",
+    "start": "node ."
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -22,6 +27,7 @@
     "eslint": "^8.26.0",
     "mocha": "^10.1.0",
     "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20",
     "sequelize-cli": "^6.5.1",
     "sinon": "^14.0.1"
   }
