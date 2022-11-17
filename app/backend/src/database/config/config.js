@@ -1,7 +1,5 @@
 require('dotenv/config');
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
 const config = {
   username: process.env.DB_USER || 'root',
   password: process.env.DB_PASS || '123456',
@@ -10,4 +8,5 @@ const config = {
   port: Number(process.env.DB_PORT || 3002),
   dialect: 'mysql',
 };
+
 module.exports = config;
