@@ -75,11 +75,7 @@ describe('Testes unitários do service User', () => {
       it('Testa se esse objeto possui a mensagem correta', async () => {
         const response = await UserService.findByEmail(email);
 
-        expect(response).to.be.deep.equal({
-          message:
-            'Email não corresponde a nenhuma pessoa cadastrada no banco de dados!',
-          code: 404,
-        });
+        expect(response).to.be.deep.equal({ message: 'userNotFound' });
       });
     });
   });
