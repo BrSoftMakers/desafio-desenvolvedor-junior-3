@@ -1,13 +1,17 @@
 const sinon = require('sinon');
 const { expect } = require('chai');
 const { Post } = require('../../database/models');
-const PostService = require('../../services/Post');
+const PostService = require('../../services/Post.service');
+const {
+  insertedPost,
+  postToInsert,
+  allPosts,
+  postsByUser,
+  singlePost,
+} = require('./mocks/Post.mock');
 
 describe('Testes unitários do service Post', () => {
   describe('Testa a função insert ao incluir um post no banco de dados', () => {
-    const postToInsert = {};
-    const insertedPost = {};
-
     beforeEach(async () => {
       sinon.stub(Post, 'create').resolves(insertedPost);
     });
@@ -30,8 +34,6 @@ describe('Testes unitários do service Post', () => {
   });
 
   describe('Testa a função findAll que recupera todos os posts no banco de dados', () => {
-    const allPosts = [];
-
     beforeEach(async () => {
       sinon.stub(Post, 'findAll').resolves(allPosts);
     });
@@ -55,15 +57,12 @@ describe('Testes unitários do service Post', () => {
     it('Testa se todos os posts são retornados', async () => {
       const response = await PostService.findAll();
 
-      expect(response).to.be.eql([]);
+      expect(response).to.be.eql(allPosts);
     });
   });
 
   describe('Testa a função findByUser que recupera todos os posts de uma pessoa usuária específica no banco de dados', () => {
     describe('Testa a função findByUser quando há posts daquela pessoa usuária no banco', () => {
-      const postsByUser = [];
-      const userId = 3;
-
       beforeEach(async () => {
         sinon.stub(Post, 'findAll').resolves(postsByUser);
       });
@@ -73,24 +72,21 @@ describe('Testes unitários do service Post', () => {
       });
 
       it('Testa se o retorno é um array com objetos', async () => {
-        const response = await PostService.findByUser(userId);
+        const response = await PostService.findByUser({ userId: 2 });
 
         expect(response).to.be.an('array');
       });
 
       it('Testa se todos os posts são retornados', async () => {
-        const response = await PostService.findByUser(userId);
+        const response = await PostService.findByUser({ userId: 2 });
 
-        expect(response).to.be.eql([]);
+        expect(response).to.be.eql(postsByUser);
       });
     });
 
     describe('Testa a função findByUser quando não há posts daquela pessoa usuária no banco', () => {
-      const postsByUser = [];
-      const userId = 11;
-
       beforeEach(async () => {
-        sinon.stub(Post, 'findAll').resolves(postsByUser);
+        sinon.stub(Post, 'findAll').resolves([]);
       });
 
       afterEach(async () => {
@@ -98,13 +94,13 @@ describe('Testes unitários do service Post', () => {
       });
 
       it('Testa se é um objeto', async () => {
-        const response = await PostService.findByUser(userId);
+        const response = await PostService.findByUser({ userId: 25 });
 
         expect(response).to.be.an('object');
       });
 
       it('Testa se esse objeto possui a mensagem correta', async () => {
-        const response = await PostService.findByUser(userId);
+        const response = await PostService.findByUser({ userId: 25 });
 
         expect(response).to.be.deep.equal({
           message: 'thereAreNoPostsByThisUser',
@@ -115,11 +111,8 @@ describe('Testes unitários do service Post', () => {
 
   describe('Testa a função findByPk que recupera as informações de um post específico no banco de dados', () => {
     describe('Testa a função findByPk quando há um post com o id buscado', () => {
-      const postsById = {};
-      const postId = 2;
-
       beforeEach(async () => {
-        sinon.stub(Post, 'findByPk').resolves(postsById);
+        sinon.stub(Post, 'findByPk').resolves(singlePost);
       });
 
       afterEach(async () => {
@@ -127,24 +120,21 @@ describe('Testes unitários do service Post', () => {
       });
 
       it('Testa se o retorno é um objetos', async () => {
-        const response = await PostService.findByPk(postId);
+        const response = await PostService.findByPk({ id: 7 });
 
         expect(response).to.be.an('object');
       });
 
       it('Testa se o post retornado contém as informações corretas', async () => {
-        const response = await PostService.findByPk(postId);
+        const response = await PostService.findByPk({ id: 7 });
 
-        expect(response).to.be.eql(postsById);
+        expect(response).to.be.eql(singlePost);
       });
     });
 
     describe('Testa a função findByPk quando NÃO há um post com o id buscado', () => {
-      const postsById = null;
-      const postId = 25;
-
       beforeEach(async () => {
-        sinon.stub(Post, 'findByPk').resolves(postsById);
+        sinon.stub(Post, 'findByPk').resolves(null);
       });
 
       afterEach(async () => {
@@ -152,13 +142,13 @@ describe('Testes unitários do service Post', () => {
       });
 
       it('Testa se o retorno é um objeto', async () => {
-        const response = await PostService.findByPk(postId);
+        const response = await PostService.findByPk({ id: 25 });
 
         expect(response).to.be.an('object');
       });
 
       it('Testa se esse objeto possui a mensagem correta', async () => {
-        const response = await PostService.findByPk(postId);
+        const response = await PostService.findByPk({ id: 25 });
 
         expect(response).to.be.deep.equal({ message: 'postNotFound' });
       });
@@ -167,54 +157,48 @@ describe('Testes unitários do service Post', () => {
 
   describe('Testa a função update que atualiza um post no banco de dados', () => {
     describe('Testa se, quando um id válido é passado, o post é atualizado corretamente', () => {
-      const postToUpdate = {};
-      const updatedPost = {};
-      const postId = 2;
-      const postById = {};
-
       beforeEach(async () => {
-        sinon.stub(Post, 'findByPk').resolves(postById);
-        sinon.stub(Post, 'update').resolves(updatedPost);
+        sinon.stub(Post, 'findByPk').resolves(singlePost);
+        sinon.stub(Post, 'update').resolves([1]);
       });
 
       afterEach(async () => {
-        Post.restore();
+        Post.findByPk.restore();
+        Post.update.restore();
       });
 
       it('Testa se um objeto é retornado', async () => {
-        const response = await PostService.update(postToUpdate, postId);
+        const response = await PostService.update({ id: 7 }, postToInsert);
 
         expect(response).to.be.an('object');
       });
 
       it('Testa se o objeto contém informações atualizadas', async () => {
-        const response = await PostService.update(postToUpdate, postId);
+        const response = await PostService.update({ id: 7 }, postToInsert);
 
-        expect(response).to.be.deep.equal(updatedPost);
+        expect(response).to.be.deep.equal({
+          message: 'O post foi atualizado com sucesso!',
+        });
       });
     });
 
     describe('Testa se, quando um id inválido é passado, há o retorno correto', () => {
-      const postToUpdate = {};
-      const postId = 25;
-      const postById = null;
-
       before(async () => {
-        sinon.stub(Post, 'findByPk').resolves(postById);
+        sinon.stub(Post, 'findByPk').resolves(null);
       });
 
       after(async () => {
-        Post.restore();
+        Post.findByPk.restore();
       });
 
       it('Testa se um objeto é retornado', async () => {
-        const response = await PostService.update(postToUpdate, postId);
+        const response = await PostService.update({ id: 70 }, postToInsert);
 
         expect(response).to.be.an('object');
       });
 
       it('Testa se esse objeto possui a mensagem correta', async () => {
-        const response = await PostService.update(postToUpdate, postId);
+        const response = await PostService.update({ id: 70 }, postToInsert);
 
         expect(response).to.be.deep.equal({ message: 'postNotFound' });
       });
@@ -223,26 +207,24 @@ describe('Testes unitários do service Post', () => {
 
   describe('Testa a função delete que apaga um post no banco de dados', () => {
     describe('Testa se, quando um id válido é passado o post é excluído', () => {
-      const postId = 3;
-      const postById = {};
-
       beforeEach(async () => {
-        sinon.stub(Post, 'findByPk').resolves(postById);
-        sinon.stub(Post, 'delete').resolves();
+        sinon.stub(Post, 'findByPk').resolves(singlePost);
+        sinon.stub(Post, 'destroy').resolves();
       });
 
       afterEach(async () => {
-        Post.restore();
+        Post.findByPk.restore();
+        Post.destroy.restore();
       });
 
       it('Testa se um objeto é retornado', async () => {
-        const response = await PostService.delete(postId);
+        const response = await PostService.delete({ id: 7 });
 
         expect(response).to.be.an('object');
       });
 
       it('Testa se o objeto contém a mensagem correta', async () => {
-        const response = await PostService.delete(postId);
+        const response = await PostService.delete({ id: 7 });
 
         expect(response).to.be.deep.equal({
           message: 'Post excluído com sucesso!',
@@ -251,25 +233,22 @@ describe('Testes unitários do service Post', () => {
     });
 
     describe('Testa se, quando um id inválido é passado ocorre o retorno correto', () => {
-      const postId = 30;
-      const postById = null;
-
       beforeEach(async () => {
-        sinon.stub(Post, 'findByPk').resolves(postById);
+        sinon.stub(Post, 'findByPk').resolves(null);
       });
 
       afterEach(async () => {
-        Post.restore();
+        Post.findByPk.restore();
       });
 
       it('Testa se um objeto é retornado', async () => {
-        const response = await PostService.delete(postId);
+        const response = await PostService.delete({ id: 70 });
 
         expect(response).to.be.an('object');
       });
 
       it('Testa se o objeto contém a mensagem correta', async () => {
-        const response = await PostService.delete(postId);
+        const response = await PostService.delete({ id: 70 });
 
         expect(response).to.be.deep.equal({ message: 'postNotFound' });
       });
