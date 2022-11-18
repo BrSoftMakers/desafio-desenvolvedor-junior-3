@@ -6,7 +6,8 @@
   "scripts": {
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate",
     "dev": "nodemon .",
-    "start": "node ."
+    "start": "node .",
+    "test": "mocha src/tests/**/*$NAME*.test.js --exit"
   },
   "keywords": [],
   "author": "",
