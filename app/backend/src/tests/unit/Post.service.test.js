@@ -160,6 +160,62 @@ describe('Testes unitários do service Post', () => {
       it('Testa se esse objeto possui a mensagem correta', async () => {
         const response = await PostService.findByPk(postId);
 
+
+  describe('Testa a função update que atualiza um post no banco de dados', () => {
+    describe('Testa se, quando um id válido é passado, o post é atualizado corretamente', () => {
+      const postToUpdate = {};
+      const updatedPost = {};
+      const postId = 2;
+      const postById = {};
+
+      beforeEach(async () => {
+        sinon.stub(Post, 'findByPk').resolves(postById);
+        sinon.stub(Post, 'update').resolves(updatedPost);
+      });
+
+      afterEach(async () => {
+        Post.restore();
+      });
+
+      it('Testa se um objeto é retornado', async () => {
+        const response = await PostService.update(postToUpdate, postId);
+
+        expect(response).to.be.an('object');
+      });
+
+      it('Testa se o objeto contém informações atualizadas', async () => {
+        const response = await PostService.update(postToUpdate, postId);
+
+        expect(response).to.be.deep.equal(updatedPost);
+      });
+    });
+
+    describe('Testa se, quando um id inválido é passado, há o retorno correto', () => {
+      const postToUpdate = {};
+      const postId = 25;
+      const postById = null;
+
+      before(async () => {
+        sinon.stub(Post, 'findByPk').resolves(postById);
+      });
+
+      after(async () => {
+        Post.restore();
+      });
+
+      it('Testa se um objeto é retornado', async () => {
+        const response = await PostService.update(postToUpdate, postId);
+
+        expect(response).to.be.an('object');
+      });
+
+      it('Testa se esse objeto possui a mensagem correta', async () => {
+        const response = await PostService.update(postToUpdate, postId);
+
+        expect(response).to.be.deep.equal({ message: 'postNotFound' });
+      });
+    });
+  });
         expect(response).to.be.deep.equal({ message: 'postNotFound' });
       });
     });
