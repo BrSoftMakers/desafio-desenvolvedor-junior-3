@@ -17,6 +17,11 @@ const PostService = {
     return posts;
   },
 
+  findByPk: async ({ id }) => {
+    const post = await Post.findByPk(id);
+    if (!post) return { message: 'postNotFound' };
+    return post;
+  },
 };
 
 module.exports = PostService;
