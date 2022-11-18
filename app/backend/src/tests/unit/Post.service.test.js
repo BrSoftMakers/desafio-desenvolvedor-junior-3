@@ -28,4 +28,35 @@ describe('Testes unitários do service Post', () => {
       expect(response).to.be.deep.equal(insertedPost);
     });
   });
+
+  describe('Testa a função findAll que recupera todos os posts no banco de dados', () => {
+    const allPosts = [];
+
+    beforeEach(async () => {
+      sinon.stub(Post, 'findAll').resolves(allPosts);
+    });
+
+    afterEach(async () => {
+      Post.findAll.restore();
+    });
+
+    it('Testa se o retorno é um array com objetos', async () => {
+      const response = await PostService.findAll();
+
+      expect(response).to.be.an('array');
+    });
+
+    it('Testa se os posts retornados estão ordenados por Id', async () => {
+      const response = await PostService.findAll();
+
+      response.forEach(({ id }, index) => expect(id).to.be.equal(index + 1));
+    });
+
+    it('Testa se todos os posts são retornados', async () => {
+      const response = await PostService.findAll();
+
+      expect(response).to.be.eql([]);
+    });
+  });
+
 });
