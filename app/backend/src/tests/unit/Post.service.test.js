@@ -112,4 +112,56 @@ describe('Testes unitários do service Post', () => {
       });
     });
   });
+
+  describe('Testa a função findByPk que recupera as informações de um post específico no banco de dados', () => {
+    describe('Testa a função findByPk quando há um post com o id buscado', () => {
+      const postsById = {};
+      const postId = 2;
+
+      beforeEach(async () => {
+        sinon.stub(Post, 'findByPk').resolves(postsById);
+      });
+
+      afterEach(async () => {
+        Post.findByPk.restore();
+      });
+
+      it('Testa se o retorno é um objetos', async () => {
+        const response = await PostService.findByPk(postId);
+
+        expect(response).to.be.an('object');
+      });
+
+      it('Testa se o post retornado contém as informações corretas', async () => {
+        const response = await PostService.findByPk(postId);
+
+        expect(response).to.be.eql(postsById);
+      });
+    });
+
+    describe('Testa a função findByPk quando NÃO há um post com o id buscado', () => {
+      const postsById = null;
+      const postId = 25;
+
+      beforeEach(async () => {
+        sinon.stub(Post, 'findByPk').resolves(postsById);
+      });
+
+      afterEach(async () => {
+        Post.findByPk.restore();
+      });
+
+      it('Testa se o retorno é um objeto', async () => {
+        const response = await PostService.findByPk(postId);
+
+        expect(response).to.be.an('object');
+      });
+
+      it('Testa se esse objeto possui a mensagem correta', async () => {
+        const response = await PostService.findByPk(postId);
+
+        expect(response).to.be.deep.equal({ message: 'postNotFound' });
+      });
+    });
+  });
 });
