@@ -88,4 +88,27 @@ describe('Testes unitários do service User', () => {
       });
     });
   });
+
+  describe('Testa o comportamento da função generateToken que deve gerar token com informações da pessoa usuária', () => {
+    beforeEach(async () => {
+      sinon.stub(jwt, 'sign').returns(token);
+    });
+
+    afterEach(async () => {
+      jwt.sign.restore();
+    });
+
+    it('Verifica se a função jwt.sign foi chamada retornando um token', () => {
+      const response = UserService.generateToken(user);
+
+      expect(response).to.be.equal(token);
+    });
+
+    it('Verifica que, desencriptado, o token contém as informações corretas', () => {
+      const response = UserService.generateToken(user);
+      const verifyToken = jwt.verify(response, secret);
+
+      expect(verifyToken.data).to.be.deep.equal(user);
+    });
+  });
 });
