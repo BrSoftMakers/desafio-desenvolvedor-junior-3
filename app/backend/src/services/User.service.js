@@ -6,6 +6,12 @@ require('dotenv/config');
 const secret = process.env.JWT_SECRET || 'jwt_secret';
 
 const UserService = {
+  generateToken: (user) => {
+    const token = jwt.sign({ data: user }, secret, {
+      algorithm: 'HS256',
+    });
+    return token;
+  },
 };
 
 module.exports = UserService;
