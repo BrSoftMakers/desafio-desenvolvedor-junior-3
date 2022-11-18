@@ -1,0 +1,26 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Aplicação completa de blog com backend em Node.js e frontend em React.js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compose:up": "docker-compose up -d --build",
+    "compose:down": "docker-compose down --remove-orphans"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AirelRibeiro/desafio-desenvolvedor-junior-3.git"
+  },
+  "author": "Airel Ribeiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AirelRibeiro/desafio-desenvolvedor-junior-3/issues"
+  },
+  "homepage": "https://github.com/AirelRibeiro/desafio-desenvolvedor-junior-3#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "puppeteer": "13.2.0",
+    "uuid": "8.3.2"
+  }
+}
