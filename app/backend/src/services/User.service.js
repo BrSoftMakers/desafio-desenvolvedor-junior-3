@@ -12,6 +12,13 @@ const UserService = {
     });
     return token;
   },
+
+  insert: async (newUser) => {
+    const password = md5(newUser.password);
+    const user = await User.create({ ...newUser, password });
+    return user;
+  },
+
 };
 
 module.exports = UserService;
