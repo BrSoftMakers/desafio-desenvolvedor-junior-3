@@ -19,6 +19,11 @@ const UserService = {
     return user;
   },
 
+  findByEmail: async ({ email }) => {
+    const [user] = await User.findAll({ where: { email } });
+    if (!user) return { message: 'userNotFound' };
+    return user;
+  },
 };
 
 module.exports = UserService;
