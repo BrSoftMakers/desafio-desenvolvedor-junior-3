@@ -5,6 +5,11 @@ const PostService = {
     const post = await Post.create(newPost);
     return post;
   },
+
+  findAll: async () => {
+    const posts = await Post.findAll();
+    return posts;
+  },
 };
 
 module.exports = PostService;
