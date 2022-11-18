@@ -1,7 +1,7 @@
 const sinon = require('sinon');
 const { expect } = require('chai');
-const { Post } = require('../../database/models');
-const PostService = require('../../services/Post.service');
+const { Post } = require('../../../database/models');
+const PostService = require('../../../services/Post.service');
 const {
   insertedPost,
   postToInsert,

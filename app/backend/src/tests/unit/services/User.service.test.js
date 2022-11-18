@@ -1,7 +1,7 @@
 const sinon = require('sinon');
 const { expect } = require('chai');
-const { User } = require('../../database/models');
-const UserService = require('../../services/User.service');
+const { User } = require('../../../database/models');
+const UserService = require('../../../services/User.service');
 const {
   userToInsert,
   user,
