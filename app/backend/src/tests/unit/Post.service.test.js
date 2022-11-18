@@ -160,6 +160,10 @@ describe('Testes unitários do service Post', () => {
       it('Testa se esse objeto possui a mensagem correta', async () => {
         const response = await PostService.findByPk(postId);
 
+        expect(response).to.be.deep.equal({ message: 'postNotFound' });
+      });
+    });
+  });
 
   describe('Testa a função update que atualiza um post no banco de dados', () => {
     describe('Testa se, quando um id válido é passado, o post é atualizado corretamente', () => {
@@ -216,6 +220,57 @@ describe('Testes unitários do service Post', () => {
       });
     });
   });
+
+  describe('Testa a função delete que apaga um post no banco de dados', () => {
+    describe('Testa se, quando um id válido é passado o post é excluído', () => {
+      const postId = 3;
+      const postById = {};
+
+      beforeEach(async () => {
+        sinon.stub(Post, 'findByPk').resolves(postById);
+        sinon.stub(Post, 'delete').resolves();
+      });
+
+      afterEach(async () => {
+        Post.restore();
+      });
+
+      it('Testa se um objeto é retornado', async () => {
+        const response = await PostService.delete(postId);
+
+        expect(response).to.be.an('object');
+      });
+
+      it('Testa se o objeto contém a mensagem correta', async () => {
+        const response = await PostService.delete(postId);
+
+        expect(response).to.be.deep.equal({
+          message: 'Post excluído com sucesso!',
+        });
+      });
+    });
+
+    describe('Testa se, quando um id inválido é passado ocorre o retorno correto', () => {
+      const postId = 30;
+      const postById = null;
+
+      beforeEach(async () => {
+        sinon.stub(Post, 'findByPk').resolves(postById);
+      });
+
+      afterEach(async () => {
+        Post.restore();
+      });
+
+      it('Testa se um objeto é retornado', async () => {
+        const response = await PostService.delete(postId);
+
+        expect(response).to.be.an('object');
+      });
+
+      it('Testa se o objeto contém a mensagem correta', async () => {
+        const response = await PostService.delete(postId);
+
         expect(response).to.be.deep.equal({ message: 'postNotFound' });
       });
     });
