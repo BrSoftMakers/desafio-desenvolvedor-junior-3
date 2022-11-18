@@ -10,6 +10,13 @@ const PostService = {
     const posts = await Post.findAll();
     return posts;
   },
+
+  findByUser: async ({ userId }) => {
+    const posts = await Post.findAll({ where: { userId } });
+    if (!posts.length) return { message: 'thereAreNoPostsByThisUser' };
+    return posts;
+  },
+
 };
 
 module.exports = PostService;
