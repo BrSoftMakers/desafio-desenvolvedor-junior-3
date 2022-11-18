@@ -39,6 +39,14 @@ const PostService = {
       }
     );
   },
+
+  delete: async ({ id }) => {
+    const post = await Post.findByPk(id);
+    if (!post) return { message: 'postNotFound' };
+    return Post.destroy({ where: { id } }).then(() => ({
+      message: 'Post excluído com sucesso!',
+    }));
+  },
 };
 
 module.exports = PostService;
