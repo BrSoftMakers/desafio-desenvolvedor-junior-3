@@ -8,7 +8,7 @@ const {
   allPosts,
   postsByUser,
   singlePost,
-} = require('./mocks/Post.mock');
+} = require('../mocks/Post.mock');
 
 describe('Testes unitários do service Post', () => {
   describe('Testa a função insert ao incluir um post no banco de dados', () => {

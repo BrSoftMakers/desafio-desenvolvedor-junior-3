@@ -7,7 +7,7 @@ const {
   user,
   recoverdUser,
   token,
-} = require('./mocks/User.mock');
+} = require('../mocks/User.mock');
 const jwt = require('jsonwebtoken');
 require('dotenv/config');
 
@@ -36,8 +36,8 @@ describe('Testes unitários do service User', () => {
     });
   });
 
-  describe('Testa o comportamento da função findByEmail', () => {
-    describe('Testa findByEmail se o email passado for de uma pessoa usuária cadastrada no banco', async () => {
+  describe('Testa o comportamento da função findUser', () => {
+    describe('Testa findUser se o email passado for de uma pessoa usuária cadastrada no banco', async () => {
       beforeEach(async () => {
         sinon.stub(User, 'findAll').resolves(recoverdUser);
       });
@@ -47,7 +47,7 @@ describe('Testes unitários do service User', () => {
       });
 
       it('Testa se o retorno é um objeto', async () => {
-        const response = await UserService.findByEmail({
+        const response = await UserService.findUser({
           email: 'airel.ribeiro@gmail.com',
         });
 
@@ -55,7 +55,7 @@ describe('Testes unitários do service User', () => {
       });
 
       it('Testa se o objeto retornado contém informações da pessoa usuária', async () => {
-        const response = await UserService.findByEmail({
+        const response = await UserService.findUser({
           email: 'airel.ribeiro@gmail.com',
         });
 
@@ -63,7 +63,7 @@ describe('Testes unitários do service User', () => {
       });
     });
 
-    describe('Testa findByEmail se o email passado for de uma pessoa usuária NÃO cadastrada no banco', async () => {
+    describe('Testa findUser se o email passado for de uma pessoa usuária NÃO cadastrada no banco', async () => {
       beforeEach(async () => {
         sinon.stub(User, 'findAll').resolves([]);
       });
@@ -73,14 +73,14 @@ describe('Testes unitários do service User', () => {
       });
 
       it('Testa se é um objeto', async () => {
-        const response = await UserService.findByEmail({
+        const response = await UserService.findUser({
           email: 'email.invalido@email.com',
         });
 
         expect(response).to.be.an('object');
       });
       it('Testa se esse objeto possui a mensagem correta', async () => {
-        const response = await UserService.findByEmail({
+        const response = await UserService.findUser({
           email: 'email.invalido@email.com',
         });
 
