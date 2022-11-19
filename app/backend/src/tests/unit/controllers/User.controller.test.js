@@ -73,4 +73,53 @@ describe('Testes unitários do controller User', () => {
     });
   });
 
+  describe('Testa o comportamento da função register, que insere pessoa usuária no banco e retorna um token', () => {
+    const user = {};
+    const token = '';
+
+    beforeEach(async () => {
+      sinon.stub(UserService, 'insert').resolves(user);
+      sinon.stub(UserService, 'generateToken').resolves(token);
+    });
+
+    afterEach(async () => {
+      UserService.insert.restore();
+      UserService.generateToken.restore();
+    });
+
+    it('Testa se o status de retorno é 201', async () => {
+      const req = {};
+      const res = {};
+      req.body = {
+        name: 'Airel Ribeiro',
+        email: 'airel.ribeiro@gmail.com',
+        password: '123456789',
+      };
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+
+      await UserController.login(req, res);
+
+      expect(res.status.calledWith(201)).to.be.true;
+    });
+
+    it('Testa se o json é chamado com um objeto contendo um token', async () => {
+      const req = {};
+      const res = {};
+      req.body = {
+        name: 'Airel Ribeiro',
+        email: 'airel.ribeiro@gmail.com',
+        password: '123456789',
+      };
+      const json = { token: '' };
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+
+      await UserController.login(req, res);
+
+      expect(res.json.calledWith(json)).to.be.true;
+    });
+  });
 });
