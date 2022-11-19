@@ -11,6 +11,12 @@ const PostController = {
     return res.status(200).json(posts);
   },
 
+  findByUser: async (req, res) => {
+    const posts = await PostService.findByUser(req.body);
+    if (posts.message) throw new Error(posts.message);
+    return res.status(200).json(posts);
+  },
+
 };
 
 module.exports = PostController;
