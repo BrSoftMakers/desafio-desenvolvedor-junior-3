@@ -23,6 +23,11 @@ const PostController = {
     return res.status(200).json(post);
   },
 
+  update: async (req, res) => {
+    const message = await PostService.update(req.params, req.body);
+    return res.status(200).json(message);
+  },
+
 };
 
 module.exports = PostController;
