@@ -115,4 +115,30 @@ describe('Testes unitários do service User', () => {
       expect(verifyToken.data).to.be.deep.equal(user);
     });
   });
+
+  describe('Testa o comportamento da função verifyUser que deve buscar, pelo email, pessoa usuária no banco de dados', () => {
+    afterEach(async () => {
+      User.findAll.restore();
+    });
+
+    it('Verifica retorno quando pessoa usuária existir no banco', async () => {
+      sinon.stub(User, 'findAll').resolves(recoverdUser);
+
+      const response = await UserService.verifyUser({
+        email: 'airel.ribeiro@gmail.com',
+      });
+
+      expect(response).to.be.deep.equal({ message: 'userAlreadyExists' });
+    });
+
+    it('Verifica retorno quando pessoa usuária NÃO existir no banco', async () => {
+      sinon.stub(User, 'findAll').resolves([]);
+
+      const response = await UserService.verifyUser({
+        email: 'email.invalido@email.com',
+      });
+
+      expect(response).to.be.equal(undefined);
+    });
+  });
 });
