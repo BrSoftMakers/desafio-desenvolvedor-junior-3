@@ -113,10 +113,16 @@ const singlePost = {
   userId: 1,
 };
 
+const postToUpdate = {
+  title:
+    'Elfos acreditam separação de crianças em "lista dos bonzinhos" e "lista dos danadinhos" representa falso julgamento moral',
+};
+
 module.exports = {
   allPosts,
   postToInsert,
   insertedPost,
   postsByUser,
   singlePost,
+  postToUpdate,
 };
