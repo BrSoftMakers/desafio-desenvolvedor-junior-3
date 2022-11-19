@@ -31,8 +31,6 @@ const PostService = {
             return { message: 'Nenhum campo precisou ser atualizado!' };
           case fields === 1:
             return { message: 'O post foi atualizado com sucesso!' };
-          default:
-            return { message: 'unknownError' };
         }
       }
     );
