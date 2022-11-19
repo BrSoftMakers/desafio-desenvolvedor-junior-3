@@ -210,3 +210,49 @@ describe('Testes unitários do controller Post', () => {
     });
   });
 
+  describe('Testa o comportamento da função update', () => {
+    describe('Testa update quando há um post com o id buscado para ser atualizado', () => {
+      const postToUpdate = {};
+
+      beforeEach(async () => {
+        sinon
+          .stub(PostService, 'update')
+          .resolves({ message: 'O post foi atualizado com sucesso!' });
+      });
+
+      afterEach(async () => {
+        PostService.update.restore();
+      });
+
+      it('Testa se o status de retorno é 200', async () => {
+        const req = {};
+        const res = {};
+        req.params = { id: 7 };
+        req.body = postToUpdate;
+
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
+
+        await PostController.update(req, res);
+
+        expect(res.status.calledWith(200)).to.be.true;
+      });
+
+      it('Testa se o json é chamado com mensagem de sucesso', async () => {
+        const req = {};
+        const res = {};
+        req.params = { id: 7 };
+        req.body = postToUpdate;
+
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
+
+        await PostController.update(req, res);
+
+        expect(
+          res.json.calledWith({ message: 'O post foi atualizado com sucesso!' })
+        ).to.be.true;
+      });
+    });
+  });
+
