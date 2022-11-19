@@ -145,3 +145,68 @@ describe('Testes unitários do controller Post', () => {
     });
   });
 
+  describe('Testa o comportamento da função findById', () => {
+    describe('Testa findById quando há um post com o id buscado', () => {
+      const postsById = {};
+
+      beforeEach(async () => {
+        sinon.stub(PostService, 'findById').resolves(postsById);
+      });
+
+      afterEach(async () => {
+        PostService.findById.restore();
+      });
+
+      it('Testa se o status de retorno é 200', async () => {
+        const req = {};
+        const res = {};
+        req.params = { id: 7 };
+
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
+
+        await PostController.findById(req, res);
+
+        expect(res.status.calledWith(200)).to.be.true;
+      });
+
+      it('Testa se o json é chamado com todas as informações do post buscado', async () => {
+        const req = {};
+        const res = {};
+        req.params = { id: 7 };
+
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
+
+        await PostController.findById(req, res);
+
+        expect(res.json.calledWith(postsById)).to.be.true;
+      });
+    });
+
+    describe('Testa findById quando NÃO há um post com o id buscado', () => {
+      beforeEach(async () => {
+        sinon
+          .stub(PostService, 'findById')
+          .resolves({ message: 'postNotFound' });
+      });
+
+      afterEach(async () => {
+        PostService.findById.restore();
+      });
+
+      it('Testa se é lançado um erro com a mensagem correta', async () => {
+        const req = {};
+        const res = {};
+        let error;
+        try {
+          req.params = { id: 70 };
+          await PostController.findById(req, res);
+        } catch (err) {
+          error = err;
+        }
+        expect(error.message).to.be.deep.equal('postNotFound');
+      });
+    });
+  });
+
