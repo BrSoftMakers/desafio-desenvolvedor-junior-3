@@ -6,6 +6,11 @@ const PostController = {
     return res.status(201).json(post);
   },
 
+  findAll: async (_req, res) => {
+    const posts = await PostService.findAll();
+    return res.status(200).json(posts);
+  },
+
 };
 
 module.exports = PostController;
