@@ -4,7 +4,7 @@ const UserService = require('../../../services/User.service');
 const UserController = require('../../../controllers/User.controller');
 const { user, token } = require('../mocks/User.mock');
 
-describe.only('Testes unitários do controller User', () => {
+describe('Testes unitários do controller User', () => {
   describe('Testa o comportamento da função login', () => {
     describe('Testa login quando a pessoa usuária existe no banco de dados', () => {
       beforeEach(async () => {
