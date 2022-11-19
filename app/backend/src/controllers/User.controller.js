@@ -8,6 +8,11 @@ const UserController = {
     return res.status(200).json({ token });
   },
 
+  register: async (req, res) => {
+    const user = await UserService.insert(req.body);
+    const token = UserService.generateToken(user);
+    return res.status(201).json({ token });
+  },
 };
 
 module.exports = UserController;
