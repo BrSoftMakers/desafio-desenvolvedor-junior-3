@@ -1,3 +1,8 @@
 Healthcheck - Docker Compose
 
 https://gist.github.com/gabrielh-silvestre/624a3c6b9de184c1b12572996e3a68a7
+
+Desativa no-unused-vars para variáveis com underscore
+
+https://eslint.org/docs/latest/rules/no-unused-vars
+https://stackoverflow.com/questions/64052318/how-to-disable-warn-about-some-unused-params-but-keep-typescript-eslint-no-un
