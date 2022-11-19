@@ -2,12 +2,17 @@ const sinon = require('sinon');
 const { expect } = require('chai');
 const PostService = require('../../../services/Post.service');
 const PostController = require('../../../controllers/Post.controller');
+const {
+  insertedPost,
+  allPosts,
+  postsByUser,
+  singlePost,
+  postToInsert,
+  postToUpdate,
+} = require('../mocks/Post.mock');
 
 describe('Testes unitários do controller Post', () => {
   describe('Testa o comportamento da função insert ao inserir com sucesso um post no banco de dados', () => {
-    const postToInsert = {};
-    const insertedPost = {};
-
     beforeEach(async () => {
       sinon.stub(PostService, 'insert').resolves(insertedPost);
     });
@@ -37,15 +42,13 @@ describe('Testes unitários do controller Post', () => {
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns();
 
-      PostController.insert(req, res);
+      await PostController.insert(req, res);
 
       expect(res.json.calledWith(insertedPost)).to.be.true;
     });
   });
 
   describe('Testa o comportamento da função findAll ao recuperar todos os posts do banco de dados', () => {
-    const allPosts = [{}];
-
     beforeEach(async () => {
       sinon.stub(PostService, 'findAll').resolves(allPosts);
     });
@@ -57,7 +60,6 @@ describe('Testes unitários do controller Post', () => {
     it('Testa se o status de retorno é 200', async () => {
       const req = {};
       const res = {};
-      req.body = postToInsert;
 
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns();
@@ -67,14 +69,14 @@ describe('Testes unitários do controller Post', () => {
       expect(res.status.calledWith(200)).to.be.true;
     });
 
-    it('Testa se o json é chamado com o post inserido', async () => {
+    it('Testa se o json é chamado com todos os posts', async () => {
       const req = {};
       const res = {};
 
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns();
 
-      PostController.findAll(req, res);
+      await PostController.findAll(req, res);
 
       expect(res.json.calledWith(allPosts)).to.be.true;
     });
@@ -82,8 +84,6 @@ describe('Testes unitários do controller Post', () => {
 
   describe('Testa o comportamento da função findByUser', () => {
     describe('Testa findByUser quando há posts da pessoa usuária no banco de dados', () => {
-      const postsByUser = [{}];
-
       beforeEach(async () => {
         sinon.stub(PostService, 'findByUser').resolves(postsByUser);
       });
@@ -147,14 +147,12 @@ describe('Testes unitários do controller Post', () => {
 
   describe('Testa o comportamento da função findById', () => {
     describe('Testa findById quando há um post com o id buscado', () => {
-      const postsById = {};
-
       beforeEach(async () => {
-        sinon.stub(PostService, 'findById').resolves(postsById);
+        sinon.stub(PostService, 'findByPk').resolves(singlePost);
       });
 
       afterEach(async () => {
-        PostService.findById.restore();
+        PostService.findByPk.restore();
       });
 
       it('Testa se o status de retorno é 200', async () => {
@@ -180,19 +178,19 @@ describe('Testes unitários do controller Post', () => {
 
         await PostController.findById(req, res);
 
-        expect(res.json.calledWith(postsById)).to.be.true;
+        expect(res.json.calledWith(singlePost)).to.be.true;
       });
     });
 
     describe('Testa findById quando NÃO há um post com o id buscado', () => {
       beforeEach(async () => {
         sinon
-          .stub(PostService, 'findById')
+          .stub(PostService, 'findByPk')
           .resolves({ message: 'postNotFound' });
       });
 
       afterEach(async () => {
-        PostService.findById.restore();
+        PostService.findByPk.restore();
       });
 
       it('Testa se é lançado um erro com a mensagem correta', async () => {
@@ -212,8 +210,6 @@ describe('Testes unitários do controller Post', () => {
 
   describe('Testa o comportamento da função update', () => {
     describe('Testa update quando há um post com o id buscado para ser atualizado', () => {
-      const postToUpdate = {};
-
       beforeEach(async () => {
         sinon
           .stub(PostService, 'update')
@@ -227,7 +223,7 @@ describe('Testes unitários do controller Post', () => {
       it('Testa se o status de retorno é 200', async () => {
         const req = {};
         const res = {};
-        req.params = { id: 7 };
+        req.params = { id: 4 };
         req.body = postToUpdate;
 
         res.status = sinon.stub().returns(res);
@@ -241,7 +237,7 @@ describe('Testes unitários do controller Post', () => {
       it('Testa se o json é chamado com mensagem de sucesso', async () => {
         const req = {};
         const res = {};
-        req.params = { id: 7 };
+        req.params = { id: 4 };
         req.body = postToUpdate;
 
         res.status = sinon.stub().returns(res);
