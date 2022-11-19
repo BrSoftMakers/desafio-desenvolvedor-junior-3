@@ -28,6 +28,10 @@ const PostController = {
     return res.status(200).json(message);
   },
 
+  delete: async (req, res) => {
+    const message = await PostService.delete(req.params);
+    return res.status(200).json(message);
+  },
 };
 
 module.exports = PostController;
