@@ -24,8 +24,6 @@ const PostService = {
   },
 
   update: async ({ id }, postToUpdate) => {
-    const post = await Post.findByPk(id);
-    if (!post) return { message: 'postNotFound' };
     return Post.update({ ...postToUpdate }, { where: { id } }).then(
       ([fields]) => {
         switch (true) {
@@ -41,8 +39,6 @@ const PostService = {
   },
 
   delete: async ({ id }) => {
-    const post = await Post.findByPk(id);
-    if (!post) return { message: 'postNotFound' };
     return Post.destroy({ where: { id } }).then(() => ({
       message: 'Post excluído com sucesso!',
     }));
