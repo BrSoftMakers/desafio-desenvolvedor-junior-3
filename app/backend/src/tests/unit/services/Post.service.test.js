@@ -181,28 +181,6 @@ describe('Testes unitários do service Post', () => {
         });
       });
     });
-
-    describe('Testa se, quando um id inválido é passado, há o retorno correto', () => {
-      before(async () => {
-        sinon.stub(Post, 'findByPk').resolves(null);
-      });
-
-      after(async () => {
-        Post.findByPk.restore();
-      });
-
-      it('Testa se um objeto é retornado', async () => {
-        const response = await PostService.update({ id: 70 }, postToInsert);
-
-        expect(response).to.be.an('object');
-      });
-
-      it('Testa se esse objeto possui a mensagem correta', async () => {
-        const response = await PostService.update({ id: 70 }, postToInsert);
-
-        expect(response).to.be.deep.equal({ message: 'postNotFound' });
-      });
-    });
   });
 
   describe('Testa a função delete que apaga um post no banco de dados', () => {
@@ -229,28 +207,6 @@ describe('Testes unitários do service Post', () => {
         expect(response).to.be.deep.equal({
           message: 'Post excluído com sucesso!',
         });
-      });
-    });
-
-    describe('Testa se, quando um id inválido é passado ocorre o retorno correto', () => {
-      beforeEach(async () => {
-        sinon.stub(Post, 'findByPk').resolves(null);
-      });
-
-      afterEach(async () => {
-        Post.findByPk.restore();
-      });
-
-      it('Testa se um objeto é retornado', async () => {
-        const response = await PostService.delete({ id: 70 });
-
-        expect(response).to.be.an('object');
-      });
-
-      it('Testa se o objeto contém a mensagem correta', async () => {
-        const response = await PostService.delete({ id: 70 });
-
-        expect(response).to.be.deep.equal({ message: 'postNotFound' });
       });
     });
   });
