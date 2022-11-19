@@ -49,6 +49,7 @@ describe('Testes unitários do service User', () => {
       it('Testa se o retorno é um objeto', async () => {
         const response = await UserService.findUser({
           email: 'airel.ribeiro@gmail.com',
+          password: '123456789',
         });
 
         expect(response).to.be.an('object');
@@ -57,6 +58,7 @@ describe('Testes unitários do service User', () => {
       it('Testa se o objeto retornado contém informações da pessoa usuária', async () => {
         const response = await UserService.findUser({
           email: 'airel.ribeiro@gmail.com',
+          password: '123456789',
         });
 
         expect(response).to.be.deep.equal(user);
@@ -75,6 +77,7 @@ describe('Testes unitários do service User', () => {
       it('Testa se é um objeto', async () => {
         const response = await UserService.findUser({
           email: 'email.invalido@email.com',
+          password: '123456789',
         });
 
         expect(response).to.be.an('object');
@@ -82,6 +85,7 @@ describe('Testes unitários do service User', () => {
       it('Testa se esse objeto possui a mensagem correta', async () => {
         const response = await UserService.findUser({
           email: 'email.invalido@email.com',
+          password: '123456789',
         });
 
         expect(response).to.be.deep.equal({ message: 'userNotFound' });
