@@ -19,8 +19,9 @@ const UserService = {
     return user;
   },
 
-  findByEmail: async ({ email }) => {
-    const [user] = await User.findAll({ where: { email } });
+  findUser: async ({ email, password: pass }) => {
+    const password = md5(pass);
+    const [user] = await User.findAll({ where: { email, password } });
     if (!user) return { message: 'userNotFound' };
     return user;
   },
