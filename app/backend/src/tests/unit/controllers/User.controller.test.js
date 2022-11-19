@@ -2,18 +2,19 @@ const sinon = require('sinon');
 const { expect } = require('chai');
 const UserService = require('../../../services/User.service');
 const UserController = require('../../../controllers/User.controller');
+const { user, token } = require('../mocks/User.mock');
 
-describe('Testes unitários do controller User', () => {
+describe.only('Testes unitários do controller User', () => {
   describe('Testa o comportamento da função login', () => {
     describe('Testa login quando a pessoa usuária existe no banco de dados', () => {
-      const user = {};
-
       beforeEach(async () => {
-        sinon.stub(UserService, 'findByEmail').resolves(user);
+        sinon.stub(UserService, 'findUser').resolves(user);
+        sinon.stub(UserService, 'generateToken').returns(token);
       });
 
       afterEach(async () => {
-        UserService.findByEmail.restore();
+        UserService.findUser.restore();
+        UserService.generateToken.restore();
       });
 
       it('Testa se o status de retorno é 200', async () => {
@@ -33,26 +34,25 @@ describe('Testes unitários do controller User', () => {
         const req = {};
         const res = {};
         req.body = { email: 'airel.ribeiro@gmail.com', password: '123456789' };
-        const json = { token: '' };
 
         res.status = sinon.stub().returns(res);
         res.json = sinon.stub().returns();
 
         await UserController.login(req, res);
 
-        expect(res.json.calledWith(json)).to.be.true;
+        expect(res.json.calledWith({ token })).to.be.true;
       });
     });
 
     describe('Testa login quando a pessoa usuária NÃO existe no banco de dados', () => {
       beforeEach(async () => {
         sinon
-          .stub(UserService, 'findByEmail')
+          .stub(UserService, 'findUser')
           .resolves({ message: 'userNotFound' });
       });
 
       afterEach(async () => {
-        UserService.findByEmail.restore();
+        UserService.findUser.restore();
       });
 
       it('Testa se é lançado um erro com a mensagem correta', async () => {
@@ -73,53 +73,51 @@ describe('Testes unitários do controller User', () => {
     });
   });
 
-  describe('Testa o comportamento da função register, que insere pessoa usuária no banco e retorna um token', () => {
-    const user = {};
-    const token = '';
+  describe('Testa comportamento da função register', () => {
+    describe('Testa função ao inserir pessoa usuária no banco de dados', () => {
+      beforeEach(async () => {
+        sinon.stub(UserService, 'insert').resolves(user);
+        sinon.stub(UserService, 'generateToken').returns(token);
+      });
 
-    beforeEach(async () => {
-      sinon.stub(UserService, 'insert').resolves(user);
-      sinon.stub(UserService, 'generateToken').resolves(token);
-    });
+      afterEach(async () => {
+        UserService.insert.restore();
+        UserService.generateToken.restore();
+      });
 
-    afterEach(async () => {
-      UserService.insert.restore();
-      UserService.generateToken.restore();
-    });
+      it('Testa se o status de retorno é 201', async () => {
+        const req = {};
+        const res = {};
+        req.body = {
+          name: 'Airel Ribeiro',
+          email: 'airel.ribeiro@gmail.com',
+          password: '123456789',
+        };
 
-    it('Testa se o status de retorno é 201', async () => {
-      const req = {};
-      const res = {};
-      req.body = {
-        name: 'Airel Ribeiro',
-        email: 'airel.ribeiro@gmail.com',
-        password: '123456789',
-      };
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
 
-      res.status = sinon.stub().returns(res);
-      res.json = sinon.stub().returns();
+        await UserController.register(req, res);
 
-      await UserController.login(req, res);
+        expect(res.status.calledWith(201)).to.be.true;
+      });
 
-      expect(res.status.calledWith(201)).to.be.true;
-    });
+      it('Testa se o json é chamado com um objeto contendo um token', async () => {
+        const req = {};
+        const res = {};
+        req.body = {
+          name: 'Airel Ribeiro',
+          email: 'airel.ribeiro@gmail.com',
+          password: '123456789',
+        };
 
-    it('Testa se o json é chamado com um objeto contendo um token', async () => {
-      const req = {};
-      const res = {};
-      req.body = {
-        name: 'Airel Ribeiro',
-        email: 'airel.ribeiro@gmail.com',
-        password: '123456789',
-      };
-      const json = { token: '' };
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
 
-      res.status = sinon.stub().returns(res);
-      res.json = sinon.stub().returns();
+        await UserController.register(req, res);
 
-      await UserController.login(req, res);
-
-      expect(res.json.calledWith(json)).to.be.true;
+        expect(res.json.calledWith({ token })).to.be.true;
+      });
     });
   });
 });
