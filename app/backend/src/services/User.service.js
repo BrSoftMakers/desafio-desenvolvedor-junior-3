@@ -13,6 +13,12 @@ const UserService = {
     return token;
   },
 
+  verifyUser: async ({ email }) => {
+    const [user] = await User.findAll({ where: { email } });
+    if (!user) return user;
+    return { message: 'userAlreadyExists' };
+  },
+
   insert: async (newUser) => {
     const password = md5(newUser.password);
     const user = await User.create({ ...newUser, password });
