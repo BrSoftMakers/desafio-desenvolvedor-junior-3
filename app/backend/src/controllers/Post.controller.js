@@ -17,6 +17,12 @@ const PostController = {
     return res.status(200).json(posts);
   },
 
+  findById: async (req, res) => {
+    const post = await PostService.findByPk(req.params);
+    if (post.message) throw new Error(post.message);
+    return res.status(200).json(post);
+  },
+
 };
 
 module.exports = PostController;
