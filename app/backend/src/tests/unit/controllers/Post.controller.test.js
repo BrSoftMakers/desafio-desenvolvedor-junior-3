@@ -256,3 +256,44 @@ describe('Testes unitários do controller Post', () => {
     });
   });
 
+  describe('Testa o comportamento da função delete', () => {
+    describe('Testa delete quando há um post com o id buscado para ser excluído', () => {
+      beforeEach(async () => {
+        sinon
+          .stub(PostService, 'delete')
+          .resolves({ message: 'Post excluído com sucesso!' });
+      });
+
+      afterEach(async () => {
+        PostService.delete.restore();
+      });
+
+      it('Testa se o status de retorno é 200', async () => {
+        const req = {};
+        const res = {};
+        req.params = { id: 7 };
+
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
+
+        await PostController.delete(req, res);
+
+        expect(res.status.calledWith(200)).to.be.true;
+      });
+
+      it('Testa se o json é chamado com mensagem de sucesso', async () => {
+        const req = {};
+        const res = {};
+        req.params = { id: 7 };
+
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
+
+        await PostController.delete(req, res);
+
+        expect(res.json.calledWith({ message: 'Post excluído com sucesso!' }))
+          .to.be.true;
+      });
+    });
+  });
+});
