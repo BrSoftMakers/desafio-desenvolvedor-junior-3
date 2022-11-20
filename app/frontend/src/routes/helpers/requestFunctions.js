@@ -25,3 +25,7 @@ export const requestPostById = (token, id) =>
     headers: { Authorization: token },
   });
 
+export const requestDeletePost = (token, id) =>
+  axios.delete(`http://localhost:3001/posts/${id}`, {
+    headers: { Authorization: token },
+  });
