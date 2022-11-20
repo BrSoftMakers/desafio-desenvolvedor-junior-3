@@ -28,9 +28,18 @@ function NavbarComponent() {
               <Nav.Link className="btn btn-outline-info" href="/posts">
                 Home
               </Nav.Link>
-              <Nav.Link className="btn btn-outline-success" href="/my-posts">
+              <Nav.Link className="btn btn-outline-primary" href="/my-posts">
                 Minhas Postagens
               </Nav.Link>
+              <button
+                className="btn btn-outline-success"
+                type="button"
+                onClick={() => {
+                  navigate('/create');
+                }}
+              >
+                Nova postagem
+              </button>
               <button
                 className="btn btn-outline-warning"
                 type="button"
