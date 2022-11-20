@@ -20,12 +20,12 @@ function Posts() {
   return (
     <div className="container pt-3 mt-3">
       <h2 className="text-center mt-5 pb-3 mb-3">Lista de Postagens</h2>
-      <Table striped bordered hover>
-        <thead>
+      <Table striped bordered hover shadow-lg p-3 mb-5 bg-white rounded>
+        <thead className="table-dark">
           <tr>
             <th className="text-center">Id</th>
-            <th className="text-center">Título</th>
-            <th className="text-center">Conteúdo</th>
+            <th className="text-center w-25 p-3">Título</th>
+            <th className="text-center w-50 p-3">Conteúdo</th>
             <th className="text-center">Pessoa Usuária</th>
           </tr>
         </thead>
@@ -34,8 +34,10 @@ function Posts() {
             {posts.map(({ id, title, content, user }) => (
               <tr key={id}>
                 <td className="text-center">{id}</td>
-                <td className="text-center">{title}</td>
-                <td>
+                <td className="text-center w-25 p-3">
+                  <strong>{title}</strong>
+                </td>
+                <td className="w-50 p-3">
                   <Accordion>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header>Clique para ler</Accordion.Header>
