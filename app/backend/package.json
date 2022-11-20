@@ -1,0 +1,36 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/api/server.js",
+  "scripts": {
+    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "dev": "nodemon .",
+    "start": "node .",
+    "test": "mocha src/tests/**/*$NAME*.test.js --exit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "md5": "^2.3.0",
+    "nyc": "^15.1.0",
+    "sequelize": "^6.25.3"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "eslint": "^8.26.0",
+    "mocha": "^10.1.0",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20",
+    "sequelize-cli": "^6.5.1",
+    "sinon": "^14.0.1"
+  }
+}
