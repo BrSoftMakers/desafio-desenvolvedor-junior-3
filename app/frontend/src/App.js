@@ -24,6 +24,7 @@ function App() {
         <Route path="/my-posts" element={<UserPosts />} />
         <Route path="/my-posts/:id" element={<SinglePost />} />
         <Route path="/create" element={<PostForm />} />
+        <Route path="/update/:id" element={<PostForm />} />
       </Routes>
     </div>
   );
