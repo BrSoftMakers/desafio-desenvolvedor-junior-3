@@ -18,6 +18,7 @@ function App() {
         as notícias mais reais que você vai encontrar
       </h2>
       <Routes>
+        <Route exact path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/posts" element={<Posts />} />
