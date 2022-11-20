@@ -57,7 +57,11 @@ function SinglePost() {
             </p>
           </Card.Body>
           <Card.Footer className="d-flex justify-content-evenly">
-            <button className="btn btn-primary col-3 p-2" type="button">
+            <button
+              className="btn btn-primary col-3 p-2"
+              type="button"
+              onClick={() => navigate(`/update/${id}`)}
+            >
               Atualizar postagem
             </button>
 
