@@ -11,3 +11,11 @@ export const requestAllPosts = (token) =>
     headers: { Authorization: token },
   });
 
+export const requestPostByUser = ({ token, id }) =>
+  axios.post(
+    'http://localhost:3001/posts/user',
+    { userId: id },
+    {
+      headers: { Authorization: token },
+    }
+  );
