@@ -34,5 +34,8 @@ export const requestCreatePost = (token, post) =>
   axios.post('http://localhost:3001/posts', post, {
     headers: { Authorization: token },
   });
+
+export const requestUpdatePost = (token, post, id) =>
+  axios.put(`http://localhost:3001/posts/${id}`, post, {
     headers: { Authorization: token },
   });
