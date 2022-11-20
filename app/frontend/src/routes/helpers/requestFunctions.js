@@ -29,3 +29,8 @@ export const requestDeletePost = (token, id) =>
   axios.delete(`http://localhost:3001/posts/${id}`, {
     headers: { Authorization: token },
   });
+
+export const requestCreatePost = (token, post) =>
+  axios.post('http://localhost:3001/posts/user', post, {
+    headers: { Authorization: token },
+  });
