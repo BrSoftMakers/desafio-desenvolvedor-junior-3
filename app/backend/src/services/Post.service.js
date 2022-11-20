@@ -1,4 +1,4 @@
-const { Post } = require('../database/models');
+const { Post, User } = require('../database/models');
 
 const PostService = {
   insert: async (newPost) => {
@@ -7,7 +7,15 @@ const PostService = {
   },
 
   findAll: async () => {
-    const posts = await Post.findAll();
+    const posts = await Post.findAll({
+      include: [
+        {
+          model: User,
+          as: 'user',
+          attributes: { exclude: ['id', 'email', 'password'] },
+        },
+      ],
+    });
     return posts;
   },
 
