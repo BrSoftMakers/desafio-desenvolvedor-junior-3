@@ -11,10 +11,10 @@ function App() {
   return (
     <div className="container">
       <NavbarComponent />
-      <h1 className="text-center">
-        <strong>✨ Fantastic Posts ✨</strong>
+      <h1 className="text-center bg-light bg-gradient" id="page-title">
+        <strong id="page-title">✨ Fantastic Posts ✨</strong>
       </h1>
-      <h2 className="text-center">
+      <h2 className="text-center" id="page-subtitle">
         as notícias mais reais que você vai encontrar
       </h2>
       <Routes>
