@@ -19,3 +19,9 @@ export const requestPostByUser = ({ token, id }) =>
       headers: { Authorization: token },
     }
   );
+
+export const requestPostById = (token, id) =>
+  axios.get(`http://localhost:3001/posts/${id}`, {
+    headers: { Authorization: token },
+  });
+
