@@ -24,18 +24,24 @@ function NavbarComponent() {
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
-            <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link href="/posts">Home</Nav.Link>
-              <Nav.Link href="/my-posts">Minhas Postagens</Nav.Link>
+            <Nav className="d-grid gap-2">
+              <Nav.Link className="btn btn-outline-info" href="/posts">
+                Home
+              </Nav.Link>
+              <Nav.Link className="btn btn-outline-success" href="/my-posts">
+                Minhas Postagens
+              </Nav.Link>
+              <button
+                className="btn btn-outline-warning"
+                type="button"
+                onClick={() => {
+                  localStorage.clear();
+                  navigate('/login');
+                }}
+              >
+                Sair
+              </button>
             </Nav>
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Busque uma postagem pelo id"
-                className="me-2"
-              />
-              <Button variant="outline-success">Buscar</Button>
-            </Form>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
       </Container>
