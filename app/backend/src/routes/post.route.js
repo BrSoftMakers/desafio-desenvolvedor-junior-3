@@ -11,7 +11,7 @@ const postRoute = express.Router();
 postRoute.use(tokenValidation);
 
 postRoute.get('/:id', PostController.findById);
-postRoute.get('/user', PostController.findByUser);
+postRoute.post('/user', PostController.findByUser);
 postRoute.get('/', PostController.findAll);
 postRoute.post('/', postFieldsValidation, PostController.insert);
 
