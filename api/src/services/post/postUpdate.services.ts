@@ -20,9 +20,23 @@ export const postUpdateService = async ({id,post,userEmail}: updatePost) => {
         throw new AppError("you can only update your posts")
     }
 
-    const postUpdate = new Post()
-    postUpdate.post = post || postUpdate.post
-    
-    
+   const posts = {
+    post: post || postOne.post,
+    user: {
+        id: postOne.user.id,
+        name: postOne.user.name,
+        email: postOne.user.email
+    },
+    created_at: postOne.created_at,
+    updated_at: postOne.updated_at
+   }
 
+   await postRepository
+    .createQueryBuilder()
+    .update(posts)
+    .where("id = :id", { id: id })
+    .execute();
+
+   return posts
+   
 }

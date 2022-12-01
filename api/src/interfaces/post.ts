@@ -13,3 +13,7 @@ export interface updatePost{
     id: string
     userEmail: string
 }
+
+export interface schemaPost {
+    post: string
+}

@@ -6,6 +6,12 @@ export interface createUser{
 }
 
 export interface userLogin{
-    email:string 
-    password:string 
+    email:string | any
+    password:string | any
+}
+
+export interface updateUser{
+    name:string | any
+    email:string | any
+    password:string | any
 }
