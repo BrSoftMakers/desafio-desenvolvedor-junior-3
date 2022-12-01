@@ -1,0 +1,244 @@
+{
+    "openapi":"3.0.0",
+    "info":{
+        "title":"Blog",
+        "description":"API feita com a finalidade criar um blog",
+    "version":"1.0.0"
+    
+    },
+    "paths":{
+
+        "/login":{
+            "post":{
+                "description":"Login de usuario",
+                "tags":["Login"],
+                "requestBody":{
+                    "description":"Gerar o token",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#/components/schema/Login"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"Login realizado com sucesso"
+                    },
+                    "400":{
+                        "description":"Email ou senha invalidos"
+                    }
+                }
+            }
+        },
+        "/register":{
+            "post":{
+                "description":"Criação de um usuario!",
+                "tags":["User"],
+                "requestBody":{
+                    "description":"Dados para criação",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#/components/schema/RequestUser"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "201":{
+                        "description":"Usuario criado com sucesso"
+                    },
+                    "400":{
+                        "description":"Dados passados incorretamente/ email ou telefone ja estão cadastrados"
+                    }
+                }
+            }
+        },
+
+        
+
+        "/posts/":{
+            "post":{
+                "description":"Criação de um post!",
+                "security":[{"bearerAuth":[]}],
+                "tags":["Posts"],
+                "requestBody":{
+                    "description":"Dados para criação",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#/components/schema/RequestPosts"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "201":{
+                        "description":"Usuario criado com sucesso"
+                    },
+                    "400":{
+                        "description":"Dados passados incorretamente/ email ou telefone ja estão cadastrados"
+                    }
+                }
+            },
+            "get":{
+                "description":"Listar todos os posts",
+                "security":[{"bearerAuth":[]}],
+                "tags":["Posts"],
+                
+                "responses":{
+                    "200":{
+                        "description":"Listou todos os posts com sucesso"
+                    },
+                    "400":{
+                        "description":"Dados incompletos"
+                    }
+                }
+            }
+        },
+
+        "/posts/{id}":{
+            
+            "put":{
+                "description":"Atualizar o post pelo id",
+                "tags":["Posts"],
+                "security":[{"bearerAuth":[]}],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"Id do post",
+                        "required":true
+                    }
+                ],"requestBody":{
+                    "description":"Dados para Atualização",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "post":{"type":"string","example":"José"}
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"post atualizado com sucesso"
+                    },
+                    "400":{
+                        "description":"post não existe"
+                  },
+                  
+                  "401":{
+                    "description":"Token invalido ou não foi passado / usuario não é o dono da publicação"
+                }
+
+                }
+            },
+            "get":{
+                "description":"Listar o post pelo id",
+                "tags":["Posts"],
+                "security":[{"bearerAuth":[]}],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"Id do post",
+                        "required":true
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"Listou todos os posts com sucesso"
+                    },
+                    "400":{
+                        "description":"posts não existe"
+                  },
+                  "401":{
+                    "description":"Token invalido ou não foi passado"
+                }
+
+                }
+            },
+            "delete":{
+                "description":"Deletar o post pelo id",
+                "tags":["Posts"],
+                "security":[{"bearerAuth":[]}],
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"Id do post",
+                        "required":true
+                    }
+                ],
+                "responses":{
+                    "204":{
+                        "description":"post deletado com sucesso"
+                    },
+                    "400":{
+                        "description":"post não existe"
+                  },
+                  "401":{
+                    "description":"Token invalido ou não foi passado / usuario não é o dono da publicação"
+                }
+                }
+            }
+        }
+
+        
+    },
+    "components":{
+        "schema":{
+           
+            "RequestUser": {
+                "type":"object",
+                "properties":{
+                    "name":{
+                        "type":"string",
+                        "example":"Adriano"
+                    },
+                    "email":{
+                        "type":"string",
+                        "example":"adrinc@gmail.com"
+                    },
+                    "password":{
+                        "type":"string",
+                        "example":"abc1234"
+                    }
+                    
+                }
+            },
+           
+            "RequestPosts": {
+                "type":"object",
+                "properties":{
+                    "post":{
+                        "type":"string",
+                        "example":"Olá sejam muito bem vindo ao melhor blog do universo"
+                    }
+                }
+            },
+            "Login":{
+                "type":"object",
+                "properties":{
+                    "email":{"type":"string","example":"adrinc@gmail.com"},
+                    "password":{"type":"string","example":"abc1234"}
+                }
+            }
+ 
+        },
+        "securitySchemes":{
+            "bearerAuth":{
+                "type":"http",
+                "scheme":"bearer",
+                "bearerFormat":"JWT"
+            }
+        }
+    }
+        
+}
