@@ -22,4 +22,5 @@ export const postListService = async () => {
         return obj
     })
     return result
+
 }
