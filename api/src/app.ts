@@ -2,7 +2,7 @@ import express from 'express'
 import { AppDataSource } from './database';
 import "express-async-errors";
 import { router } from './routes';
-
+import { appErrorMiddleware } from './middleware/appErrorMiddleware';
 
 
 const app = express()
@@ -12,6 +12,8 @@ app.use(cors())
 app.use(express.json())
 
 app.use(router)
+
+app.use(appErrorMiddleware)
 
 AppDataSource.initialize()
     .then(() => {
@@ -26,4 +28,3 @@ app.listen( process.env.PORT || 9000,() => console.log("rodando liso"))
 
 export default app
 
-//aaa
