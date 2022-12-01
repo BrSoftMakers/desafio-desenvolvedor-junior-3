@@ -17,7 +17,7 @@ export const postUpdateService = async ({id,post,userEmail}: updatePost) => {
         throw new AppError("Post not found")
     }
     if(postOne.user.email !== userEmail) {
-        throw new AppError("you can only update your posts")
+        throw new AppError("you can only update your posts",401)
     }
 
    const posts = {

@@ -3,11 +3,13 @@ import { AppDataSource } from './database';
 import "express-async-errors";
 import { router } from './routes';
 import { appErrorMiddleware } from './middleware/appErrorMiddleware';
+import swaggerUi from "swagger-ui-express"
+import swaggerDocument from "../swagger.json"
 
 
 const app = express()
 const cors = require("cors")
-
+app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.use(cors())
 app.use(express.json())
 
