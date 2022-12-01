@@ -3,6 +3,9 @@ import { User } from "./user.entity";
 
 @Entity("post")
 export class Post{
+    map(arg0: (item: any) => { id: any; post: any; user: { id: any; name: any; email: any; }; created_at: any; updated_at: any; }) {
+        throw new Error("Method not implemented.");
+    }
     @PrimaryGeneratedColumn("uuid")
     id:string
 

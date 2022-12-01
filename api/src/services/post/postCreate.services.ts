@@ -8,13 +8,13 @@ import AppError from "../../errors/appError"
 export const postCreateServices = async ({post, userEmail}: createPost) => {
    const userRepository = AppDataSource.getRepository(User) 
 
-   const store = await userRepository.findOne({
+   const user = await userRepository.findOne({
       where: {
          email: userEmail
       }
    })
 
-   if (!store) {
+   if (!user) {
       throw new AppError("Store not found", 404)
     }
 
@@ -22,7 +22,7 @@ export const postCreateServices = async ({post, userEmail}: createPost) => {
 
    const postAll = new Post()
    postAll.post = post
-   postAll.user = store
+   postAll.user = user
    await postRepository.save(postAll)
    
     const result = {

@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { postCreateServices } from '../services/post/postCreate.services'
 import { postListService } from '../services/post/postList.services'
 import { postListOneService } from '../services/post/postListOne.services'
+import { postDeleteService } from '../services/post/postDelete.services'
 
 const postCreateController = async (req: Request, res: Response) => {
     const {post} = req.body
@@ -17,8 +18,15 @@ const postListController = async (req: Request, res: Response) => {
 
  const postListOneController = async (req: Request, res: Response) => {
     const {id} = req.params
-    const contact = await postListOneService(id)
-    res.status(200).json(contact)
+    const posts = await postListOneService(id)
+    res.status(200).json(posts)
  }
 
-export {postCreateController,postListController,postListOneController}
+ const postDeleteController = async (req: Request, res: Response) => {
+    const {id} = req.params
+    const userEmail = req.userPayload.userEmail
+    const posts = await postDeleteService({id,userEmail})
+    res.status(204).json(posts)
+ }
+
+export {postCreateController,postListController,postListOneController,postDeleteController}
