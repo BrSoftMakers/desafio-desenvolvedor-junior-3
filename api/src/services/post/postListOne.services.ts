@@ -18,6 +18,8 @@ export const postListOneService = async (id:string) => {
     const result = {
         id : postOne.id,
         post: postOne.post,
+        img: postOne.img,
+        title: postOne.title,
         user:{
            id:postOne.user.id,
            name: postOne.user.name,

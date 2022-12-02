@@ -5,7 +5,7 @@ import { User } from "../../entities/user.entity"
 import AppError from "../../errors/appError"
 
 
-export const postCreateServices = async ({post, userEmail}: createPost) => {
+export const postCreateServices = async ({post, userEmail, img,title}: createPost) => {
    const userRepository = AppDataSource.getRepository(User) 
 
    const user = await userRepository.findOne({
@@ -21,6 +21,8 @@ export const postCreateServices = async ({post, userEmail}: createPost) => {
    const postRepository = AppDataSource.getRepository(Post)
 
    const postAll = new Post()
+   postAll.img = img
+   postAll.title = title
    postAll.post = post
    postAll.user = user
    await postRepository.save(postAll)
@@ -28,6 +30,8 @@ export const postCreateServices = async ({post, userEmail}: createPost) => {
     const result = {
       id : postAll.id,
       post: postAll.post,
+      img: postAll.img,
+      title: postAll.title,
       user:{
          id:postAll.user.id,
          name: postAll.user.name,
