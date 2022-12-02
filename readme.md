@@ -1,5 +1,5 @@
-# ![image](https://user-images.githubusercontent.com/71836298/205188842-9bb9541e-c043-4c38-b817-c84c72485ee4.png)
- Rodando o Backend(Node.js)
+# ![image](https://user-images.githubusercontent.com/71836298/205188842-9bb9541e-c043-4c38-b817-c84c72485ee4.png)  Rodando o Backend(Node.js)
+
 
 ## 🚀 Tecnologias
 Esse projeto foi desenvolvido com as seguintes tecnologias:
