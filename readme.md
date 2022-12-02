@@ -41,4 +41,4 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
   
   ## 📃 Documentação
   
-  <a href="http://localhost:9000/api-docs/">http://localhost:9000/api-docs/<a/>
+  <a href="http://localhost:9000/api-docs/">http://localhost:9000/api-docs/<a/> ou <a href="https://api-blog.herokuapp.com/api-docs/">https://api-blog.herokuapp.com/api-docs/<a/>
