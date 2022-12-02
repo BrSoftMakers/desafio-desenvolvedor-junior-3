@@ -5,7 +5,7 @@ import bcrypt from "bcrypt"
 import AppError from "../../errors/appError";
 
 
-export const userCreateServices = async ({name, email,password}: createUser) => {
+export const userCreateServices = async ({name, email,password, img}: createUser) => {
 
     const userRepository = AppDataSource.getRepository(User) 
 
@@ -22,6 +22,7 @@ export const userCreateServices = async ({name, email,password}: createUser) => 
     user.id = user.id
     user.name = name
     user.email = email
+    user.img = img
     user.password = bcrypt.hashSync(password,10)
     user.created_at = user.created_at
     await userRepository.save(user)
@@ -29,6 +30,7 @@ export const userCreateServices = async ({name, email,password}: createUser) => 
     id:user.id,
     name: user.name,
     email: user.email,
+    img: user.img,
     created_at: user.created_at
    }
    

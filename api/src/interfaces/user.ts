@@ -2,6 +2,7 @@ export interface createUser{
     name: string 
     email: string
     password:string
+    img: string
     
 }
 
@@ -10,8 +11,3 @@ export interface userLogin{
     password:string | any
 }
 
-export interface updateUser{
-    name:string | any
-    email:string | any
-    password:string | any
-}
