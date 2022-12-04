@@ -37,7 +37,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
                   POSTGRES_DB="nameDatabase"
                   
 <h4> 💻 Criando o banco de dados <h4/>
-<h6> 🛞 docker-compose up <h6/>                  
+<h6> docker-compose up <h6/>                  
 
 
 <h4> 🛞 Rode as migrações<h4/>
