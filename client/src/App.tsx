@@ -1,14 +1,17 @@
-import { Container } from "./App.style";
 import Router from "./Router";
 import { BrowserRouter as Routes } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+import Providers from "./provider";
 
 function App() {
   return (
-    <Routes>
-      <Container>
+    <Providers>
+      <Routes>
+      <ToastContainer/>
       <Router />
-    </Container>
     </Routes>
+    </Providers>
     
   );
 }
