@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
-import {AuthProvider} from "./auth"
-import {PostProvider} from "./post"
+import { AuthProvider } from "./auth"
+import { PostProvider } from "./post"
 
 interface ProviderProps {
   children: ReactNode
@@ -10,9 +10,9 @@ interface ProviderProps {
 const Providers = ({ children }: ProviderProps) => {
   return <AuthProvider>
     <PostProvider>
-    {children}
+      {children}
     </PostProvider>
-    </AuthProvider>
+  </AuthProvider>
 }
 
 export default Providers

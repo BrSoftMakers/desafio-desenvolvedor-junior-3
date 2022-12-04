@@ -1,39 +1,43 @@
-import { Container } from "./styles";
-import { Input } from "../../components/Input";
-import { Button } from "../../components/Button";
-import { Formik, Form, Field } from "formik"
-import api from "../../services/api"
-import { toast } from 'react-toastify'
+import { useContext, useState } from "react"
+import { PostContext } from "../../provider/post"
 import { useNavigate } from "react-router-dom";
-import * as yup from 'yup'
+import { Button } from "../../components/Button";
 import { InputBlog } from "../../interfaces/Input";
+import api from "../../services/api";
+import { toast } from 'react-toastify'
+import { Container } from "./styles";
+import { Formik, Form, Field } from "formik";
+import { Input } from "../../components/Input";
+import { BlogData, BlogInterface } from "../../interfaces/Blog";
 
-export function Blog() {
-    const schema = yup.object().shape({
-        title: yup.string().required('Titulo é obrigatório'),
-        post: yup.string().required('Post é obrigatório')
-    })
+
+export function UpdateBlog() {
+
+    const { post } = useContext(PostContext)
+    const [postAll] = useState<BlogInterface>(post)
 
     const initialValues: InputBlog = { title: "", img: "", post: "" }
     const navigate = useNavigate();
-    const submit = (data: object) => {
-        api.post(`posts`, data, {
+    const submit = (data: BlogData) => {
+        const result = {
+            title: data.title === initialValues.title ? postAll.title : data.title,
+            img: data.img === initialValues.img ? postAll.img : data.img,
+            post: data.post === initialValues.post ? postAll.post : data.post
+        }
+
+        api.put(`posts/${postAll.id}`, result, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
-        }).then((res) => {
-            toast.success("Post cadastrado com sucesso")
+        }
+        ).then((res) => {
             navigate("/dashboard")
-
-
+            toast.success("Post Atualizado com sucesso!")
+        }).catch((err) => {
+            console.log(err)
+            toast.error("Post não foi atualizado, por favor tente novamente mais tarde")
         })
-            .catch((err) => {
-                toast.error("Não foi possivel criar um post, tente novamente mais tarde")
-                console.log(err)
-
-            })
     }
-
 
     function out() {
         navigate("/dashboard")
@@ -46,24 +50,23 @@ export function Blog() {
             </div>
 
             <Formik
-                validationSchema={schema}
                 initialValues={initialValues}
                 onSubmit={submit}
             >
                 {({ errors }) => (
                     <Form>
-                        <h1>Criar Blog</h1>
+                        <h1>Atualizar Blog</h1>
                         <Input
                             label="Titulo"
                             type="text"
-                            placeholder="Digite o titulo do blog"
+                            placeholder={postAll.title}
                             name="title"
                             error={errors.title}
                         />
                         <Input
                             label="Link da Imagem"
                             type="text"
-                            placeholder="Digite o link da imagem"
+                            placeholder={postAll.img}
                             name="img"
                             error=""
                         />
@@ -74,9 +77,9 @@ export function Blog() {
                         </div>
 
 
-                        <Field className="text" as="textarea" name="post" />
+                        <Field placeholder={postAll.post} className="text" as="textarea" name="post" />
 
-                        <Button size={true} whiteSchema={false}>Criar Blog</Button>
+                        <Button size={true} whiteSchema={false}>Atualizar</Button>
                     </Form>
                 )}
 

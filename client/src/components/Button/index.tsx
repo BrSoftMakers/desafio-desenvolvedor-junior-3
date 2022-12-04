@@ -7,12 +7,12 @@ export interface IButtonProps {
   children: ReactNode
   rest?: string[]
   onClick?: () => void
-
+  size: boolean
 }
 
-export function Button({ children, whiteSchema = false,onClick, ...rest }: IButtonProps) {
+export function Button({ size, children, whiteSchema = false, onClick, ...rest }: IButtonProps) {
   return (
-    <Container onClick={onClick} type='submit' whiteSchema={whiteSchema} {...rest}>
+    <Container size={size} onClick={onClick} type='submit' whiteSchema={whiteSchema} {...rest}>
       {children}
     </Container>
   );

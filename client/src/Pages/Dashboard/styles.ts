@@ -18,8 +18,8 @@ h2{
     font-family: 'Inter';
     color: white;
     font-weight: 300;
-    margin-bottom: -30px;
-    margin-left: 150px;
+   
+
 }
 
 .buttonSair{
@@ -65,5 +65,6 @@ img {
     float: right;
     margin-right: 75px;
 }
+
 
 `

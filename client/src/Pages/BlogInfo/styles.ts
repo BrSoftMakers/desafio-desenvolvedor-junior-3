@@ -14,6 +14,7 @@ img{
     border-radius: 20px;
     margin-right: 50px;
     margin-left: 50px;
+    background-color: #7B68EE;
     
 }
 .user{
