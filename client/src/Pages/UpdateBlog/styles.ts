@@ -58,5 +58,20 @@ button {
     
 }
 
+@media (max-width: 500px){
+    svg{
+    margin-left: 0px;
+}
+.text{
+    width: 150px;
+}
+}
+
+.buttonSair{
+    position: absolute;
+    right: 200px;
+    top: 0px;
+}
+
 
 `
