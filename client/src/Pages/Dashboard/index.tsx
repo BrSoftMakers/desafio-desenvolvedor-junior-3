@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { AuthContext } from "../../provider/auth"
 import { User } from "../../interfaces/User";
+import { Header } from "../../components/Header";
 
 export function Dashboard() {
     const [user, setUser] = useState<User>()
@@ -58,34 +59,19 @@ export function Dashboard() {
 
 
     return (
+        
         <Container>
-
-
-            <div className="buttonSair">
-                <Button size={true} onClick={returnLogin} whiteSchema={true}>Sair</Button>
-
-            </div>
-
-
+            <Header/>
             <div className="name">
                 <div className="letter">
                     {!user?.img ? <h1 className="letter2">{letter}</h1> : <img src={user.img} />}
-
                 </div>
                 <h1 className="nameAll">{user?.name}</h1>
             </div>
-            <div className="buttonBlog">
-                <Button size={true} onClick={pageCreateBlog} whiteSchema={false}>Criar Blog</Button>
-            </div>
-
-
+            
             <div className="blog">
-
-
                 <Blogs />
-
             </div>
-
         </Container>
     )
 }

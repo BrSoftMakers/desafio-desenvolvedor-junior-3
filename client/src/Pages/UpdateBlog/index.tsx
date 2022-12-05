@@ -9,6 +9,7 @@ import { Container } from "./styles";
 import { Formik, Form, Field } from "formik";
 import { Input } from "../../components/Input";
 import { BlogData, BlogInterface } from "../../interfaces/Blog";
+import { Header } from "../../components/Header";
 
 
 export function UpdateBlog() {
@@ -43,47 +44,47 @@ export function UpdateBlog() {
         navigate("/dashboard")
     }
     return (
+        <>
+         <Header/>
+         <Container>
+           
+           <Formik
+               initialValues={initialValues}
+               onSubmit={submit}
+           >
+               {({ errors }) => (
+                   <Form>
+                       <h1>Atualizar Blog</h1>
+                       <Input
+                           label="Titulo"
+                           type="text"
+                           placeholder={postAll.title}
+                           name="title"
+                           error={errors.title}
+                       />
+                       <Input
+                           label="Link da Imagem"
+                           type="text"
+                           placeholder={postAll.img}
+                           name="img"
+                           error=""
+                       />
+                       <div className="lab">
 
-        <Container>
-            <div className="buttonSair">
-                <Button size={true} onClick={out} whiteSchema={true}>Sair</Button>
-            </div>
-
-            <Formik
-                initialValues={initialValues}
-                onSubmit={submit}
-            >
-                {({ errors }) => (
-                    <Form>
-                        <h1>Atualizar Blog</h1>
-                        <Input
-                            label="Titulo"
-                            type="text"
-                            placeholder={postAll.title}
-                            name="title"
-                            error={errors.title}
-                        />
-                        <Input
-                            label="Link da Imagem"
-                            type="text"
-                            placeholder={postAll.img}
-                            name="img"
-                            error=""
-                        />
-                        <div className="lab">
-
-                            <label className="label">Post</label>
-                            <span className="span">{errors.post}</span>
-                        </div>
+                           <label className="label">Post</label>
+                           <span className="span">{errors.post}</span>
+                       </div>
 
 
-                        <Field placeholder={postAll.post} className="text" as="textarea" name="post" />
+                       <Field placeholder={postAll.post} className="text" as="textarea" name="post" />
 
-                        <Button size={true} whiteSchema={false}>Atualizar</Button>
-                    </Form>
-                )}
+                       <Button size={true} whiteSchema={false}>Atualizar</Button>
+                   </Form>
+               )}
 
-            </Formik>
-        </Container>
+           </Formik>
+       </Container>
+        </>
+        
     )
 }

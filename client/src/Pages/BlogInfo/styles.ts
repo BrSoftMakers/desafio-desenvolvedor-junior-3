@@ -12,7 +12,7 @@ display: flex;
   
 img{
     text-align: center;
-    width: 70%;
+    width: 100%;
     height: 300px;
     margin-top: 50px;
     border-radius: 20px;
@@ -27,21 +27,23 @@ img{
     color: white;
     
 }
-h1{
+h1{ 
+    width: 100%;
     text-align: center;
     font-family: 'Inter';
     font-size: 35px;
     color: #FFF0F5;
     font-weight: 600;
-    margin-right: ;
+    /* margin-right: ; */
    
 }
 
-p {
+p { 
+    width: 100%;
     font-size: 25px;
-    width: 1000px;
     line-height:30px;
     color: #FFF0F5;
+    text-align: center;
     
 }
 

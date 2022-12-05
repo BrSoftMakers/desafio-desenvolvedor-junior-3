@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { Container, Container2 } from './styles';
+import { Container, Container2} from './styles';
 import { Link } from 'react-router-dom'
 import { BsPencil, BsTrash } from 'react-icons/bs'
 import api from "../../services/api"

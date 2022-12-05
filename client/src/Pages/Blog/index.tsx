@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import { useNavigate } from "react-router-dom";
 import * as yup from 'yup'
 import { InputBlog } from "../../interfaces/Input";
+import { Header } from "../../components/Header";
 
 export function Blog() {
     const schema = yup.object().shape({
@@ -39,12 +40,10 @@ export function Blog() {
         navigate("/dashboard")
     }
     return (
-
-        <Container>
-            <div className="buttonSair">
-                <Button size={true} onClick={out} whiteSchema={true}>Sair</Button>
-            </div>
-
+        <div>
+            <Header/>
+            <Container>
+            
             <Formik
                 validationSchema={schema}
                 initialValues={initialValues}
@@ -82,5 +81,7 @@ export function Blog() {
 
             </Formik>
         </Container>
+        </div>
+        
     )
 }

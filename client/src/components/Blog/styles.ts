@@ -44,6 +44,11 @@ flex-wrap: wrap;
 border-radius: 20px;
 margin-top: 50px;
 align-items: center;
+
+&:hover{
+  transform: scale(1.2);
+  
+}
 h2{
   color: red;
   position: absolute;
@@ -51,19 +56,18 @@ h2{
 h1{
   font-family: 'Inter';
   font-weight: 600;
-  color: #E0FFFF;
+  color: white;
   text-align: center;
   z-index: 99;
   font-size: 20px;
   text-align: center;
   border-radius: 8px;
+  text-decoration:none;
   cursor: pointer;
   &:hover {
-      text-transform: uppercase;
       color: #E0FFFF;
-      font-size: 22px;
-      font-weight: 600;
-      
+      text-shadow: 0 0 4px #fff;
+     
     }
 }
 
@@ -80,13 +84,37 @@ svg{
   margin-right: 20px;
   margin-top: -5px;
   cursor: pointer;
+  :hover{
+    color: black;
+  }
 }
 .icon{
   margin-left: 180px;
   cursor: pointer;
   
-  
+}
       
 `
 
 
+export const H1 = styled.h1`
+
+
+  font-family: 'Inter';
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  z-index: 99;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 8px;
+  text-decoration:none;
+  font-weight: bold;
+  cursor: pointer;
+  &:hover {
+      color: #E0FFFF;
+      text-shadow: 0 0 4px #fff, 0 0 4px #ff0;
+     
+    }
+
+`
