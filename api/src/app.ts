@@ -22,10 +22,15 @@ AppDataSource.initialize()
         console.log("DB test initialized")
     })
     .catch((err) => {
+        
         console.error("Error during Data Source initialization", err)
     })
 
 
 app.listen( process.env.PORT || 9000,() => console.log("rodando liso"))
+
+app.get('/',(req,res) => {
+    res.send(process.env)
+})
 
 export default app
