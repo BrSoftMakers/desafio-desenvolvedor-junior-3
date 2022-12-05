@@ -1,3 +1,6 @@
+## 💻 Projeto
+  Esta aplicação consiste em um blog, onde o usuario pode criar varios post e visualiar posts de outras pessoas.
+
 # ![image](https://user-images.githubusercontent.com/71836298/205188842-9bb9541e-c043-4c38-b817-c84c72485ee4.png)  Rodando o Backend(Node.js)
 
 
@@ -8,8 +11,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Swagger
 - Docker
 
-## 💻 Projeto
-  Esta aplicação consiste em um blog, onde o usuario pode criar varios post e visualiar posts de outras pessoas.
 
 ## 🛠 Instalação
 
@@ -54,3 +55,32 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
   ## 📃 Documentação
   
   <a href="http://localhost:9000/api-docs/">http://localhost:9000/api-docs/<a/> ou <a href="https://api-blog.herokuapp.com/api-docs/">https://api-blog.herokuapp.com/api-docs/<a/>
+
+    
+# ![image](https://user-images.githubusercontent.com/71836298/205188842-9bb9541e-c043-4c38-b817-c84c72485ee4.png)  Rodando o FrontEnd(React.js)
+
+
+## 🚀 Tecnologias
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+- Typescript
+- React
+- styled-components
+
+## 🛠 Instalação
+
+<h4> 📁📁 Clone este repositório<h4/>
+
+<h4> 📁 Acesse a pasta do projeto<h4/>
+
+<h4> 🛠 Instale as dependências<h4/>
+<h6>$ yarn install<h6>
+
+<h4> ▶️ Execute a aplicação em modo de desenvolvimento<h4/>
+<h6>$ yarn start<h6/>
+
+<h4> 🤖 O servidor iniciará na porta:3000 - acesse <a href="http://localhost:3000">http://localhost:3000<a/><h4/>
+
+  ## Deploy
+  ⬆️ https://desafio-desenvolvedor-junior-3.vercel.app/
+  
+ 
