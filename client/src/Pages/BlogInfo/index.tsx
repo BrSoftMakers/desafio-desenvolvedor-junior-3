@@ -20,7 +20,10 @@ export function BlogInfo() {
         <><img src={postAll.img} onClick={back} />
         
         <div className="user">
-        
+          <div>
+          <Button size={true} onClick={back} whiteSchema={true} >Voltar</Button>
+          </div>
+          
           <h1 className="name">{postAll.title}</h1>
           <h3>Criado por: {postAll.user?.name}</h3>
           <h3>Contato: {postAll.user?.email}</h3>
