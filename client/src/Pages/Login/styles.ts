@@ -41,7 +41,7 @@ a:hover{
 
 @media (max-width:500px){
     form {
-        align-items: center;
+        float: left;
     }
 }
 

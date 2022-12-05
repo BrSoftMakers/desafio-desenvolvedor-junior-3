@@ -77,11 +77,6 @@ input:focus{
     }
 }
 
-@media (max-width:440px){
-    input{
-        width: 150px;
-    }
-}
 
 
 
