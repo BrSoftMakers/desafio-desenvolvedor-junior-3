@@ -3,7 +3,7 @@ import { updatePost } from "../../interfaces/post"
 import { Post } from "../../entities/post.entity"
 import AppError from "../../errors/appError"
 
-export const postUpdateService = async ({id,post,userEmail}: updatePost) => {
+export const postUpdateService = async ({id,post,userEmail,img,title}: updatePost) => {
 
     const postRepository = AppDataSource.getRepository(Post) 
     
@@ -22,6 +22,8 @@ export const postUpdateService = async ({id,post,userEmail}: updatePost) => {
 
    const posts = {
     post: post || postOne.post,
+    img: img || postOne.img,
+    title: title || postOne.title,
     user: {
         id: postOne.user.id,
         name: postOne.user.name,

@@ -6,9 +6,9 @@ import { postDeleteService } from '../services/post/postDelete.services'
 import { postUpdateService } from '../services/post/postUpdate.services'
 
 const postCreateController = async (req: Request, res: Response) => {
-    const {post} = req.body
+    const {post,img,title} = req.body
     const userEmail = req.userPayload.userEmail
-    const newPost = await postCreateServices({post,userEmail})
+    const newPost = await postCreateServices({post,userEmail,img,title})
     res.status(201).json(newPost)
 }
 
@@ -33,8 +33,8 @@ const postListController = async (req: Request, res: Response) => {
  const postUpdateController = async (req: Request, res: Response) => {
     const {id} = req.params
     const userEmail = req.userPayload.userEmail
-    const {post} = req.body
-    const posts = await postUpdateService({id,userEmail,post})
+    const {post,img,title} = req.body
+    const posts = await postUpdateService({id,userEmail,post,img,title})
     res.status(200).json(posts)
    }
 

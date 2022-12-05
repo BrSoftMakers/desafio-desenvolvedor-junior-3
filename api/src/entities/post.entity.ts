@@ -9,6 +9,12 @@ export class Post{
     @PrimaryGeneratedColumn("uuid")
     id:string
 
+    @Column({nullable: true})
+    img: string
+
+    @Column()
+    title: string
+
     @Column()
     post: string
 

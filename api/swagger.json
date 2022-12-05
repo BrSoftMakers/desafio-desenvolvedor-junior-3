@@ -119,7 +119,10 @@
                             "schema":{
                                 "type":"object",
                                 "properties":{
-                                    "post":{"type":"string","example":"José"}
+                                    
+                                    "title":"Seleção brasileira rumo ao hexa",
+                                    "post":{"type":"string","example":"escreva qualquer coisa aqui"},
+                                    "img":{"type":"string","example":"link da imagem"}
                                 }
                             }
                         }
@@ -209,6 +212,10 @@
                     "password":{
                         "type":"string",
                         "example":"abc1234"
+                    },
+                    "img":{
+                        "type":"string",
+                        "example":"https://placar.abril.com.br/wp-content/uploads/2021/10/messi-barcelona-campeonato-espanhol-7-a-1-014.jpg?quality=70&strip=info&w=1024&resize=1200,800"
                     }
                     
                 }
@@ -220,7 +227,9 @@
                     "post":{
                         "type":"string",
                         "example":"Olá sejam muito bem vindo ao melhor blog do universo"
-                    }
+                    },
+                    "title":"Seleção brasileira rumo ao hexa",
+                    "img":{"type":"string","example":"link da imagem"}
                 }
             },
             "Login":{

@@ -2,6 +2,14 @@ export interface createUser{
     name: string 
     email: string
     password:string
+    img: string
+    
+}
+
+export interface createUserSchema{
+    name: string 
+    email: string
+    password:string
     
 }
 

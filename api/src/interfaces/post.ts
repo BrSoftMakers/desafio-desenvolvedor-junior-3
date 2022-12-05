@@ -1,6 +1,8 @@
 export interface createPost{
     post: string
     userEmail: string
+    img:string,
+    title:string
 }
 
 export interface deletePost{
@@ -12,6 +14,8 @@ export interface updatePost{
     post: string
     id: string
     userEmail: string
+    img:string,
+    title:string
 }
 
 export interface schemaPost {

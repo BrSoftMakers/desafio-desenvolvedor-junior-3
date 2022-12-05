@@ -10,6 +10,8 @@ export const postListService = async () => {
         const obj = {
             id: item.id,
             post: item.post,
+            img: item.img,
+            title: item.title,
             user: {
                 id: item.user.id,
                 name: item.user.name,
