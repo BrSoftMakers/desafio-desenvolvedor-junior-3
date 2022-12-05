@@ -69,6 +69,8 @@ export function Blogs() {
     blogDate()
   }, [])
 
+ 
+
   return (
     <>
       <Container>
@@ -83,16 +85,18 @@ export function Blogs() {
             <Container2 imgUrl={item.img}>
               {item.user?.id === localStorage.getItem('user_id') ?
                 <div className='item'>
-
                   <BsPencil onClick={() => updateBlog(item)} /> <BsTrash onClick={() => removeBlog(item.id)} />
                   <a>
                     <div className="overlay">
                       <section>
                         <h1 onClick={() => render(item)}>{item.title}</h1>
+                       
                       </section>
                     </div>
                   </a>
+                 
                 </div>
+                
                 :
                   <a>
                     <div className="overlay">

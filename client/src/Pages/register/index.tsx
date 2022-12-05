@@ -35,7 +35,7 @@ export function Register() {
 
         <Container>
             <div className="buttonSair">
-                <Button size={true} onClick={out} whiteSchema={true}>Sair</Button>
+                <Button size={true} onClick={out} whiteSchema={true}>Voltar</Button>
             </div>
 
             <Formik

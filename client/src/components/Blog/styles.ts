@@ -24,32 +24,47 @@ width: 1500px;
 
 }
 
+@media (max-width: 1230px){
+ .con{
+  
+ }
+  }
+
 `
 
 export const Container2 = styled.div<ContainerProps>`
 background: url(${props => props.imgUrl}) no-repeat center;
 background-color: #7B68EE;
 background-size: cover;
-height: 300px;
+height: 150px;
 width: 300px;
 display: flex;
 justify-content: center;
 flex-wrap: wrap;
 border-radius: 20px;
-margin-top: 30px;
+margin-top: 50px;
 align-items: center;
-
+h2{
+  color: red;
+  position: absolute;
+}
 h1{
   font-family: 'Inter';
   font-weight: 600;
-  color: white;
+  color: #E0FFFF;
   text-align: center;
-  margin-top: 150px;
-  color: red;
-  font-size: 1.5rem;
-  background-color: white;
+  z-index: 99;
+  font-size: 20px;
+  text-align: center;
   border-radius: 8px;
   cursor: pointer;
+  &:hover {
+      text-transform: uppercase;
+      color: #E0FFFF;
+      font-size: 22px;
+      font-weight: 600;
+      
+    }
 }
 
 a{
@@ -58,18 +73,19 @@ a{
 }
 
 svg{
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   color: white;
   float: right;
   margin-right: 20px;
-  margin-top: 5px;
+  margin-top: -5px;
   cursor: pointer;
 }
 .icon{
   margin-left: 180px;
   cursor: pointer;
-}
+  
+  
       
 `
 

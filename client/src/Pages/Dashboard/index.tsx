@@ -78,7 +78,7 @@ export function Dashboard() {
                 <Button size={true} onClick={pageCreateBlog} whiteSchema={false}>Criar Blog</Button>
             </div>
 
-            <h2>Blogs</h2>
+
             <div className="blog">
 
 

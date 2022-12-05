@@ -7,7 +7,11 @@ display: flex;
   flex-flow: row wrap;
   justify-content: center;
   height: 100%;
+
+  width: 100%;
+  
 img{
+    text-align: center;
     width: 70%;
     height: 300px;
     margin-top: 50px;
@@ -15,6 +19,7 @@ img{
     margin-right: 50px;
     margin-left: 50px;
     background-color: #7B68EE;
+    cursor: pointer;
     
 }
 .user{
@@ -25,7 +30,10 @@ img{
 h1{
     text-align: center;
     font-family: 'Inter';
-    font-size: 30px;
+    font-size: 35px;
+    color: #FFF0F5;
+    font-weight: 600;
+    margin-right: ;
    
 }
 
@@ -33,11 +41,54 @@ p {
     font-size: 25px;
     width: 1000px;
     line-height:30px;
+    color: #FFF0F5;
+    
 }
 
 button{
-    
+    float: right;
 }
-      
+
+h3{ 
+
+    color:#FFF0F5
+}
+
+@media (max-width: 1000px){
+        
+    p{
+        width: 800px;
+        font-size: 15px;
+        
+    }
+}
+
+@media (max-width: 800px){
+        
+        p{
+            width: 500px;
+            font-size: 15px;
+            margin-left: 20px;
+        }
+    }
+
+    @media (max-width: 600px){
+        
+        p{
+            width: 500px;
+            font-size: 15px;
+            margin-left: 10px;
+        }
+    }
+
+    @media (max-width: 520px){
+        
+        p{
+            width: 400px;
+            font-size: 10px;
+            
+        }
+    }
+
 `
 
