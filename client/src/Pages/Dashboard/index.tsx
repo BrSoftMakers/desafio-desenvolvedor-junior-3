@@ -68,9 +68,7 @@ export function Dashboard() {
                 </div>
                 <h1 className="nameAll">{user?.name}</h1>
             </div>
-            <div className="buttonBlog">
-                <Button size={true} onClick={pageCreateBlog} whiteSchema={false}>Criar Blog</Button>
-            </div>
+            
             <div className="blog">
                 <Blogs />
             </div>
