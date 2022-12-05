@@ -19,7 +19,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 <h4> 📁 Acesse a pasta do projeto<h4/>
 
 <h4> 🛠 Instale as dependências<h4/>
-<h6>$ yarn install<h6>
+<h6>$ yarn <h6>
 
 ## Preenchendo o .env
   Dentro do repositório vai ter um arquivo chamado de .env.example,copia tudo que tem dentro dele, agora crie um arquivo chamado de .env e preencha com as informações do banco que será criado no docker-compose . <br/>
@@ -72,7 +72,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 <h4> 📁 Acesse a pasta do projeto<h4/>
 
 <h4> 🛠 Instale as dependências<h4/>
-<h6>$ yarn install<h6>
+<h6>$ yarn <h6>
 
 <h4> ▶️ Execute a aplicação em modo de desenvolvimento<h4/>
 <h6>$ yarn start<h6/>
