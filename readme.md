@@ -68,7 +68,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 🛠 Instalação
 
-<h4> 📁📁 Clone este repositório<h4/>
 
 <h4> 📁 Acesse a pasta do projeto<h4/>
 
