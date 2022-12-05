@@ -65,5 +65,6 @@ img {
         margin-top: -20px;
         display: flex;
     }
-}
+
+   
 `
