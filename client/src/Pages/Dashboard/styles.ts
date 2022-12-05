@@ -83,6 +83,10 @@ img {
         width: 70px;
         height: 70px;
     }
+    .letter2{
+        font-size: 30px;
+        margin-top: 30px;
+    }
     button{
         width: 100px;
         font-size: 10px;
