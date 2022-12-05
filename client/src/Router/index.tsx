@@ -18,7 +18,7 @@ function Router() {
       <Route path="/" element={auth ? <Navigate to="/dashboard" /> : <Login />}></Route>
       <Route path="/register" element={auth ? <Navigate to="/dashboard" /> : <Register />} />
       <Route path="/dashboard" element={auth ? <Dashboard /> : <Navigate to="/" />} />
-      <Route path="/blog" element={auth ? <Blog /> : <Navigate to="/" />} />
+      <Route path="/blog" element= {auth ? <Blog /> : <Navigate to="/" />}/>
       <Route path="/blog-info" element={auth ? <BlogInfo /> : <Navigate to="/" />} />
       <Route path="/update-blog" element={auth ? <UpdateBlog /> : <Navigate to="/" />} />
     </Routes>
