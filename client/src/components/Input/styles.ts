@@ -79,7 +79,10 @@ input:focus{
 
 @media (max-width:440px){
     input{
-        width: 100px;
+        width: 150px;
     }
 }
+
+
+
 `
