@@ -1,39 +1,85 @@
-![SoftMakers](https://www.softmakers.com.br/assets/img/logotipo14xxhdpi.png)
-# Desafio - Desenvolvedor Fullstack Junior 3.
-Seja bem-vindo! Este desafio foi projetado para avaliar a sua capacidade técnica como candidato à vaga de Desenvolvedor Fullstack Junior 3.
-## Instruções
-- Faça um fork deste repositório;
-- Utilize alguma das tecnologias (front-end e back-end) informadas na proposta desse desafio;
-- Crie um passo a passo de como rodar a sua aplicação;
-- Após finalizar, submeta um pull request com um comentário informando o seu e-mail de contato e aguarde nossa avaliação.
-## Proposta
-Você deverá desenvolver um blog. Para isso, separamos a proposta desse desafio em duas etapas:
-**Back-end:**
-Desenvolva uma API utilizando Node JS (ExpressJS ou NestJS) com um dos framework informados, que contenha as seguintes rotas:
-- `/register` - [POST] - esta rota deve cadastrar um usuário;
-- `/login` - [POST] - esta rota deve autenticar um usuário;
-- `/posts` - [POST] - esta rota deve cadastrar uma postagem mantendo a referência do autor. (requer autenticação);
-- `/posts/{id}` - [PUT] - esta rota deve editar a postagem do ID especificado mantendo a referência do autor. (requer autenticação);
-- `/posts` - [GET] - esta rota deve retornar a lista de todas as postagens ordenadas das mais recentes para as mais antigas com a possibilidade de inverter esta ordenação e de retornar apenas as postagens do usuário que fez a requisição (requer autenticação);
-- `/posts/{id}` - [GET] - esta rota deve retornar a postagem do ID especificado com todos os seus dados (requer autenticação);
-- `/posts/{id}` - [DELETE] - esta rota deve deletar a postagem do ID especificado.
-**Front-end:**
-Desenvolva uma aplicação web utilizando o framework front-end react (React cli ou NextJs) e esta deve atender as seguintes histórias:
-- Eu como usuário desejo me cadastrar;
-- Eu como usuário desejo realizar login;
-- Eu como usuário autenticado desejo visualizar todas as postagens;
-- Eu como usuário autenticado desejo visualizar os detalhes de uma postagem; - Eu como usuário autenticado desejo visualizar todas as minhas postagens;
-- Eu como usuário autenticado desejo criar uma postagem;
-- Eu como usuário autenticado desejo editar uma postagem que eu criei;
-- Eu como usuário autenticado desejo deletar uma postagem que eu criei.
-> **Observações:**
-> - Sua aplicação web DEVE se comunicar com sua API;
-> - Você pode utilizar o banco de dados relacional preferencialmente MySQL ou PostgreSQL com ORM como prisma ou sequelize.
-## Diferenciais
-Será considerado como diferenciais a utilização ou o conhecimento nas seguintes tecnologias:
-- Sequelize ou prisma
-- React Native
-- Firebase
+## 💻 Projeto
+  Esta aplicação consiste em um blog, onde o usuario pode criar varios post e visualizar posts de outras pessoas.
+
+# ![image](https://user-images.githubusercontent.com/71836298/205188842-9bb9541e-c043-4c38-b817-c84c72485ee4.png)  Rodando o Backend(Node.js)
+
+
+## 🚀 Tecnologias
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+- Typescript
+- Typeorm
+- Swagger
 - Docker
-- Cloud bucket storage ( google ou AWS)
-- Serviços de arquitetura em nuvem do Google ou AWS
+
+
+## 🛠 Instalação
+
+<h4> 📁📁 Clone este repositório<h4/>
+
+<h4> 📁 Acesse a pasta do projeto<h4/>
+
+<h4> 🛠 Instale as dependências<h4/>
+<h6>$ yarn <h6>
+
+## Preenchendo o .env
+  Dentro do repositório vai ter um arquivo chamado de .env.example,copia tudo que tem dentro dele, agora crie um arquivo chamado de .env e preencha com as informações do banco que será criado no docker-compose . <br/>
+  
+                  Exemplo
+                  DATABASE_URL="postgres://user:password@localhost:port/db"
+                  JWT_SECRET=
+                  
+                  user = "userPostgres"
+                  password = "senhaPostgres"
+                  db = "nameDatabase"
+                  JWT_SECRET = "VALOR QUE VOCÊ IRA ATRIBUIR, PODE SER QUALQUER VALOR"
+                  
+                  POSTGRES_USER="userPostgres"
+                  POSTGRES_PASSWORD="senhaPostgres"
+                  POSTGRES_DB="nameDatabase"
+                  
+<h4> 💻 Criando o banco de dados <h4/>
+<h6> docker-compose up <h6/>                  
+
+
+<h4> 🛞 Rode as migrações<h4/>
+<h6>$ yarn typeorm migration:run -d src/database<h6/>
+
+<h4> ▶️ Execute a aplicação em modo de desenvolvimento<h4/>
+<h6>$ yarn dev<h6/>
+
+<h4> 🤖 O servidor iniciará na porta:9000 - acesse <a href="http://localhost:9000">http://localhost:9000<a/><h4/>
+
+  ## Deploy
+  ⬆️ https://api-blog.herokuapp.com/
+  
+  ## 📃 Documentação
+  
+  <a href="http://localhost:9000/api-docs/">http://localhost:9000/api-docs/<a/> ou <a href="https://api-blog.herokuapp.com/api-docs/">https://api-blog.herokuapp.com/api-docs/<a/>
+
+    
+# ![image](https://user-images.githubusercontent.com/71836298/205188842-9bb9541e-c043-4c38-b817-c84c72485ee4.png)  Rodando o FrontEnd(React.js)
+
+
+## 🚀 Tecnologias
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+- Typescript
+- React
+- styled-components
+
+## 🛠 Instalação
+
+
+<h4> 📁 Acesse a pasta do projeto<h4/>
+
+<h4> 🛠 Instale as dependências<h4/>
+<h6>$ yarn <h6>
+
+<h4> ▶️ Execute a aplicação em modo de desenvolvimento<h4/>
+<h6>$ yarn start<h6/>
+
+<h4> 🤖 O servidor iniciará na porta:3000 - acesse <a href="http://localhost:3000">http://localhost:3000<a/><h4/>
+
+  ## Deploy
+  ⬆️ https://desafio-desenvolvedor-junior-3.vercel.app/
+  
+ 
