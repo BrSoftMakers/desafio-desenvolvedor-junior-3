@@ -18,6 +18,11 @@ h2{
     font-weight: 300;
    
 }
+
+h1{
+    font-family: 'Inter';
+}
+
 .buttonSair{
     float: right;
     margin-right: 80px;
@@ -66,5 +71,21 @@ img {
         display: flex;
     }
 
-   
+    @media (max-width: 380px){
+    h1{
+        font-size: 20px;
+    }
+
+    .buttonBlog{
+        margin-right: 120px;
+    }
+    img,.letter{
+        width: 70px;
+        height: 70px;
+    }
+    button{
+        width: 100px;
+        font-size: 10px;
+        
+    }
 `

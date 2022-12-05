@@ -77,7 +77,10 @@ label,span{
 
 @media (max-width: 440px){
     svg{
-    margin-left: 50px;
+    margin-left: 0px;
+}
+.text{
+    width: 150px;
 }
 }
 

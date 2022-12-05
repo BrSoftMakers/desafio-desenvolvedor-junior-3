@@ -61,6 +61,9 @@ h3{
         font-size: 15px;
         
     }
+    button{
+        display: none;
+    }
 }
 
 @media (max-width: 800px){
@@ -89,6 +92,22 @@ h3{
             
         }
     }
+
+@media (max-width: 380px){
+    margin-left: 15px;
+    h1{ 
+        
+        font-size: 20px;
+        width: 330px;
+    }
+    h3{
+        font-size: 15px;
+       margin-left: 40px;
+    }
+    p{
+        width: 300px;
+    }
+}
 
 `
 

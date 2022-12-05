@@ -18,4 +18,7 @@ export const Container = styled.button<IButtonProps>`
     :hover{
         border: 2px solid var(--purple-100);
         filter: brightness(0.9);
-    }`
+    }
+    
+   
+    `
