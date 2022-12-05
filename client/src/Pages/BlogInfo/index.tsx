@@ -15,12 +15,16 @@ export function BlogInfo() {
   }
   return (
     <Container>
+      
       {postAll.img ?
-        <><img src={postAll.img} /><Button size={true} onClick={back} whiteSchema={true}>Voltar</Button><div className="user">
+        <><img src={postAll.img} onClick={back} />
+        
+        <div className="user">
+        
           <h1 className="name">{postAll.title}</h1>
           <h3>Criado por: {postAll.user?.name}</h3>
           <h3>Contato: {postAll.user?.email}</h3>
-          <p>{postAll.post}</p>
+          <p className="text">{postAll.post}</p>
         </div></>
         :
         <><img src="red" /><Button size={true} onClick={back} whiteSchema={true}>Voltar</Button><div className="user">

@@ -58,5 +58,27 @@ button {
     
 }
 
+@media (max-width: 930px){
+    .buttonSair{
+    top: 0px;
+}
+
+}
+
+@media (max-width: 500px){
+    svg{
+    margin-left: 30px;
+}
+label,span{
+    font-size: 14px;
+    margin-left: 15px;
+}
+}
+
+@media (max-width: 440px){
+    svg{
+    margin-left: 50px;
+}
+}
 
 `
