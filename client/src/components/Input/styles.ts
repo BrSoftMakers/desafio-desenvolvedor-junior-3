@@ -70,4 +70,16 @@ input:focus{
         color:#1D1D1D; 
     } 
 }
+
+@media (max-width:500px){
+    input{
+        width: 150px;
+    }
+}
+
+@media (max-width:440px){
+    input{
+        width: 100px;
+    }
+}
 `

@@ -39,4 +39,10 @@ a:hover{
     color: red;
 }
 
+@media (max-width:500px){
+    form {
+        width: 70%;
+    }
+}
+
 `
