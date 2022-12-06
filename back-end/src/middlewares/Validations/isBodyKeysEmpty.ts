@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import CustomError from "../Error/customError";
+import { BAD_REQUEST } from "../Error/ErrorConstructor";
 
 export const isBodyKeysEmpty = (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -7,7 +8,7 @@ export const isBodyKeysEmpty = (req: Request, res: Response, next: NextFunction)
     const keys = Object.keys(body);
     const isEmpty = keys.every((key) => body[key] === "");
     if (isEmpty) {
-      throw new CustomError("All fields are required", 400);
+      throw new CustomError(BAD_REQUEST.message, BAD_REQUEST.statusCode);
     }
     next();
   } catch (error) {
