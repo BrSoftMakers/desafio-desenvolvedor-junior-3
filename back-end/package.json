@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "dev": "ts-node src/server.ts"
+    "start": "ts-node-dev --respawn --transpile-only --exit-child --watch src src/server.ts"
   },
   "repository": {
     "type": "git",
