@@ -1,4 +1,6 @@
 import prisma from "../lib/PrismaClient";
+import CustomError from "../middlewares/Error/customError";
+import { UNAUTHORIZED } from "../middlewares/Error/ErrorConstructor";
 
 const handleLogin = async (email: string, password: string) => {
   const user = await prisma.users.findUnique({
@@ -6,9 +8,9 @@ const handleLogin = async (email: string, password: string) => {
       email,
     },
   });
-  // if (!user) {
-  //   return null;
-  // }
+  if (!user) {
+    throw new CustomError("User not found", UNAUTHORIZED.statusCode);
+  }
   // const validPassword = await bcrypt.compare(password, user.password);
   // if (!validPassword) {
   //   return null;
