@@ -8,17 +8,19 @@ datasource db {
 }
 
 model Users {
-  id        String      @default(cuid()) @id
-  email     String   @unique
-  name      String
-  password  String
-  posts     Posts[]
+  id       String  @id @default(cuid())
+  email    String  @unique
+  name     String
+  password String
+  posts    Posts[]
 }
 
 model Posts {
-  id        String      @default(cuid()) @id
+  id        String   @id @default(cuid())
   title     String
   content   String?
-  author    Users     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    Users    @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId  String
 }
