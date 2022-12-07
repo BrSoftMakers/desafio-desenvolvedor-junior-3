@@ -1,13 +1,15 @@
 import LoginController from "./Login.controller";
 import { Router } from "express";
 import { isBodyKeysEmpty } from "../middlewares/Validations/isBodyKeysEmpty";
+import { isBodyValuesEmpty } from "../middlewares/Validations/isBodyValuesEmpty";
 
 const router = Router();
 
 
 router.post(
-  "/login",
+  "/",
   isBodyKeysEmpty,
+  isBodyValuesEmpty,
   LoginController.handleLogin
 );
 

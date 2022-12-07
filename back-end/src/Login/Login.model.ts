@@ -3,19 +3,8 @@ import CustomError from "../middlewares/Error/customError";
 import { UNAUTHORIZED } from "../middlewares/Error/ErrorConstructor";
 
 const handleLogin = async (email: string, password: string) => {
-  const user = await prisma.users.findUnique({
-    where: {
-      email,
-    },
-  });
-  if (!user) {
-    throw new CustomError("User not found", UNAUTHORIZED.statusCode);
-  }
-  // const validPassword = await bcrypt.compare(password, user.password);
-  // if (!validPassword) {
-  //   return null;
-  // }
-  // const token = tokenGenerator(user.id);
+  const user = await prisma.users.findUnique({ where: { email } });  
+  if (!user) throw new CustomError("User not found", UNAUTHORIZED.statusCode);
   return user;
 }
 
