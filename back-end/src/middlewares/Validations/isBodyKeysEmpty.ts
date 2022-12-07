@@ -2,16 +2,17 @@ import { NextFunction, Request, Response } from "express";
 import CustomError from "../Error/customError";
 import { BAD_REQUEST } from "../Error/ErrorConstructor";
 
-export const isBodyKeysEmpty = (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const { body } = req;
-    const keys = Object.keys(body);
-    const isEmpty = keys.every((key) => body[key] === "");
-    if (isEmpty) {
-      throw new CustomError(BAD_REQUEST.message, BAD_REQUEST.statusCode);
-    }
-    next();
-  } catch (error) {
-    next(error);
+export const isBodyKeysEmpty = (req: Request, _res: Response, next: NextFunction) => {
+  const keys = Object.keys(req.body);
+  const isLengthEqualZero = keys.length === 0
+  const isKeysAnArray = Array.isArray(keys)
+  const isKeysDifferentThanEmptyString = keys.every(key => key !== "")
+  let ErrorCatcher: CustomError | undefined;
+  if (isLengthEqualZero || !isKeysAnArray || !isKeysDifferentThanEmptyString) {
+    ErrorCatcher =  new CustomError("Body keys are empty, please fill with correct data", BAD_REQUEST.statusCode);
   }
-}
+  if (ErrorCatcher) {
+    return next(ErrorCatcher);
+  }
+  return next();
+};
