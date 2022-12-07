@@ -9,12 +9,16 @@ class CustomError extends Error {
   }
 }
 
-export const errorMiddleware = (err: Error | CustomError, req: Request, res: Response, next: NextFunction) => {
+export default CustomError;
+
+export const errorMiddleware = (err: CustomError | Error, req: Request, res: Response, next: NextFunction) => {
   try {
+    console.log(err instanceof CustomError);
+    
     if (err instanceof CustomError) {
-      return res.status(err.statusCode).send(err.message);
+      return res.status(err.statusCode).json(err.message);
     } else if (err instanceof Error) {
-      return res.status(500).send({
+      return res.status(500).json({
         helper: 'this error was not handled',
         instanceof: err.constructor.name,
         message: err.message,
@@ -22,8 +26,6 @@ export const errorMiddleware = (err: Error | CustomError, req: Request, res: Res
       });
     }
   } catch (error) {
-    res.status(500).send({ message: 'Internal Server Error, please try again later' });
+    res.status(500).json({ message: 'Internal Server Error, please try again later' });
   }
 };
-
-export default CustomError;
