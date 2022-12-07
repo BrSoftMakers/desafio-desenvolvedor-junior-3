@@ -1,15 +1,14 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import RegisterService from "./Register.service";
 
-const handleRegister = async (req: Request, res: Response) => {
+const handleRegister = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { email, password, name } = req.body;
-    const user = await RegisterService.handleRegister(email, password, name);
-    if (!user) { return res.status(400).json({ message: "Invalid data" }); }
-    return res.status(200).json(user);
+    const newUserAndToken = await RegisterService.handleRegister(email, password, name);
+    return res.status(201).json(newUserAndToken);
   }
   catch (err) {
-    return res.status(500).json({ message: "Internal server error" });
+    next(err);
   }
 }
 
