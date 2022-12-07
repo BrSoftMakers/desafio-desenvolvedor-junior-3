@@ -10,7 +10,7 @@ export const SECONDS_OF_A_DAY = 24 * 60 * 60;
 // should be a character before the @ and a character after the @
 export const EMAIL_REGEX = /^(.+)@(.+)$/;
 
-// name min 2 characters, max 30 characters, only letters and spaces
+// name min 2 characters, max 30 characters, any character
 export const NAME_REGEX = /^.{4,}$/
 
 // password min 2 characters, max 12, any character 
