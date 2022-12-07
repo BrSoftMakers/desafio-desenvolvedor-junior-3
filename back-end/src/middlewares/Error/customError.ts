@@ -12,9 +12,7 @@ class CustomError extends Error {
 export default CustomError;
 
 export const errorMiddleware = (err: CustomError | Error, req: Request, res: Response, next: NextFunction) => {
-  try {
-    console.log(err instanceof CustomError);
-    
+  try {    
     if (err instanceof CustomError) {
       return res.status(err.statusCode).json(err.message);
     } else if (err instanceof Error) {
