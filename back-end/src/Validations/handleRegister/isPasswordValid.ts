@@ -1,4 +1,4 @@
-import { PASSWORD_REGEX } from "../constants";
+import { PASSWORD_REGEX } from "../../utils/constants";
 
 const isPasswordValid = (password: string) => {
   return PASSWORD_REGEX.test(password);

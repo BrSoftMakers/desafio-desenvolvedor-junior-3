@@ -1,7 +1,7 @@
 import { verify } from 'jsonwebtoken';
 import CustomError from '../../middlewares/Error/customError';
 import { UNAUTHORIZED } from '../../middlewares/Error/ErrorConstructor';
-import { JWT_SECRET } from '../constants';
+import { JWT_SECRET } from '../../utils/constants';
 
 const isTokenValid = (token: string) => {
   try {

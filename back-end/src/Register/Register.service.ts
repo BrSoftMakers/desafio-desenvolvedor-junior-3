@@ -1,12 +1,12 @@
 // model
 import RegisterModel from "./Register.model";
 // helpers
-import tokenGenerator from "../utils/handleToken/tokenGenerator";
+import tokenGenerator from "../utils/tokenGenerator";
 // validations
-import passwordEncrypter from "../utils/handleRegister/passwordEncrypter";
-import isEmailValid from "../utils/handleRegister/isEmailValid";
-import isNameValid from "../utils/handleRegister/isNameValid";
-import isPasswordValid from "../utils/handleRegister/isPasswordValid";
+import isEmailValid from "../Validations/handleRegister/isEmailValid";
+import isNameValid from "../Validations/handleRegister/isNameValid";
+import isPasswordValid from "../Validations/handleRegister/isPasswordValid";
+import passwordEncrypter from "../Validations/handleRegister/passwordEncrypter";
 // custom error class
 import CustomError from "../middlewares/Error/customError";
 
