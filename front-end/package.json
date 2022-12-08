@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server .",
@@ -26,6 +27,8 @@
     "@chakra-ui/react": "^2.4.3",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "axios": "^1.2.1",
+    "dotenv": "^16.0.3",
     "framer-motion": "^7.6.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
