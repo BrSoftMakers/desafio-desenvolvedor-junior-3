@@ -9,8 +9,9 @@ import isPasswordValid from "../Validations/handleRegister/isPasswordValid";
 import passwordEncrypter from "../Validations/handleRegister/passwordEncrypter";
 // custom error class
 import CustomError from "../middlewares/Error/customError";
+import { RegisterParams } from "../lib/Types/register";
 
-const handleRegister = async (email: string, password: string, name: string) => {
+const handleRegister = async ({ email, password, name }: RegisterParams) => {
   // validate name, email, password domain rules
   const isNameValidated = isNameValid(name);
   if (!isNameValidated) throw new CustomError("Name is not valid", 400);
@@ -21,7 +22,7 @@ const handleRegister = async (email: string, password: string, name: string) => 
   // encrypt password
   const hashedPassword = await passwordEncrypter(password);
   // call my model to register the user with the encrypted password
-  const newUser = await RegisterModel.handleRegister(email, hashedPassword, name);
+  const newUser = await RegisterModel.handleRegister({ email, password: hashedPassword, name });
   // generate token
   const token = tokenGenerator(newUser.id);
   return { token, newUser };
