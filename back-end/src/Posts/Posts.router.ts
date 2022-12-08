@@ -3,12 +3,14 @@ import { isBodyKeysEmpty } from "../middlewares/Validations/isBodyKeysEmpty";
 import { isBodyValuesEmpty } from "../middlewares/Validations/isBodyValuesEmpty";
 import { Router } from "express";
 
-const postValidations = [isBodyKeysEmpty, isBodyValuesEmpty];
+const bodyValidations = [isBodyKeysEmpty, isBodyValuesEmpty];
 
 const router = Router();
 
 router.get("/", PostsControllers.getPosts);
 router.get("/:id", PostsControllers.getPostById);
-router.post("/", postValidations, PostsControllers.createPost);
+router.post("/", bodyValidations, PostsControllers.createPost);
+router.put("/:id", bodyValidations, PostsControllers.updatePost);
+router.delete("/:id", PostsControllers.deletePost);
 
 export default router;
