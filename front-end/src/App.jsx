@@ -1,15 +1,21 @@
 import React from 'react'
-import { ChakraProvider, Box, Flex } from '@chakra-ui/react'
-import Login from './Login/index.jsx'
+import MainLayout from './Layout/main-layout/index.jsx'
+import LoginPage from './components/Login.jsx'
+import RegisterPage from './components/Register.jsx'
+import { ChakraProvider } from '@chakra-ui/react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 export default function App () {
   return (
     <ChakraProvider>
-      <Flex direction="column" alignItems="center" justifyContent="center" height="100vh">
-        <Box maxWidth="400px" width="100%">
-          <Login />
-        </Box>
-      </Flex>
+      <Router>
+        <MainLayout>
+          <Switch>
+            <Route exact path="/" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
+          </Switch>
+        </MainLayout>
+      </Router>
     </ChakraProvider>
   )
 }
