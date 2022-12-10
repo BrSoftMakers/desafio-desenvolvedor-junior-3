@@ -12,9 +12,11 @@ export default {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'index_bundle.js',
+    publicPath: '/',
   },
   target: 'web',
   devServer: {
+    historyApiFallback: true,
     port: '5000',
     static: {
       directory: path.join(__dirname, 'public')
