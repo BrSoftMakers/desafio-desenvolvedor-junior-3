@@ -12,5 +12,6 @@ router.get("/:id", PostsControllers.getPostById);
 router.post("/", bodyValidations, PostsControllers.createPost);
 router.put("/:id", bodyValidations, PostsControllers.updatePost);
 router.delete("/:id", PostsControllers.deletePost);
+router.get("/user/:id", PostsControllers.getPostByUserId);
 
 export default router;

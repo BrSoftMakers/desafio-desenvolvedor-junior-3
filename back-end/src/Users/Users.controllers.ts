@@ -1,5 +1,7 @@
 import UsersServices from "./Users.services";
 import { NextFunction, Request, Response } from "express";
+import { JWT_SECRET } from "../utils/constants";
+import { verify } from "jsonwebtoken";
 
 const getUsers = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -20,7 +22,18 @@ const getUserById = async (req: Request, res: Response, next: NextFunction) => {
   }
 }
 
+const getUserByToken = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { authorization } = req.headers;
+    const decoded = verify(authorization as string, JWT_SECRET);
+    res.status(200).json(decoded);
+  } catch (error) {
+    next(error);
+  }
+}
+
 export default {
   getUsers,
-  getUserById
+  getUserById,
+  getUserByToken
 };

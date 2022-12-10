@@ -13,7 +13,7 @@ App.use(express.json());
 App.use(cors());
 App.use("/login", loginRouter);
 App.use("/register", RegisterRouter);
-App.use("/users", UsersRouter);
+App.use("/users", isTokenValid, UsersRouter);
 App.use("/posts", isTokenValid, postRouter);
 App.use(errorMiddleware);
 

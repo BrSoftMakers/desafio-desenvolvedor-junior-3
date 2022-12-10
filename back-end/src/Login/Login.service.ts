@@ -15,7 +15,7 @@ const handleLogin = async ({ email, password }: LoginParams) => {
 
   const isPasswordAccepted = await isEncryptedPasswordValid(password, user.password);
   if (!isPasswordAccepted) throw new CustomError('user not found', 401);
-  const token = tokenGenerator(user.id);
+  const token = tokenGenerator({ id: user.id, email: user.email, name: user.name });
   return { token, user };
 }
 

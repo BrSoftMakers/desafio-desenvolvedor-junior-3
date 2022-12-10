@@ -4,9 +4,15 @@ import CustomError from "../middlewares/Error/customError";
 import { BAD_REQUEST } from "../middlewares/Error/ErrorConstructor";
 
 const getPosts = async (orderByFilter: string) => {
-  const orderBy = orderByFilter === 'desc' ? 'desc' : 'asc';
+  const orderBy = orderByFilter === 'desc' ? 'desc' : 'asc';  
   const orderedPosts = await prisma.posts.findMany({ orderBy: { createdAt: orderBy } });
   return orderedPosts;
+}
+
+const getPostByUserId = async (id: string) => {
+  const posts = await prisma.posts.findMany({ where: { authorId: id } });
+  if(!posts) throw new CustomError(`Posts with user id ${id} not found`, BAD_REQUEST.statusCode);
+  return posts;
 }
 
 const getPostById = async (id: string) => {
@@ -15,10 +21,10 @@ const getPostById = async (id: string) => {
   return post;
 }
 
-const createPost = async ({title, content, authorId}: PostParams) => {
-  const isAuthorValid = await prisma.users.findUnique({ where: { id: authorId } });
-  if(!isAuthorValid) throw new CustomError(`User/author with id ${authorId} not found`, BAD_REQUEST.statusCode);
-  const post = await prisma.posts.create({ data: { title, content, authorId } });
+const createPost = async (input: PostParams) => {
+  const isAuthorValid = await prisma.users.findUnique({ where: { id: input.authorId } });
+  if(!isAuthorValid) throw new CustomError(`User/author with id ${input.authorId} not found`, BAD_REQUEST.statusCode);
+  const post = await prisma.posts.create({ data: input })
   return post;
 }
 
@@ -40,5 +46,6 @@ export default {
   getPostById,
   createPost,
   updatePost,
-  deletePost
+  deletePost,
+  getPostByUserId
 };
