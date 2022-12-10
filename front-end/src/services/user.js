@@ -1,4 +1,4 @@
-import _http from './axiosInstancejs'
+import _http from './axiosInstance.js'
 
 export const getUsers = () => {
   return _http.get('/users')

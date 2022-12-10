@@ -1,6 +1,8 @@
-import _http from './axiosInstancejs'
+import _http from './axiosInstance.js'
 
-export const register = (data) => {
+export const register = async (data) => {
   const { email, password, name } = data
-  return _http.post('/register', { email, password, name })
+  const response = await _http.post('/register', { email, password, name })
+  console.log(response)
+  return response.data
 }
