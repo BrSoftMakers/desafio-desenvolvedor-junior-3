@@ -10,8 +10,12 @@ export type ArrayOfPostsWithoudId = PostWithoudId[];
 
 export type PostParams = {
   title: string;
-  content: string;
+  demo?: string;
+  content?: string;
   authorId: string;
+  authorEmail?: string;
+  authorName?: string;
+  categories?: string[];
 };
 
 export type successPost = {
