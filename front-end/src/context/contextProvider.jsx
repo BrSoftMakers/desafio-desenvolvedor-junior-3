@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import context from './context'
 
 export default function ContextProvide ({ children }) {
-  // const [currentRouter, setCurrentRouter] = useState()
   const [isLogged, setIsLogged] = useState(false)
 
   const contextValue = {

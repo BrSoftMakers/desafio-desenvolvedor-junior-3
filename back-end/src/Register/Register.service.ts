@@ -22,9 +22,12 @@ const handleRegister = async ({ email, password, name }: RegisterParams) => {
   // encrypt password
   const hashedPassword = await passwordEncrypter(password);
   // call my model to register the user with the encrypted password
+  
   const newUser = await RegisterModel.handleRegister({ email, password: hashedPassword, name });
   // generate token
-  const token = tokenGenerator(newUser.id);
+  console.log(newUser);
+  
+  const token = tokenGenerator({ id: newUser.id, email: newUser.email, name: newUser.name });
   return { token, newUser };
 }
 

@@ -34,10 +34,11 @@ const getPostById = async (req: Request, res: Response, next: NextFunction) => {
 
 const createPost = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { title, content, demo, authorId, authorEmail, authorName } = req.body;
-    const input = { title, content, demo, authorId, authorEmail, authorName } as PostParams;
+    const { title, content, demo } = req.body;
+    const input = { title, content, demo } as PostParams;
+    const token = req.headers.authorization;
     
-    const post = await PostsServices.createPost(input);
+    const post = await PostsServices.createPost(input, token);
     return res.status(201).json({ post });
   } catch (err) {
     next(err);

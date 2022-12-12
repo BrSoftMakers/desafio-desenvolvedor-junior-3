@@ -9,6 +9,9 @@
     "start": "webpack-dev-server .",
     "build": "webpack ."
   },
+  "prisma" : {
+    "schema": "./prisma/schema.prisma"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -31,10 +34,12 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.13",
     "@chakra-ui/react": "^2.4.3",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "axios": "^1.2.1",
+    "buffer": "^6.0.3",
     "dotenv": "^16.0.3",
     "framer-motion": "^7.6.19",
     "react": "^18.2.0",

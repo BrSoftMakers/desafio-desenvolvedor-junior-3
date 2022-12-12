@@ -6,15 +6,19 @@ import {
   Link,
   Text
 } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { FaEnvelope, FaLock } from 'react-icons/fa'
 import { login } from '../services/login'
 import isEmailValid from '../validations/isEmailValid'
 import CustomInput from './CustomInput'
+import { useHistory } from 'react-router-dom'
+import context from '../context/context'
 
 export default function Login () {
+  const history = useHistory()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [onSubmitError, setOnSubmitError] = useState(false)
+  const { setIsLogged } = useContext(context)
 
   const [errors, setErrors] = useState({
     email: false,
@@ -43,10 +47,12 @@ export default function Login () {
       setIsSubmitting(true)
       login({ email, password })
         .then((res) => {
-          const { token } = res
+          const { token } = res.data
+          console.log('login', token)
           localStorage.setItem('token', token)
           setIsSubmitting(false)
-          // setIsLogged(true)
+          localStorage.setItem('isLogged', true)
+          setIsLogged(true)
         })
         .catch((err) => {
           console.log(err)
@@ -56,7 +62,33 @@ export default function Login () {
     }
   }
 
+  const redirectAfterLogout = () => {
+    history.go(0)
+  }
+
   return (
+    (localStorage.getItem('isLogged') === 'true')
+      ? (
+      <>
+        <Flex
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+          marginTop={12}
+        >
+          <Heading>Você já está logado</Heading>
+          <Text>Para logar em outra conta, você precisa sair da sua conta atual</Text>
+          <Button
+            onClick={() => { localStorage.removeItem('token'); localStorage.removeItem('isLogged'); setIsLogged(false); redirectAfterLogout() }}
+            colorScheme="blue"
+            marginTop={4}
+          >
+            Sair
+          </Button>
+        </Flex>
+      </>
+        )
+      : (
     <Flex
       direction="column"
       alignItems="center"
@@ -112,5 +144,6 @@ export default function Login () {
         <Link href="/register">Criar conta</Link>
       </Text>
     </Flex>
+        )
   )
 }

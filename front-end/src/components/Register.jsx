@@ -5,14 +5,18 @@ import {
   Heading,
   Text
 } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { FaEnvelope, FaLock } from 'react-icons/fa'
 import { IoPersonOutline } from 'react-icons/io5'
 import { register } from '../services/register'
 import isEmailValid from '../validations/isEmailValid'
 import CustomInput from './CustomInput'
+import { useHistory } from 'react-router-dom'
+import context from '../context/context'
 
 export default function RegisterPage () {
+  const history = useHistory()
+  const { setIsLogged } = useContext(context)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [onSubmitError, setOnSubmitError] = useState(false)
 
@@ -26,6 +30,14 @@ export default function RegisterPage () {
     password: '',
     name: ''
   })
+  const clearForm = () => {
+    setForms({
+      email: '',
+      password: '',
+      name: ''
+    })
+  }
+
   const handleChange = (e) => {
     const { name, value } = e.target
     setForms({
@@ -51,7 +63,9 @@ export default function RegisterPage () {
           const { token } = res
           localStorage.setItem('token', token)
           setIsSubmitting(false)
-          // setIsLogged(true)
+          clearForm()
+          localStorage.setItem('isLogged', true)
+          setIsLogged(true)
         })
         .catch((err) => {
           console.log(err)
@@ -61,7 +75,33 @@ export default function RegisterPage () {
     }
   }
 
+  const redirectAfterLogout = () => {
+    history.go(0)
+  }
+
   return (
+    (localStorage.getItem('isLogged') === 'true')
+      ? (
+      <>
+        <Flex
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+          marginTop={12}
+        >
+          <Heading>Você já está logado</Heading>
+          <Text>Para criar uma conta, você precisa sair da sua conta atual</Text>
+          <Button
+            onClick={() => { localStorage.removeItem('token'); localStorage.removeItem('isLogged'); setIsLogged(false); redirectAfterLogout() }}
+            colorScheme="blue"
+            marginTop={4}
+          >
+            Sair
+          </Button>
+        </Flex>
+      </>
+        )
+      : (
     <Flex
       direction="column"
       alignItems="center"
@@ -120,5 +160,6 @@ export default function RegisterPage () {
         )}
       </Box>
     </Flex>
+        )
   )
 }

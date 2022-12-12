@@ -22,8 +22,6 @@ const getPostById = async (id: string) => {
 }
 
 const createPost = async (input: PostParams) => {
-  const isAuthorValid = await prisma.users.findUnique({ where: { id: input.authorId } });
-  if(!isAuthorValid) throw new CustomError(`User/author with id ${input.authorId} not found`, BAD_REQUEST.statusCode);
   const post = await prisma.posts.create({ data: input })
   return post;
 }

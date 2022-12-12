@@ -1,6 +1,7 @@
 import { PostParams, updatePostParams } from "../lib/Types/post";
 import CustomError from "../middlewares/Error/customError";
 import { NOT_FOUND } from "../middlewares/Error/ErrorConstructor";
+import { tokenDecoder } from "../utils/decoded";
 import isContentValid from "../Validations/handlePost/isContentValid";
 import isTitleValid from "../Validations/handlePost/isTitleValid";
 import PostsModels from "./Posts.models";
@@ -22,11 +23,15 @@ const getPostById = async (id: string) => {
   return post;
 }
 
-const createPost = async (input: PostParams) => {
+const createPost = async (input: PostParams, token: string | undefined) => {
+  const decoded = tokenDecoder(token || "") as { payload: string, email: string, name: string };
+  const payload = decoded.payload as unknown as { id: string, email: string, name: string}
+  const authorId = payload.id;
+  const authorEmail = payload.email;
+  const authorName = payload.name;
 
-  const isTitleValidated =  isTitleValid(input.title);
-  if(!isTitleValidated) throw new CustomError("Title is not valid", NOT_FOUND.statusCode);
-  const post = await PostsModels.createPost(input);  
+  const createParams = { ...input, authorId, authorEmail, authorName };
+  const post = await PostsModels.createPost(createParams);
   return post;
 }
 
