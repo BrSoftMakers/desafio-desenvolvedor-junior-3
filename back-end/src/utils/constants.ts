@@ -1,9 +1,9 @@
-import fs from 'fs';
-import path from 'path';
+// import fs from 'fs';
+// import path from 'path';
 
 export const SALT_ROUNDS = 10;
-
-export const JWT_SECRET = fs.readFileSync(path.join(__dirname, '../../jwt.key'), 'utf8') || 'secret';
+// fs.readFileSync(path.join(__dirname, '../../jwt.key'), 'utf8') || 'secret';
+export const JWT_SECRET = 'secret';
 
 export const SECONDS_OF_A_DAY = 24 * 60 * 60;
 

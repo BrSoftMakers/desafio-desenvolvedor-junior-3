@@ -27,7 +27,7 @@ back-end
 - Jsonwebtoken
 - Bcrypt
 - Cors
-- EslintBcrypt
+- Eslint
 - Dotenv
 
 Infra
@@ -45,7 +45,7 @@ Infra
 ### Clone o projeto e entre na pasta
 ```
  git clone https://github.com/AndreyNovaes/desafio-desenvolvedor-junior-3.git
- git checkout nome-da-branch
+ cd desafio-desenvolvedor-junior-3
 ```
 ### Suba a aplicação com o compose
 ```
