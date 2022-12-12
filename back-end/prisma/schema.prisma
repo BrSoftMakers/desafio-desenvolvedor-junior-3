@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id       String  @id @default(cuid())
+  email    String  @unique
+  name     String  @unique
+  password String
+  posts    Posts[]
+  profile  Profile?
+  @@unique([id, email])
+  @@unique([id, name, email])
+}
+
+model Posts {
+  id        String   @id @default(cuid())
+  title     String
+  demo      String?
+  content   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    Users    @relation(fields: [authorId, authorEmail, authorName], references: [id, email, name], onDelete: Cascade)
+  authorId  String
+  authorEmail String  @default("Anonymous")
+  authorName String  @default("Anonymous")
+  categiesOnPost CategoriesOnPost[]
+}
+
+model Category {
+  id        String   @id @default(cuid())
+  name      String
+  posts     CategoriesOnPost[]
+  @@unique([id, name])
+}
+
+model CategoriesOnPost {
+  id        String   @id @default(cuid())
+  post      Posts    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId    String
+  category  Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId String
+  @@unique([postId, categoryId])
+}
+
+model Profile {
+  id        String   @id @default(cuid())
+  bio       String?
+  userName  String?
+  user      Users    @relation(fields: [userId, userEmail], references: [id, email], onDelete: Cascade)
+  userId    String
+  userEmail String
+  @@unique([userId, userEmail])
+}
