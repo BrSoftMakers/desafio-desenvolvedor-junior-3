@@ -8,6 +8,7 @@ Seja bem-vindo! Este desafio foi projetado para avaliar a sua capacidade técnic
 - Após finalizar, submeta um pull request com um comentário informando o seu e-mail de contato e aguarde nossa avaliação.
 ## Proposta
 Você deverá desenvolver um blog. Para isso, separamos a proposta desse desafio em duas etapas:
+
 **Back-end:**
 Desenvolva uma API utilizando Node JS (ExpressJS ou NestJS) com um dos framework informados, que contenha as seguintes rotas:
 - `/register` - [POST] - esta rota deve cadastrar um usuário;
@@ -17,6 +18,7 @@ Desenvolva uma API utilizando Node JS (ExpressJS ou NestJS) com um dos framework
 - `/posts` - [GET] - esta rota deve retornar a lista de todas as postagens ordenadas das mais recentes para as mais antigas com a possibilidade de inverter esta ordenação e de retornar apenas as postagens do usuário que fez a requisição (requer autenticação);
 - `/posts/{id}` - [GET] - esta rota deve retornar a postagem do ID especificado com todos os seus dados (requer autenticação);
 - `/posts/{id}` - [DELETE] - esta rota deve deletar a postagem do ID especificado.
+
 **Front-end:**
 Desenvolva uma aplicação web utilizando o framework front-end react (React cli ou NextJs) e esta deve atender as seguintes histórias:
 - Eu como usuário desejo me cadastrar;
