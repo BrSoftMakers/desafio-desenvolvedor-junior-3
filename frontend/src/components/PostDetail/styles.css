@@ -1,0 +1,84 @@
+.container__header {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    max-width: 100vw;
+    }
+
+    .container__header img {
+        width: 100%;
+        height: 50%;
+      }
+
+    .person__info {
+        max-width: 864px;
+        width: 100%;
+        height: 212px;
+        display: flex;
+        background: rgb(11, 27, 43);
+        box-shadow: rgb(0 0 0 / 20%) 0px 2px 28px;
+        border-radius: 10px;
+        padding: 2rem;
+        gap: 2rem;
+      }
+      
+      .content__info {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .header__infor {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        align-items: center;
+      }
+      
+      .header__infor h1 {
+        font-weight: 700;
+        font-size: 1.5rem;
+        line-height: 130%;
+        color: rgb(175, 194, 212);
+        -webkit-font-smoothing: antialiased;
+      }
+      
+      .logout__btn {
+        all: unset;
+        font-weight: 700;
+        font-size: 1rem;
+        line-height: 130%;
+        color: rgb(175, 194, 212);
+        -webkit-font-smoothing: antialiased;
+        cursor: pointer;
+      }
+      
+      .footer__infor {
+        display: flex;
+        height: 100%;
+        align-items: flex-end;
+        gap: 1.5rem;
+      }
+      
+      .btn__post {
+        all: unset;
+        font-weight: 700;
+        font-size: 1rem;
+        line-height: 130%;
+        color: rgb(175, 194, 212);
+        -webkit-font-smoothing: antialiased;
+        cursor: pointer;
+        color: rgb(50, 148, 248);
+      }
+      
+      .btn__post:hover {
+        transition: border 0.2s ease 0s;
+        color: rgb(175, 194, 212);
+      }
+      

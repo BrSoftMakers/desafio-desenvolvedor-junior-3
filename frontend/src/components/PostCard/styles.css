@@ -1,0 +1,72 @@
+.card {
+    width: 100%;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 2rem;
+    background: rgb(17, 33, 49);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    height: 260px;
+    overflow: hidden;
+    transition: border 0.2s ease 0s;
+    cursor: pointer;
+}
+
+.card:hover{
+    border: 2px solid rgb(123, 150, 178);
+}
+
+.header__card {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.header__card h1 {
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 160%;
+    color: rgb(231, 237, 244);
+    text-align: justify;
+}
+
+.header__card span{
+    font-size: 0.875rem;
+    line-height: 160%;
+    color: rgb(123, 150, 178);
+}
+
+.main__card{
+    height: 112px;
+    overflow: hidden;
+}
+
+.main__card p{
+    height: 100%;
+    text-align: justify;
+    color: rgb(175, 194, 212);
+}
+
+.btn{
+    display: flex;
+    justify-content: flex-end;
+}
+.btn__delete{
+    all: unset;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+.btn__edit{
+    all: unset;
+    cursor: pointer;
+}
+@media (max-width: 950px) {
+    .card {
+      grid-template-columns: 1fr;
+    }
+  }

@@ -1,0 +1,40 @@
+.btn__green{
+    all: unset;
+    background-color:  green;
+    color: white;
+    width: 45%;
+    height: 50px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tbn__red{
+    all: unset;
+    background-color:  red;
+    color: white;
+    width: 45%;
+    height: 50px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.modal__confirm{
+    justify-content: center;
+    border-radius: 8px;
+    width: 476px;
+    height: 319;
+    text-align: center;
+}
+
+.container__btn {
+    margin-top: 32px;
+    width: 96%;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
