@@ -1,0 +1,18 @@
+version: '3.9'
+services:  
+  db:
+    image: postgres
+    container_name: db
+    platform: linux/x86_64
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: dev
+    restart: 'always'
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    cap_add:
+      - SYS_NICE
