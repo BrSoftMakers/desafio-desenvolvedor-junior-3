@@ -16,18 +16,6 @@ const justShake = keyframes`
   }
 `;
 
-const rotateScaleDown = keyframes`
-    0% {
-      transform: scale(1) rotateZ(0);
-    }
-    50% {
-      transform: scale(0.5) rotateZ(180deg);
-    }
-    100% {
-      transform: scale(1) rotateZ(360deg);
-    }
-`;
-
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -56,6 +44,10 @@ export const Form = styled.form`
       animation: ${justShake} 0.3s forwards;
       color: ${theme.colors.red};
     }
+  }
+  p {
+    color: ${theme.colors.red};
+    margin: 0 auto;
   }
   .link {
     background-color: transparent;

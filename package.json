@@ -9,6 +9,5 @@
     "license": "ISC",
     "homepage": "https://github.com/franklinrms/desafio-desenvolvedor-junior-3#readme",
     "devDependencies": {
-        "@types/styled-components": "^5.1.26"
     }
 }

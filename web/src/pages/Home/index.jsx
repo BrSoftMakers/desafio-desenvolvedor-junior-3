@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import api from "../../lib/api";
 import * as S from "./style";
 
 export default function Home() {
@@ -6,6 +8,24 @@ export default function Home() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [isRegistrationForm, setIsRegistrationForm] = useState(false);
+  const [deniedUser, setDeniedUser] = useState(false);
+  const navigate = useNavigate();
+
+  const onSubmitForm = async () => {
+    try {
+      const { data } = await api.post(
+        isRegistrationForm ? "/register" : "/login",
+        isRegistrationForm
+          ? { username, password, name }
+          : { username, password }
+      );
+      const token = JSON.stringify(data);
+      localStorage.setItem("SMtoken", token);
+      navigate("/blog");
+    } catch (error) {
+      setDeniedUser(true);
+    }
+  };
   return (
     <S.Container>
       <div className="content">
@@ -23,7 +43,12 @@ export default function Home() {
       </div>
       <S.FormContainer className={isRegistrationForm ? "scale" : ""}>
         <h2>{isRegistrationForm ? "Cadastro" : "Login"}</h2>
-        <S.Form>
+        <S.Form
+          onSubmit={(event) => {
+            event.preventDefault();
+            onSubmitForm();
+          }}
+        >
           <input
             type="text"
             placeholder="usuário"
@@ -56,7 +81,10 @@ export default function Home() {
           <button
             type="button"
             className="link"
-            onClick={() => setIsRegistrationForm(!isRegistrationForm)}
+            onClick={() => {
+              setIsRegistrationForm(!isRegistrationForm);
+              setDeniedUser(false);
+            }}
           >
             {isRegistrationForm
               ? "Já tem conta? Acesse."
@@ -66,6 +94,7 @@ export default function Home() {
           <button type="submit" className="submit">
             {isRegistrationForm ? "Cadastrar" : "Acessar"}
           </button>
+          {deniedUser && <p>usuário ou senha inválidos</p>}
         </S.Form>
       </S.FormContainer>
     </S.Container>
