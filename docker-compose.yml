@@ -1,5 +1,21 @@
 version: '3.9'
 services:
+  frontend:
+    build: ./web
+    ports:
+      - 3000:3000
+    working_dir: /app-frontend
+    volumes:
+      - ./web/src:/app-frontend/src
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      - REACT_APP_BASE_URL=http://localhost:3030
+    healthcheck:
+      test: [ "CMD", "lsof", "-t", "-i:3000" ]
+      timeout: 10s
+      retries: 5
   backend:
     container_name: app_backend
     build: ./server
