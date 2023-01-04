@@ -4,6 +4,7 @@ import { ErrorTypes } from '../errors/catalog';
 import ILoginInput from '../interfaces/ILoginInput';
 import IRegisterInput from '../interfaces/IRegisterInput';
 import IUser from '../interfaces/IUser';
+import generateToken from '../utils/generateToken';
 
 export default class UserService {
   private getUserByUsername = async (username: string) => prisma.user
@@ -20,8 +21,11 @@ export default class UserService {
     if (!user) throw new Error(ErrorTypes.EntityNotFound);
 
     if (user.password === md5(password)) {
-      return user;
-      // { username: user.username, name: user.name, role: user.role };
+      return generateToken({
+        username: user.username,
+        name: user.name,
+        role: user.role,
+      });
     } throw new Error(ErrorTypes.EntityNotFound);
   };
   private checkPassword = (password: string) => {
@@ -44,7 +48,11 @@ export default class UserService {
         name,
       },
       });
-      return user;
+      return generateToken({
+        username: user.username,
+        name: user.name,
+        role: user.role,
+      });
     }
   };
 }
