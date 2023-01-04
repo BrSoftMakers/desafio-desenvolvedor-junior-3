@@ -1,7 +1,7 @@
 const theme = {
   colors: {
     brand: "#3B5A98",
-    brand_secondary: "#7591C9",
+    brand_secondary: "#4E72BA",
     background: "#F4F4F5",
 
     red: "#E00007",
