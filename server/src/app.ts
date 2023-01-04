@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import 'express-async-errors';
+import errorHandler from './middlewares/errorHandler';
 
 export default class App {
   public app: express.Express;
@@ -14,6 +15,8 @@ export default class App {
   private config():void {
     this.app.use(cors());
     this.app.use(express.json());
+
+    this.app.use(errorHandler);
   }
 
   public start(PORT: string | number):void {
