@@ -1,5 +1,24 @@
 version: '3.9'
-services:  
+services:
+  backend:
+    container_name: app_backend
+    build: ./server
+    ports:
+      - 3030:3030
+    working_dir: /app-backend
+    volumes:
+      - ./server/src:/app-backend/src
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - PORT=3030
+      - JWT_SECRET=jwt_secret
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/blog
+    healthcheck:
+      test: [ "CMD", "lsof", "-t", "-i:3030" ]
+      timeout: 10s
+      retries: 5
   db:
     image: postgres
     container_name: db
@@ -7,8 +26,11 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     restart: 'always'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready"]
       interval: 10s
@@ -16,3 +38,5 @@ services:
       retries: 5
     cap_add:
       - SYS_NICE
+volumes:
+  postgres-data:
