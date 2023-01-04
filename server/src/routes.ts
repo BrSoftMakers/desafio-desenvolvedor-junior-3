@@ -11,5 +11,9 @@ router.post('/login', async (req: Request, res: Response) => {
   const response = await userService.findUser(req.body);
   return res.status(200).json(response);
 });
+router.post('/register', async (req: Request, res: Response) => {
+  const response = await userService.createUser(req.body);
+  return res.status(201).json(response);
+});
 
 export default router;

@@ -1,3 +1,4 @@
+import md5 from 'md5';
 import prisma from './prisma';
 
 const seedDatabase = async () => {
@@ -5,12 +6,11 @@ const seedDatabase = async () => {
     data: [
       { username: 'admin', 
         name: 'Franklin Ramos', 
-        password: 'admin',
+        password: md5('123Admin'),
         role: 'ADMIN', 
       },
-      { username: 'john', 
-        name: 'John Doe', 
-        password: '123456', 
+      { username: 'john',  
+        password: md5('1234User'), 
       },
     ],
   });
