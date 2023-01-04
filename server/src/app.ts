@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import 'express-async-errors';
 import errorHandler from './middlewares/errorHandler';
-import router from './routes';
+import routes from './routes';
 
 export default class App {
   public app: express.Express;
@@ -15,7 +15,7 @@ export default class App {
   private config():void {
     this.app.use(cors());
     this.app.use(express.json());
-    this.app.use(router);
+    this.app.use(routes);
     this.app.use(errorHandler);
   }
 
