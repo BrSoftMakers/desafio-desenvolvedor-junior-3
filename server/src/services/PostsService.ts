@@ -32,4 +32,10 @@ export default class PostsService {
         createdAt: orderByAsc ? 'asc' : 'desc',
       },
     });
+  public readOne = async (id: number) => prisma.posts.findUnique({
+    where: { id },
+    include: { 
+      author: { select: { username: true, name: true } }, 
+    },
+  });
 }

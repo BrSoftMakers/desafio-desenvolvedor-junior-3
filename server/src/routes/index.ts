@@ -23,6 +23,15 @@ router.get(
     return res.status(200).json(response);
   },
 );
+router.get(
+  '/:id', 
+  validateToken,
+  async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const response = await service.readOne(Number(id)); 
+    return res.status(200).json(response);
+  },
+);
 router.post(
   '/', 
   validateToken,
