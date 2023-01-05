@@ -25,7 +25,8 @@ Desenvolva uma aplicação web utilizando o framework front-end react e esta dev
 - Eu como usuário desejo me cadastrar;
 - Eu como usuário desejo realizar login;
 - Eu como usuário autenticado desejo visualizar todas as postagens;
-- Eu como usuário autenticado desejo visualizar os detalhes de uma postagem; - Eu como usuário autenticado desejo visualizar todas as minhas postagens;
+- Eu como usuário autenticado desejo visualizar os detalhes de uma postagem;
+- Eu como usuário autenticado desejo visualizar todas as minhas postagens;
 - Eu como usuário autenticado desejo criar uma postagem;
 - Eu como usuário autenticado desejo editar uma postagem que eu criei;
 - Eu como usuário autenticado desejo deletar uma postagem que eu criei.
@@ -38,4 +39,5 @@ Será considerado como diferenciais a utilização ou o conhecimento nas seguint
 - Conhecimento em React Native;
 - Conhecimento em Firebase;
 - Conhecimento em Docker;
-- Conhecimento em infraestrutura em nuvem.
+- Conhecimento em infraestrutura em nuvem;
+- Conhecimento em testes a nível de código.
