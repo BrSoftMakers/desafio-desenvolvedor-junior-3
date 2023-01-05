@@ -1,7 +1,15 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 import theme from "./theme";
 
+const variables = css`
+  :root {
+    --jd-color-border: ${theme.colors.background};
+    --jd-color-panel: ${theme.colors.background};
+  }
+`;
+
 const GlobalStyles = createGlobalStyle`
+    ${variables}
     * {
         margin: 0;
         padding: 0;
@@ -42,9 +50,9 @@ const GlobalStyles = createGlobalStyle`
     a {
         text-decoration: none;
     }
-    ul {
+    /* ul {
         list-style: none;
-    }
+    } */
 `;
 
 export default GlobalStyles;

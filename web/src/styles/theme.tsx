@@ -14,7 +14,7 @@ const theme = {
     text_on_brand_color: "#FFFFFF",
 
     tooltip: "#27272A",
-    stroke: "#D4D4D8",
+    stroke: "#DADADA",
   },
   borderRadius: {
     rounded: "50%",
