@@ -38,4 +38,7 @@ export default class PostsService {
       author: { select: { username: true, name: true } }, 
     },
   });
+  public delete = async (id: number) => prisma.posts.delete({
+    where: { id },
+  });
 }
