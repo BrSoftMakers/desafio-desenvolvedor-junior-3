@@ -38,4 +38,5 @@ Será considerado como diferenciais a utilização ou o conhecimento nas seguint
 - Conhecimento em React Native;
 - Conhecimento em Firebase;
 - Conhecimento em Docker;
-- Conhecimento em infraestrutura em nuvem.
+- Conhecimento em infraestrutura em nuvem;
+- Conhecimento em testes a nível de código.
