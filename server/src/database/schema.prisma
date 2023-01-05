@@ -17,16 +17,16 @@ model User {
     password String
     name     String?
     role     Role    @default(USER)
-    posts    Post[]
+    posts    Posts[]
 }
 
-model Post {
+model Posts {
     id        Int      @id @default(autoincrement())
     title     String
     subtitle  String?
     content   String
     thumbnail String?
-    author    User     @relation(fields: [authorId], references: [id])
+    author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
     authorId  String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt

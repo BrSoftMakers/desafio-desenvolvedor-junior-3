@@ -22,6 +22,7 @@ export default class UserService {
 
     if (user.password === md5(password)) {
       return generateToken({
+        id: user.id,
         username: user.username,
         name: user.name,
         role: user.role,
@@ -49,6 +50,7 @@ export default class UserService {
       },
       });
       return generateToken({
+        id: user.id,
         username: user.username,
         name: user.name,
         role: user.role,
