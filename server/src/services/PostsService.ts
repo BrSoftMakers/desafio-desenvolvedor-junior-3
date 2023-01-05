@@ -12,4 +12,24 @@ export default class PostsService {
     });
     return newPost;
   };
+  public read = async (orderByAsc: boolean) => prisma.posts.findMany({
+    include: { 
+      author: { select: { username: true, name: true } }, 
+    },
+    orderBy: {
+      createdAt: orderByAsc ? 'asc' : 'desc',
+    },
+  });
+  public readByUser = async (orderByAsc: boolean, userId: string) =>
+    prisma.posts.findMany({
+      where: {
+        authorId: {
+          equals: userId,
+        },
+      },
+      include: { author: { select: { username: true, name: true } } },
+      orderBy: {
+        createdAt: orderByAsc ? 'asc' : 'desc',
+      },
+    });
 }

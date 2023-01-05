@@ -7,8 +7,22 @@ const router = Router();
 
 const service = new PostsService();
 
-router.get('/', (_req: Request, res: Response) => res.json({ ok: true }));
+// router.get('/', (_req: Request, res: Response) => res.json({ ok: true }));
 
+router.get(
+  '/', 
+  validateToken,
+  async (req: Request, res: Response) => {
+    const { orderByAsc, filterByUser } = req.query;
+    if (filterByUser) {
+      const userId = res.locals.user.id;
+      const response = await service.readByUser(!!orderByAsc, userId); 
+      return res.status(200).json(response);
+    }
+    const response = await service.read(!!orderByAsc); 
+    return res.status(200).json(response);
+  },
+);
 router.post(
   '/', 
   validateToken,
