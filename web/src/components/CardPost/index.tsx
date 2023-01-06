@@ -1,18 +1,9 @@
 import React from "react";
 import IPost from "../../interfaces/IPost";
+import formattedDate from "../../lib/formattedDate";
 import * as S from "./style";
 
 export default function CardPost({ post }: { post: IPost }) {
-  const formattedDate = (date: string) => {
-    const createdAt = new Date(date);
-    return new Intl.DateTimeFormat("pt-BR", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    })
-      .format(createdAt)
-      .split("de");
-  };
   return (
     <S.CardPostContainer>
       <S.CardPostLink href={`post/${post.id}`}>
