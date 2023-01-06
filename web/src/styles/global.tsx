@@ -24,18 +24,6 @@ const GlobalStyles = createGlobalStyle`
     html {
         scroll-behavior: smooth;
         scrollbar-width: thin;
-        scrollbar-color: ${theme.colors.stroke} ${theme.colors.background};
-        }
-        ::-webkit-scrollbar {
-        width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-        background: ${theme.colors.background};
-        }
-        ::-webkit-scrollbar-thumb {
-        background-color: ${theme.colors.stroke};
-        border: 2px solid transparent;
-        border-radius: 8px;
     }
     button {
         cursor: pointer;
@@ -50,9 +38,6 @@ const GlobalStyles = createGlobalStyle`
     a {
         text-decoration: none;
     }
-    /* ul {
-        list-style: none;
-    } */
 `;
 
 export default GlobalStyles;
