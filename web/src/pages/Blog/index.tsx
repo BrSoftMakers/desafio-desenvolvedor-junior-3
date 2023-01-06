@@ -1,25 +1,28 @@
+/* eslint-disable no-console */
 import React, { useEffect, useState } from "react";
 import CardPost from "../../components/CardPost";
 import IPost from "../../interfaces/IPost";
-import api, { setToken } from "../../lib/api";
+import api from "../../lib/api";
 import * as S from "./style";
 import sortDown from "../../assets/images/sort-down.svg";
 import sortUp from "../../assets/images/sort-up.svg";
+import useAuth from "../../hooks/useAuth";
 
 export default function Blog() {
   const [posts, setPosts] = useState([]);
   const [orderByAsc, setOrderByAsc] = useState(false);
   const [filterByUser, setFilterByUser] = useState(false);
 
+  useEffect(() => {
+    useAuth();
+  }, []);
+
   const getPosts = async (endpoint: string) => {
     try {
-      const token = localStorage.getItem("SMtoken");
-      if (token) setToken(JSON.parse(token));
-
       const { data } = await api.get(endpoint);
       setPosts(data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   useEffect(() => {

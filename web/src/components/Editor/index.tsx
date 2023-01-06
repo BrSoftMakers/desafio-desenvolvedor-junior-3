@@ -1,13 +1,19 @@
-import React, { useRef, useState } from "react";
+/* eslint-disable no-console */
+import React, { useEffect, useRef, useState } from "react";
 import JoditEditor from "jodit-react";
 import * as S from "./style";
 import plane from "../../assets/images/plane.svg";
 import api, { setToken } from "../../lib/api";
+import useAuth from "../../hooks/useAuth";
 
 export default function Editor() {
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [content, setContent] = useState("");
+
+  useEffect(() => {
+    useAuth();
+  }, []);
 
   const editor = useRef(null);
 
@@ -32,9 +38,8 @@ export default function Editor() {
         subtitle,
         content,
       });
-      console.log("🚀 ~ file: index.tsx:31 ~ onSubmitPost ~ data", data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
