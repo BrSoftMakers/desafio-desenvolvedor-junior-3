@@ -16,7 +16,7 @@ export default function Post() {
   const [post, setPost] = useState(null as IPost | null);
   const location = useLocation();
   const navigate = useNavigate();
-  const postId = location.pathname.split("/")[2];
+  const postId = location.pathname.split("/")[3];
   const endpoint = `/posts/${postId}`;
   const user: Partial<IUser> = JSON.parse(
     localStorage.getItem("SM_USER") || ""

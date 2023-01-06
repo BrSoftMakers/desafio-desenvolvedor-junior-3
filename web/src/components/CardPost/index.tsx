@@ -6,7 +6,7 @@ import * as S from "./style";
 export default function CardPost({ post }: { post: IPost }) {
   return (
     <S.CardPostContainer>
-      <S.CardPostLink href={`post/${post.id}`}>
+      <S.CardPostLink href={`/blog/post/${post.id}`}>
         <div className="thumbnail" />
         <div className="details">
           <h2>{post.title}</h2>
