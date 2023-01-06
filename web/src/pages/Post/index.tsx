@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import GoBack from "../../components/GoBack";
 import api, { setToken } from "../../lib/api";
 import formattedDate from "../../lib/formattedDate";
 import * as S from "./style";
@@ -35,6 +36,9 @@ export default function Post() {
   const { name, username } = author;
   return (
     <S.PostContainer>
+      <div>
+        <GoBack />
+      </div>
       <S.PostHeader>
         <h1>{title}</h1>
         <p>{subtitle || ""}</p>
