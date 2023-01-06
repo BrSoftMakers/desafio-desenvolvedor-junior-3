@@ -18,6 +18,6 @@ export default class UserController {
   };
   public validate = async (_req: Request, res: Response) => {
     const { user } = res.locals;
-    return res.status(200).json({ userId: user.id, role: user.role });
+    return res.status(200).json({ id: user.id, role: user.role });
   };
 }

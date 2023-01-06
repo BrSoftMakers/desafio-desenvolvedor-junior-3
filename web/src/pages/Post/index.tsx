@@ -10,6 +10,7 @@ import editIcon from "../../assets/images/edit-icon.svg";
 import * as S from "./style";
 import useAuth from "../../hooks/useAuth";
 import IPost from "../../interfaces/IPost";
+import IUser from "../../interfaces/IUser";
 
 export default function Post() {
   const [post, setPost] = useState(null as IPost | null);
@@ -17,6 +18,12 @@ export default function Post() {
   const navigate = useNavigate();
   const postId = location.pathname.split("/")[2];
   const endpoint = `/posts/${postId}`;
+  const user: Partial<IUser> = JSON.parse(
+    localStorage.getItem("SM_USER") || ""
+  );
+
+  const isOwner = user?.id === post?.authorId;
+  const authorized = isOwner || user?.role === "ADMIN";
 
   useEffect(() => {
     useAuth();
@@ -55,19 +62,22 @@ export default function Post() {
       <S.Controls>
         <GoBack />
         <div className="wrapper">
-          <button className="edit" type="button">
-            <span className="text">Editar</span>
-            <span className="icon">
-              <img src={editIcon} alt="delete icon" />
-            </span>
-          </button>
-
-          <button className="delete" type="button" onClick={deletePost}>
-            <span className="text">Excluir</span>
-            <span className="icon">
-              <img src={deleteIcon} alt="delete icon" />
-            </span>
-          </button>
+          {isOwner && (
+            <button className="edit" type="button">
+              <span className="text">Editar</span>
+              <span className="icon">
+                <img src={editIcon} alt="delete icon" />
+              </span>
+            </button>
+          )}
+          {authorized && (
+            <button className="delete" type="button" onClick={deletePost}>
+              <span className="text">Excluir</span>
+              <span className="icon">
+                <img src={deleteIcon} alt="delete icon" />
+              </span>
+            </button>
+          )}
         </div>
       </S.Controls>
       <S.PostHeader>

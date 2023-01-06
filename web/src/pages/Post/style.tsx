@@ -131,7 +131,7 @@ export const Controls = styled.div`
     gap: 1.5rem;
     .wrapper {
       width: 100%;
-      justify-content: space-between;
+      justify-content: flex-end;
     }
   }
 `;
