@@ -12,6 +12,7 @@ export default class PostsService {
     });
     return newPost;
   };
+
   public read = async (orderByAsc: boolean) => prisma.posts.findMany({
     include: { 
       author: { select: { username: true, name: true } }, 
@@ -20,6 +21,7 @@ export default class PostsService {
       createdAt: orderByAsc ? 'asc' : 'desc',
     },
   });
+
   public readByUser = async (orderByAsc: boolean, userId: string) =>
     prisma.posts.findMany({
       where: {
@@ -32,12 +34,25 @@ export default class PostsService {
         createdAt: orderByAsc ? 'asc' : 'desc',
       },
     });
+
   public readOne = async (id: number) => prisma.posts.findUnique({
     where: { id },
     include: { 
       author: { select: { username: true, name: true } }, 
     },
   });
+
+  public update = async (id: number, post: IPost) => {
+    const newPost = await prisma.posts.update({
+      where: { id },
+      data: {
+        ...post,
+      },
+      include: { author: { select: { username: true, name: true } } },
+    });
+    return newPost;
+  };
+
   public delete = async (id: number) => prisma.posts.delete({
     where: { id },
   });

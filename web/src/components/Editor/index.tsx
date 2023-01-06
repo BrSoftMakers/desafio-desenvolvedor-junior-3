@@ -42,11 +42,14 @@ export default function Editor() {
 
   const onSubmitPost = async () => {
     try {
-      const { data } = await api[postId ? "put" : "post"]("/posts", {
-        title,
-        subtitle,
-        content,
-      });
+      const { data } = await api[postId ? "put" : "post"](
+        `/posts/${postId || ""}`,
+        {
+          title,
+          subtitle,
+          content,
+        }
+      );
       navigate(`/blog/post/${data.id}`);
     } catch (error) {
       console.error(error);
