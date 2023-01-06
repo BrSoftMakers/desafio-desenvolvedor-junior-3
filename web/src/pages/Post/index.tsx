@@ -1,22 +1,34 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import GoBack from "../../components/GoBack";
 import api, { setToken } from "../../lib/api";
 import formattedDate from "../../lib/formattedDate";
 import deleteIcon from "../../assets/images/delete-icon.svg";
 import editIcon from "../../assets/images/edit-icon.svg";
 import * as S from "./style";
+import useAuth from "../../hooks/useAuth";
 
 export default function Post() {
   const [post, setPost] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const postId = location.pathname.split("/")[2];
+  const endpoint = `/posts/${postId}`;
 
-  const getPost = async (endpoint: string) => {
+  useEffect(() => {
+    useAuth();
+  }, [postId]);
+
+  const deletePost = async () => {
     try {
-      const token = localStorage.getItem("SMtoken");
-      if (token) setToken(JSON.parse(token));
-
+      await api.delete(endpoint);
+      navigate("/blog");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const getPost = async () => {
+    try {
       const { data } = await api.get(endpoint);
       setPost(data);
     } catch (error) {
@@ -24,10 +36,8 @@ export default function Post() {
     }
   };
   useEffect(() => {
-    const endpoint = `/posts/${postId}`;
-
     if (!post) {
-      getPost(endpoint);
+      getPost();
     }
   }, [postId]);
 
@@ -48,7 +58,7 @@ export default function Post() {
             </span>
           </button>
 
-          <button className="delete" type="button">
+          <button className="delete" type="button" onClick={deletePost}>
             <span className="text">Excluir</span>
             <span className="icon">
               <img src={deleteIcon} alt="delete icon" />

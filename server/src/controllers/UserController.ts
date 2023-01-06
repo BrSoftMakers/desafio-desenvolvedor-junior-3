@@ -16,4 +16,8 @@ export default class UserController {
     const response = await this.service.findUser(req.body);
     return res.status(200).json(response);
   };
+  public validate = async (_req: Request, res: Response) => {
+    const { user } = res.locals;
+    return res.status(200).json({ userId: user.id, role: user.role });
+  };
 }

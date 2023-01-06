@@ -20,7 +20,7 @@ export default function Home() {
           : { username, password }
       );
       const token = JSON.stringify(data);
-      localStorage.setItem("SMtoken", token);
+      localStorage.setItem("SM_TOKEN", token);
       navigate("/blog");
     } catch (error) {
       setDeniedUser(true);
