@@ -8,11 +8,14 @@ import api from "../../lib/api";
 import useAuth from "../../hooks/useAuth";
 import editorConfig from "../../helpers/editorConfig";
 import GoBack from "../GoBack";
+import UploadImage from "../UploadImage";
 
 export default function Editor() {
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [content, setContent] = useState("");
+  const [thumbnail, setThumbnail] = useState("");
+  console.log("🚀 ~ file: index.tsx:18 ~ Editor ~ thumbnail", thumbnail);
   const editor = useRef(null);
 
   const navigate = useNavigate();
@@ -48,6 +51,7 @@ export default function Editor() {
           title,
           subtitle,
           content,
+          thumbnail,
         }
       );
       navigate(`/blog/post/${data.id}`);
@@ -82,6 +86,7 @@ export default function Editor() {
           />
         </S.Form>
         <S.Column>
+          <UploadImage setThumbnail={setThumbnail} />
           <button type="button" onClick={() => onSubmitPost()}>
             <span className="text">{postId ? "Atualizar" : "Publicar"}</span>
             <img src={plane} alt="plane" />

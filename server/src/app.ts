@@ -14,7 +14,9 @@ export default class App {
 
   private config():void {
     this.app.use(cors());
-    this.app.use(express.json());
+    this.app.use(express.json({ limit: '50mb' }));
+    this.app.use(express
+      .urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
     this.app.use(routes);
     this.app.use(errorHandler);
   }

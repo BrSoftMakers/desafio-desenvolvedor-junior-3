@@ -46,6 +46,10 @@ export const Column = styled.aside`
   max-width: 280px;
   padding: 20px 0;
   align-items: center;
+  gap: 1rem;
+  overflow: hidden;
+
+  /* background-color: aliceblue; */
 
   button {
     display: flex;
@@ -64,7 +68,7 @@ export const Column = styled.aside`
     width: 100%;
 
     img {
-      transition: all 0.4s ease-in;
+      transition: all 0.2s ease-in;
     }
   }
   button:hover {
