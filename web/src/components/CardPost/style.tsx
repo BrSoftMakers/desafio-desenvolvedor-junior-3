@@ -15,7 +15,7 @@ export const CardPostContainer = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-color: ${theme.colors.surface_secondary};
-    /* background-image: url(); */
+    background-image: url(${(props: { bg: string }) => props.bg});
   }
   .details {
     padding: 32px;

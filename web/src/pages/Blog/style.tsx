@@ -22,8 +22,6 @@ export const PostsFilters = styled.div`
     gap: 0.5rem;
     align-items: center;
     background: none;
-    border: 1px solid ${theme.colors.stroke};
-    color: ${theme.colors.text_secondary};
     font-size: 18px;
     padding: 15px 10px;
     border-radius: ${theme.borderRadius.md};
@@ -31,8 +29,7 @@ export const PostsFilters = styled.div`
   }
   select {
     background: none;
-    border: 1px solid ${theme.colors.stroke};
-    color: ${theme.colors.text_secondary};
+    border: none;
     font-size: 18px;
     padding: 15px 10px;
     border-radius: ${theme.borderRadius.md};

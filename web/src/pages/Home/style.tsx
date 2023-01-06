@@ -86,9 +86,9 @@ export const FormContainer = styled.div`
   transform-style: preserve-3d;
 
   h2 {
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 900;
+    padding: 10px 15px;
+    font-size: 2.5rem;
+    font-weight: 600;
     color: ${theme.colors.brand};
   }
 `;

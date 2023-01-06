@@ -2,10 +2,11 @@ import React from "react";
 import IPost from "../../interfaces/IPost";
 import formattedDate from "../../lib/formattedDate";
 import * as S from "./style";
+import defaultImg from "../../assets/images/img-default.jpg";
 
 export default function CardPost({ post }: { post: IPost }) {
   return (
-    <S.CardPostContainer>
+    <S.CardPostContainer bg={post.thumbnail || defaultImg}>
       <S.CardPostLink href={`/blog/post/${post.id}`}>
         <div className="thumbnail" />
         <div className="details">

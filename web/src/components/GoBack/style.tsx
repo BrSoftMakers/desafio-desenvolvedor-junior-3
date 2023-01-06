@@ -15,7 +15,7 @@ const GoBackButton = styled.button`
   justify-content: center;
 
   img {
-    transition: all 0.4s ease-in;
+    transition: all 0.2s ease-in;
   }
 
   &:hover {
