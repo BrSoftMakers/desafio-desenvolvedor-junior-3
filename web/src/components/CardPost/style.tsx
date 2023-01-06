@@ -19,6 +19,7 @@ export const CardPostContainer = styled.div`
   }
   .details {
     padding: 32px;
+    background-color: ${theme.colors.surface_primary};
     h2 {
       padding-top: 0;
       margin-bottom: 16px;
