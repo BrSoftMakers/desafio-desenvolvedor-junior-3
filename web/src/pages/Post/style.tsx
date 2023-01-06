@@ -68,3 +68,70 @@ export const PostContent = styled.div`
     grid-column: 2;
   }
 `;
+
+export const Controls = styled.div`
+  padding: 32px 0 0;
+  display: flex;
+  justify-content: space-between;
+
+  .wrapper {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .delete,
+  .edit {
+    width: 150px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: ${theme.borderRadius.md};
+    background: ${theme.colors.red};
+  }
+  .edit {
+    background: ${theme.colors.brand};
+  }
+
+  button,
+  button span {
+    transition: 200ms;
+  }
+
+  .text {
+    transform: translateX(35px);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .icon {
+    position: absolute;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    transform: translateX(110px);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  button:hover .text {
+    color: transparent;
+  }
+
+  button:hover .icon {
+    width: 150px;
+    border-left: none;
+    transform: translateX(0);
+  }
+  button:active .icon img {
+    transform: scale(0.9);
+  }
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    flex-direction: column;
+    gap: 1.5rem;
+    .wrapper {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+`;

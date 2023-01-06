@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import GoBack from "../../components/GoBack";
 import api, { setToken } from "../../lib/api";
 import formattedDate from "../../lib/formattedDate";
+import deleteIcon from "../../assets/images/delete-icon.svg";
+import editIcon from "../../assets/images/edit-icon.svg";
 import * as S from "./style";
 
 export default function Post() {
@@ -36,9 +38,24 @@ export default function Post() {
   const { name, username } = author;
   return (
     <S.PostContainer>
-      <div>
+      <S.Controls>
         <GoBack />
-      </div>
+        <div className="wrapper">
+          <button className="edit" type="button">
+            <span className="text">Editar</span>
+            <span className="icon">
+              <img src={editIcon} alt="delete icon" />
+            </span>
+          </button>
+
+          <button className="delete" type="button">
+            <span className="text">Excluir</span>
+            <span className="icon">
+              <img src={deleteIcon} alt="delete icon" />
+            </span>
+          </button>
+        </div>
+      </S.Controls>
       <S.PostHeader>
         <h1>{title}</h1>
         <p>{subtitle || ""}</p>
