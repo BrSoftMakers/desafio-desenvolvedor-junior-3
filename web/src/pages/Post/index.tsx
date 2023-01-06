@@ -63,7 +63,11 @@ export default function Post() {
         <GoBack />
         <div className="wrapper">
           {isOwner && (
-            <button className="edit" type="button">
+            <button
+              className="edit"
+              type="button"
+              onClick={() => navigate(`/editor/post/${postId}`)}
+            >
               <span className="text">Editar</span>
               <span className="icon">
                 <img src={editIcon} alt="delete icon" />

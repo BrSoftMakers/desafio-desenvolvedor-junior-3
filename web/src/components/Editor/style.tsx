@@ -2,18 +2,21 @@ import styled from "styled-components";
 import theme from "../../styles/theme";
 
 export const Container = styled.section`
-  display: flex;
-  width: 100%;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   height: 100vh;
-  gap: 1rem;
+  padding: 20px 0;
 
-  @media (max-width: ${theme.breakpoints.smallDesktop}) {
-    padding: 20px 10px;
-  }
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    flex-direction: column;
+  .inner {
+    display: flex;
+    gap: 1rem;
+    @media (max-width: ${theme.breakpoints.smallDesktop}) {
+      padding: 20px 10px;
+    }
+    @media (max-width: ${theme.breakpoints.mobile}) {
+      flex-direction: column;
+    }
   }
 `;
 
@@ -24,6 +27,7 @@ export const Form = styled.form`
   max-width: 900px;
   height: 100%;
   gap: 1.5rem;
+  padding: 20px 32px;
 
   input {
     background: ${theme.colors.surface_primary};
@@ -40,48 +44,40 @@ export const Column = styled.aside`
   flex-direction: column;
   width: 100%;
   max-width: 280px;
+  padding: 20px 0;
+  align-items: center;
 
   button {
-    max-width: 300px;
-    height: 50px;
     display: flex;
+    gap: 0.5rem;
     align-items: center;
-    border: none;
-    border-radius: 3px;
     background: ${theme.colors.brand};
-  }
-
-  button,
-  img,
-  button span {
-    transition: 200ms;
-  }
-
-  button .text {
-    color: ${theme.colors.text_on_brand_color};
-    font-weight: bold;
     font-size: 18px;
-    padding-left: 10px;
-  }
-
-  button .icon {
-    width: 150px;
-    display: flex;
-    align-items: center;
+    font-weight: 600;
+    color: ${theme.colors.text_on_brand_color};
+    padding: 15px 10px;
+    border-radius: ${theme.borderRadius.md};
+    letter-spacing: 1px;
+    transition: all 0.2s linear;
+    min-width: 150px;
     justify-content: center;
-  }
+    width: 100%;
 
-  button:hover img {
-    transform: rotate(45deg);
+    img {
+      transition: all 0.4s ease-in;
+    }
   }
-
   button:hover {
     background: ${theme.colors.brand_secondary};
+    img {
+      transform: translateX(8px);
+    }
   }
-  button:hover .icon {
-    width: 100%;
+
+  @media (max-width: ${theme.breakpoints.smallDesktop}) {
+    padding: 20px 10px;
   }
-  button:active {
-    transform: scale(0.95);
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    max-width: 100%;
   }
 `;

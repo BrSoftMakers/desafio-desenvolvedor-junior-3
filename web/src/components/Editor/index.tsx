@@ -1,43 +1,53 @@
 /* eslint-disable no-console */
 import React, { useEffect, useRef, useState } from "react";
 import JoditEditor from "jodit-react";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as S from "./style";
 import plane from "../../assets/images/plane.svg";
-import api, { setToken } from "../../lib/api";
+import api from "../../lib/api";
 import useAuth from "../../hooks/useAuth";
+import editorConfig from "../../helpers/editorConfig";
+import GoBack from "../GoBack";
 
 export default function Editor() {
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [content, setContent] = useState("");
+  const editor = useRef(null);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const postId = location.pathname.split("/")[3];
 
   useEffect(() => {
     useAuth();
   }, []);
 
-  const editor = useRef(null);
-
-  const config = {
-    readonly: false,
-    useSearch: false,
-    showCharsCounter: false,
-    showWordsCounter: false,
-    showXPathInStatusbar: false,
-    minHeight: 600,
-    buttons:
-      "bold,italic,underline,strikethrough,eraser,font,fontsize,paragraph,lineHeight,superscript,subscript,image,video,cut,copy,paste,hr,eraser,undo,redo,source",
+  const getPost = async () => {
+    try {
+      const { data } = await api.get(`/posts/${postId}`);
+      setTitle(data.title);
+      setSubtitle(data.subtitle);
+      setContent(data.content);
+    } catch (error) {
+      console.error(error);
+    }
   };
+
+  if (postId) {
+    useEffect(() => {
+      getPost();
+    }, [postId]);
+  }
 
   const onSubmitPost = async () => {
     try {
-      const token = localStorage.getItem("SMtoken");
-      if (token) setToken(JSON.parse(token));
-
-      const { data } = await api.post("/", {
+      const { data } = await api[postId ? "put" : "post"]("/posts", {
         title,
         subtitle,
         content,
       });
+      navigate(`/blog/post/${data.id}`);
     } catch (error) {
       console.error(error);
     }
@@ -45,34 +55,36 @@ export default function Editor() {
 
   return (
     <S.Container>
-      <S.Form>
-        <input
-          type="text"
-          placeholder="Titulo"
-          onChange={({ target }) => setTitle(target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Subtítulo"
-          onChange={({ target }) => setSubtitle(target.value)}
-        />
-        <JoditEditor
-          ref={editor}
-          value={content}
-          config={config}
-          onBlur={(newContent) => setContent(newContent)}
-          //   onChange={(newContent) => setContent(newContent)}
-        />
-      </S.Form>
-      <S.Column>
-        <button type="button" onClick={() => onSubmitPost()}>
-          <span className="icon">
+      <GoBack />
+      <div className="inner">
+        <S.Form>
+          <input
+            type="text"
+            placeholder="Titulo"
+            value={title}
+            onChange={({ target }) => setTitle(target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Subtítulo"
+            value={subtitle}
+            onChange={({ target }) => setSubtitle(target.value)}
+          />
+          <JoditEditor
+            ref={editor}
+            value={content}
+            config={editorConfig}
+            onBlur={(newContent) => setContent(newContent)}
+          />
+        </S.Form>
+        <S.Column>
+          <button type="button" onClick={() => onSubmitPost()}>
+            <span className="text">{postId ? "Atualizar" : "Publicar"}</span>
             <img src={plane} alt="plane" />
-            <span className="text">Publicar</span>
-          </span>
-        </button>
-      </S.Column>
+          </button>
+        </S.Column>
+      </div>
     </S.Container>
   );
 }
