@@ -11,6 +11,7 @@ import * as S from "./style";
 import useAuth from "../../hooks/useAuth";
 import IPost from "../../interfaces/IPost";
 import IUser from "../../interfaces/IUser";
+import Nav from "../../components/Nav";
 
 export default function Post() {
   const [post, setPost] = useState(null as IPost | null);
@@ -58,54 +59,57 @@ export default function Post() {
   }
 
   return (
-    <S.PostContainer>
-      <S.Controls>
-        <GoBack />
-        <div className="wrapper">
-          {isOwner && (
-            <button
-              className="edit"
-              type="button"
-              onClick={() => navigate(`/editor/post/${postId}`)}
-            >
-              <span className="text">Editar</span>
-              <span className="icon">
-                <img src={editIcon} alt="delete icon" />
-              </span>
-            </button>
-          )}
-          {authorized && (
-            <button className="delete" type="button" onClick={deletePost}>
-              <span className="text">Excluir</span>
-              <span className="icon">
-                <img src={deleteIcon} alt="delete icon" />
-              </span>
-            </button>
-          )}
-        </div>
-      </S.Controls>
-      <S.PostHeader>
-        <h1>{post.title}</h1>
-        <p>{post.subtitle || ""}</p>
-        <div className="meta">
-          <div>
-            <span className="label">Escrito por</span>
-            <span className="value">
-              {post.author.name || post.author.username}
-            </span>
+    <>
+      <Nav />
+      <S.PostContainer>
+        <S.Controls>
+          <GoBack />
+          <div className="wrapper">
+            {isOwner && (
+              <button
+                className="edit"
+                type="button"
+                onClick={() => navigate(`/editor/post/${postId}`)}
+              >
+                <span className="text">Editar</span>
+                <span className="icon">
+                  <img src={editIcon} alt="delete icon" />
+                </span>
+              </button>
+            )}
+            {authorized && (
+              <button className="delete" type="button" onClick={deletePost}>
+                <span className="text">Excluir</span>
+                <span className="icon">
+                  <img src={deleteIcon} alt="delete icon" />
+                </span>
+              </button>
+            )}
           </div>
-          <div>
-            <span className="label">Publicado em</span>
-            <span className="value">{formattedDate(post.createdAt)}</span>
+        </S.Controls>
+        <S.PostHeader>
+          <h1>{post.title}</h1>
+          <p>{post.subtitle || ""}</p>
+          <div className="meta">
+            <div>
+              <span className="label">Escrito por</span>
+              <span className="value">
+                {post.author.name || post.author.username}
+              </span>
+            </div>
+            <div>
+              <span className="label">Publicado em</span>
+              <span className="value">{formattedDate(post.createdAt)}</span>
+            </div>
           </div>
-        </div>
-      </S.PostHeader>
-      <S.PostContent>
-        <div
-          className="inner"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
-      </S.PostContent>
-    </S.PostContainer>
+        </S.PostHeader>
+        <S.PostContent>
+          <div
+            className="inner"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+        </S.PostContent>
+      </S.PostContainer>
+    </>
   );
 }

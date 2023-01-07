@@ -7,6 +7,7 @@ import * as S from "./style";
 import sortDown from "../../assets/images/sort-down.svg";
 import sortUp from "../../assets/images/sort-up.svg";
 import useAuth from "../../hooks/useAuth";
+import Nav from "../../components/Nav";
 
 export default function Blog() {
   const [posts, setPosts] = useState([]);
@@ -44,6 +45,7 @@ export default function Blog() {
   }
   return (
     <>
+      <Nav />
       <S.PostsFilters>
         <select
           onChange={() => setFilterByUser(!filterByUser)}

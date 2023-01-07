@@ -5,7 +5,7 @@ export const PostContainer = styled.section`
   max-width: 1200px;
   width: 100%;
   padding: 0 32px;
-  margin: 0 auto;
+  margin: 50px auto;
   background-color: ${theme.colors.surface_primary};
 `;
 

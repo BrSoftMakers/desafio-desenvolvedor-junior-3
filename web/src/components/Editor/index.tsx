@@ -9,6 +9,7 @@ import useAuth from "../../hooks/useAuth";
 import editorConfig from "../../helpers/editorConfig";
 import GoBack from "../GoBack";
 import UploadImage from "../UploadImage";
+import Nav from "../Nav";
 
 export default function Editor() {
   const [title, setTitle] = useState("");
@@ -61,38 +62,41 @@ export default function Editor() {
   };
 
   return (
-    <S.Container>
-      <GoBack />
-      <div className="inner">
-        <S.Form>
-          <input
-            type="text"
-            placeholder="Titulo"
-            value={title}
-            onChange={({ target }) => setTitle(target.value)}
-            required
-          />
-          <input
-            type="text"
-            placeholder="Subtítulo"
-            value={subtitle}
-            onChange={({ target }) => setSubtitle(target.value)}
-          />
-          <JoditEditor
-            ref={editor}
-            value={content}
-            config={editorConfig}
-            onBlur={(newContent) => setContent(newContent)}
-          />
-        </S.Form>
-        <S.Column>
-          <UploadImage setThumbnail={setThumbnail} />
-          <button type="button" onClick={() => onSubmitPost()}>
-            <span className="text">{postId ? "Atualizar" : "Publicar"}</span>
-            <img src={plane} alt="plane" />
-          </button>
-        </S.Column>
-      </div>
-    </S.Container>
+    <>
+      <Nav />
+      <S.Container>
+        <GoBack />
+        <div className="inner">
+          <S.Form>
+            <input
+              type="text"
+              placeholder="Titulo"
+              value={title}
+              onChange={({ target }) => setTitle(target.value)}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Subtítulo"
+              value={subtitle}
+              onChange={({ target }) => setSubtitle(target.value)}
+            />
+            <JoditEditor
+              ref={editor}
+              value={content}
+              config={editorConfig}
+              onBlur={(newContent) => setContent(newContent)}
+            />
+          </S.Form>
+          <S.Column>
+            <UploadImage setThumbnail={setThumbnail} />
+            <button type="button" onClick={() => onSubmitPost()}>
+              <span className="text">{postId ? "Atualizar" : "Publicar"}</span>
+              <img src={plane} alt="plane" />
+            </button>
+          </S.Column>
+        </div>
+      </S.Container>
+    </>
   );
 }
