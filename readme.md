@@ -112,6 +112,40 @@ Será considerado como diferenciais a utilização ou o conhecimento nas seguint
 
 </details>
 
+<br>
+
+**Minha implementação:**
+
+  ## Back-end:
+  
+   >Técnologias usadas
+  - [TypeScript](https://www.typescriptlang.org/) como linguagem;
+  - [JWT](https://jwt.io/introduction) para autenticação com nome de usuário e senha;
+  - [PostgreSQL](https://www.postgresql.org/) como banco de dados, usando:
+    - [Prisma](https://www.prisma.io/) como ORM;
+  
+  Este projeto usa a arquitetura MSC que divide a aplicação em 3 partes como:
+  - Model: tudo relacionado à conexão com o banco de dados;
+  - Service: tudo relacionado às regras de negócio da aplicação;
+  - Controller: lida com a entrada do usuário;
+
+  E utiliza a estratégia JWT para autenticação de seus usuários.
+  
+  Para uma visão geral detalhada de todas as rotas e respostas desta API, acesse a documentação:
+  
+  [http://localhost:3030/api-docs/](http://localhost:3030/api-docs/)  
+  ``A aplicação deve estar em execução para acessar o link``
+  
+  ## Front-end:
+  
+  >Técnologias usadas
+  - [TypeScript](https://www.typescriptlang.org/) como linguagem;
+  - [Axios](https://axios-http.com/ptbr/) para realizar a integração com o backend;
+  - [React](https://reactjs.org/) para construir as telas;
+  - [Styled Components](https://styled-components.com/) para estilização;
+  
+
+
 ## Contato 
  
 [![Linkedin Badge](https://img.shields.io/badge/-Franklin%20Ramos-0D1117?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/franklinrms/)](https://www.linkedin.com/in/franklinrms/) 
