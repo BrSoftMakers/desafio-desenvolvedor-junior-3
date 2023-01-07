@@ -3,6 +3,8 @@ export enum ErrorTypes {
   TokenNotFound = 'TokenNotFound',
   InvalidEntity = 'InvalidEntity',
   UsernameInvalid = 'UsernameInvalid',
+  PostNotFound = 'PostNotFound',
+  Unauthorized = 'Unauthorized',
 }
   
 type ErrorResponseObject = { 
@@ -31,5 +33,13 @@ export const errorCatalog: ErrorCatalog = {
   UsernameInvalid: {
     message: 'Username already registered',
     httpStatus: 409,
+  },
+  PostNotFound: {
+    message: 'Post not found',
+    httpStatus: 404,
+  },
+  Unauthorized: {
+    message: 'Unauthorized user',
+    httpStatus: 401,
   },
 };

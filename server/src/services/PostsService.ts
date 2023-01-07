@@ -1,7 +1,14 @@
 import prisma from '../database/prisma';
+import { ErrorTypes } from '../errors/catalog';
 import IPost from '../interfaces/IPost';
 
 export default class PostsService {
+  private getPostById = async (id: number) => prisma.posts.findUnique({
+    where: { id },
+    include: { 
+      author: { select: { username: true, name: true } }, 
+    },
+  });
   public create = async (authorId: string, post: IPost) => {
     const newPost = await prisma.posts.create({
       data: {
@@ -35,14 +42,16 @@ export default class PostsService {
       },
     });
 
-  public readOne = async (id: number) => prisma.posts.findUnique({
-    where: { id },
-    include: { 
-      author: { select: { username: true, name: true } }, 
-    },
-  });
+  public readOne = async (id: number) => {
+    const post = await this.getPostById(id);
+    if (!post) throw new Error(ErrorTypes.PostNotFound);
+    return post;
+  };
 
   public update = async (id: number, post: IPost) => {
+    const postExists = await this.getPostById(id);
+    if (!postExists) throw new Error(ErrorTypes.PostNotFound);
+
     const newPost = await prisma.posts.update({
       where: { id },
       data: {
@@ -52,8 +61,12 @@ export default class PostsService {
     });
     return newPost;
   };
+  public delete = async (id: number) => {
+    const postExists = await this.getPostById(id);
+    if (!postExists) throw new Error(ErrorTypes.PostNotFound);
 
-  public delete = async (id: number) => prisma.posts.delete({
-    where: { id },
-  });
+    await prisma.posts.delete({
+      where: { id },
+    });
+  };
 }
