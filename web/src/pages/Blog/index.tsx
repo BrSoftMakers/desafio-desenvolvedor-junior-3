@@ -8,6 +8,7 @@ import sortDown from "../../assets/images/sort-down.svg";
 import sortUp from "../../assets/images/sort-up.svg";
 import useAuth from "../../hooks/useAuth";
 import Nav from "../../components/Nav";
+import Loading from "../../components/Loading";
 
 export default function Blog() {
   const [posts, setPosts] = useState([]);
@@ -41,7 +42,7 @@ export default function Blog() {
   }, [posts]);
 
   if (!posts.length) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
   return (
     <>

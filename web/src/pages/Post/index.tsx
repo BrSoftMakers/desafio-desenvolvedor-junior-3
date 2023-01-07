@@ -12,6 +12,7 @@ import useAuth from "../../hooks/useAuth";
 import IPost from "../../interfaces/IPost";
 import IUser from "../../interfaces/IUser";
 import Nav from "../../components/Nav";
+import Loading from "../../components/Loading";
 
 export default function Post() {
   const [post, setPost] = useState(null as IPost | null);
@@ -55,7 +56,7 @@ export default function Post() {
   }, [postId]);
 
   if (!post) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return (
