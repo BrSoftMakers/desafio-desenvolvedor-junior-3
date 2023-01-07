@@ -5,7 +5,7 @@ export const Container = styled.section`
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  height: 100vh;
+  min-height: calc(100vh - 230px);
   padding: 20px 0;
 
   .inner {
@@ -48,8 +48,6 @@ export const Column = styled.aside`
   align-items: center;
   gap: 1rem;
   overflow: hidden;
-
-  /* background-color: aliceblue; */
 
   button {
     display: flex;

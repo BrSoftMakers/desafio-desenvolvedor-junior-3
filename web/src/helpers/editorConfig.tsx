@@ -4,7 +4,7 @@ const config = {
   showCharsCounter: false,
   showWordsCounter: false,
   showXPathInStatusbar: false,
-  minHeight: 700,
+  minHeight: 500,
   buttons:
     "bold,italic,underline,strikethrough,eraser,font,fontsize,paragraph,lineHeight,superscript,subscript,image,video,cut,copy,paste,hr,eraser,undo,redo,source",
 };
