@@ -6,5 +6,4 @@ COPY . .
 
 RUN npm install
 
-# alterar para o comando de produção
-CMD ["npm", "run", "dev"] 
+CMD ["npm",  "start"] 
