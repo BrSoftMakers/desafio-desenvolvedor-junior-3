@@ -1,0 +1,34 @@
+.register{
+    height: calc(100vh - 50px);
+    background: url('https://wallpaperaccess.com/full/5673922.jpg');  
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formRegister{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+}
+
+.registerInput{
+    margin: .7rem 0;
+    padding: .3rem 0;
+}
+
+.registerSubmit{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #d35400;
+    color: #FFF;
+    padding: .5rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5%;
+}

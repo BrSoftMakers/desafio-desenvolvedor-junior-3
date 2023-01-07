@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.7",
+    "multer": "^1.4.3",
+    "nodemon": "^2.0.12"
+  },
+  "name": "api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "José Wêmerson dos Santos",
+  "license": "ISC",
+  "description": ""
+}

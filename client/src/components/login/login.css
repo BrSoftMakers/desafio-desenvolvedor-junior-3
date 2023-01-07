@@ -1,0 +1,34 @@
+.login{
+    height: calc(100vh - 50px);
+    background: url('https://images.unsplash.com/photo-1542435503-956c469947f6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fHdyaXRpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80');  
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formLogin{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+}
+
+.loginInput{
+    margin: .7rem 0;
+    padding: .3rem 0;
+}
+
+.loginSubmit{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #16A085;
+    color: #FFF;
+    padding: .5rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5%;
+}
