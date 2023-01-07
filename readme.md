@@ -1,4 +1,73 @@
-![SoftMakers](https://vagas.softmakers.com.br/assets/img/logotipo14xxhdpi.png)
+<div align="center">
+  <img src="https://vagas.softmakers.com.br/assets/img/logotipo14xxhdpi.png" width="400" alt="Logo SoftMakers" />
+</div>
+
+<br>
+
+
+
+
+
+## Como baixar e executar a aplicação
+
+```bash
+    git clone git@github.com:franklinrms/desafio-desenvolvedor-junior-3.git
+    cd desafio-desenvolvedor-junior-3
+``` 
+
+<br>
+
+> Para rodar este método você precisa estar com o ``Docker`` instalado em seu computador
+
+```bash
+    npm run compose
+``` 
+ou 
+```bash
+    docker-compose up -d --build
+``` 
+
+<details>
+  <summary>Sem Docker</summary>
+  
+  <br>
+  
+> Para rodar este método você precisa estar com o ``node`` instalado em seu computador e acesso a um banco de dados ``PostgreSQL``
+
+- Para instalar dependências do Backend:
+
+```bash
+    cd server && npm install
+``` 
+Você deverá configurar as variáveis de ambiente em um arquivo ``.env``
+
+>`env.example`
+  ```env
+    PORT=3030
+    DATABASE_URL=postgres://postgres:postgres@localhost:5432/blog
+    JWT_SECRET=secret
+  ```
+   
+ - Para executar a api:
+     ```bash
+      npm start
+     ``` 
+ <br>
+
+ - Para instalar dependências do Frontend:
+  ```bash
+      cd web && npm install
+  ``` 
+  
+  - Para executar o projeto:
+  ```bash
+      npm start
+  ``` 
+
+</details>
+
+<details>
+  <summary>Desafio proposto </summary>
 
 # Desafio - Desenvolvedor Fullstack Junior 3.
 Seja bem-vindo! Este desafio foi projetado para avaliar a sua capacidade técnica como candidato à vaga de Desenvolvedor Fullstack Junior 3.
@@ -25,7 +94,8 @@ Desenvolva uma aplicação web utilizando o framework front-end react e esta dev
 - Eu como usuário desejo me cadastrar;
 - Eu como usuário desejo realizar login;
 - Eu como usuário autenticado desejo visualizar todas as postagens;
-- Eu como usuário autenticado desejo visualizar os detalhes de uma postagem; - Eu como usuário autenticado desejo visualizar todas as minhas postagens;
+- Eu como usuário autenticado desejo visualizar os detalhes de uma postagem; 
+- Eu como usuário autenticado desejo visualizar todas as minhas postagens;
 - Eu como usuário autenticado desejo criar uma postagem;
 - Eu como usuário autenticado desejo editar uma postagem que eu criei;
 - Eu como usuário autenticado desejo deletar uma postagem que eu criei.
@@ -39,3 +109,9 @@ Será considerado como diferenciais a utilização ou o conhecimento nas seguint
 - Conhecimento em Firebase;
 - Conhecimento em Docker;
 - Conhecimento em infraestrutura em nuvem.
+
+</details>
+
+## Contato 
+ 
+[![Linkedin Badge](https://img.shields.io/badge/-Franklin%20Ramos-0D1117?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/franklinrms/)](https://www.linkedin.com/in/franklinrms/) 
