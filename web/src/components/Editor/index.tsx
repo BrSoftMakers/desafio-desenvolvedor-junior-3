@@ -10,6 +10,7 @@ import editorConfig from "../../helpers/editorConfig";
 import GoBack from "../GoBack";
 import UploadImage from "../UploadImage";
 import Nav from "../Nav";
+import Footer from "../Footer";
 
 export default function Editor() {
   const [title, setTitle] = useState("");
@@ -97,6 +98,7 @@ export default function Editor() {
           </S.Column>
         </div>
       </S.Container>
+      <Footer />
     </>
   );
 }

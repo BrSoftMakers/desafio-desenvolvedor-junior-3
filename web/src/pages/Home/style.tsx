@@ -31,7 +31,7 @@ export const Form = styled.form`
   }
   input {
     background: ${theme.colors.surface_primary};
-    border-radius: ${theme.borderRadius.lg};
+    border-radius: ${theme.borderRadius.md};
     color: ${theme.colors.text_primary};
     font-size: 18px;
     height: 100%;
@@ -63,7 +63,7 @@ export const Form = styled.form`
     }
   }
   .submit {
-    border-radius: ${theme.borderRadius.lg};
+    border-radius: ${theme.borderRadius.md};
     padding: 20px 30px;
     background: ${theme.colors.brand};
     font-size: 22px;
@@ -79,7 +79,7 @@ export const Form = styled.form`
 export const FormContainer = styled.div`
   max-width: 500px;
   background-color: ${theme.colors.surface_primary};
-  border-radius: ${theme.borderRadius.lg};
+  border-radius: ${theme.borderRadius.md};
   box-shadow: 10px 10px 64px 0px rgba(186, 186, 202, 0.75);
   padding: 30px 20px;
   transition: transform 0.8s;
@@ -95,7 +95,7 @@ export const FormContainer = styled.div`
 
 export const Container = styled.section`
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 150px);
   align-items: center;
   justify-content: space-around;
   width: 100%;

@@ -9,6 +9,7 @@ import sortUp from "../../assets/images/sort-up.svg";
 import useAuth from "../../hooks/useAuth";
 import Nav from "../../components/Nav";
 import Loading from "../../components/Loading";
+import Footer from "../../components/Footer";
 
 export default function Blog() {
   const [posts, setPosts] = useState([]);
@@ -71,6 +72,7 @@ export default function Blog() {
           ))}
         </div>
       </S.BlogContainer>
+      <Footer />
     </>
   );
 }
