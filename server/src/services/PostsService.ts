@@ -1,6 +1,7 @@
 import prisma from '../database/prisma';
 import { ErrorTypes } from '../errors/catalog';
 import IPost from '../interfaces/IPost';
+import IUser from '../interfaces/IUser';
 
 export default class PostsService {
   private getPostById = async (id: number) => prisma.posts.findUnique({
@@ -48,22 +49,31 @@ export default class PostsService {
     return post;
   };
 
-  public update = async (id: number, post: IPost) => {
+  public update = async (id: number, userId: string, post: IPost) => {
     const postExists = await this.getPostById(id);
     if (!postExists) throw new Error(ErrorTypes.PostNotFound);
 
-    const newPost = await prisma.posts.update({
+    if (postExists.authorId !== userId) {
+      throw new Error(ErrorTypes.Unauthorized);
+    }
+
+    const updatedPost = await prisma.posts.update({
       where: { id },
       data: {
         ...post,
       },
       include: { author: { select: { username: true, name: true } } },
     });
-    return newPost;
+    return updatedPost;
   };
-  public delete = async (id: number) => {
+  public delete = async (id: number, user:Partial<IUser>) => {
     const postExists = await this.getPostById(id);
     if (!postExists) throw new Error(ErrorTypes.PostNotFound);
+    const author = postExists.authorId === user.id;
+
+    if (!author && user.role !== 'ADMIN') {
+      throw new Error(ErrorTypes.Unauthorized);
+    }
 
     await prisma.posts.delete({
       where: { id },
