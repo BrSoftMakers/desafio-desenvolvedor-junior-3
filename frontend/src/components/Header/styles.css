@@ -1,0 +1,14 @@
+.container__img {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  max-width: 100vw;
+  }
+  
+  .container__img img {
+    width: 100%;
+    height: 50%;
+  }

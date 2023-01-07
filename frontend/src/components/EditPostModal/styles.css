@@ -1,0 +1,109 @@
+.backdrop {
+    background: rgba(16, 15, 15, 0.56);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal__edit {
+    display: flex;
+    flex-direction: column;
+    background:  rgb(11, 27, 43);
+    padding: 56px;
+    position: relative;
+    text-align: center;
+    border-radius: 8px;
+    
+        justify-content: center;
+        border-radius: 8px;
+        width: 90%;
+        text-align: center;
+        display: flex;
+        align-items: center; 
+}
+
+
+.modal__edit h1{
+    margin-bottom: 30px;
+}
+
+.close__btn {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    cursor: pointer;
+}
+
+.container__btn__edit{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.btn__green {
+    all: unset;
+    background-color:  green;
+    color: white;
+    width: 45%;
+    height: 50px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tbn__red{
+    all: unset;
+    background-color:  red;
+    color: white;
+    width: 45%;
+    height: 50px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 50px;
+}
+
+
+.form__titulo{
+    border: none;
+    display: flex;
+    justify-content: center;
+    background: #FFFFFF;
+    border: 1px solid #555555;
+    border-radius: 5px;
+    width: 850px;
+    height: 43px;
+    margin-bottom: 20px;
+    padding: 5px;
+    font-style: normal;
+    text-align: center;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #484848;
+}
+
+.form__descricao{
+    border: none;
+    display: flex;
+    justify-content: center;
+    background: #FFFFFF;
+    border: 1px solid #555555;
+    border-radius: 5px;
+    width: 850px;
+    height: 300px;
+    margin-bottom: 20px;
+    padding: 5px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #484848;
+}
