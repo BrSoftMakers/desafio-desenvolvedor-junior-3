@@ -37,7 +37,12 @@ export default function UploadImage({ setThumbnail }: PropsUploadImage) {
   return (
     <Container>
       <img src={base64URL || defaultImg} alt="img" />
-      <input type="file" name="file" onChange={handleFileInputChange} />
+      <input
+        type="file"
+        accept="image/*"
+        name="file"
+        onChange={handleFileInputChange}
+      />
     </Container>
   );
 }
