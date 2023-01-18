@@ -1,0 +1,39 @@
+.forms {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  height: 26vh;
+  border: 1px, solid, white;
+  background-color: white;
+  border-radius: 20px;
+  overflow: auto;
+}
+
+.inputTitle {
+  width: 40vw;
+  height: 10px;
+  border: 1px, solid, black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.inputContent {
+  width: 40vw;
+  height: 20vh;
+  border: 1px, solid, black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.btnP {
+  margin: 6px;
+  padding: 10px;
+  background-color: aqua;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+  
+.btnP:hover {
+  background-color: greenyellow;
+}

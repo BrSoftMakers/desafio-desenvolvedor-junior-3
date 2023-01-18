@@ -1,0 +1,100 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: burlywood;
+  }
+  
+  .blog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    background-color: aqua;
+  }
+  
+  
+  .btnh {
+    margin: 6px;
+    padding: 8px;
+    background-color: burlywood;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .btnh:hover {
+    background-color: greenyellow;
+  }
+  
+  h1 {
+    text-transform: uppercase;
+    color: rgb(13, 13, 14);
+  }
+  
+  .contPosts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90vw;
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .posts {
+    background-color: white;
+    width: 40%;
+    height: 40%;
+    margin: 20px;
+    opacity: 0.8;
+    padding: 20px;
+    border-radius: 20px;
+    overflow: auto;
+  }
+  
+  .content {
+    font-size: 14px;
+  }
+  
+  .conteudo {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .btnX {
+    padding: 5px;
+    background-color: aqua;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .btnE {
+    padding: 8px;
+    background-color: aqua;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .inputNumber {
+    padding: 10px;
+    width: 6vw;
+    height: 4vh;
+    margin: 4px;
+  }
+
+  .align {
+    display: flex;
+    flex-direction: row;
+  }
