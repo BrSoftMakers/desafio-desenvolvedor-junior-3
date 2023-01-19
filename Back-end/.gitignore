@@ -1,0 +1,6 @@
+.env
+node_modules
+build
+.DS_STORE
+coverage
+mysql-refatorado.sql
