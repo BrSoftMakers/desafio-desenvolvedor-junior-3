@@ -1,0 +1,39 @@
+{
+  "name": "api-youtubecine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./build/src/index.js",
+    "build": "tsc",
+    "dev": "ts-node-dev ./src/index.ts",
+    "migrations": "tsc && node ./build/src/database/migrations/Migrations.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.15",
+    "@types/jest": "^29.2.5",
+    "@types/jsonwebtoken": "^9.0.0",
+    "@types/node": "^18.11.18",
+    "@types/uuid": "^9.0.0",
+    "jest": "^29.3.1",
+    "ts-jest": "^29.0.3",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "firebase": "^9.15.0",
+    "jsonwebtoken": "^9.0.0",
+    "mysql": "^2.18.1",
+    "uuid": "^9.0.0"
+  }
+}

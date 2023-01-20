@@ -1,0 +1,21 @@
+### Ping
+GET http://localhost:3003/users
+
+### Signup
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "Maycon",
+    "email": "Maycon@gmail.com",
+    "password": "o0zane0o"
+}
+
+### Login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "Maycon@gmail.com",
+    "password": "o0zane0o"
+}
