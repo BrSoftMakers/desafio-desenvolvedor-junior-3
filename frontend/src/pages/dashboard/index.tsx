@@ -50,7 +50,7 @@ export default function Dashboard({ post }: HomeProps) {
 
     async function handleModalView(id: string) {
         const apiClient = setupAPIClient();
-        console.log(id)
+        //console.log(id)
         const response = await apiClient.get('/post', {
             params: {
                 post_id: id

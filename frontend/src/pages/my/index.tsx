@@ -8,7 +8,6 @@ import { HiOutlinePencilSquare, HiOutlineTrash } from 'react-icons/hi2'
 
 import { setupAPIClient } from '../../services/api'
 
-import { ModalProps } from '../../components/ModalPost'
 import {ModalUpdateProps} from '../../components/ModalUpdate'
 import { AuthContext } from '../../contexts/AuthContext'
 
@@ -165,14 +164,6 @@ export default function Dashboard({ post }: HomeProps) {
 
                 </main>
 
-                {/* {modalVisible && (
-                    <ModalProps
-                        isOpen={modalVisible}
-                        onRequestClose={handleCloseModal}
-                        post={modalItem}
-                        handleRemovePost={handleRemovePost}
-                    />
-                )} */}
                 {modalVisible && (
                     <ModalUpdateProps
                         isOpen={modalVisible}
@@ -196,7 +187,6 @@ export const getServerSideProps = canSSRAuth(async (ctx) => {
             user_id: user.data.id
         }
     });
-
     //console.log(response.data)
 
     return {

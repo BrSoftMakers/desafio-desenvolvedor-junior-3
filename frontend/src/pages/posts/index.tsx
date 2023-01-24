@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState, useContext } from "react"
+import { FormEvent, useState } from "react"
 import Head from 'next/head'
 import { Header } from '../../components/Header'
 import styles from './styles.module.scss'
@@ -30,7 +30,7 @@ export default function Post({ users }: AuthorProps) {
             if (title === '' || caption === '' || description === '') {
                 toast.error("Preencha todos os campos!");
                 return;
-            }    
+            }
 
             const apiClient = setupAPIClient();
 
@@ -104,7 +104,7 @@ export const getServerSideProps = canSSRAuth(async (ctx) => {
 
     const response = await apiClient.get('/me');
 
-    console.log(response.data);
+    //console.log(response.data);
 
     return {
         props: {

@@ -3,7 +3,7 @@ import Head from "next/head"
 import Image from "next/image"
 import styles from '../../../styles/home.module.scss'
 
-import logoImg from '../../../public/logo.svg'
+import logoImg from '../../../public/logo.png'
 
 import { Input } from "../../components/ui/input"
 import { Button } from "../../components/ui/button"
@@ -47,7 +47,7 @@ export default function Signup() {
         <title>OBLog - Faça seu cadastro</title>
       </Head>
       <div className={styles.containerCenter}>
-        {/*<Image src={logoImg} alt="Logo Sujeito Pizzaria" />*/}
+        <Image src={logoImg} alt="Logo O Blog" width={400} />
         <div className={styles.login}>
           <h1>Criando sua conta</h1>
           
