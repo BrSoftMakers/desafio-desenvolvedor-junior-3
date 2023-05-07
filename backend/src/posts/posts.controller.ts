@@ -37,13 +37,16 @@ export class PostsController {
   @Get(':postId?')
   async get(
     @Param('postId') postId: string,
+    @Req() req: Request,
     @Body() orderBy?: OrderByDto,
   ): Promise<PostType | PostType[] | { message: string } | null> {
     const { orderBy: order } = orderBy;
+    const userId = req?.user?.id;
+
     if (postId) {
       return this.postsService.findById(postId);
     } else {
-      return this.postsService.getAll(order);
+      return this.postsService.getAll(userId, order);
     }
   }
 

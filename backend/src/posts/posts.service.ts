@@ -30,8 +30,8 @@ export class PostsService {
     return post;
   }
 
-  async getAll(orderBy?: string): Promise<Post[] | null> {
-    return this.postsRepository.getAll(orderBy);
+  async getAll(userId: string, orderBy?: string): Promise<Post[] | null> {
+    return this.postsRepository.getAll(userId, orderBy);
   }
 
   async delete(postId: string): Promise<void> {
