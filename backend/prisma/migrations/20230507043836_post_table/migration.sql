@@ -1,0 +1,17 @@
+-- AlterTable
+ALTER TABLE "TB_USERS" ADD CONSTRAINT "TB_USERS_pkey" PRIMARY KEY ("id");
+
+-- CreateTable
+CREATE TABLE "TB_POSTS" (
+    "id" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "text" TEXT NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3),
+    "userId" TEXT,
+
+    CONSTRAINT "TB_POSTS_pkey" PRIMARY KEY ("id")
+);
+
+-- AddForeignKey
+ALTER TABLE "TB_POSTS" ADD CONSTRAINT "TB_POSTS_userId_fkey" FOREIGN KEY ("userId") REFERENCES "TB_USERS"("id") ON DELETE SET NULL ON UPDATE CASCADE;
