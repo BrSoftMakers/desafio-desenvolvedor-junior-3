@@ -8,6 +8,8 @@ export class UserController {
 
   @Post()
   async save(@Body() user: CreateUserDto): Promise<{ message: string }> {
-    return { message: await this.userService.save(user) };
+    await this.userService.save(user);
+
+    return { message: 'Usuário criado.' };
   }
 }

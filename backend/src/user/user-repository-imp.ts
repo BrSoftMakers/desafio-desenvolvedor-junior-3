@@ -8,11 +8,9 @@ import { PrismaService } from '../database/prisma/prisma.service';
 export class UserRepositoryImp implements UserRepository {
   constructor(private prisma: PrismaService) {}
 
-  async save(user: CreateUserDto): Promise<string> {
+  async save(user: CreateUserDto): Promise<User> {
     try {
-      await this.prisma.user.create({ data: user });
-
-      return 'Usuário criado.';
+      return this.prisma.user.create({ data: user });
     } catch (error) {
       return;
     }
@@ -20,5 +18,9 @@ export class UserRepositoryImp implements UserRepository {
 
   findById(id: string): Promise<User> {
     return this.prisma.user.findFirst({ where: { id } });
+  }
+
+  findUserByEmail(email: string): Promise<User | null> {
+    return this.prisma.user.findFirst({ where: { email } });
   }
 }
