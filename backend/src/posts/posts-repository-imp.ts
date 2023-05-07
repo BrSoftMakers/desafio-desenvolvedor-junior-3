@@ -35,9 +35,9 @@ export class PostsRepositoryImp implements PostsRepository {
     return;
   }
 
-  async getAll(): Promise<Post[] | null> {
+  async getAll(orderBy: string): Promise<Post[] | null> {
     return this.prisma.post.findMany({
-      orderBy: { createdAt: 'desc' },
+      orderBy: { createdAt: orderBy === 'asc' ? 'asc' : 'desc' },
     });
   }
 

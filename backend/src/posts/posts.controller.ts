@@ -15,6 +15,7 @@ import { JwtAuthGuard } from '../auth/jwt-strategy/jwt-auth.guard';
 import { Request } from 'express';
 import { Post as PostType } from '@prisma/client';
 import { UpdatePostDto } from './dto/update-post-dto';
+import { OrderByDto } from './dto/orderBy-dto';
 
 @Controller('posts')
 @UseGuards(JwtAuthGuard)
@@ -36,11 +37,13 @@ export class PostsController {
   @Get(':postId?')
   async get(
     @Param('postId') postId: string,
+    @Body() orderBy?: OrderByDto,
   ): Promise<PostType | PostType[] | { message: string } | null> {
+    const { orderBy: order } = orderBy;
     if (postId) {
       return this.postsService.findById(postId);
     } else {
-      return this.postsService.getAll();
+      return this.postsService.getAll(order);
     }
   }
 

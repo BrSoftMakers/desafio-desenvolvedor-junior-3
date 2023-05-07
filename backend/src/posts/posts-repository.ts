@@ -10,6 +10,6 @@ export abstract class PostsRepository {
     updatePost: UpdatePostDto,
   ): Promise<{ message: string }>;
   abstract delete(postId: string): Promise<void>;
-  abstract getAll(): Promise<Post[] | null>;
+  abstract getAll(orderBy: string): Promise<Post[] | null>;
   abstract findPostByTitle(title: string): Promise<Post | null>;
 }
