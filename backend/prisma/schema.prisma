@@ -11,10 +11,23 @@ datasource db {
 }
 
 model User {
-  id       String @default(uuid())
+  id       String @id @default(uuid())
   email    String @unique
   name     String
   password String
+  Post     Post[]
 
   @@map("TB_USERS")
+}
+
+model Post {
+  id        String    @id @default(uuid())
+  title     String    @unique
+  text      String
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  User      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+
+  @@map("TB_POSTS")
 }
