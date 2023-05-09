@@ -1,0 +1,19 @@
+version: '3'
+services:
+  node:
+    container_name: node-frontend
+    build: .
+    command: npm run dev
+    restart: always
+    env_file:
+      - ./.env
+    ports:
+      - '$NODE_LOCAL_PORT:$NODE_DOCKER_PORT'
+    volumes:
+      - '.:/usr/app'
+      - '/usr/app/node_modules'
+    networks:
+      - link-all
+networks:
+  link-all:
+    driver: bridge

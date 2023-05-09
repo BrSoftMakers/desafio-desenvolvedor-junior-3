@@ -1,0 +1,92 @@
+.home h1 {
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.menu-home {
+    padding: 1rem 1rem;
+    margin: 1rem 0rem;
+    border: 1px #777 solid;
+    border-radius: 0.5rem;
+    transition: 0.3s;
+}
+
+.menu-home:hover {
+    border: 1px #b1b1b1 solid;
+}
+
+.menu-home span {
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #777;
+}
+
+.post div {
+    padding-left: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+
+}
+
+.post h2,
+.post-content {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.post h2 {
+    background-color: #13161a;
+    border-radius: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.7rem;
+}
+
+.post h2::first-letter,
+.post p::first-letter {
+    text-transform: uppercase;
+}
+
+.btn {
+    background-color: #fff;
+    color: #0e1217;
+    border: 1px solid #fff;
+    opacity: 1;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    min-width: 100px;
+    max-width: 200px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1rem;
+    margin-right: 1rem;
+}
+
+.btn:hover{
+    color: #fff;
+    background-color: #0e1217;
+}
+
+.btn-danger {
+    background-color: #ffd7d7;
+    border: 1px solid #ff9393;
+}
+
+.btn-warning {
+    background-color: #ffd7b3;
+    border: 1px solid #fbb27e;
+}
+
+.btn-success {
+    background-color: #d1fcd9;
+    border: 1px solid #a7ffa1;
+}

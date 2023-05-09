@@ -1,0 +1,94 @@
+version: '3'
+services:
+  ## Comentado porque no desafio não especificava do banco de dados, estava usando Mongo DB
+  ## Mas nessa vaga no site, só havia bancos de dados relacionais
+  ## Decidi refazer toda a API usando MySql
+  # db:
+  #   container_name: mongo
+  #   image: mongo
+  #   restart: always
+  #   ports:
+  #     - 27017:27017
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: toor
+  #   volumes:
+  #     - db_driver:/data/db
+  #   networks:
+  #     - link-all
+  # db-viewer:
+  #   container_name: mongo-express
+  #   depends_on:
+  #     - db
+  #   image: mongo-express
+  #   restart: always
+  #   ports:
+  #     - 8081:8081
+  #   environment:
+  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
+  #     ME_CONFIG_MONGODB_ADMINPASSWORD: toor
+  #     ME_CONFIG_MONGODB_PORT: 27017
+  #     ME_CONFIG_MONGODB_SERVER: mongo
+  #   networks:
+  #     - link-all
+  db:
+    container_name: mysql
+    image: mysql
+    restart: unless-stopped
+    ports:
+      - $DB_LOCAL_PORT:$DB_DOCKER_PORT
+    env_file:
+      - ./.env
+    environment:
+      MYSQL_DATABASE: $DB_NAME
+      MYSQL_PASSWORD: $DB_PASS
+      MYSQL_ROOT_PASSWORD: $DB_PASS
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD
+      interval: 5s
+      timeout: 5s
+      retries: 60
+    volumes:
+      - db_driver:/var/lib/mysql
+      - ./sql_scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - link-all
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      - PMA_HOST=db
+    networks:
+      - link-all
+    depends_on:
+      db:
+        condition: service_healthy
+  node:
+    container_name: node-backend
+    depends_on:
+      db:
+        condition: service_healthy
+    build: .
+    command: npm start
+    restart: always
+    env_file:
+      - ./.env
+    ports:
+      - '$NODE_LOCAL_PORT:$NODE_DOCKER_PORT'
+    volumes:
+      - '.:/usr/app'
+    networks:
+      - link-all
+volumes:
+  db_driver:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: './db_data'
+networks:
+  link-all:
+    driver: bridge
