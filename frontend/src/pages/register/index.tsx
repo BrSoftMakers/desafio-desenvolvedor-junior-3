@@ -72,11 +72,22 @@ export default function Register() {
       };
 
       try {
-        const response = await userService.login('/register', data);
-        console.log(response);
+        await userService.login('/register', data);
         return;
       } catch (error: any) {
-        console.log(error);
+        console.log(error.response);
+        const { response } = error;
+
+        if (response?.status === 409) {
+          setForm((oldState) => {
+            return {
+              ...oldState,
+              emailError: 'E-mail já está em uso',
+              emailIsValid: 'notOk',
+            };
+          });
+        }
+
         return;
       }
     },
