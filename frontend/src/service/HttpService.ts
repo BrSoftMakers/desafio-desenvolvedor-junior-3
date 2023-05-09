@@ -1,10 +1,16 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosError } from 'axios';
 
+interface DataType {
+  [key: string]: string;
+}
+
 export default class HttpService {
   protected http: AxiosInstance;
 
-  constructor(baseURL: string) {
-    this.http = axios.create({ baseURL });
+  baseURL = 'http://localhost:5200';
+
+  constructor() {
+    this.http = axios.create({ baseURL: this.baseURL });
   }
 
   // protected async get<T>(url: string): Promise<T> {
@@ -17,7 +23,7 @@ export default class HttpService {
   //   }
   // }
 
-  protected async post<T>(url: string, data: any): Promise<T> {
+  protected async post<T>(url: string, data: DataType): Promise<T> {
     try {
       const response: AxiosResponse<T> = await this.http.post(url, data);
       return response.data;

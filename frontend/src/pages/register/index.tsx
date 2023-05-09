@@ -1,10 +1,14 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useContext, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import UserService from '../../service/UserService';
+import isValidFields from '../../utils/handleInput';
+
+import Button from '../../components/Button';
 import Input from '../../components/Input';
 
 import styles from './styles.module.scss';
-import isValidFields from '../../utils/handleInput';
-import Button from '../../components/Button';
-import UserService from '../../service/UserService';
+import AppContext from '../../context/AppContext';
 
 type FormRegisterType = {
   name: string;
@@ -23,7 +27,9 @@ interface requiredFields {
 }
 
 export default function Register() {
-  const userService = new UserService('http://localhost:5200');
+  const { isLoading, setIsLoading } = useContext(AppContext);
+
+  const userService = useMemo(() => new UserService(), []);
 
   const [form, setForm] = useState<FormRegisterType>({
     name: '',
@@ -61,6 +67,8 @@ export default function Register() {
     });
   };
 
+  console.log(isLoading);
+
   const handleClick = useCallback(
     async (event: React.MouseEvent<HTMLButtonElement>): Promise<void> => {
       event.preventDefault();
@@ -72,7 +80,8 @@ export default function Register() {
       };
 
       try {
-        await userService.login('/register', data);
+        setIsLoading?.(true);
+        await userService.register('/register', data);
         return;
       } catch (error: any) {
         console.log(error.response);
@@ -89,9 +98,11 @@ export default function Register() {
         }
 
         return;
+      } finally {
+        setIsLoading?.(false);
       }
     },
-    [form?.email, form?.name, form?.password, userService]
+    [form?.email, form?.name, form?.password, setIsLoading, userService]
   );
 
   const handleButtonState = useCallback((): boolean => {
@@ -139,15 +150,20 @@ export default function Register() {
           isValid={form?.passwordIsValid}
         />
       </div>
-      <Button
-        onClick={handleClick}
-        text="Cadastrar"
-        isDisabled={!handleButtonState()}
-        customClass={styles.registerBtn}
-      />
+      {!isLoading && (
+        <Button
+          onClick={handleClick}
+          text="Cadastrar"
+          isDisabled={!handleButtonState()}
+          customClass={styles.registerBtn}
+        />
+      )}
+
+      {isLoading && <span>Carregando</span>}
+
       <div className={styles.backLogin}>
         <span>Já tem conta?</span>
-        <a>Clique para fazer Login</a>
+        <Link to="/login">Clique para fazer Login</Link>
       </div>
     </form>
   );

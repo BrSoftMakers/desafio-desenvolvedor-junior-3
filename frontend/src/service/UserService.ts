@@ -5,7 +5,7 @@ interface Body {
 }
 
 export default class UserService extends HttpService {
-  async login(url: string, body: Body): Promise<void> {
+  async register(url: string, body: Body): Promise<void> {
     await this.post(url, body);
   }
 }

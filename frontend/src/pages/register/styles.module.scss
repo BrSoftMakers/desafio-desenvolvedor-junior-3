@@ -23,7 +23,7 @@
     padding: 10px 20px;
     font-size: 16px;
     border: none;
-    background-color: #4caf50;
+    background-color: rgba(0, 0, 255, 0.5);
     color: #fff;
     cursor: pointer;
     border-radius: 4px;
@@ -51,8 +51,14 @@
     margin-top: 10px;
     gap: 0px;
 
+    span {
+      color: black;
+    }
+
     a {
       cursor: pointer;
+      color: rgba(0, 0, 255, 0.5);
+      text-decoration: none;
 
       &:hover {
         text-decoration: underline;

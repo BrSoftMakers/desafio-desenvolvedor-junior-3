@@ -26,7 +26,7 @@
   }
 
   &:focus-within {
-    border: 2px solid rgba(0, 0, 255, 0.2);
+    border: 2px solid rgba(0, 0, 255, 0.8);
 
     &[role='notOk'] {
       border: red 2px solid;
