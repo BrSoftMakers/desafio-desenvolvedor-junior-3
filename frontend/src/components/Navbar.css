@@ -1,0 +1,34 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #17191f;
+}
+
+.navbar h2 a {
+    opacity: 1;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar span {
+    font-size: 1rem;
+    padding-left: 1rem;
+    color: #777777;
+}
+
+.btn-new {
+    font-weight: bold;
+    border: 1px solid #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    opacity: 0.8;
+}
+
+.navbar .btn {
+    margin-top: -1rem;
+}

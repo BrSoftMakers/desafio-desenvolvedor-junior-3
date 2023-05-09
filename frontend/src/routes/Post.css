@@ -1,0 +1,26 @@
+.post h2 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.post p {
+    font-size: 1.1rem;
+    white-space: pre-wrap;
+}
+
+.post p::first-letter {
+    padding-left: 1rem;
+}
+
+.menu-post {
+    padding-top: 2rem;
+}
+
+.post-property {
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.post-property:hover {
+    opacity: 1;
+}

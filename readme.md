@@ -1,43 +1,44 @@
-![SoftMakers](https://vagas.softmakers.com.br/assets/img/logotipo14xxhdpi.png)
+# Projeto:
+Blog React + Api Nodejs
 
-# Desafio - Desenvolvedor Fullstack Junior 3.
-Seja bem-vindo! Este desafio foi projetado para avaliar a sua capacidade técnica como candidato à vaga de Desenvolvedor Fullstack Junior 3.
-## Instruções
-- Faça um fork deste repositório;
-- Utilize alguma das tecnologias (front-end e back-end) informadas na proposta desse desafio;
-- Crie um passo a passo de como rodar a sua aplicação;
-- Após finalizar, submeta um pull request com um comentário informando o seu e-mail de contato e aguarde nossa avaliação.
-## Proposta
-Você deverá desenvolver um blog. Para isso, separamos a proposta desse desafio em duas etapas:
+## Autor:
+Luís Araújo
 
-**Back-end:**
-Desenvolva uma Restful API utilizando Node.JS que contenha as seguintes rotas:
-- `/register` - [POST] - esta rota deve cadastrar um usuário;
-- `/login` - [POST] - esta rota deve autenticar um usuário;
-- `/posts` - [POST] - esta rota deve cadastrar uma postagem mantendo a referência do autor. (requer autenticação);
-- `/posts/{id}` - [PUT] - esta rota deve editar a postagem do ID especificado mantendo a referência do autor. (requer autenticação);
-- `/posts` - [GET] - esta rota deve retornar a lista de todas as postagens ordenadas das mais recentes para as mais antigas com a possibilidade de inverter esta ordenação e de retornar apenas as postagens do usuário que fez a requisição (requer autenticação);
-- `/posts/{id}` - [GET] - esta rota deve retornar a postagem do ID especificado com todos os seus dados (requer autenticação);
-- `/posts/{id}` - [DELETE] - esta rota deve deletar a postagem do ID especificado.
+## Descrição: 
+Esse projeto foi criado com base na proposta do desafio para a vaga de desenvolvedor jr 3 da SoftMakers.
 
-**Front-end:**
-Desenvolva uma aplicação web utilizando o framework front-end react e esta deve atender as seguintes histórias de usuário:
-- Eu como usuário desejo me cadastrar;
-- Eu como usuário desejo realizar login;
-- Eu como usuário autenticado desejo visualizar todas as postagens;
-- Eu como usuário autenticado desejo visualizar os detalhes de uma postagem;
-- Eu como usuário autenticado desejo visualizar todas as minhas postagens;
-- Eu como usuário autenticado desejo criar uma postagem;
-- Eu como usuário autenticado desejo editar uma postagem que eu criei;
-- Eu como usuário autenticado desejo deletar uma postagem que eu criei.
-> **Observações:**
-> - Sua aplicação web DEVE se comunicar com sua API;
-> - Você pode utilizar o banco de dados de sua preferência.
-## Diferenciais
-Será considerado como diferenciais a utilização ou o conhecimento nas seguintes tecnologias:
-- Utilização de algum ORM;
-- Conhecimento em React Native;
-- Conhecimento em Firebase;
-- Conhecimento em Docker;
-- Conhecimento em infraestrutura em nuvem;
-- Conhecimento em testes a nível de código.
+Na proposta inclui uma api no backend que irá alimentar um blog como frontend, maiores detalhes em: github.com/BrSoftMakers/desafio-desenvolvedor-junior-3
+
+## Sobre o projeto:
+## Backend:
+Desenvolvido em NodeJs, utilizando o framework Express.js, nele foi utilizado o Sequelize para gerenciar interação com o banco de dados. O banco de dados utilizado foi o MySQL.
+
+Ele consiste em uma API que gerencia login e cadastro de usuários, nesse utilizando JWT (Json Web Token), além da gerência sobre postagens, nessa dependente de previa autorização do JWT.
+
+## Frontend:
+Desenvolvido em ReactJs, utilizando a ferramenta Vite. Ele é alimentado 100% pela API, não buscando dados em outros locais.
+
+## Estrutura:
+Tanto o backend como o frontend foram implementados utilizando Docker. O Frontend isolado e o backend comunicando internamente entre NodeJs, Mysql e phpMyAdmin (utilizado apenas para visualizar informações do bando de dados).
+
+No MySQL foi implementada a persistência do banco de dados independendo do desligamento do container, será explicado abaixo.
+
+## Como rodar as aplicações
+## Pré-requisitos:
+- NPM instalado na máquina.
+- Docker instalado e ativo na máquina.
+
+## Passos:
+- Após baixar o projeto localmente, pelo terminal entrar na pasta "backend" e nela executar o comando "npm install" e em seguida "docker compose up --build", aguardar o carregamento completo do container (pode demorar um pouco devido a criação da estrutura do banco de dados, persistindo os dados em ‘backend/backend/db_data’) (deverá aparecer a mensagem "Servidor rodando em[...]", se caso a primeira execução deve aparecer também "Cadastro de postagem [...] OK")
+
+- Após o backend rodando, em um novo terminal entrar na pasta "frontend" e nela executar o comando "npm install" e em seguida "docker compose up --build", aguardar o carregamento completo do container (deverá aparecer a mensagem "Network: http://[...]:5173/
+
+Nesse ponto já é possível testar as aplicações:
+- Frontend Blog: http://localhost:5173
+- Backend API: http://localhost:3000/api/v1
+- MySQL: localhost:53308
+- phpMyAdmin: http://localhost:8081
+
+## Observações
+Estou enviando junto do projeto os arquivos .env, sei que não é uma boa prática, mas para teste ou entrar no mysql ou phpmyadmin o usuário e senha está no arquivo.
+Foram criados junto a inicialização do banco de dados algumas postagens e usuários, vistos no arquivo backend/models/db/initDb.js (exemplo: luis@blogdoluis.com e senha de 1 a 5).
