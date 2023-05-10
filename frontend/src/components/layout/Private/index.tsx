@@ -10,6 +10,7 @@ export default function PrivateLayout({ children }: PrivateLayoytProps) {
   return (
     <>
       <Header />
+
       <main className={styles.layoutContainer}>{children}</main>
     </>
   );

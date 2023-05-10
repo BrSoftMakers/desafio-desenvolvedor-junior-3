@@ -5,4 +5,8 @@ export type PostResponseType = {
   createdAt: string;
   updatedAt: string;
   userId: string;
+  User: {
+    name: string;
+    id: string;
+  };
 };

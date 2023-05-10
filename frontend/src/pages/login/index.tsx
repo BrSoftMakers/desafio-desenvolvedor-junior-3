@@ -102,7 +102,15 @@ export default function Login() {
         setIsLoading?.(false);
       }
     },
-    [form?.email, form?.password, notify, setIsLoading, userService]
+    [
+      authService,
+      form?.email,
+      form?.password,
+      navigate,
+      notify,
+      setIsLoading,
+      userService,
+    ]
   );
 
   const handleButtonState = useCallback((): boolean => {

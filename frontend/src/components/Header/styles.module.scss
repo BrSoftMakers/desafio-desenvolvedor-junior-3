@@ -26,6 +26,15 @@
     }
   }
 
+  .inputOrder {
+    display: flex;
+    gap: 5px;
+
+    input {
+      width: 20px;
+    }
+  }
+
   .rightContainer {
     display: flex;
     gap: 25px;

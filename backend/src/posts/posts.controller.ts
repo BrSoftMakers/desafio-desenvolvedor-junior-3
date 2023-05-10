@@ -34,19 +34,19 @@ export class PostsController {
     return { message: 'Post criado.' };
   }
 
+  @Get()
+  async getPosts(
+    @Query() query?: { asc: string },
+    @Body() userId?: string,
+  ): Promise<PostType[] | null> {
+    return this.postsService.getAll(query?.asc, userId);
+  }
+
   @Get(':postId')
   async get(
     @Param('postId') postId: string,
   ): Promise<PostType | { message: string } | null> {
     return this.postsService.findById(postId);
-  }
-
-  @Get()
-  async getPosts(
-    @Query() query: { asc: string },
-    @Body() userId?: string,
-  ): Promise<PostType[] | null> {
-    return this.postsService.getAll(query.asc[0], userId);
   }
 
   @Delete(':postId')

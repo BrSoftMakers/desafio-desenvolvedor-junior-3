@@ -1,4 +1,5 @@
 import { LoginResponse } from './types/loginResponse.type';
+import { UserInfo } from './types/userInfo.type';
 
 export default class AuthService {
   isLoggedIn(): boolean {
@@ -15,5 +16,17 @@ export default class AuthService {
 
   logout(): void {
     localStorage.clear();
+  }
+
+  getUserInfo(): UserInfo | undefined {
+    try {
+      const user = localStorage.getItem('user');
+      if (user) {
+        return JSON.parse(user);
+      }
+    } catch (error) {
+      console.error('Erro ao analisar o JSON:', error);
+    }
+    return undefined;
   }
 }

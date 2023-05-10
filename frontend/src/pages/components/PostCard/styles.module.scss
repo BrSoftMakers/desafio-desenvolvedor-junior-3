@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: column;
+
+  .cardContainer {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    gap: 5px;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid blue;
+    border-radius: 4px;
+    padding: 10px 15px;
+    text-align: left;
+
+    .infoContainer {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+
+      strong {
+        font-size: 16px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+
+    .dateContainer {
+    }
+  }
+
+  .btnContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-self: center;
+    margin-top: 10px;
+
+    .actionBtn {
+      cursor: pointer;
+    }
+  }
+}

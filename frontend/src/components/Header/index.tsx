@@ -1,21 +1,27 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import user from '../../assets/images/notfounduser.jpg';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './styles.module.scss';
 import Button from '../Button';
 import AuthService from '../../service/AuthService';
-import { useCallback, useEffect, useMemo } from 'react';
 import TostifyService from '../../service/TostifyService';
-import PostsService from '../../service/PostsService';
+import React, { EventHandler, useContext, useState } from 'react';
+import AppContext from '../../context/AppContext';
 
 export default function Header() {
-  const authService = useMemo(() => new AuthService(), []);
-  const postService = useMemo(() => new PostsService(), []);
-  const notification = useMemo(() => new TostifyService(), []);
+  const authService = new AuthService();
+  const notification = new TostifyService();
   const navigate = useNavigate();
+
+  const { orderBy, setOrderBy } = useContext(AppContext);
 
   const handleBtn = () => {
     console.log('oi');
+  };
+
+  const handleOrderBy = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setOrderBy?.(event.target.checked ? 'true' : 'false');
   };
 
   const handleLogout = () => {
@@ -24,14 +30,6 @@ export default function Header() {
     navigate('/login');
   };
 
-  const fetchPosts = useCallback(async () => {
-    return postService.fetchAllPosts();
-  }, [postService]);
-
-  useEffect(() => {
-    fetchPosts();
-  }, [fetchPosts]);
-
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
@@ -39,6 +37,14 @@ export default function Header() {
         <Link to="/">Todos os Posts</Link>
       </nav>
       <Button text="Criar Postagem" onClick={handleBtn} />
+      <div className={styles.inputOrder}>
+        <label>MAIS RECENTES</label>
+        <input
+          type="checkbox"
+          checked={orderBy === 'true' ? true : false}
+          onChange={handleOrderBy}
+        />
+      </div>
       <div className={styles.rightContainer}>
         <img src={user} alt="Exemplo usuário" />
         <div>
