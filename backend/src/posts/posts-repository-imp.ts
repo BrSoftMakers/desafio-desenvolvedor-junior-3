@@ -35,10 +35,10 @@ export class PostsRepositoryImp implements PostsRepository {
     return;
   }
 
-  async getAll(userId: string, orderBy: string): Promise<Post[] | null> {
+  async getAll(orderBy?: string, userId?: any): Promise<Post[] | null> {
     return this.prisma.post.findMany({
-      where: { userId },
-      orderBy: { createdAt: orderBy === 'asc' ? 'asc' : 'desc' },
+      ...(userId.userId && { where: userId }),
+      orderBy: { createdAt: orderBy === 'true' ? 'asc' : 'desc' },
     });
   }
 

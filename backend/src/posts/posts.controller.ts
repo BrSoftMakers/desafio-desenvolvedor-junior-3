@@ -8,6 +8,7 @@ import {
   Put,
   Req,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { CreatePostDto } from './dto/create-post-dto';
 import { PostsService } from './posts.service';
@@ -15,7 +16,6 @@ import { JwtAuthGuard } from '../auth/jwt-strategy/jwt-auth.guard';
 import { Request } from 'express';
 import { Post as PostType } from '@prisma/client';
 import { UpdatePostDto } from './dto/update-post-dto';
-import { OrderByDto } from './dto/orderBy-dto';
 
 @Controller('posts')
 @UseGuards(JwtAuthGuard)
@@ -34,20 +34,19 @@ export class PostsController {
     return { message: 'Post criado.' };
   }
 
-  @Get(':postId?')
+  @Get(':postId')
   async get(
     @Param('postId') postId: string,
-    @Req() req: Request,
-    @Body() orderBy?: OrderByDto,
-  ): Promise<PostType | PostType[] | { message: string } | null> {
-    const { orderBy: order } = orderBy;
-    const userId = req?.user?.id;
+  ): Promise<PostType | { message: string } | null> {
+    return this.postsService.findById(postId);
+  }
 
-    if (postId) {
-      return this.postsService.findById(postId);
-    } else {
-      return this.postsService.getAll(userId, order);
-    }
+  @Get()
+  async getPosts(
+    @Query() query: { asc: string },
+    @Body() userId?: string,
+  ): Promise<PostType[] | null> {
+    return this.postsService.getAll(query.asc[0], userId);
   }
 
   @Delete(':postId')

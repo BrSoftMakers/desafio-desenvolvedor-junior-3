@@ -1,5 +1,5 @@
 import { useCallback, useContext, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import UserService from '../../service/UserService';
 import isValidFields from '../../utils/handleInput';
@@ -9,6 +9,7 @@ import Input from '../../components/Input';
 
 import styles from './styles.module.scss';
 import AppContext from '../../context/AppContext';
+import TostifyService from '../../service/TostifyService';
 
 type FormRegisterType = {
   name: string;
@@ -29,7 +30,10 @@ interface requiredFields {
 export default function Register() {
   const { isLoading, setIsLoading } = useContext(AppContext);
 
+  const navigate = useNavigate();
+
   const userService = useMemo(() => new UserService(), []);
+  const notify = useMemo(() => new TostifyService(), []);
 
   const [form, setForm] = useState<FormRegisterType>({
     name: '',
@@ -67,9 +71,7 @@ export default function Register() {
     });
   };
 
-  console.log(isLoading);
-
-  const handleClick = useCallback(
+  const handleRegister = useCallback(
     async (event: React.MouseEvent<HTMLButtonElement>): Promise<void> => {
       event.preventDefault();
 
@@ -81,10 +83,11 @@ export default function Register() {
 
       try {
         setIsLoading?.(true);
-        await userService.register('/register', data);
+        await userService.register(data);
+        notify.sucess('Cadastro realizado com sucesso!');
+        navigate('/login');
         return;
       } catch (error: any) {
-        console.log(error.response);
         const { response } = error;
 
         if (response?.status === 409) {
@@ -102,7 +105,15 @@ export default function Register() {
         setIsLoading?.(false);
       }
     },
-    [form?.email, form?.name, form?.password, setIsLoading, userService]
+    [
+      form?.email,
+      form?.name,
+      form?.password,
+      navigate,
+      notify,
+      setIsLoading,
+      userService,
+    ]
   );
 
   const handleButtonState = useCallback((): boolean => {
@@ -152,8 +163,8 @@ export default function Register() {
       </div>
       {!isLoading && (
         <Button
-          onClick={handleClick}
-          text="Cadastrar"
+          onClick={handleRegister}
+          text="Login"
           isDisabled={!handleButtonState()}
           customClass={styles.registerBtn}
         />
@@ -163,7 +174,7 @@ export default function Register() {
 
       <div className={styles.backLogin}>
         <span>Já tem conta?</span>
-        <Link to="/login">Clique para fazer Login</Link>
+        <Link to="/login">Clique para realizar login</Link>
       </div>
     </form>
   );

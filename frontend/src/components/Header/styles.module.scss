@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  background-color: whitesmoke;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  border-bottom: 2px solid rgb(132, 125, 125);
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    a {
+      background-color: #4caf50;
+      border-radius: 4px;
+      text-decoration: none;
+      color: white;
+      padding: 10px 20px;
+
+      &:hover {
+        filter: brightness(0.8);
+      }
+    }
+  }
+
+  .rightContainer {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    img {
+      width: 40px;
+      border: 1px solid black;
+      border-radius: 50%;
+    }
+  }
+
+  .btnLogout {
+    background: rgb(234, 234, 65);
+    color: black;
+  }
+}
