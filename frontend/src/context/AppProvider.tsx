@@ -16,6 +16,8 @@ export default function AppProvider({ children }: AppProviderTypes) {
 
   const [orderBy, setOrderBy] = useState<'true' | 'false'>('true');
 
+  const [refetch, setRefetch] = useState<number>(0);
+
   useEffect(() => {
     setUserInfo(authService.getUserInfo());
   }, [authService]);
@@ -26,6 +28,8 @@ export default function AppProvider({ children }: AppProviderTypes) {
     userInfo,
     orderBy,
     setOrderBy,
+    refetch,
+    setRefetch,
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;

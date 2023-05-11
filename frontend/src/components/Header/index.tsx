@@ -17,7 +17,7 @@ export default function Header() {
   const { orderBy, setOrderBy } = useContext(AppContext);
 
   const handleBtn = () => {
-    console.log('oi');
+    navigate('/criar-post');
   };
 
   const handleOrderBy = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,10 +33,10 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        <Link to="/">Meus Posts</Link>
-        <Link to="/">Todos os Posts</Link>
+        {/* <Link to="/">Meus Posts</Link> */}
+        {/* <Link to="/">Todos os Posts</Link> */}
       </nav>
-      <Button text="Criar Postagem" onClick={handleBtn} />
+      <Button text="Criar Postagem" onClick={handleBtn} isDisabled={true} />
       <div className={styles.inputOrder}>
         <label>MAIS RECENTES</label>
         <input

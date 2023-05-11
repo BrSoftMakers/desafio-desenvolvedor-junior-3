@@ -9,6 +9,8 @@ export interface AppContextType {
   setOrderBy:
     | React.Dispatch<React.SetStateAction<'true' | 'false'>>
     | undefined;
+  refetch: number;
+  setRefetch: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const AppContext = React.createContext<AppContextType>({
@@ -17,6 +19,8 @@ const AppContext = React.createContext<AppContextType>({
   userInfo: undefined,
   setOrderBy: undefined,
   orderBy: 'true' || 'false',
+  refetch: 0,
+  setRefetch: () => 0,
 });
 
 export default AppContext;

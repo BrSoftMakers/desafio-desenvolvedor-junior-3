@@ -9,7 +9,7 @@ import { PostResponseType } from '../../service/types/postResponse.type';
 import PostCard from '../components/PostCard';
 
 function Home() {
-  const { isLoading, setIsLoading, orderBy } = useContext(AppContext);
+  const { isLoading, setIsLoading, orderBy, refetch } = useContext(AppContext);
 
   const postService = useMemo(() => new PostsService(), []);
   const authService = useMemo(() => new AuthService(), []);
@@ -42,7 +42,7 @@ function Home() {
         setIsLoading?.(false);
       }
     },
-    [authService, navigate, notification, postService, setIsLoading]
+    [authService, navigate, notification, postService, setIsLoading, refetch]
   );
 
   useEffect(() => {

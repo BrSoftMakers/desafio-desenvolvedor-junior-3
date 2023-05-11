@@ -1,14 +1,14 @@
 .container {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-height: fit-content;
 
   .cardContainer {
     display: flex;
     flex-direction: column;
-    width: 240px;
     gap: 5px;
     align-items: center;
-    justify-content: flex-start;
     border: 1px solid blue;
     border-radius: 4px;
     padding: 10px 15px;
@@ -28,7 +28,24 @@
       }
     }
 
-    .dateContainer {
+    .textContainer {
+      .readMore {
+        color: green;
+        text-decoration: none;
+
+        &:hover {
+          filter: brightness(1.2);
+        }
+      }
+    }
+
+    .datesContainer {
+      align-self: flex-end;
+      font-size: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      height: fit-content;
     }
   }
 
