@@ -18,10 +18,26 @@ export default function isValidFields(
     }));
   }
 
-  if (value?.length < 3 && name !== 'password') {
+  if (value?.length < 3 && (name === 'name' || name === 'email')) {
     return setFunction((oldState: any) => ({
       ...oldState,
       [`${name}Error`]: 'Mínimo de 3 caracteres',
+      [`${name}IsValid`]: 'notOk',
+    }));
+  }
+
+  if (value?.length < 10 && name === 'title') {
+    return setFunction((oldState: any) => ({
+      ...oldState,
+      [`${name}Error`]: 'Mínimo de 10 caracteres',
+      [`${name}IsValid`]: 'notOk',
+    }));
+  }
+
+  if (value?.length < 50 && name === 'text') {
+    return setFunction((oldState: any) => ({
+      ...oldState,
+      [`${name}Error`]: 'Mínimo de 50 caracteres',
       [`${name}IsValid`]: 'notOk',
     }));
   }

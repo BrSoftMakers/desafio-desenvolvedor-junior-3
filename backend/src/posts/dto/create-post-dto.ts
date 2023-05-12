@@ -15,8 +15,8 @@ export class CreatePostDto {
 
   @IsNotEmpty()
   @IsString()
-  @MinLength(10)
-  @MaxLength(1000)
+  @MinLength(50)
+  @MaxLength(3000)
   text: string;
 
   @IsOptional()

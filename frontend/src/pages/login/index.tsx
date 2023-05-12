@@ -87,7 +87,7 @@ export default function Login() {
 
         if (response?.status === 401 || response?.status === 404) {
           notify.error('E-email ou senha inválidos');
-          setForm((oldState) => {
+          setForm((oldState: FormLoginType) => {
             return {
               ...oldState,
               email: '',

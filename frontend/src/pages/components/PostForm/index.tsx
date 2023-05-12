@@ -1,4 +1,11 @@
-import React, { MouseEvent, useEffect, useState } from 'react';
+import React, {
+  MouseEvent,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import Modal from 'react-modal';
 import Input from '../../../components/Input';
 import { requiredFields } from '../../login';
@@ -7,6 +14,11 @@ import isValidFields from '../../../utils/handleInput';
 import styles from './styles.module.scss';
 import Button from '../../../components/Button';
 import TextArea from '../../../components/TextArea';
+import PostsService from '../../../service/PostsService';
+import TostifyService from '../../../service/TostifyService';
+import AppContext from '../../../context/AppContext';
+import AuthService from '../../../service/AuthService';
+import { useNavigate } from 'react-router-dom';
 
 type PostFormProps = {
   openPostForm: boolean;
@@ -43,6 +55,14 @@ export default function PostForm({
       height: '490px',
     },
   };
+
+  const navigate = useNavigate();
+
+  const { setRefetch, setIsLoading } = useContext(AppContext);
+
+  const postService = useMemo(() => new PostsService(), []);
+  const notification = useMemo(() => new TostifyService(), []);
+  const authService = useMemo(() => new AuthService(), []);
 
   const [postForm, setPostForm] = useState<CreatePostType>({
     title: '',
@@ -89,9 +109,52 @@ export default function PostForm({
     });
   };
 
-  const handleSavePost = (event: React.MouseEvent) => {
-    event.preventDefault();
-  };
+  const handleSavePost = useCallback(
+    async (event: React.MouseEvent) => {
+      event.preventDefault();
+
+      const data = {
+        title: postForm?.title,
+        text: postForm?.text,
+      };
+
+      setIsLoading?.(true);
+
+      try {
+        await postService.savePost(data);
+        notification.sucess('Post criado com sucesso');
+        setRefetch((oldState) => oldState + 1);
+      } catch (error: any) {
+        const { response } = error;
+
+        if (response?.status === 409) {
+          setPostForm((oldState: CreatePostType) => ({
+            ...oldState,
+            titleError: response?.data?.message,
+            titleIsValid: 'notOk',
+          }));
+        }
+
+        if (response?.status === 401) {
+          authService.logout();
+          notification.sucess('Tempo de sessão expirado.');
+          navigate('/login');
+        }
+      } finally {
+        setIsLoading?.(false);
+      }
+    },
+    [
+      authService,
+      navigate,
+      notification,
+      postForm?.text,
+      postForm?.title,
+      postService,
+      setIsLoading,
+      setRefetch,
+    ]
+  );
 
   const handleCancel = () => {
     setPostForm({
@@ -108,6 +171,10 @@ export default function PostForm({
   useEffect(() => {
     Modal.setAppElement('body');
   }, []);
+
+  const handleButtonState = useCallback(() => {
+    return postForm?.textIsValid === 'ok' && postForm?.titleIsValid === 'ok';
+  }, [postForm?.textIsValid, postForm?.titleIsValid]);
 
   return (
     <Modal
@@ -139,7 +206,11 @@ export default function PostForm({
 
         <div className={styles.btnContainer}>
           <Button onClick={handleCancel} text="Cancelar" />
-          <Button onClick={handleSavePost} text="Postar" />
+          <Button
+            onClick={handleSavePost}
+            text="Postar"
+            isDisabled={!handleButtonState()}
+          />
         </div>
       </form>
     </Modal>

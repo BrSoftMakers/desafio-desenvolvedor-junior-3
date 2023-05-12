@@ -1,4 +1,5 @@
 import HttpService from './HttpService';
+import { Body } from './interface/bodyInterface';
 import { PostResponseType } from './types/postResponse.type';
 
 export default class PostsService extends HttpService {
@@ -6,6 +7,10 @@ export default class PostsService extends HttpService {
     return await this.get<PostResponseType[] | []>(
       '/posts?' + `asc=${orderBy}`
     );
+  }
+
+  async savePost(data: Body) {
+    return await this.post('/posts', data);
   }
 
   async deletePost(id: string) {

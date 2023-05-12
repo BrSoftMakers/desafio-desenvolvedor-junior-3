@@ -32,6 +32,12 @@
       border: 1px solid $green;
       color: #fff;
 
+      &:disabled {
+        background: rgba(143, 140, 140, 0.639);
+        border: 1px solid #fff;
+        color: #fff;
+      }
+
       &:hover {
         filter: brightness(0.8);
       }

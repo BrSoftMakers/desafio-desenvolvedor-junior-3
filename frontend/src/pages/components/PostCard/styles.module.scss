@@ -57,8 +57,10 @@
     width: 100%;
     align-self: center;
     padding: 5px 0px;
-    border-top: 1px solid $green;
+    border: 1px solid $green;
     margin-top: 10px;
+    border-radius: 4px;
+    background-color: rgba(66, 210, 66, 0.2);
 
     span {
       align-items: center;
