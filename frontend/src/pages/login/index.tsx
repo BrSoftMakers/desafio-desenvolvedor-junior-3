@@ -24,7 +24,7 @@ interface requiredFields {
 }
 
 export default function Login() {
-  const { isLoading, setIsLoading } = useContext(AppContext);
+  const { isLoading, setIsLoading, setUserInfo } = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -78,6 +78,7 @@ export default function Login() {
         setIsLoading?.(true);
         const loginResponse = await userService.login(data);
         authService.setUserLocalStorage(loginResponse);
+        setUserInfo?.(loginResponse.user);
         notify.sucess('Você está logado!');
         navigate('/home');
         return;
@@ -109,6 +110,7 @@ export default function Login() {
       navigate,
       notify,
       setIsLoading,
+      setUserInfo,
       userService,
     ]
   );

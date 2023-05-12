@@ -54,6 +54,10 @@
     align-items: center;
     gap: 20px;
     border: 1px solid #42d242;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
   }
 }
 

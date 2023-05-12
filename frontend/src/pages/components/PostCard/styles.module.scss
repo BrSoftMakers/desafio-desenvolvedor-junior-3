@@ -54,10 +54,21 @@
     justify-content: space-around;
     width: 100%;
     align-self: center;
+    padding: 5px 0px;
+    border-top: 1px solid blue;
     margin-top: 10px;
 
-    .actionBtn {
+    span {
+      align-items: center;
+      display: flex;
+      gap: 10px;
       cursor: pointer;
+      padding: 5px 10px;
+      border-bottom: 1px solid #42d242;
+    }
+
+    & > span:nth-of-type(1) {
+      border-bottom: red 1px solid;
     }
   }
 }

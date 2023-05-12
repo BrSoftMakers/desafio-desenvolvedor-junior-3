@@ -15,9 +15,7 @@ export default function NavBar() {
       <Button
         text={filterPosts ? 'Todos os Posts' : 'Meu Posts'}
         onClick={handleClick}
-        customClass={`${styles.btnFilterOn} ${
-          filterPosts ? styles.btnFilterOff : ''
-        }`}
+        customClass={styles.btnFilterOn}
       />
     </nav>
   );

@@ -16,17 +16,7 @@
     background-color: white;
 
     &:hover {
-    }
-  }
-
-  .btnFilterOff {
-    background-color: #42d242;
-    color: white;
-
-    &:hover {
-      background-color: white;
-      filter: none;
-      color: #42d242;
+      filter: brightness(0.8);
     }
   }
 }

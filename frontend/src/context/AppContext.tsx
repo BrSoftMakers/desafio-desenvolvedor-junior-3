@@ -22,12 +22,16 @@ export interface AppContextType {
     | undefined;
   filterPosts: boolean;
   setFilterPosts: React.Dispatch<React.SetStateAction<boolean>> | undefined;
+  setUserInfo:
+    | React.Dispatch<React.SetStateAction<UserInfo | undefined>>
+    | undefined;
 }
 
 const AppContext = React.createContext<AppContextType>({
   isLoading: false,
   setIsLoading: undefined,
   userInfo: undefined,
+  setUserInfo: undefined,
   setOrderBy: undefined,
   orderBy: 'true' || 'false',
   refetch: 0,

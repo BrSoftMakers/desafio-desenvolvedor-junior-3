@@ -61,6 +61,7 @@ export default function AppProvider({ children }: AppProviderTypes) {
     filterPosts,
     setFilterPosts,
     setAllPosts,
+    setUserInfo,
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;

@@ -43,7 +43,7 @@ export default function Header() {
       <div className={styles.actionsContainer}>
         {typeof width === 'number' && width > 720 ? <NavBar /> : null}
         <Button
-          text="Postar"
+          text="Criar Post"
           onClick={handleBtn}
           customClass={styles.createPost}
         >

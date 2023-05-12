@@ -1,4 +1,4 @@
-import { useCallback, useContext, useMemo, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { PostResponseType } from '../../../service/types/postResponse.type';
 
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
@@ -31,6 +31,8 @@ export default function PostCard({
 
   const [maxTextSize] = useState<550>(550);
 
+  const [showOptions, setShowOptions] = useState<boolean>(false);
+
   const handeClick = () => {
     console.log('oi');
   };
@@ -50,8 +52,26 @@ export default function PostCard({
     }
   }, [authService, id, navigate, notification, postsService, setRefetch]);
 
+  const handleShowOptions = (event: React.MouseEvent) => {
+    event.preventDefault();
+
+    if (userInfo?.id === userId) {
+      setShowOptions(true);
+      return;
+    }
+  };
+
+  const handleHideOptions = (event: React.MouseEvent) => {
+    event.preventDefault();
+    setShowOptions(false);
+  };
+
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      onMouseOver={handleShowOptions}
+      onMouseOut={handleHideOptions}
+    >
       <div className={styles.cardContainer}>
         <div className={styles.infoContainer}>
           <strong>{title}</strong>
@@ -79,22 +99,31 @@ export default function PostCard({
           </span>
           {updatedAt !== createdAt && (
             <span>
-              Atualizado em: {moment(updatedAt).format('DD/MM/yyyy - hh:mm')}h
+              Atualizado em: {moment(updatedAt).format('DD/MM/yyyy - HH:mm')}h
             </span>
           )}
         </div>
+        {showOptions && (
+          <div className={styles.btnContainer}>
+            <span onClick={handleDelete}>
+              Excluir
+              <AiFillDelete
+                size="24px"
+                color="red"
+                className={styles.actionBtn}
+              />
+            </span>
+            <span>
+              <AiFillEdit
+                size="24px"
+                color="green"
+                className={styles.actionBtn}
+              />
+              Editar
+            </span>
+          </div>
+        )}
       </div>
-      {userInfo?.id === userId && (
-        <div className={styles.btnContainer}>
-          <AiFillDelete
-            size="24px"
-            color="red"
-            className={styles.actionBtn}
-            onClick={handleDelete}
-          />
-          <AiFillEdit size="24px" color="green" className={styles.actionBtn} />
-        </div>
-      )}
     </div>
   );
 }
