@@ -1,0 +1,15 @@
+.footer {
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1;
+  background-color: whitesmoke;
+  align-items: center;
+  border-top: 2px solid rgb(132, 125, 125);
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}

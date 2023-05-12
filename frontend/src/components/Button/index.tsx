@@ -7,6 +7,7 @@ type ButtonProps = {
   text: string;
   customClass?: string;
   isDisabled?: boolean;
+  children?: React.ReactNode;
 };
 
 export default function Button({
@@ -14,6 +15,7 @@ export default function Button({
   text,
   customClass,
   isDisabled = false,
+  children,
 }: ButtonProps) {
   return (
     <button
@@ -22,6 +24,7 @@ export default function Button({
       onClick={(event: React.MouseEvent<HTMLButtonElement>) => onClick(event)}
     >
       {text}
+      {children}
     </button>
   );
 }

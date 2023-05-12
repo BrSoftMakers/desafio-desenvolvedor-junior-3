@@ -1,0 +1,32 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+
+  .btnFilterOn {
+    display: flex;
+    justify-content: center;
+    border: 1px solid #42d242;
+    border-radius: 4px;
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px;
+    width: 140px;
+    background-color: white;
+
+    &:hover {
+    }
+  }
+
+  .btnFilterOff {
+    background-color: #42d242;
+    color: white;
+
+    &:hover {
+      background-color: white;
+      filter: none;
+      color: #42d242;
+    }
+  }
+}

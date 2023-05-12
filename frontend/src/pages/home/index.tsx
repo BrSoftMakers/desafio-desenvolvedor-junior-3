@@ -1,23 +1,21 @@
-import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo } from 'react';
 import withAuthentication from '../../routes/auth';
-import PostsService from '../../service/PostsService';
-import AuthService from '../../service/AuthService';
-import TostifyService from '../../service/TostifyService';
-import { useNavigate } from 'react-router-dom';
 import AppContext from '../../context/AppContext';
-import { PostResponseType } from '../../service/types/postResponse.type';
 import PostCard from '../components/PostCard';
+import PostsService from '../../service/PostsService';
+import TostifyService from '../../service/TostifyService';
+import AuthService from '../../service/AuthService';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
-  const { isLoading, setIsLoading, orderBy, refetch } = useContext(AppContext);
-
-  const postService = useMemo(() => new PostsService(), []);
-  const authService = useMemo(() => new AuthService(), []);
-  const notification = useMemo(() => new TostifyService(), []);
-
-  const [posts, setPosts] = useState<PostResponseType[] | []>([]);
+  const { isLoading, setIsLoading, posts, setAllPosts, orderBy, refetch } =
+    useContext(AppContext);
 
   const navigate = useNavigate();
+
+  const postService = useMemo(() => new PostsService(), []);
+  const notification = useMemo(() => new TostifyService(), []);
+  const authService = useMemo(() => new AuthService(), []);
 
   const fetchPosts = useCallback(
     async (orderBy: string) => {
@@ -25,7 +23,7 @@ function Home() {
         setIsLoading?.(true);
         const posts = await postService.fetchAllPosts(orderBy);
 
-        setPosts(posts);
+        setAllPosts?.(posts);
 
         return;
       } catch (error: any) {

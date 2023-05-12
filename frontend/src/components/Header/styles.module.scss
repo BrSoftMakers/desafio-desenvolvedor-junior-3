@@ -8,31 +8,22 @@
   justify-content: space-around;
   flex-wrap: nowrap;
   border-bottom: 2px solid rgb(132, 125, 125);
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
 
-  .nav {
+  .actionsContainer {
     display: flex;
     align-items: center;
-    gap: 10px;
-    a {
-      background-color: #4caf50;
-      border-radius: 4px;
-      text-decoration: none;
-      color: white;
-      padding: 10px 20px;
-
-      &:hover {
-        filter: brightness(0.8);
-      }
-    }
+    gap: 25px;
   }
 
   .inputOrder {
     display: flex;
+    border-radius: 4px;
     gap: 5px;
-
-    input {
-      width: 20px;
-    }
+    align-items: center;
   }
 
   .rightContainer {
@@ -49,5 +40,27 @@
   .btnLogout {
     background: rgb(234, 234, 65);
     color: black;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+
+  .createPost {
+    display: flex;
+    background: whitesmoke;
+    color: black;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid #42d242;
+  }
+}
+
+@media (max-width: 490px) {
+  .header {
+    .actionsContainer {
+      flex-direction: column;
+    }
   }
 }

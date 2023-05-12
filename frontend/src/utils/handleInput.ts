@@ -9,8 +9,6 @@ export default function isValidFields(
 ) {
   if (!value && required) {
     if (value?.length > 10) {
-      console.log(value);
-      console.log('dentro do if');
       return setFunction((oldState: any) => oldState);
     }
     return setFunction((oldState: any) => ({

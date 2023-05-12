@@ -4,7 +4,6 @@ import { PostResponseType } from '../../../service/types/postResponse.type';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 
 import styles from './styles.module.scss';
-import Button from '../../../components/Button';
 import AppContext from '../../../context/AppContext';
 import PostsService from '../../../service/PostsService';
 import { Link, useNavigate } from 'react-router-dom';
@@ -30,7 +29,7 @@ export default function PostCard({
   const authService = useMemo(() => new AuthService(), []);
   const notification = useMemo(() => new TostifyService(), []);
 
-  const [maxTextSize, setMaxTextSize] = useState<550>(550);
+  const [maxTextSize] = useState<550>(550);
 
   const handeClick = () => {
     console.log('oi');
@@ -76,7 +75,7 @@ export default function PostCard({
 
         <div className={styles.datesContainer}>
           <span>
-            Data de postagem: {moment(createdAt).format('DD/MM/yyyy')}
+            Data da postagem: {moment(createdAt).format('DD/MM/yyyy')}
           </span>
           {updatedAt !== createdAt && (
             <span>

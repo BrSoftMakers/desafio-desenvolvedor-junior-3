@@ -6,6 +6,9 @@
   color: #fff;
   cursor: pointer;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
   &:hover {
     background-color: #45a049;

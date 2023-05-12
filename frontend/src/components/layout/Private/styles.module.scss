@@ -2,9 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
   background: whitesmoke;
-  margin: 20px auto 0px;
+  margin: 100px auto 40px;
   max-width: 1200px;
   gap: 25px;
   padding: 20px 10px;
@@ -12,8 +11,8 @@
   border: 1px solid black;
   border-radius: 4px;
   flex-wrap: wrap;
-  height: 600px;
+  height: fit-content;
+  max-height: 550px;
   overflow-y: auto;
-  margin-bottom: 20px;
   position: relative;
 }
