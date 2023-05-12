@@ -1,3 +1,5 @@
+@import '../../../assets/styles/variables.scss';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -9,7 +11,7 @@
     flex-direction: column;
     gap: 5px;
     align-items: center;
-    border: 1px solid blue;
+    border: 1px solid $green;
     border-radius: 4px;
     padding: 10px 15px;
     text-align: left;
@@ -30,7 +32,7 @@
 
     .textContainer {
       .readMore {
-        color: green;
+        color: $green;
         text-decoration: none;
 
         &:hover {
@@ -55,7 +57,7 @@
     width: 100%;
     align-self: center;
     padding: 5px 0px;
-    border-top: 1px solid blue;
+    border-top: 1px solid $green;
     margin-top: 10px;
 
     span {
@@ -64,7 +66,7 @@
       gap: 10px;
       cursor: pointer;
       padding: 5px 10px;
-      border-bottom: 1px solid #42d242;
+      border-bottom: 1px solid $green;
     }
 
     & > span:nth-of-type(1) {

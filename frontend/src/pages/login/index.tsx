@@ -19,7 +19,7 @@ type FormLoginType = {
   passwordIsValid: string;
 };
 
-interface requiredFields {
+export interface requiredFields {
   [key: string]: boolean;
 }
 

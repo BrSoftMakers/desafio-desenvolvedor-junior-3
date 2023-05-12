@@ -22,6 +22,7 @@ export default function Button({
       className={`${styles.btn} ${customClass ? customClass : ''}`}
       disabled={isDisabled}
       onClick={(event: React.MouseEvent<HTMLButtonElement>) => onClick(event)}
+      type="button"
     >
       {text}
       {children}

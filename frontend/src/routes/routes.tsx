@@ -4,7 +4,6 @@ import Register from '../pages/register';
 import Login from '../pages/login';
 import Home from '../pages/home';
 import PrivateLayout from '../components/layout/Private';
-import PostForm from '../pages/PostForm';
 
 export function Router() {
   return (
@@ -34,15 +33,6 @@ export function Router() {
         element={
           <PrivateLayout>
             <Home />
-          </PrivateLayout>
-        }
-      />
-
-      <Route
-        path="/criar-post"
-        element={
-          <PrivateLayout>
-            <PostForm />
           </PrivateLayout>
         }
       />

@@ -1,3 +1,5 @@
+@import '../../assets/styles/variables.scss';
+
 .header {
   display: flex;
   padding: 16px;
@@ -49,11 +51,11 @@
   .createPost {
     display: flex;
     background: whitesmoke;
-    color: black;
+    color: $green;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    border: 1px solid #42d242;
+    border: 1px solid $green;
 
     &:hover {
       filter: brightness(0.8);
