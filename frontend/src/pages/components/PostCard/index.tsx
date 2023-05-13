@@ -1,6 +1,8 @@
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { PostResponseType } from '../../../service/types/postResponse.type';
 
+import Swal from 'sweetalert2';
+
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 
 import styles from './styles.module.scss';
@@ -38,18 +40,30 @@ export default function PostCard({
   };
 
   const handleDelete = useCallback(async () => {
-    try {
-      await postsService.deletePost(id);
-      notification.sucess('Post deletado.');
-      setRefetch((oldState) => oldState + 1);
-    } catch (error: any) {
-      const { response } = error;
-      if (response?.status === 401) {
-        authService.logout();
-        notification.sucess('Tempo de sessão expirado.');
-        navigate('/login');
+    Swal.fire({
+      title: 'Exclusão de Post',
+      text: 'Não é possível reverter essa ação. Deseja continuar?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#42d242',
+      cancelButtonColor: 'red',
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não',
+      reverseButtons: true,
+    }).then(async () => {
+      try {
+        await postsService.deletePost(id);
+        notification.sucess('Post deletado.');
+        setRefetch((oldState) => oldState + 1);
+      } catch (error: any) {
+        const { response } = error;
+        if (response?.status === 401) {
+          authService.logout();
+          notification.sucess('Tempo de sessão expirado.');
+          navigate('/login');
+        }
       }
-    }
+    });
   }, [authService, id, navigate, notification, postsService, setRefetch]);
 
   const handleShowOptions = (event: React.MouseEvent) => {

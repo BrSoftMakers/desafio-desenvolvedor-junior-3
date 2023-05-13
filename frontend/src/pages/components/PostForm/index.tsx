@@ -114,8 +114,8 @@ export default function PostForm({
       event.preventDefault();
 
       const data = {
-        title: postForm?.title,
-        text: postForm?.text,
+        title: postForm?.title?.trim(),
+        text: postForm?.text?.trim(),
       };
 
       setIsLoading?.(true);
