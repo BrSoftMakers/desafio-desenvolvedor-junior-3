@@ -16,4 +16,9 @@ export default class PostsService extends HttpService {
   async deletePost(id: string) {
     return await this.delete('/posts/' + id);
   }
+
+  async updatePost(data: Body, id: string) {
+    console.log('/posts/' + id);
+    return await this.put('/posts/' + id, data);
+  }
 }

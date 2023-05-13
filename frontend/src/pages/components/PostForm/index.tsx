@@ -24,6 +24,10 @@ type PostFormProps = {
   setOpenPostForm: React.Dispatch<React.SetStateAction<boolean>>;
   editTitle?: string;
   editText?: string;
+  postId?: string | null;
+  setEditTitle?: React.Dispatch<React.SetStateAction<string>>;
+  setEditText?: React.Dispatch<React.SetStateAction<string>>;
+  setPostId?: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 type PostType = {
@@ -40,6 +44,10 @@ export default function PostForm({
   setOpenPostForm,
   editTitle,
   editText,
+  postId,
+  setEditTitle,
+  setEditText,
+  setPostId,
 }: PostFormProps) {
   const customStyles = {
     overlay: {
@@ -85,6 +93,9 @@ export default function PostForm({
       textError: '',
       textIsValid: '',
     });
+    setEditTitle?.('');
+    setEditText?.('');
+    setPostId?.(null);
     setOpenPostForm(false);
   };
 
@@ -114,7 +125,7 @@ export default function PostForm({
     });
   };
 
-  const handleSavePost = useCallback(
+  const handleSubmitPost = useCallback(
     async (event: React.MouseEvent) => {
       event.preventDefault();
 
@@ -126,9 +137,13 @@ export default function PostForm({
       setIsLoading?.(true);
 
       try {
-        await postService.savePost(data);
-        notification.sucess('Post criado com sucesso');
+        if (postId) {
+          await postService.updatePost(data, postId);
+        } else {
+          await postService.savePost(data);
+        }
         setRefetch((oldState) => oldState + 1);
+        notification.sucess(postId ? 'Post Editado' : 'Post Criado.');
       } catch (error: any) {
         const { response } = error;
 
@@ -147,31 +162,23 @@ export default function PostForm({
         }
       } finally {
         setIsLoading?.(false);
+        handleClosePostForm();
       }
     },
+
     [
       authService,
+      handleClosePostForm,
       navigate,
       notification,
       postForm?.text,
       postForm?.title,
+      postId,
       postService,
       setIsLoading,
       setRefetch,
     ]
   );
-
-  const handleCancel = () => {
-    setPostForm({
-      title: '',
-      titleError: '',
-      titleIsValid: '',
-      text: '',
-      textError: '',
-      textIsValid: '',
-    });
-    setOpenPostForm(false);
-  };
 
   const handleButtonState = useCallback(() => {
     return postForm?.textIsValid === 'ok' && postForm?.titleIsValid === 'ok';
@@ -194,8 +201,6 @@ export default function PostForm({
       }));
     }
   }, [editText, editTitle]);
-
-  console.log(postForm);
 
   return (
     <Modal
@@ -226,10 +231,10 @@ export default function PostForm({
         </div>
 
         <div className={styles.btnContainer}>
-          <Button onClick={handleCancel} text="Cancelar" />
+          <Button onClick={handleClosePostForm} text="Cancelar" />
           <Button
-            onClick={handleSavePost}
-            text="Postar"
+            onClick={handleSubmitPost}
+            text={postId ? 'Editar Post' : 'Postar'}
             isDisabled={!handleButtonState()}
           />
         </div>

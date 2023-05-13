@@ -40,12 +40,19 @@ function Home() {
         setIsLoading?.(false);
       }
     },
-    [authService, navigate, notification, postService, setIsLoading, refetch]
+    [
+      authService,
+      navigate,
+      notification,
+      postService,
+      setAllPosts,
+      setIsLoading,
+    ]
   );
 
   useEffect(() => {
     fetchPosts(orderBy);
-  }, [fetchPosts, orderBy]);
+  }, [fetchPosts, orderBy, refetch]);
 
   return isLoading ? (
     <span>'Carregando Posts'</span>

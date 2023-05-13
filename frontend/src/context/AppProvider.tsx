@@ -4,6 +4,7 @@ import { UserInfo } from '../service/types/userInfo.type';
 import AuthService from '../service/AuthService';
 import useWindowSize from '../hooks/useWindowSize';
 import { PostResponseType } from '../service/types/postResponse.type';
+import TostifyService from '../service/TostifyService';
 
 type AppProviderTypes = {
   children: React.ReactNode;
@@ -11,6 +12,7 @@ type AppProviderTypes = {
 
 export default function AppProvider({ children }: AppProviderTypes) {
   const authService = useMemo(() => new AuthService(), []);
+  const notification = useMemo(() => new TostifyService(), []);
 
   const windowSize = useWindowSize();
 
@@ -37,16 +39,21 @@ export default function AppProvider({ children }: AppProviderTypes) {
       return;
     }
 
-    if (filterPosts) {
-      setMyPosts(
-        allPosts.filter((post) => {
-          return post.userId === userInfo?.id;
-        })
-      );
+    const filteredPosts = allPosts.filter((post) => {
+      return post.userId === userInfo?.id;
+    });
+
+    if (!filteredPosts?.length && filterPosts) {
+      setFilterPosts(false);
+      return notification.error('Você ainda não postou.');
+    }
+
+    if (filterPosts && filteredPosts?.length) {
+      setMyPosts(filteredPosts);
     } else {
       setMyPosts([]);
     }
-  }, [allPosts, userInfo?.id, filterPosts]);
+  }, [allPosts, userInfo?.id, filterPosts, notification]);
 
   const context: AppContextType = {
     isLoading,

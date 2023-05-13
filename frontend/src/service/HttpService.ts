@@ -39,6 +39,16 @@ export default class HttpService {
     }
   }
 
+  protected async put<T>(url: string, data: DataType): Promise<T> {
+    try {
+      const response: AxiosResponse<T> = await this.axios.put(url, data);
+      return response.data;
+    } catch (error: any) {
+      this.handleRequestError(error);
+      throw error;
+    }
+  }
+
   protected async delete(url: string): Promise<void> {
     await this.axios.delete(url);
   }

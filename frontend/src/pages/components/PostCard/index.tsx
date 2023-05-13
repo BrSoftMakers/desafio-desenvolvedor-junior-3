@@ -35,6 +35,7 @@ export default function PostCard({
   const {
     userInfo,
     setRefetch,
+    setIsLoading,
     windowSize: { width },
   } = useContext(AppContext);
 
@@ -44,7 +45,7 @@ export default function PostCard({
   const authService = useMemo(() => new AuthService(), []);
   const notification = useMemo(() => new TostifyService(), []);
 
-  const [maxTextSize] = useState<550>(550);
+  const [maxTextSize, setMaxTextSize] = useState<number>(550);
 
   const [showOptions, setShowOptions] = useState<boolean>(false);
 
@@ -52,8 +53,12 @@ export default function PostCard({
 
   const [editTitle, setEditTitle] = useState<string>('');
   const [editText, setEditText] = useState<string>('');
+  const [postId, setPostId] = useState<string | null>(null);
 
   const handleOpenPostForm = () => {
+    setEditTitle(title);
+    setEditText(text);
+    setPostId(id);
     setOpenPostForm(true);
   };
 
@@ -68,21 +73,34 @@ export default function PostCard({
       confirmButtonText: 'Sim',
       cancelButtonText: 'Não',
       reverseButtons: true,
-    }).then(async () => {
-      try {
-        await postsService.deletePost(id);
-        notification.sucess('Post deletado.');
-        setRefetch((oldState) => oldState + 1);
-      } catch (error: any) {
-        const { response } = error;
-        if (response?.status === 401) {
-          authService.logout();
-          notification.sucess('Tempo de sessão expirado.');
-          navigate('/login');
+    }).then(async ({ isConfirmed }) => {
+      if (isConfirmed) {
+        setIsLoading?.(true);
+        try {
+          await postsService.deletePost(id);
+          notification.sucess('Post deletado.');
+          setRefetch((oldState) => oldState + 1);
+        } catch (error: any) {
+          const { response } = error;
+          if (response?.status === 401) {
+            authService.logout();
+            notification.sucess('Tempo de sessão expirado.');
+            navigate('/login');
+          }
+        } finally {
+          setIsLoading?.(false);
         }
       }
     });
-  }, [authService, id, navigate, notification, postsService, setRefetch]);
+  }, [
+    authService,
+    id,
+    navigate,
+    notification,
+    postsService,
+    setIsLoading,
+    setRefetch,
+  ]);
 
   const handleShowOptions = (event: React.MouseEvent) => {
     event.preventDefault();
@@ -129,12 +147,26 @@ export default function PostCard({
               {text?.length > maxTextSize ? (
                 <span>
                   {text.substring(0, maxTextSize)}...{' '}
-                  <Link to={'/post/' + id} className={styles.readMore}>
-                    clique para ler mais
-                  </Link>
+                  <span
+                    onClick={() => setMaxTextSize(3000)}
+                    className={styles.readMore}
+                  >
+                    ler mais
+                  </span>
                 </span>
               ) : (
-                <span>{text}</span>
+                <span>
+                  {text}{' '}
+                  {maxTextSize > 550 && (
+                    <span
+                      className={styles.readMore}
+                      onClick={() => setMaxTextSize(550)}
+                      style={{ color: 'red' }}
+                    >
+                      ler menos
+                    </span>
+                  )}
+                </span>
               )}
             </div>
           </div>
@@ -176,6 +208,10 @@ export default function PostCard({
         setOpenPostForm={setOpenPostForm}
         editTitle={editTitle}
         editText={editText}
+        postId={postId}
+        setEditTitle={setEditTitle}
+        setEditText={setEditText}
+        setPostId={setPostId}
       />
     </>
   );
