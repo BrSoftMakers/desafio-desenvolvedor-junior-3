@@ -55,12 +55,14 @@ export default function Login() {
       return;
     }
 
-    setForm((oldState: FormLoginType): FormLoginType => {
-      isValidFields(value, name, requiredFields[name], setForm);
+    const { error, isValid } = isValidFields(value, name, requiredFields[name]);
 
+    setForm((oldState: FormLoginType): FormLoginType => {
       return {
         ...oldState,
         [name]: value,
+        [`${name}Error`]: error,
+        [`${name}IsValid`]: isValid,
       };
     });
   };

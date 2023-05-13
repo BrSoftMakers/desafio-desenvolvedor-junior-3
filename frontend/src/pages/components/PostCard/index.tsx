@@ -1,18 +1,27 @@
-import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import {
+  SetStateAction,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { PostResponseType } from '../../../service/types/postResponse.type';
 
 import Swal from 'sweetalert2';
 
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 
-import styles from './styles.module.scss';
 import AppContext from '../../../context/AppContext';
 import PostsService from '../../../service/PostsService';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthService from '../../../service/AuthService';
 import TostifyService from '../../../service/TostifyService';
 
+import styles from './styles.module.scss';
+
 import moment from 'moment';
+import PostForm from '../PostForm';
 
 export default function PostCard({
   id,
@@ -23,7 +32,11 @@ export default function PostCard({
   title,
   User,
 }: PostResponseType) {
-  const { userInfo, setRefetch } = useContext(AppContext);
+  const {
+    userInfo,
+    setRefetch,
+    windowSize: { width },
+  } = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -35,8 +48,13 @@ export default function PostCard({
 
   const [showOptions, setShowOptions] = useState<boolean>(false);
 
-  const handeClick = () => {
-    console.log('oi');
+  const [openPostForm, setOpenPostForm] = useState<boolean>(false);
+
+  const [editTitle, setEditTitle] = useState<string>('');
+  const [editText, setEditText] = useState<string>('');
+
+  const handleOpenPostForm = () => {
+    setOpenPostForm(true);
   };
 
   const handleDelete = useCallback(async () => {
@@ -69,6 +87,8 @@ export default function PostCard({
   const handleShowOptions = (event: React.MouseEvent) => {
     event.preventDefault();
 
+    if (typeof width === 'number' && width <= 375) return;
+
     if (userInfo?.id === userId) {
       setShowOptions(true);
       return;
@@ -77,67 +97,86 @@ export default function PostCard({
 
   const handleHideOptions = (event: React.MouseEvent) => {
     event.preventDefault();
+
+    if (typeof width === 'number' && width <= 375) return;
+
     setShowOptions(false);
   };
 
-  return (
-    <div
-      className={styles.container}
-      onMouseOver={handleShowOptions}
-      onMouseOut={handleHideOptions}
-    >
-      <div className={styles.cardContainer}>
-        <div className={styles.infoContainer}>
-          <strong>{title}</strong>
-          <span>Escrito por: {User?.name}</span>
-        </div>
+  useEffect(() => {
+    if (typeof width === 'number' && width <= 375 && userInfo?.id === userId) {
+      setShowOptions(true);
+    } else {
+      setShowOptions(false);
+    }
+  }, [userId, userInfo?.id, width]);
 
-        <div className={styles.textContainer}>
-          <div>
-            {text?.length > maxTextSize ? (
+  return (
+    <>
+      <div
+        className={styles.container}
+        onMouseOver={handleShowOptions}
+        onMouseOut={handleHideOptions}
+      >
+        <div className={styles.cardContainer}>
+          <div className={styles.infoContainer}>
+            <strong>{title}</strong>
+            <span>Escrito por: {User?.name}</span>
+          </div>
+
+          <div className={styles.textContainer}>
+            <div>
+              {text?.length > maxTextSize ? (
+                <span>
+                  {text.substring(0, maxTextSize)}...{' '}
+                  <Link to={'/post/' + id} className={styles.readMore}>
+                    clique para ler mais
+                  </Link>
+                </span>
+              ) : (
+                <span>{text}</span>
+              )}
+            </div>
+          </div>
+
+          <div className={styles.datesContainer}>
+            <span>
+              Data da postagem: {moment(createdAt).format('DD/MM/yyyy')}
+            </span>
+            {updatedAt !== createdAt && (
               <span>
-                {text.substring(0, maxTextSize)}...{' '}
-                <Link to={'/post/' + id} className={styles.readMore}>
-                  clique para ler mais
-                </Link>
+                Atualizado em: {moment(updatedAt).format('DD/MM/yyyy - HH:mm')}h
               </span>
-            ) : (
-              <span>{text}</span>
             )}
           </div>
-        </div>
-
-        <div className={styles.datesContainer}>
-          <span>
-            Data da postagem: {moment(createdAt).format('DD/MM/yyyy')}
-          </span>
-          {updatedAt !== createdAt && (
-            <span>
-              Atualizado em: {moment(updatedAt).format('DD/MM/yyyy - HH:mm')}h
-            </span>
+          {showOptions && (
+            <div className={styles.btnContainer}>
+              <span onClick={handleDelete}>
+                Excluir
+                <AiFillDelete
+                  size="24px"
+                  color="red"
+                  className={styles.actionBtn}
+                />
+              </span>
+              <span onClick={handleOpenPostForm}>
+                <AiFillEdit
+                  size="24px"
+                  color="green"
+                  className={styles.actionBtn}
+                />
+                Editar
+              </span>
+            </div>
           )}
         </div>
-        {showOptions && (
-          <div className={styles.btnContainer}>
-            <span onClick={handleDelete}>
-              Excluir
-              <AiFillDelete
-                size="24px"
-                color="red"
-                className={styles.actionBtn}
-              />
-            </span>
-            <span>
-              <AiFillEdit
-                size="24px"
-                color="green"
-                className={styles.actionBtn}
-              />
-              Editar
-            </span>
-          </div>
-        )}
       </div>
-    </div>
+      <PostForm
+        openPostForm={openPostForm}
+        setOpenPostForm={setOpenPostForm}
+        editTitle={editTitle}
+        editText={editText}
+      />
+    </>
   );
 }

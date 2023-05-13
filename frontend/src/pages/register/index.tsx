@@ -61,12 +61,16 @@ export default function Register() {
       return;
     }
 
-    setForm((oldState: FormRegisterType): FormRegisterType => {
-      isValidFields(value, name, requiredFields[name], setForm);
+    const { error, isValid } = isValidFields(value, name, requiredFields[name]);
 
+    console.log(error, isValid);
+
+    setForm((oldState: FormRegisterType): FormRegisterType => {
       return {
         ...oldState,
         [name]: value,
+        [`${name}Error`]: error,
+        [`${name}IsValid`]: isValid,
       };
     });
   };

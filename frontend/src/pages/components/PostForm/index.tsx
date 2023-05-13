@@ -1,5 +1,4 @@
 import React, {
-  MouseEvent,
   useCallback,
   useContext,
   useEffect,
@@ -23,9 +22,11 @@ import { useNavigate } from 'react-router-dom';
 type PostFormProps = {
   openPostForm: boolean;
   setOpenPostForm: React.Dispatch<React.SetStateAction<boolean>>;
+  editTitle?: string;
+  editText?: string;
 };
 
-type CreatePostType = {
+type PostType = {
   title: string;
   titleError: string;
   titleIsValid: string;
@@ -37,6 +38,8 @@ type CreatePostType = {
 export default function PostForm({
   openPostForm,
   setOpenPostForm,
+  editTitle,
+  editText,
 }: PostFormProps) {
   const customStyles = {
     overlay: {
@@ -64,7 +67,7 @@ export default function PostForm({
   const notification = useMemo(() => new TostifyService(), []);
   const authService = useMemo(() => new AuthService(), []);
 
-  const [postForm, setPostForm] = useState<CreatePostType>({
+  const [postForm, setPostForm] = useState<PostType>({
     title: '',
     titleError: '',
     titleIsValid: '',
@@ -99,12 +102,14 @@ export default function PostForm({
       return;
     }
 
-    setPostForm((oldState: CreatePostType): CreatePostType => {
-      isValidFields(value, name, requiredFields[name], setPostForm);
+    const { error, isValid } = isValidFields(value, name, requiredFields[name]);
 
+    setPostForm((oldState: PostType): PostType => {
       return {
         ...oldState,
         [name]: value,
+        [`${name}Error`]: error,
+        [`${name}IsValid`]: isValid,
       };
     });
   };
@@ -128,7 +133,7 @@ export default function PostForm({
         const { response } = error;
 
         if (response?.status === 409) {
-          setPostForm((oldState: CreatePostType) => ({
+          setPostForm((oldState: PostType) => ({
             ...oldState,
             titleError: response?.data?.message,
             titleIsValid: 'notOk',
@@ -168,13 +173,29 @@ export default function PostForm({
     setOpenPostForm(false);
   };
 
+  const handleButtonState = useCallback(() => {
+    return postForm?.textIsValid === 'ok' && postForm?.titleIsValid === 'ok';
+  }, [postForm?.textIsValid, postForm?.titleIsValid]);
+
   useEffect(() => {
     Modal.setAppElement('body');
   }, []);
 
-  const handleButtonState = useCallback(() => {
-    return postForm?.textIsValid === 'ok' && postForm?.titleIsValid === 'ok';
-  }, [postForm?.textIsValid, postForm?.titleIsValid]);
+  useEffect(() => {
+    if (editTitle && editText) {
+      setPostForm((oldState: PostType) => ({
+        ...oldState,
+        title: editTitle,
+        titleError: '',
+        titleIsValid: 'ok',
+        text: editText,
+        textError: '',
+        textIsValid: 'ok',
+      }));
+    }
+  }, [editText, editTitle]);
+
+  console.log(postForm);
 
   return (
     <Modal
