@@ -3,13 +3,10 @@ const bcrypt = require("bcrypt");
 
 
 
-
-
+// CADASTRO DE USUÁRIOS
 async function registerUser(req, res) {
-  const email = await req.body.email
-  const password = await req.body.password
-
-  console.log(req.body)
+  const email = await req.body.email;
+  const password = await req.body.password;
   // verificação de duplicidade
   User.findOne({
     where: {
@@ -26,19 +23,31 @@ async function registerUser(req, res) {
         password: hash,
       })
         .then(() => {
-            res.status(201).send("Success!");
+          res.status(201).send("Success!");
         })
         .catch(() => {
-            res.status(201).send("Success!");
+          res.status(201).send("Success!");
         });
     } else {
-        res.status(400).send("ERROR");
+      res.status(400).send("ERROR");
     }
   });
-
-/*   res.status(201).send("tudo ok"); */
 }
+
+
+ function login(req, res) {
+  const email = req.body.email
+  const password =  req.body.password
+
+  console.log(email, password)
+  res.status(200).send('logado com sucesso')
+}
+
+
+
+//LOGIN DE USUÁRIOS
 
 module.exports = {
   registerUser,
+  login
 };
