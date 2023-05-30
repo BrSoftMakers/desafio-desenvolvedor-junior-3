@@ -1,0 +1,51 @@
+.addPost form{
+    background: #3d3d3d;
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    padding: 2rem;
+    border-radius: 5px;
+
+        -webkit-box-shadow: 5px 5px 5px -1px rgba(70,192,1,1);
+    -moz-box-shadow: 5px 5px 5px -1px rgba(70,192,1,1);
+    box-shadow: 5px 5px 5px -1px rgba(70,192,1,1);
+}
+
+.addPost input{
+    margin-bottom: 2rem;
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.addPost button{
+    margin-top: 2rem;
+
+    padding: 0.8rem 7rem;
+    border-radius: 5px;
+    background: #46c001;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+
+    cursor: pointer;
+}
+
+.addPost button:hover{
+    background: #d3d3d3;
+    color: #1d1d1d;
+    
+    transition: .8s;
+}
+
+.buttonBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.addPost textarea{
+    max-width: 100%;
+    min-width: 100%;
+}

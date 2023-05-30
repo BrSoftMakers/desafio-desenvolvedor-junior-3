@@ -4,7 +4,7 @@ import LoginUser from "./pages/Login/LoginUser";
 
 // Rotas
 import Home from "./pages/Home/Home";
-import AddPost from "./pages/AddPoster/AddPost"
+import AddPost from "./pages/AddPost/AddPost"
 
 
 
