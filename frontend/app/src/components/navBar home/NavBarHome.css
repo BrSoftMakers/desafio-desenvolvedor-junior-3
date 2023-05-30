@@ -1,0 +1,31 @@
+nav{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid #d3d3d3;
+
+}
+
+h1{
+    padding-left: 10%;
+    color: #fff;
+}
+
+.links{
+    padding-right: 10%;
+}
+
+.links a{
+    margin: 1rem;
+    text-decoration: none;
+    color: #fff;
+}
+
+body{
+    background: #3d3d3d;
+}

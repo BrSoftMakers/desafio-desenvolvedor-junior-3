@@ -52,6 +52,7 @@ async function registerUser(req, res) {
       
       if(correct == true){
         res.status(200).send('User loged')
+        
       }else{
         res.status(404).send('Error')
       }

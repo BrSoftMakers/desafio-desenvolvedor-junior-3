@@ -15,6 +15,7 @@ const LoginForm = () => {
               password
           }).then(() => {
             alert('logado')
+            window.location.assign("/home");
           })
           console.log('sucesso')
       }catch (err) {
