@@ -15,8 +15,10 @@ module.exports = {
       conteudo: {
         type: Sequelize.STRING
       },
-      usuario_id: {
-        type: Sequelize.INTEGER
+      usuarios_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: 'Usuarios', key: 'id' }
       },
       createdAt: {
         allowNull: false,
