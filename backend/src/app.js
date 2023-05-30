@@ -1,8 +1,8 @@
-import express from 'express';
-import bodyParser from 'body-parser';
+const express = require('express');
+const bodyParser = require('body-parser');
 //Rotas
-import homeRouter from './routes/homeLogin.js';
-import cadastroRouter from './routes/cadastro.js';
+const homeRouter = require('./routes/homeLogin.js');
+const cadastroRouter = require('./routes/cadastro.js');
 
 const app = express();
 
@@ -11,4 +11,4 @@ app.use(bodyParser.json());
 app.use('/home-login', homeRouter);
 app.use('/cadastro', cadastroRouter);
 
-export default app;
+module.exports = app;
