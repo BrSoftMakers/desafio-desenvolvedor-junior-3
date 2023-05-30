@@ -22,6 +22,9 @@ main{
     margin: 0.5rem;
     margin-bottom: 1rem;
 
+    -webkit-box-shadow: 5px 5px 5px -1px rgba(70,192,1,1);
+    -moz-box-shadow: 5px 5px 5px -1px rgba(70,192,1,1);
+    box-shadow: 5px 5px 5px -1px rgba(70,192,1,1);
 }
 
 .posts h1{
@@ -45,6 +48,8 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    
 }
 
 .posts button{

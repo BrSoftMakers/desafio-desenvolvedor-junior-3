@@ -4,6 +4,7 @@ import LoginUser from "./pages/Login/LoginUser";
 
 // Rotas
 import Home from "./pages/Home/Home";
+import AddPost from "./pages/AddPoster/AddPost"
 
 
 
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path='/' element={<LoginUser/> }></Route>
           <Route path="/home" element={<Home/>}></Route>
+          <Route path="/addPost" element={<AddPost/>}></Route>
         </Routes>
       </BrowserRouter>
     </>

@@ -8,7 +8,7 @@ const NavBarHome = () => {
       <h1>Blog system</h1>
 
       <div className="links">
-        <Link to="/">add Post</Link>
+        <Link to="/addPost">add Post</Link>
         <Link to="/cats">Edit post</Link>
         <Link to="/sheeps">delete post</Link>
         <Link to="/goats">logout</Link>
