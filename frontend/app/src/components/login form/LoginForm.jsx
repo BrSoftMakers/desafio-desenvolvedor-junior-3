@@ -17,7 +17,6 @@ const LoginForm = () => {
             alert('logado')
             window.location.assign("/home");
           })
-          console.log('sucesso')
       }catch (err) {
         console.log(err)
       }

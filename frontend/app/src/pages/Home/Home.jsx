@@ -24,7 +24,7 @@ const Home = () => {
         {post.map((post, key) => {
           return (
             // eslint-disable-next-line react/jsx-key
-            <div className="posts">
+            <div className="posts" key={post.id}>
               <h1>{post.title}</h1>
               <p>{post.body}</p>
               <span>{key}</span>

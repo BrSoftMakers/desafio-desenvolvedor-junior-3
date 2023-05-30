@@ -30,7 +30,26 @@ async function getPost(req, res){
 }
 
 
+//DELETE POSTS
+async function deletePost(req,res){
+    let titlePost = req.params.title
+    console.log(titlePost)
+
+    if(titlePost != undefined){
+        Post.destroy({
+            where:{
+                title: titlePost
+            }
+        }).then(() => {
+            res.status(200).send('ok')
+        }).catch((err) => {
+            res.status(400).send(err)
+        })
+    }
+}
+
 module.exports = {
     addPost,
-    getPost
+    getPost,
+    deletePost
 }
