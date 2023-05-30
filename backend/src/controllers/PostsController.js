@@ -1,14 +1,18 @@
 const  database = require('../db/models');
 
 class PostsController {
-    static async criaPost(req, res) {
-        const novoPost = req.body;
-        try {
-            const novoPostCriado = await database.Usuarios.create(novoPost);
-            return res.status(200).json(novoPostCriado);
+    static async criarPostagem(req, res) {
+        const { title, conteudo } = req.body;
+        const { usuarioAutenticado } = req;
+
+        try{
+            const novaPostagem = await Posts.create({title, conteudo, usuarios_id: usuarioAutenticado.id});
+            return res.status(200).json(novaPostagem);
         } catch (error) {
-            res.status(500).json(error.message);
+            console.error(error);
+            res.status(500).json({ error: 'Erro interno do servidor '});
         }
+ 
     }
 
     static async pegaTodosOsPosts(req, res) {
@@ -30,7 +34,7 @@ class PostsController {
         }
     }
 
-    static async atualizaPost(req, res) {
+    static async editaUmPost(req, res) {
         const { id } = req.params;
         const novasInfos = req.body;
         try {
