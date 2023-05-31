@@ -9,9 +9,9 @@ const NavBarHome = () => {
 
       <div className="links">
         <Link to="/addPost">add Post</Link>
-        <Link to="/cats">Edit post</Link>
+        <Link to="/editPost">Edit post</Link>
         <Link to="/deletePost">delete post</Link>
-        <Link to="/goats">logout</Link>
+        <Link to="/">logout</Link>
       </div>
     </nav>
   );

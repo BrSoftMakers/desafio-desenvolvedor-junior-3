@@ -13,7 +13,7 @@ const Home = () => {
         setPost(response.data);
       })
       .catch((err) => {
-        console.lo(err);
+        console.log(err);
       });
   }, []);
   return (

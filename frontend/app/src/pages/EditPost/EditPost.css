@@ -1,4 +1,4 @@
-.addPost form{
+.editPost form{
     background: #3d3d3d;
     display: flex;
     flex-direction: column;
@@ -7,23 +7,24 @@
     padding: 2rem;
     border-radius: 5px;
 
-        -webkit-box-shadow: 5px 5px 5px -1px rgba(70,192,1,1);
-    -moz-box-shadow: 5px 5px 5px -1px rgba(70,192,1,1);
-    box-shadow: 5px 5px 5px -1px rgba(70,192,1,1);
+        -webkit-box-shadow: 5px 5px 5px -1px rgb(9, 9, 209);
+    -moz-box-shadow: 5px 5px 5px -1px rgb(9, 9, 209);
+    box-shadow: 5px 5px 5px -1px rgb(9, 9, 209);
+    margin-bottom: 70px;
 }
 
-.addPost input{
+.editPost input{
     margin-bottom: 2rem;
     padding: 1rem;
     font-weight: bold;
 }
 
-.addPost button{
+.editPost button{
     margin-top: 2rem;
 
     padding: 0.8rem 7rem;
     border-radius: 5px;
-    background: #46c001;
+    background: rgb(9, 9, 209);
     color: #fff;
     font-weight: bold;
     font-size: 1rem;
@@ -31,7 +32,7 @@
     cursor: pointer;
 }
 
-.addPost button:hover{
+.editPost button:hover{
     background: #d3d3d3;
     color: #1d1d1d;
     
@@ -45,14 +46,9 @@
     justify-content: center;
 }
 
-.addPost textarea{
+.editPost textarea{
     max-width: 100%;
     min-width: 100%;
 
     padding: 1rem;
 }
-
-main h1{
-    padding: 0;
-}
-

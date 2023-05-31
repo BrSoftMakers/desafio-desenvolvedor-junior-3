@@ -12,7 +12,7 @@ const AddPost = () => {
         e.preventDefault()
 
         try{
-            await blogFetch.post('/posts', {
+            await blogFetch.post('/posts/', {
                 title,
                 body
             }).then(() => {
@@ -31,6 +31,8 @@ const AddPost = () => {
         <>
             <NavBarHome/>
             <main className="addPost">
+            <h1>Add post</h1>
+
                 <form action="">
                     <input 
                     type="text" 
@@ -43,6 +45,7 @@ const AddPost = () => {
                     id="" 
                     cols="30" 
                     rows="10"
+                    placeholder="Write here..."
                     onChange={(e) => setBody(e.target.value)}
                     ></textarea>
                     <div className="buttonBox">

@@ -6,6 +6,7 @@ import LoginUser from "./pages/Login/LoginUser";
 import Home from "./pages/Home/Home";
 import AddPost from "./pages/AddPost/AddPost"
 import DeletePost from "./pages/deletePost/DeletePost";
+import EditPost from "./pages/EditPost/EditPost";
 
 
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/home" element={<Home/>}></Route>
           <Route path="/addPost" element={<AddPost/>}></Route>
           <Route path="/deletePost" element={<DeletePost/>}></Route>
+          <Route path="/editPost" element={<EditPost/>}></Route>
 
         </Routes>
       </BrowserRouter>

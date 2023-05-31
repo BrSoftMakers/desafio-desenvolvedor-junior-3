@@ -1,6 +1,7 @@
 import NavBarHome from "../../components/navBar home/NavBarHome";
 import blogFetch from "../../axios/config";
 import { useState } from "react";
+import './deletePost.css'
 
 const DeletePost = () => {
   
@@ -19,7 +20,8 @@ const DeletePost = () => {
   return (
     <>
       <NavBarHome />
-      <main className="addPost">
+      <main className="deletePost">
+        <h1>Delete post</h1>
         <form action="">
           <input
             type="text"
