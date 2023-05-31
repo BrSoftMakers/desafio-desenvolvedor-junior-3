@@ -9,4 +9,5 @@ router.get('/', (req, res) => {
 router.post('/', UsuarioController.cadastrarUsuario);
 router.put('/:id', UsuarioController.atualizaUsuario);
 
+
 module.exports = router;

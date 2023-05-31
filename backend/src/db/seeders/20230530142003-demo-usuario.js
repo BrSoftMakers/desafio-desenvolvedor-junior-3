@@ -9,7 +9,7 @@ module.exports = {
         nome: 'Flavia Cristina',
         username: 'cris123',
         password: 'tina123',
-        email: 'tinagg@gmail.com',
+        email: 'tina@contato.com',
         ativo: 1,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -18,7 +18,7 @@ module.exports = {
         nome: 'Julia Sobral',
         username: 'julialogin',
         password: 'jusenha',
-        email: 'juliasobral@gmail.com',
+        email: 'juliasobral@contato.com',
         ativo: 1,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -27,7 +27,7 @@ module.exports = {
         nome: 'Marcos Antonio',
         username: 'marcoslogin',
         password: 'marcos123',
-        email: 'marcos@marcos.com',
+        email: 'marcos@contato.com',
         ativo: 1,
         createdAt: new Date(),
         updatedAt: new Date()

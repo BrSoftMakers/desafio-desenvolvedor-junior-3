@@ -1,4 +1,9 @@
+const jwt = require('jsonwebtoken');
 const database = require('../db/models').Usuarios;
+require('dotenv').config();
+
+
+const tokenSecret = process.env.TOKEN_SECRET;
 
 class UsuarioController {
 
@@ -35,7 +40,7 @@ class UsuarioController {
     static async deletarUsuario(req, res) {
         const { id } = req.params;
         try{
-            await database.Usuarios.destroy({ where: { id: Number(id) }});
+            await database.destroy({ where: { id: Number(id) }});
             return res.status(200).json({ mensagem: `id ${id} deletado`})
         } catch (error) {
             res.status(500).json(error.message);
@@ -45,18 +50,20 @@ class UsuarioController {
     static async validaUsuarioParaLogin(req, res) { //Funcao para autenticar usuario
         try{
             const { username, password } = req.body;
-            const user = await database.findOne({ where: { username: username }});
-            if(!user){ //Verificando se usuario existe no banco de dados
+            const usuario = await database.findOne({ where: { username: username }});
+            if(!usuario){ //Verificando se usuario existe no banco de dados
                 return res.status(401).json({ error: 'Usuário nao encontrado'});
             }
 
-            //ARRUMAR METODO DE VALIDAR SENHA DEPOIS(ESTÁ INCORRETO A VALIDACAO E CONEXAO)
-            const isPasswordValid = await database.findOne({ where: { password: password }});
-            if(!isPasswordValid) { // Verificando se a senha é válida
+            //trocar metodo findOne pelo metodo comparePassword
+            const senhaDigitada = await database.findOne({ where: { password: password }});
+            if(!senhaDigitada) { // Verificando se a senha é válida
                 return res.status(401).json({ error: 'Senha inválida' });
             }
 
-            return res.status(200).json({ message: "Login bem sucedido" });
+            const token = jwt.sign({ usuario: usuario.id }, tokenSecret, { expiresIn: '1h' })
+
+            return res.status(200).json({token});
         } catch (error) {
             console.error(error);
             return res.status(500).json({ error: 'Erro interno no servidor' });
