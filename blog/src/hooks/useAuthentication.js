@@ -11,15 +11,15 @@ import {
 import { useState, useEffect } from 'react'
 
 export const useAuthentication = () => {
-  const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(null)
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(null);
 
-  const [canceled, setCanceled] = useState(false)
+  const [cancelled, setCancelled] = useState(false)
 
   const auth = getAuth()
 
   function checkIfIsCancelled() {
-    if (canceled) {
+    if (cancelled) {
       return
     }
   }
@@ -67,7 +67,7 @@ export const useAuthentication = () => {
   };
 
   useEffect(() => {
-    return () => setCanceled(true)
+    return () => setCancelled(true)
   },[])
 
 
