@@ -49,7 +49,8 @@ const LoginForm = () => {
           <button type="submit" onClick={(e) => handleLogin(e)}>
             Sign in
           </button>
-          {/*  <p>{error}</p> */}
+
+          <a href="/signup">Cadastre-se aqui</a>
         </form>
     )
 }
