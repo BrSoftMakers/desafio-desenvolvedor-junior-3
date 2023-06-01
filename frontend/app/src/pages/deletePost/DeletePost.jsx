@@ -3,7 +3,13 @@ import blogFetch from "../../axios/config";
 import { useState } from "react";
 import './deletePost.css'
 
-const DeletePost = () => {
+const DeletePost = ({id, validateToken}) => {
+
+  if(!id){
+    window.location.assign("/");
+  } else {
+    validateToken();
+  }
   
   
     const [title, setTitle] = useState("");

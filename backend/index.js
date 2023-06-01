@@ -4,6 +4,17 @@ const userRoutes = require("./routes/user");
 const postRoutes = require("./routes/post");
 const connection = require("./database/db");
 const cors = require("cors");
+const session = require("express-session");
+
+// SESSION
+app.use(
+  session({
+    secret: "Ssdsd@#e$#Rfe@#$d#$#",
+    cookie: {
+      maxAge: 10800000,
+    },
+  })
+);
 
 app.use(express.json());
 app.use(cors());

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import blogFetch from "../../axios/config";
+import './SignupForm.css'
 
 const SignupForm = () => {
 
@@ -31,7 +32,7 @@ const SignupForm = () => {
 
     return(
         <>
-        <form action="http://localhost:8000/signup" method="post">
+        <form action="http://localhost:8000/signup" method="post" className="signupForm">
             <h1>Sign-up</h1>
 
             <input 

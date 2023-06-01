@@ -1,9 +1,17 @@
 import NavBarHome from "../../components/navBar home/NavBarHome";
 import blogFetch from "../../axios/config";
 import { useState, useEffect } from "react";
-import "./Home.css";
+import "./Home.css"
+// import { useNavigate,  } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ id, validateToken }) => {
+
+  if(!id){
+    window.location.assign("/");
+  } else {
+    validateToken();
+  }
+
   const [post, setPost] = useState([]);
 
   useEffect(() => {

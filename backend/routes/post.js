@@ -1,6 +1,7 @@
 const express = require('express');
 const { addPost, getPost, deletePost, editPost } = require('../controllers/postController');
 const route = express.Router()
+const auth = require('../midlewares/adminAuth')
 
 
 route.post('/posts', addPost)
