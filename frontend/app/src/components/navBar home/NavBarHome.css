@@ -11,8 +11,12 @@ nav{
 
 }
 
-h1{
+#navBrand{
     padding-left: 10%;
+    color: #fff;
+}
+
+h1{
     color: #fff;
 }
 

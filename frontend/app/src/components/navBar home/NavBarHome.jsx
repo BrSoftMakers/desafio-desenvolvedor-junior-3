@@ -1,17 +1,30 @@
 import { Link } from "react-router-dom";
-import './NavBarHome.css'
-
+import "./NavBarHome.css";
+import blogFetch from '../../axios/config'
 
 const NavBarHome = () => {
+
+  const handleLogout = async (e) => {
+    e.preventDefault()
+    alert('logout')
+    localStorage.clear()
+    window.location.assign('/')
+
+  }
+
+
+
   return (
     <nav>
-      <h1>Blog system</h1>
+      <a href="/home" id="navBrand">
+        <h1>Blog system</h1>
+      </a>
 
       <div className="links">
         <Link to="/addPost">add Post</Link>
         <Link to="/editPost">Edit post</Link>
         <Link to="/deletePost">delete post</Link>
-        <Link to="/">logout</Link>
+        <button onClick={(e) => handleLogout(e)}>logout</button>
       </div>
     </nav>
   );

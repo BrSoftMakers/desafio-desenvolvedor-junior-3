@@ -34,14 +34,7 @@ async function registerUser(req, res) {
   });
 }
 
-
-//MIDLEWARE AUTH
-
-
-
-
-
-
+//LOGIN
 async function login(req, res) {
   var email = req.body.email;
   var password = req.body.password;
@@ -78,6 +71,13 @@ async function login(req, res) {
     });
 }
 
+async function logout(req,res) {
+  res.status(200)
+}
+
+
+
+//AUTH
 async function verifyToken(req, res) {
   const { token } = req.body;
 
@@ -97,10 +97,10 @@ async function verifyToken(req, res) {
   }
 }
 
-//LOGIN DE USUÁRIOS
 
 module.exports = {
   registerUser,
   login,
-  verifyToken
+  verifyToken, 
+  logout
 };
