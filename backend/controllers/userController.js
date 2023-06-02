@@ -102,5 +102,5 @@ module.exports = {
   registerUser,
   login,
   verifyToken, 
-  logout
+
 };

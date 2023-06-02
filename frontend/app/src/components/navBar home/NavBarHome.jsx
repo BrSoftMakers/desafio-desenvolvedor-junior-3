@@ -6,13 +6,9 @@ const NavBarHome = () => {
 
   const handleLogout = async (e) => {
     e.preventDefault()
-    alert('logout')
     localStorage.clear()
     window.location.assign('/')
-
   }
-
-
 
   return (
     <nav>
