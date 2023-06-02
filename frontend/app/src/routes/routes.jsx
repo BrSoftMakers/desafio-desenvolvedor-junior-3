@@ -9,6 +9,7 @@ import EditPost from "../pages/EditPost/EditPost";
 import AddUser from "../pages/AddUser/AddUser";
 import Home from "../pages/Home/Home";
 import blogFetch from "../axios/config";
+import ViewPost from "../pages/viewPost/ViewPost";
 
 const Router = () => {
 
@@ -76,6 +77,12 @@ const Router = () => {
           cleanUserId={cleanUserId}
           validateToken={validateToken}
           />} />
+          <Route path='/viewPost' element={<ViewPost
+            updateUserId={updateUserId}
+            id={userId}
+            cleanUserId={cleanUserId}
+            validateToken={validateToken}
+          />}/>
         </Routes>
       </BrowserRouter>
     </>

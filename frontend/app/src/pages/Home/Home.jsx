@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import NavBarHome from "../../components/navBar home/NavBarHome";
 import blogFetch from "../../axios/config";
 import { useState, useEffect } from "react";
@@ -12,6 +14,15 @@ const Home = ({ id, validateToken }) => {
     validateToken();
   }
 
+
+  const handleViewPost = async (e, id) => {
+    e.preventDefault()
+
+    window.location.assign("/viewPost");
+    localStorage.setItem('@viewPost:item', JSON.parse(id))
+  }
+
+
   const [post, setPost] = useState([]);
 
   useEffect(() => {
@@ -19,11 +30,13 @@ const Home = ({ id, validateToken }) => {
       .get("/posts")
       .then((response) => {
         setPost(response.data);
+        
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
   return (
     <>
       <NavBarHome />
@@ -32,12 +45,13 @@ const Home = ({ id, validateToken }) => {
         {post.map((post, key) => {
           return (
             // eslint-disable-next-line react/jsx-key
-            <div className="posts" key={post.id}>
+            
+            <div className="posts" key={post.id} id={post.id}>
               <h1>{post.title}</h1>
               <p>{post.body}</p>
               <span>{key}</span>
               <div>
-                <button>Ver mais</button>
+                <button onClick={(e) => handleViewPost(e, post.id)}>Ver mais</button>  
               </div>
             </div>
           );

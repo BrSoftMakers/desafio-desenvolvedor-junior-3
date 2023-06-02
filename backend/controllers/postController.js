@@ -1,3 +1,4 @@
+const { response } = require("express");
 const Post = require("../database/models/posts");
 
 // ADD POSTS
@@ -51,22 +52,39 @@ async function deletePost(req, res) {
 async function editPost(req, res) {
   console.log(req.body);
 
-
   await Post.update(
     {
       title: req.body.newTitle,
-      body: req.body.body
+      body: req.body.body,
     },
     {
       where: {
         title: req.body.oldTitle,
       },
     }
-  )
+  );
   const posts = await Post.findAll();
   res.status(200).send(posts);
+}
 
+//VIEW UNIQUE POST
+async function viewPost(req, res) {
+  let id = req.params.id;
 
+  await Post.findOne({
+    where: {
+      id: id,
+    },
+  })
+    .then((post) => {
+      if (!post) {
+        res.status(400);
+      }
+      res.send(post);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
 }
 
 module.exports = {
@@ -74,4 +92,5 @@ module.exports = {
   getPost,
   deletePost,
   editPost,
+  viewPost,
 };
