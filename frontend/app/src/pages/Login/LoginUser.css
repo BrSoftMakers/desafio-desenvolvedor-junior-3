@@ -1,0 +1,41 @@
+.loginContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100vh;
+    padding: 0;
+    background-image: url('https://besthqwallpapers.com/Uploads/7-3-2021/159819/abstract-night-landscape-4k-moon-creative-silhouettes-of-mountains.jpg') ;
+    background-position: center 10%;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+
+}
+
+.loginBrand{ 
+
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.loginBrand h1{
+    font-size: 4rem;
+    text-align: center;
+    font-weight: lighter;
+    padding: 10%;
+}
+
+.formSide{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 50%;
+}

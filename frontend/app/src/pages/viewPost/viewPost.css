@@ -1,0 +1,22 @@
+#viewPost{
+    min-height: 100vh;
+    background: #1d1d1d;
+}
+
+.viewPost h1{
+    padding-left: 0;
+    text-align: center;
+
+    padding-top: 3rem;
+}
+
+.viewPost p{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 2rem;
+    color: #fff;
+    max-height: 80%;
+    word-wrap: break-word;
+    min-height: 300px;
+    padding-bottom: 3rem;
+}

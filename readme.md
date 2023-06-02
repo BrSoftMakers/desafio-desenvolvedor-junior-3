@@ -1,17 +1,42 @@
-![SoftMakers](https://vagas.softmakers.com.br/assets/img/logotipo14xxhdpi.png)
 
-# Desafio - Desenvolvedor Fullstack Junior 3.
-Seja bem-vindo! Este desafio foi projetado para avaliar a sua capacidade técnica como candidato à vaga de Desenvolvedor Fullstack Junior 3.
-## Instruções
-- Faça um fork deste repositório;
-- Utilize alguma das tecnologias (front-end e back-end) informadas na proposta desse desafio;
-- Crie um passo a passo de como rodar a sua aplicação;
-- Após finalizar, submeta um pull request com um comentário informando o seu e-mail de contato e aguarde nossa avaliação.
-## Proposta
+# Desafio para desenvolvedor jr da SoftMarkersBR
+
+O desafio apresentado é um blog com sistema de edição, deleção, adição e visibilidade de artigos, tendo tbm um sistema de login e registro de usuários.
+
+
+## Instalação♻️
+
+Instale O sistema com npm
+
+- Faça o clone do projeto para a sua máquina, após concluído entre na pasta backend e na pasta frontend/app e execute o seguinte código:
+
+```
+npm install
+```
+
+- Logo em seguida crie no seu banco de dados *mysql* um database com o nome 'blog'. Feito isto basta apenas iniciar o servidor no backend com o seguinte código, lembrando que a senha e o user padrão do projeto para acessar o seu banco de dados ficou respectivamente como: root, root
+
+```
+npm run start
+```
+
+- Em seguida podemos dar o start no servidor do frontend com o seguinte código
+
+```
+npm run dev
+```
+
+Dessa forma o projeto estará pronto para ser utilizado.
+
+
+
+    
+## Documentação da API📖
+
+
 Você deverá desenvolver um blog. Para isso, separamos a proposta desse desafio em duas etapas:
-
 **Back-end:**
-Desenvolva uma Restful API utilizando Node.JS que contenha as seguintes rotas:
+Desenvolva uma API utilizando Node JS (ExpressJS ou NestJS) com um dos framework informados, que contenha as seguintes rotas:
 - `/register` - [POST] - esta rota deve cadastrar um usuário;
 - `/login` - [POST] - esta rota deve autenticar um usuário;
 - `/posts` - [POST] - esta rota deve cadastrar uma postagem mantendo a referência do autor. (requer autenticação);
@@ -19,25 +44,16 @@ Desenvolva uma Restful API utilizando Node.JS que contenha as seguintes rotas:
 - `/posts` - [GET] - esta rota deve retornar a lista de todas as postagens ordenadas das mais recentes para as mais antigas com a possibilidade de inverter esta ordenação e de retornar apenas as postagens do usuário que fez a requisição (requer autenticação);
 - `/posts/{id}` - [GET] - esta rota deve retornar a postagem do ID especificado com todos os seus dados (requer autenticação);
 - `/posts/{id}` - [DELETE] - esta rota deve deletar a postagem do ID especificado.
-
 **Front-end:**
-Desenvolva uma aplicação web utilizando o framework front-end react e esta deve atender as seguintes histórias de usuário:
+Desenvolva uma aplicação web utilizando o framework front-end react (React cli ou NextJs) e esta deve atender as seguintes histórias:
 - Eu como usuário desejo me cadastrar;
 - Eu como usuário desejo realizar login;
 - Eu como usuário autenticado desejo visualizar todas as postagens;
-- Eu como usuário autenticado desejo visualizar os detalhes de uma postagem;
-- Eu como usuário autenticado desejo visualizar todas as minhas postagens;
+- Eu como usuário autenticado desejo visualizar os detalhes de uma postagem; - Eu como usuário autenticado desejo visualizar todas as minhas postagens;
 - Eu como usuário autenticado desejo criar uma postagem;
 - Eu como usuário autenticado desejo editar uma postagem que eu criei;
 - Eu como usuário autenticado desejo deletar uma postagem que eu criei.
-> **Observações:**
-> - Sua aplicação web DEVE se comunicar com sua API;
-> - Você pode utilizar o banco de dados de sua preferência.
-## Diferenciais
-Será considerado como diferenciais a utilização ou o conhecimento nas seguintes tecnologias:
-- Utilização de algum ORM;
-- Conhecimento em React Native;
-- Conhecimento em Firebase;
-- Conhecimento em Docker;
-- Conhecimento em infraestrutura em nuvem;
-- Conhecimento em testes a nível de código.
+## Autores
+
+com ❤️ [@Felipe Teixeira](https://www.linkedin.com/in/felipe-teixeira-devfullstack)
+
