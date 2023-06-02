@@ -8,6 +8,6 @@ router.get('/', (req, res) => {
 
 router.post('/', UsuarioController.cadastrarUsuario);
 router.put('/:id', UsuarioController.atualizaUsuario);
-
+router.delete('/:id', UsuarioController.deletarUsuario);
 
 module.exports = router;
