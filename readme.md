@@ -8,13 +8,13 @@ O desafio apresentado é um blog com sistema de edição, deleção, adição e 
 
 Instale O sistema com npm
 
-- faça o clone do projeto para a sua máquina, após concluído entre na pasta backend e na pasta frontend/app e execute o seguinte código:
+- Faça o clone do projeto para a sua máquina, após concluído entre na pasta backend e na pasta frontend/app e execute o seguinte código:
 
 ```
 npm install
 ```
 
-- logo em seguida crie no seu banco de dados *mysql* um database com o nome 'blog'. Feito isto basta apenas iniciar o servidor no backend com o seguinte código, lembrando que a senha e o user padrão do projeto para acessar o seu banco de dados ficou respectivamente como: root, root
+- Logo em seguida crie no seu banco de dados *mysql* um database com o nome 'blog'. Feito isto basta apenas iniciar o servidor no backend com o seguinte código, lembrando que a senha e o user padrão do projeto para acessar o seu banco de dados ficou respectivamente como: root, root
 
 ```
 npm run start
@@ -26,7 +26,7 @@ npm run start
 npm run dev
 ```
 
-Dessa forma o projeto estará pronto para ser utilizado,
+Dessa forma o projeto estará pronto para ser utilizado.
 
 
 
