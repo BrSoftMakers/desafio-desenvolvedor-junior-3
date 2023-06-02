@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "Vinicius.10",
+    "database": "soft_blog",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "Vinicius.10",
+    "database": "soft_blog",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "Vinicius.10",
+    "database": "soft_blog",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
