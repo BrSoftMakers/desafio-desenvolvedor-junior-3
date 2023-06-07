@@ -2,9 +2,11 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
-// import Posts from './pages/Posts';
+import Posts from './Pages/Posts';
 // import PostsDetails from './pages/PostsDetails';
-// import UserPosts from './pages/UserPosts';
+// import MyPosts from './pages/MyPosts';
+// import CreatePost from './pages/CreatePost';
+// import EditPost from './pages/EditPost';
 
 function App() {
   return (
@@ -14,9 +16,12 @@ function App() {
       </Route>
       <Route path="/login" component={ Login } />
       <Route path="/register" component={ Register } />
-      {/* <Route path="/posts" Component={ Posts } />
-      <Route exact path="/user/posts" Component={ UserPosts } />
-      <Route path="/user/posts/:id" Component={ PostsDetails } /> */}
+      <Route path="/posts" component={ Posts } />
+      {/*
+      <Route path="/posts/:id" component={ PostsDetails } />
+      <Route path="/MyPosts" component={ MyPosts } />
+      <Route path="/createpost" component={ CreatePost } />
+      <Route path="/editpost/:id" component={ EditPost } /> */}
     </Switch>
   );
 }
