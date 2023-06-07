@@ -1,20 +1,28 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { requestGet } from '../services/request';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import MyContext from '../context/MyContext';
 
 function Posts() {
-  const { isLogged } = useContext(MyContext);
+  const { isLogged, deletePost } = useContext(MyContext);
   const [posts, setPosts] = useState([]);
+
+  const history = useHistory()
   
   useEffect(() => {
     const getAllPosts = async () => {
       try {
-        console.log('cheguei');
-        const allposts = await requestGet('/posts');
+        const { token } = JSON.parse(localStorage.getItem('user'));
+        const headers = {
+          headers: {
+            Authorization: token,
+          },
+        };
+        const allposts = await requestGet('/posts', headers);
         setPosts(allposts);
       } catch (error) {
-        console.error(error);
+        localStorage.clear();
+        return <Redirect to="/notfound" />
       }
     };
     getAllPosts();
@@ -44,6 +52,18 @@ function Posts() {
               <p>
                 {`Publicado pro: ${user.name}`}
               </p>
+              <button
+                type="button"
+                onClick={ () => history.push(`/editpost/${id}`) }
+              >
+                Editar Postagem
+              </button>
+              <button
+                type="button"
+                onClick={ () => deletePost(id) }
+              >
+                Deletar Postagem
+              </button>
             </li>
           </Link>
         ))}

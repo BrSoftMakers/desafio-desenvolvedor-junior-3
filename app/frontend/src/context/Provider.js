@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { requestPost } from '../services/request';
+import { requestDelete, requestPost } from '../services/request';
 import MyContext from './MyContext';
+import { useHistory } from 'react-router-dom';
 
 function Provider({ children }) {
   const [isLogged, setIsLogged] = useState(false);
@@ -15,6 +16,8 @@ function Provider({ children }) {
     registerEmailInput: '',
     registerPasswordInput: '',
   });
+
+  const history = useHistory();
 
   const handleChange = useCallback(
     ({ target }) => {
@@ -96,6 +99,15 @@ function Provider({ children }) {
     }
   }, []);
 
+  const deletePost = useCallback(async (id) => {
+    try {
+      await requestDelete(`/posts/${id}`);
+      history.push('/posts')
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, [history]);
+
   useEffect(() => {
     validateLoginInputs();
     validateRegisterInputs();
@@ -116,18 +128,22 @@ function Provider({ children }) {
       isRegisterDisabled,
       failedTryLogin,
       failedTryRegister,
+      deletePost,
     }),
-    [handleChange,
+    [
+      handleChange,
       resetInputs,
       login,
       register,
       logOut,
+      deletePost,
       formsInfo,
       isLogged,
       isLoginDisabled,
       isRegisterDisabled,
       failedTryLogin,
-      failedTryRegister]
+      failedTryRegister
+    ]
   );
 
   return (

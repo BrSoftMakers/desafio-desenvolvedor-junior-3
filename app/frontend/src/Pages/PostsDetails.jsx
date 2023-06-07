@@ -4,7 +4,7 @@ import { requestGet } from '../services/request';
 import MyContext from '../context/MyContext';
 
 const PostsDetails = () => {
-  const { isLogged } = useContext(MyContext);
+  const { isLogged, deletePost } = useContext(MyContext);
   const { id } = useParams();
   const [post, setPost] = useState(null);
 
@@ -13,10 +13,17 @@ const PostsDetails = () => {
   useEffect(() => {
     const getPostById = async () => {
       try {
-        const silglePost = await requestGet(`/posts/${id}`);
+        const { token } = JSON.parse(localStorage.getItem('user'));
+        const headers = {
+          headers: {
+            Authorization: token,
+          },
+        };
+        const silglePost = await requestGet(`/posts/${id}`, headers);
         setPost(silglePost);
       } catch (error) {
-        console.error(error);
+        localStorage.clear();
+        return <Redirect to="/notfound" />
       }
     };
     getPostById();
@@ -40,7 +47,7 @@ const PostsDetails = () => {
       </button>
       <button
         type="button"
-        onClick={ () => console.log('ok') }
+        onClick={ () => deletePost(id) }
       >
         Deletar Postagem
       </button>
