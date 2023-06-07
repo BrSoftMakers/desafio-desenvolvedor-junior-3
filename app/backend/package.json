@@ -2,11 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "backend da aplicação",
-  "main": "./build/server",
+  "main": "./src/api/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node .",
-    "dev": "nodemon --watch \"./src/**\" ./src/server.ts",
+    "dev": "nodemon .",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
     "sequelize-cli": "^6.6.1"
   },
   "dependencies": {
+    "dotenv": "^16.1.4",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "md5": "^2.3.0",
