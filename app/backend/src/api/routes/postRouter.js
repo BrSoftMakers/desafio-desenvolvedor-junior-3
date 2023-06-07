@@ -4,9 +4,9 @@ const tokenValidation = require('../middlewares/tokenMiddleware');
 
 const postRouter = express.Router();
 
-postRouter.post('/', postsController.newPost);
+postRouter.post('/', tokenValidation, postsController.newPost);
 postRouter.put('/:id', tokenValidation, postsController.editPost);
-postRouter.get('/', tokenValidation, postsController.getAll);
+postRouter.get('/', postsController.getAll);
 postRouter.get('/:id', tokenValidation, postsController.getById);
 postRouter.delete('/:id', tokenValidation, postsController.deletePost);
 

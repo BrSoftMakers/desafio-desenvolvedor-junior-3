@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const md5 = require('md5');
-const { Users } = require('../models');
+const { Users } = require('../../database/models');
 
 const secret = 'secretJWT';
 

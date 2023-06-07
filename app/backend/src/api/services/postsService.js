@@ -1,4 +1,4 @@
-const { Posts, Users } = require('../models');
+const { Posts, Users } = require('../../database/models');
 
 const newPost = async ({ title, content, userId }) => {
 
