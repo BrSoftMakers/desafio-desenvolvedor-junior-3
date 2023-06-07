@@ -1,6 +1,4 @@
-import PropTypes from 'prop-types';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import {  useHistory } from 'react-router-dom';
 import { requestPost } from '../services/request';
 import MyContext from './MyContext';
 
@@ -17,8 +15,6 @@ function Provider({ children }) {
     registerEmailInput: '',
     registerPasswordInput: '',
   });
-
-  const history = useHistory()
 
   const handleChange = useCallback(
     ({ target }) => {
@@ -62,8 +58,11 @@ function Provider({ children }) {
     try {
       const user = await requestPost('/login', info);
       const { id, ...userInfo } = user;
-      localStorage.setItem('user', JSON.stringify(userInfo));
-      localStorage.setItem('userId', JSON.stringify({ userId: id }));
+      const userData = {
+        ...userInfo,
+        userId: id,
+      };
+      localStorage.setItem('user', JSON.stringify(userData));
       setIsLogged(true);
     } catch (error) {
       setFailedTryLogin(true);
@@ -75,14 +74,17 @@ function Provider({ children }) {
       try {
         const user = await requestPost('/register', info);
         const { id, ...userInfo } = user;
-        localStorage.setItem('user', JSON.stringify(userInfo));
-        localStorage.setItem('userId', JSON.stringify({ userId: id }));
+        const userData = {
+          ...userInfo,
+          userId: id,
+        };
+        localStorage.setItem('user', JSON.stringify(userData));
         setIsLogged(true);
       } catch (error) {
         setFailedTryRegister(true);
       }
     },
-    [login],
+    [],
   );
 
   const logOut = useCallback(async () => {
@@ -115,16 +117,22 @@ function Provider({ children }) {
       failedTryLogin,
       failedTryRegister,
     }),
-    [handleChange, setFormsInfo, resetInputs, login, setIsLogged, register, logOut, formsInfo, isLogged, isLoginDisabled, isRegisterDisabled, failedTryLogin, failedTryRegister],
+    [handleChange,
+      resetInputs,
+      login,
+      register,
+      logOut,
+      formsInfo,
+      isLogged,
+      isLoginDisabled,
+      isRegisterDisabled,
+      failedTryLogin,
+      failedTryRegister]
   );
 
   return (
     <MyContext.Provider value={ contextValue }>{children}</MyContext.Provider>
   );
 }
-
-Provider.propTypes = {
-  children: PropTypes.shape({}),
-}.isRequired;
 
 export default Provider;
