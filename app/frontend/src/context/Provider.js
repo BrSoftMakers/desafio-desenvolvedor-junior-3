@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import {  useHistory } from 'react-router-dom';
 import { requestPost } from '../services/request';
 import MyContext from './MyContext';
 
@@ -16,6 +17,8 @@ function Provider({ children }) {
     registerEmailInput: '',
     registerPasswordInput: '',
   });
+
+  const history = useHistory()
 
   const handleChange = useCallback(
     ({ target }) => {
@@ -51,7 +54,6 @@ function Provider({ children }) {
       registerNameInput: '',
       registerEmailInput: '',
       registerPasswordInput: '',
-      registerRoleInput: 'customer',
     });
   }, []);
 
@@ -68,12 +70,14 @@ function Provider({ children }) {
     }
   }, []);
 
-  const register = useCallback(
-    async (event, info) => {
+  const register = useCallback(async (event, info) => {
       event.preventDefault();
       try {
-        await requestPost('/register', info);
-        login(event, info);
+        const user = await requestPost('/register', info);
+        const { id, ...userInfo } = user;
+        localStorage.setItem('user', JSON.stringify(userInfo));
+        localStorage.setItem('userId', JSON.stringify({ userId: id }));
+        setIsLogged(true);
       } catch (error) {
         setFailedTryRegister(true);
       }

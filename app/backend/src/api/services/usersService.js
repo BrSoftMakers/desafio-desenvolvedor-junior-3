@@ -17,16 +17,23 @@ const getById = async (id) => {
   return user;
 };
 
-const register = async (user) => {
-  const { email } = user;
+const register = async (newuser) => {
+  const { email } = newuser;
   const getUserByEmail = await Users.findOne({ where: { email } });
   if (getUserByEmail) return { type: 'INVALID_EMAIL', message: 'User already registered' };
 
-  await Users.create(user);
+  const user = await Users.create(newuser);
 
   const token = jwt.sign({ data: { userId: user.id } }, secret, jwtConfig);
 
-  return { token };
+  const result = {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    token,
+  };
+
+  return result;
 };
 
 const login = async (email, password) => {

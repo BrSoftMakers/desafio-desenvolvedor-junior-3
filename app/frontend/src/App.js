@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Posts from './pages/Posts';
-import PostsDetails from './pages/PostsDetails';
-import UserPosts from './pages/UserPosts';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
+// import Posts from './pages/Posts';
+// import PostsDetails from './pages/PostsDetails';
+// import UserPosts from './pages/UserPosts';
 
 function App() {
   return (
@@ -14,9 +14,9 @@ function App() {
       </Route>
       <Route path="/login" component={ Login } />
       <Route path="/register" component={ Register } />
-      <Route path="/posts" Component={ Posts } />
+      {/* <Route path="/posts" Component={ Posts } />
       <Route exact path="/user/posts" Component={ UserPosts } />
-      <Route path="/user/posts/:id" Component={ PostsDetails } />
+      <Route path="/user/posts/:id" Component={ PostsDetails } /> */}
     </Switch>
   );
 }
