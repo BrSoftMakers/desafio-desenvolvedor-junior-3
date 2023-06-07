@@ -7,7 +7,7 @@ services:
     platform: linux/x86_64
     working_dir: /app-frontend
     depends_on:
-      backend
+      - backend
   backend:
     container_name: app_backend
     build: ./backend
@@ -19,7 +19,7 @@ services:
     volumes: 
       - ./backend/src:/app-backend/src
     depends_on:
-      db
+      - db
     environment:
       - APP_PORT=3001
       - JWT_SECRET=jwt_secret
