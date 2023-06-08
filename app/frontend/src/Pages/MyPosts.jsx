@@ -44,6 +44,7 @@ const MyPosts = () => {
 
   if (!isLogged) return <Redirect to="/login" />;
   if (!posts) return <div>Carregando detalhes da postagem...</div>;
+  const order = isDescending ? 'Mais Antigas' : 'Mais Recentes'
 
   return (
     <>
@@ -54,7 +55,7 @@ const MyPosts = () => {
           onClick={toggleOrder}
           className="my-posts-toggle"
         >
-          Inverter Ordem
+          {order}
         </button>
         <ul className="my-posts-list">
           {posts.map(({ id, title, content, published, updated, user }) => (
