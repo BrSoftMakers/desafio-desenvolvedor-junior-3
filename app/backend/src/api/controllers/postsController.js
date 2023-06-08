@@ -20,7 +20,8 @@ const getById = async (req, res) => {
 
 const editPost = async (req, res) => {
   const { id } = req.params;
-  const editedPost = await postsService.deletePost(Number(id));
+  const { body } = req
+  const editedPost = await postsService.editPost(id, body);
   return res.status(204).send(editedPost);
 };
 

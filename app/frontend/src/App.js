@@ -4,9 +4,9 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Posts from './Pages/Posts';
 import PostsDetails from './Pages/PostsDetails';
-// import MyPosts from './Pages/MyPosts';
 import CreatePost from './Pages/CreatePost';
-// import EditPost from './Pages/EditPost';
+import EditPost from './Pages/EditPost';
+// import MyPosts from './Pages/MyPosts';
 
 function App() {
   return (
@@ -19,9 +19,8 @@ function App() {
       <Route exact path="/posts" component={ Posts } />
       <Route path="/posts/:id" component={ PostsDetails } />
       <Route path="/createpost" component={ CreatePost } />
-      {/*
-      <Route path="/MyPosts" component={ MyPosts } />
-      <Route path="/editpost/:id" component={ EditPost } /> */}
+      <Route path="/editpost/:id" component={ EditPost } /> 
+      {/* Route path="/MyPosts" component={ MyPosts } /> */}
     </Switch>
   );
 }

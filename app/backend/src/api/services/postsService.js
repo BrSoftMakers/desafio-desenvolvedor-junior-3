@@ -32,6 +32,19 @@ const getById = async (id) => {
   return post;
 };
 
+const editPost = async (id, { title, content }) => {
+
+  const updated = Date.now()
+
+  const newPost = await Posts.update({
+    title,
+    content,
+    updated,
+  }, { where: { id } });
+
+  return newPost;
+};
+
 const deletePost = async (id) => {
   await Posts.destroy({ where: { id } });
   return 'success';
@@ -41,5 +54,6 @@ module.exports = {
   getAll,
   deletePost,
   getById,
-  newPost
+  newPost,
+  editPost
 };

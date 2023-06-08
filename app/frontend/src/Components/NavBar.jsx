@@ -22,15 +22,14 @@ function NavBar() {
             {username}
           </h3>
         <div>
+          <button
+            type="button"
+            onClick={ () => history.push('/posts')}
+          >
+            Todos as postagens
+          </button>
           {
-            pathname === "/createpost" ? (
-              <button
-              type="button"
-              onClick={ () => history.push('/posts')}
-              >
-                Todos as postagens
-              </button>
-            ) : (
+            pathname !== "/createpost" && (
               <button
                 type="button"
                 onClick={ () => history.push('/createpost')}
