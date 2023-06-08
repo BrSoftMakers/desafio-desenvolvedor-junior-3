@@ -4,6 +4,7 @@ import { requestGet } from '../services/request';
 import { convertDate } from '../utils/convertData';
 import { Link, Redirect } from 'react-router-dom';
 import MyContext from '../context/MyContext';
+import '../styles/myPosts.css'
 
 const MyPosts = () => {
   const [posts, setPosts] = useState([]);
@@ -47,20 +48,25 @@ const MyPosts = () => {
   return (
     <>
       <NavBar />
-      <main>
-        <h1>Suas postagens:</h1>
-        <button onClick={toggleOrder}>Inverter Ordem</button>
-        <ul>
+      <main className="my-posts-container">
+        <h1 className="my-posts-title">Suas postagens:</h1>
+        <button
+          onClick={toggleOrder}
+          className="my-posts-toggle"
+        >
+          Inverter Ordem
+        </button>
+        <ul className="my-posts-list">
           {posts.map(({ id, title, content, published, updated, user }) => (
-            <Link to={`/posts/${id}`} key={id}>
-              <li key={id}>
-                <h3>{`Título: ${title}`}</h3>
-                <p>{`Conteúdo: ${content}`}</p>
-                <p>{`Publicado em: ${convertDate(published)}`}</p>
+            <Link to={`/posts/${id}`} key={id} className="my-posts-link">
+              <li key={id} className="my-posts-item">
+                <h3 className="my-posts-item-title">{`Título: ${title}`}</h3>
+                <p className="my-posts-item-content">{`Conteúdo: ${content}`}</p>
+                <p className="my-posts-item-published">{`Publicado em: ${convertDate(published)}`}</p>
                 {
-                  updated !== null && <p>{`Editado em: ${convertDate(updated)}`}</p>
+                  updated !== null && <p className="my-posts-item-updated">{`Editado em: ${convertDate(updated)}`}</p>
                 }
-                <p>{`Publicado por: ${user.name}`}</p>
+                <p className="my-posts-item-user">{`Publicado por: ${user.name}`}</p>
               </li>
             </Link>
           ))}

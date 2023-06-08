@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import MyContext from '../context/MyContext';
 import { convertDate } from '../utils/convertData';
 import NavBar from '../Components/NavBar';
+import '../styles/posts.css'
 
 function Posts() {
   const [posts, setPosts] = useState([]);
@@ -50,36 +51,29 @@ function Posts() {
       <nav>
         <NavBar />
       </nav>
-      <main>
-        <h1>Todas as postagens:</h1>
-        <button onClick={toggleOrder}>{order} </button>
-        <ul>
+      <main className="posts-container">
+        <h1 className="post-title">Todas as postagens:</h1>
+        <button
+          onClick={toggleOrder}
+          className="post-toggle"
+        >
+          {order}
+        </button>
+        <div className="posts-grid">
           {posts.map(({ id, title, content, published, updated, user }) => (
-            <Link to={`/posts/${id}`} key={id}>
-              <li>
-                <h3>
-                  {`Título: ${title}`}
-                </h3>
-                <p>
-                  {`Conteúdo: ${content}`}
-                </p>
-                <p>
-                  {`Publicado em: ${convertDate(published)}`}
-                </p>
-                {
-                  updated !== null && (
-                <p>
-                  {`Editado em: ${convertDate(updated)}`}
-                </p>
-                  )
-                }
-                <p>
-                  {`Publicado por: ${user.name}`}
-                </p>
-              </li>
+            <Link to={`/posts/${id}`} key={id} className="post-card-link">
+              <div className="post-card">
+                <h3 className="post-card-title">{`Título: ${title}`}</h3>
+                <p className="post-card-content">{`Conteúdo: ${content}`}</p>
+                <p className="post-card-published">{`Publicado em: ${convertDate(published)}`}</p>
+                {updated !== null && (
+                  <p className="post-card-updated">{`Editado em: ${convertDate(updated)}`}</p>
+                )}
+                <p className="post-card-user">{`Publicado por: ${user.name}`}</p>
+              </div>
             </Link>
           ))}
-        </ul>
+        </div>
       </main>
     </>
   );

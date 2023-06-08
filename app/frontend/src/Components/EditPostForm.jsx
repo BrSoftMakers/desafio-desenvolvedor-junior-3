@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { requestGet, requestPut } from '../services/request';
 import MyContext from '../context/MyContext';
+import '../styles/editPost.css'
 
 const EditPostForm = () => {
   const { id } = useParams();
@@ -53,27 +54,29 @@ const EditPostForm = () => {
   if (!isLogged) return <Redirect to="/login" />
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Editar postagem</h2>
-      <div>
-        <label htmlFor="title">Título:</label>
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={({ target }) => setTitle(target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="content">Conteúdo:</label>
+    <>
+    <h1>Editar postagem</h1>
+    <div className="edit-post-form">
+      <form onSubmit={handleSubmit}>
+          <label htmlFor="title" className="edit-post-form__label">Título:</label>
+          <input
+            type="text"
+            id="title"
+            className="edit-post-form__input"
+            value={title}
+            onChange={({ target }) => setTitle(target.value)}
+          />
+        <label htmlFor="content" className="edit-post-form__label">Conteúdo:</label>
         <textarea
           id="content"
+          className="edit-post-form__textarea"
           value={content}
           onChange={({ target }) => setContent(target.value)}
         />
-      </div>
-      <button type="submit">Salvar</button>
-    </form>
+        <button type="submit" className="edit-post-form__button">Salvar</button>
+      </form>
+    </div>
+    </>
   );
 };
 

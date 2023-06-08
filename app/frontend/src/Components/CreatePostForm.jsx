@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { requestPost } from '../services/request';
 import { useHistory, Redirect } from 'react-router-dom';
 import MyContext from '../context/MyContext';
+import '../styles/createPost.css'
 
 const CreatePostForm = () => {
   const [title, setTitle] = useState('');
@@ -38,27 +39,29 @@ const CreatePostForm = () => {
   if (!isLogged) return <Redirect to="/login" />
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Criar nova postagem</h2>
-      <div>
-        <label htmlFor="title">Título:</label>
+    <>
+      <h1>Criar nova postagem</h1>
+      <div className="create-post-form">
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="title" className="create-post-form__label">Título:</label>
         <input
           type="text"
           id="title"
+          className="create-post-form__input"
           value={title}
           onChange={({ target }) => setTitle(target.value)}
         />
-      </div>
-      <div>
-        <label htmlFor="content">Conteúdo:</label>
+        <label htmlFor="content" className="create-post-form__label">Conteúdo:</label>
         <textarea
           id="content"
           value={content}
+          className="create-post-form__textarea"
           onChange={({ target }) => setContent(target.value)}
         />
+        <button type="submit" className="create-post-form__button">Criar</button>
+      </form>
       </div>
-      <button type="submit">Criar</button>
-    </form>
+    </>
   );
 };
 

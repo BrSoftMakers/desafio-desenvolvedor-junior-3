@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import MyContext from '../context/MyContext';
 import { useHistory, useLocation } from 'react-router-dom';
+import logo from '../images/logo.png';
+import '../styles/navBar.css'
 
 function NavBar() {
   const [username, setUsername] = useState('');
@@ -16,45 +18,42 @@ function NavBar() {
   }, []);
 
   return (
-    <header>
-        <div>
-          <h3>
-            {username}
-          </h3>
-        <div>
+    <header className="navbar">
+      <div className="navbar-left">
+        <img src={logo} alt="Logo" />
+      </div>
+      <div className="navbar-center">
+        <button
+          type="button"
+          onClick={() => history.push('/posts')}
+        >
+          Todos as postagens
+        </button>
+        {pathname !== "/createpost" && (
           <button
             type="button"
-            onClick={ () => history.push('/posts')}
+            onClick={() => history.push('/createpost')}
           >
-            Todos as postagens
+            Criar nova postagem
           </button>
-          {
-            pathname !== "/createpost" && (
-              <button
-                type="button"
-                onClick={ () => history.push('/createpost')}
-              >
-                Criar nova postagem
-              </button>
-            )
-          }
-                    {
-            pathname !== "/myposts" && (
-              <button
-                type="button"
-                onClick={ () => history.push('/myposts')}
-              >
-                Suas Postagens
-              </button>
-            )
-          }
+        )}
+        {pathname !== "/myposts" && (
           <button
             type="button"
-            onClick={ () => logOut() }
+            onClick={() => history.push('/myposts')}
           >
-            Sair
+            Suas Postagens
           </button>
-        </div>
+        )}
+      </div>
+      <div className="navbar-right">
+        <h3>{username}</h3>
+        <button
+          type="button"
+          onClick={() => logOut()}
+        >
+          Sair
+        </button>
       </div>
     </header>
   );
