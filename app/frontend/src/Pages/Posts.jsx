@@ -6,8 +6,10 @@ import { convertDate } from '../utils/convertData';
 import NavBar from '../Components/NavBar';
 
 function Posts() {
-  const { isLogged } = useContext(MyContext);
   const [posts, setPosts] = useState([]);
+  const [isDescending, setIsDescending] = useState(true);
+
+  const { isLogged } = useContext(MyContext);
   
   useEffect(() => {
     const getAllPosts = async () => {
@@ -19,16 +21,29 @@ function Posts() {
           },
         };
         const allposts = await requestGet('/posts', headers);
-        setPosts(allposts);
+        const sortedPosts = allposts.sort((a, b) => {
+          if (isDescending) {
+            return new Date(b.published) - new Date(a.published);
+          } else {
+            return new Date(a.published) - new Date(b.published);
+          }
+        });
+        setPosts(sortedPosts);
       } catch (error) {
-        localStorage.clear();
-        return <Redirect to="/notfound" />
+        console.error(error);
       }
     };
+
     getAllPosts();
-  }, []);
-  
+  }, [isDescending]);
+
+  const toggleOrder = () => {
+    setIsDescending(!isDescending);
+  };
+
   if (!isLogged) return <Redirect to="/login" />
+  if (!posts) return <div>Carregando detalhes da postagem...</div>;
+  const order = isDescending ? 'Mais Antigas' : 'Mais Recentes'
 
   return (
     <>
@@ -37,8 +52,9 @@ function Posts() {
       </nav>
       <main>
         <h1>Todas as postagens:</h1>
-        <ul className="product-container">
-          {posts?.map(({ id, title, content, published, updated, user }) => (
+        <button onClick={toggleOrder}>{order} </button>
+        <ul>
+          {posts.map(({ id, title, content, published, updated, user }) => (
             <Link to={`/posts/${id}`} key={id}>
               <li>
                 <h3>
@@ -58,7 +74,7 @@ function Posts() {
                   )
                 }
                 <p>
-                  {`Publicado pro: ${user.name}`}
+                  {`Publicado por: ${user.name}`}
                 </p>
               </li>
             </Link>

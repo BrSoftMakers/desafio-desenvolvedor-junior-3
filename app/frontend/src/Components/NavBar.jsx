@@ -38,6 +38,16 @@ function NavBar() {
               </button>
             )
           }
+                    {
+            pathname !== "/myposts" && (
+              <button
+                type="button"
+                onClick={ () => history.push('/myposts')}
+              >
+                Suas Postagens
+              </button>
+            )
+          }
           <button
             type="button"
             onClick={ () => logOut() }

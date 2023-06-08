@@ -18,6 +18,13 @@ const getById = async (req, res) => {
   res.status(200).json(post);
 };
 
+const getByUser = async (req, res) => {
+  const { id } = req.params;
+  const posts = await postsService.getByUser(id);
+  if (posts.type) return res.status(404).json({ message: posts.message });
+  res.status(200).json(posts);
+};
+
 const editPost = async (req, res) => {
   const { id } = req.params;
   const { body } = req
@@ -36,5 +43,6 @@ module.exports = {
   getAll,
   getById,
   deletePost,
-  editPost
+  editPost,
+  getByUser
 };

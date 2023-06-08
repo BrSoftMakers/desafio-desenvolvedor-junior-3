@@ -32,16 +32,24 @@ const getById = async (id) => {
   return post;
 };
 
+const getByUser = async (id) => {
+  const posts = await Posts.findAll({
+    where: { user_id: id },
+    include: [{ model: Users, as: 'user', attributes: { exclude: ['password'] } }],
+  });
+
+  if (!posts) return { type: 'INVALID_ID', message: 'Posts does not exist' };
+
+  return posts;
+};
+
 const editPost = async (id, { title, content }) => {
-
   const updated = Date.now()
-
   const newPost = await Posts.update({
     title,
     content,
     updated,
   }, { where: { id } });
-
   return newPost;
 };
 
@@ -55,5 +63,6 @@ module.exports = {
   deletePost,
   getById,
   newPost,
-  editPost
+  editPost,
+  getByUser
 };

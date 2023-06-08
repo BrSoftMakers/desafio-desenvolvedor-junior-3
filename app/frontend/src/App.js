@@ -6,7 +6,7 @@ import Posts from './Pages/Posts';
 import PostsDetails from './Pages/PostsDetails';
 import CreatePost from './Pages/CreatePost';
 import EditPost from './Pages/EditPost';
-// import MyPosts from './Pages/MyPosts';
+import MyPosts from './Pages/MyPosts';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
       <Route path="/posts/:id" component={ PostsDetails } />
       <Route path="/createpost" component={ CreatePost } />
       <Route path="/editpost/:id" component={ EditPost } /> 
-      {/* Route path="/MyPosts" component={ MyPosts } /> */}
+      <Route path="/MyPosts" component={ MyPosts } />
     </Switch>
   );
 }
