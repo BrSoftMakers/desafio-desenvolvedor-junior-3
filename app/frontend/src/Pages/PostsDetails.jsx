@@ -43,7 +43,9 @@ const PostsDetails = () => {
         <h2>{post.title}</h2>
         <p>{post.content}</p>
         <p>Publicado em: {convertDate(post.published)}</p>
-        <p>Editado em: {convertDate(post.updated)}</p>
+        {
+          post.updated !== null && <p>{`Editado em: ${convertDate(post.updated)}`}</p>
+        }
         <p>Publicado por: {post.user.name}</p>
         {
           userId === post.user.id && (
