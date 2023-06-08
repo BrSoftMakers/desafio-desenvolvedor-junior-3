@@ -2,7 +2,7 @@ const { Posts, Users } = require('../../database/models');
 
 const newPost = async ({ title, content, userId }) => {
 
-  const published = date.now()
+  const published = Date.now()
 
   const newPost = await Posts.create({
     title,

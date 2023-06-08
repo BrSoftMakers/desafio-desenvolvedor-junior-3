@@ -94,6 +94,7 @@ function Provider({ children }) {
     try {
       localStorage.clear();
       setIsLogged(false);
+      history.push('/login');
     } catch (error) {
       setIsLogged(false);
     }
@@ -101,7 +102,13 @@ function Provider({ children }) {
 
   const deletePost = useCallback(async (id) => {
     try {
-      await requestDelete(`/posts/${id}`);
+      const { token } = JSON.parse(localStorage.getItem('user'));
+      const headers = {
+        headers: {
+          Authorization: token,
+        },
+      };
+      await requestDelete(`/posts/${id}`, headers);
       history.push('/posts')
     } catch (error) {
       console.log(error.message);

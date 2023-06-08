@@ -1,6 +1,6 @@
 const postsService = require('../services/postsService');
 
-const newPost = async (_req, res) => {
+const newPost = async (req, res) => {
   const { body } = req
   const newPost = await postsService.newPost(body);
   res.status(201).send(newPost);
