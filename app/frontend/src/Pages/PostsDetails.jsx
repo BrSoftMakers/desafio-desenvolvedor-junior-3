@@ -4,6 +4,7 @@ import { requestGet } from '../services/request';
 import MyContext from '../context/MyContext';
 import { convertDate } from '../utils/convertData';
 import NavBar from '../Components/NavBar';
+import '../styles/postDetails.css'
 
 const PostsDetails = () => {
   const { isLogged, deletePost } = useContext(MyContext);
@@ -39,32 +40,24 @@ const PostsDetails = () => {
   return (
     <>
       <NavBar />
-      <div>
-        <h2>{post.title}</h2>
-        <p>{post.content}</p>
-        <p>Publicado em: {convertDate(post.published)}</p>
-        {
-          post.updated !== null && <p>{`Editado em: ${convertDate(post.updated)}`}</p>
-        }
-        <p>Publicado por: {post.user.name}</p>
-        {
-          userId === post.user.id && (
-            <>
-              <button
-                type="button"
-                onClick={ () => history.push(`/editpost/${id}`) }
-              >
-                Editar Postagem
-              </button>
-              <button
-                type="button"
-                onClick={ () => deletePost(id) }
-              >
-                Deletar Postagem
-              </button>
-            </>
-          )
-        }
+      <div className="posts-details">
+        <div className="posts-details-content">
+          <h2>{post.title}</h2>
+          <p>{post.content}</p>
+          <p>Publicado em: {convertDate(post.published)}</p>
+          {post.updated !== null && <p>{`Editado em: ${convertDate(post.updated)}`}</p>}
+          <p>Publicado por: {post.user.name}</p>
+        </div>
+        {userId === post.user.id && (
+          <div className="posts-details-buttons">
+            <button className='action-button' type="button" onClick={() => history.push(`/editpost/${id}`)}>
+              Editar Postagem
+            </button>
+            <button className='action-button' type="button" onClick={() => deletePost(id)}>
+              Deletar Postagem
+            </button>
+          </div>
+        )}
       </div>
     </>
   );
