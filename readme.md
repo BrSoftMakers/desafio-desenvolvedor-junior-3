@@ -8,31 +8,41 @@
 
 <div>
   <h3>Ferramentas utilizadas</h3>
- 
-  **Back-end:**
   
-  <ul>
-    <li><a href="https://nodejs.org/en/">Node.js<a/></li>
-    <li><a href="https://expressjs.com/">Express<a/></li>
-    <li><a href="https://sequelize.org/">Sequelize</a></li>
-    <li><a href="https://docs.docker.com/">Docker</a></li>
-    <li><a href="https://developer.mozilla.org/pt-BR/docs/Glossary/CRUD">CRUD</a></li>
-    <li><a href="https://www.toptal.com/express-js/nodejs-typescript-rest-api-pt-1">MSC</a></li>
-    <li><a href="https://developer.mozilla.org/pt-BR/docs/Glossary/REST">REST</a></li>
-  </ul>
+  <details>
+    <summary><strong>Back-end</strong></summary>
+    
+  - <a href="https://nodejs.org/en/">Node.js<a/>
+    
+  - <a href="https://expressjs.com/">Express<a/>
+    
+  - <a href="https://sequelize.org/">Sequelize</a>
+    
+  - <a href="https://docs.docker.com/">Docker</a>
+    
+  - <a href="https://developer.mozilla.org/pt-BR/docs/Glossary/CRUD">CRUD</a>
+    
+  - <a href="https://www.toptal.com/express-js/nodejs-typescript-rest-api-pt-1">MSC</a>
   
-   **Front-end:**
+  - <a href="https://developer.mozilla.org/pt-BR/docs/Glossary/REST">REST</a>
+    
+</details>
+      
+<details>
+  <summary><strong>Front-end</strong></summary>
   
-  <ul>
-    <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript">JavaScript<a/></li>
-    <li><a href="https://legacy.reactjs.org/docs/getting-started.html">React<a/></li>
-  </ul>
+  - <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript">JavaScript<a/>
   
-   **Banco de dados:**
+  - <a href="https://legacy.reactjs.org/docs/getting-started.html">React<a/>
   
-  <ul>
-    <li><a href="https://dev.mysql.com/doc/">MySql<a/></li>
-  </ul>
+</details>
+  
+<details>
+  <summary><strong>Banco de dados</strong></summary>
+  
+  - <a href="https://dev.mysql.com/doc/">MySql<a/>
+  
+</details>
 </div>
 
 --------------------
@@ -73,7 +83,7 @@
 
 <div>
   <details>
-  <summary>:man_technologist: <strong>Preenchendo o banco de dados</strong></summary><br>
+  <summary>:man_technologist: <strong>Populando o banco de dados</strong></summary><br>
   <p>Está é uma aplicação que utiliza o ORM sequelize, então para popular o banco de dados com alguns dados de teste:</p>
     
   - se ainda estiver na raiz do projeto rode o comando para entrar na pasta backend:
