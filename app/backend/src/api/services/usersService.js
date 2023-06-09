@@ -17,10 +17,13 @@ const getById = async (id) => {
   return user;
 };
 
-const register = async (newuser) => {
-  const { email } = newuser;
+const register = async ({ email, password, name }) => {
   const getUserByEmail = await Users.findOne({ where: { email } });
   if (getUserByEmail) return { type: 'INVALID_EMAIL', message: 'User already registered' };
+  
+  const passHashed = md5(password);
+
+  const newuser  = { email, password: passHashed, name };
 
   const user = await Users.create(newuser);
 
