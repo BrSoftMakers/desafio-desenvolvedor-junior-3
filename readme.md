@@ -1,6 +1,6 @@
 ![SoftMakers](https://vagas.softmakers.com.br/assets/img/logotipo14xxhdpi.png)
 
-# Desafio - Dev Fullstack Junior - Softmakers.
+# Desafio - Dev. Fullstack Junior - Softmakers.
 <div>
   <h3>Sobre o projeto</h3>
   <p>Seja bem-vindo! Esse projeto foi feito para um desafio de um processo seletivo da empresa Softmakers. O objetivo aqui era criar uma aplicação fullstack para simular um blog.</p>
@@ -35,12 +35,12 @@
   </ul>
 </div>
 
----------------------------------------
+--------------------
 
 <div>
   <h3>Orientações</h3>
   <details>
-    <summary><strong>‼️ Antes de começar a desenvolver</strong></summary><br>
+    <summary><strong>‼️ Como baixar o projeto e instalar suas dependências</strong></summary><br>
     
   1. Clone o repositório
     
@@ -73,7 +73,7 @@
 
 <div>
   <details>
-  <summary>:man_technologist: <strong>preenchendo o banco de dados</strong></summary><br>
+  <summary>:man_technologist: <strong>Preenchendo o banco de dados</strong></summary><br>
   <p>Está é uma aplicação que utiliza o ORM sequelize, então para popular o banco de dados com alguns dados de teste:</p>
     
   - se ainda estiver na raiz do projeto rode o comando para entrar na pasta backend:
@@ -101,4 +101,96 @@
   <summary>:globe_with_meridians: <strong>Utilizando a aplicação</strong></summary><br>
   <p>Se tudo deu certo agora você pode acessar: <strong>localhost:3000/</strong> no seu navegador e utilizar a aplicação :grin:</p>
   </details>
+</div>
+
+--------------------
+
+<div>
+  <h3>Funcionalidades</h3>
+  <details>
+    <summary><strong>TELA DE LOGIN</strong></summary><br>
+
+  - Nesta Tela usuários que já estiverem cadastrados podem se logar com seu email e senha. O botão de login fica desabilitado até que os dados sejam preenchidos corretamente.
+
+  </details>
+  
+  <details>
+    <summary><strong>TELA DE REGISTRO</strong></summary><br>
+
+  - Nesta Tela usuários que ainda não estiverem cadastrados podem se cadastrar com email e senha válidos. Assim como no login o botão de cadastro fica desabilitado até que sejam preenchidos dados válidos, para isso:
+    
+    - o `email` deve estar em um formato válido e a `senha` deve possuir 6 caracteres ou mais.
+
+  </details>
+  
+  <details>
+    <summary><strong>TELA DE TODAS AS POSTAGENS</strong></summary><br>
+
+  - Nesta Tela o usuário pode visualizar todas as postagens de todos os usuários:
+
+  </details>
+  
+    
+  <details>
+    <summary><strong>TELA DE MINHAS POSTAGENS</strong></summary><br>
+    
+  - Nesta Tela o usuário pode visualizar apenas as suas postagens:
+
+  </details>
+    
+  <details>
+    <summary><strong>TELA DE DETALHES DE UMA POSTAGEM</strong></summary><br>
+
+  - Nesta Tela o usuário pode visualizar detalhes de alguma postagem de seu interesse:
+
+  - Caso o usuário seja o responsável pela postagem os botões de `editar` e `excluir` postagem ficaram habilitados:
+    
+  - Ao clicar em `excluir` a postagem será excluída e removida do banco de dados.
+
+  </details>
+      
+  <details>
+    <summary><strong>TELA DE EDITAR POSTAGEM</strong></summary><br>
+
+  - Nesta Tela o usuário pode editar uma postagem que ele fez:
+
+  - Ao clicar em salvar ele é redirecionado novamente para a pagina de detalhes da postagem e ela já estará com todas as modificações:
+
+  </details>
+  
+  <details>
+    <summary><strong>TELA DE CRIAR POSTAGEM</strong></summary><br>
+
+  - Nesta Tela o usuário pode criar uma nova postagem:
+
+  - Ao clicar em salvar ele é redirecionado novamente para a pagina de detalhes da nova postagem:
+
+  </details>
+    
+  <details>
+    <summary><strong>DETALHES ADICIONAIS</strong></summary><br>
+
+  - Na `NAVBAR` o nome do usuário fica sempre disponível, assim como o botão de `SAIR`:
+
+  - ao clicar em sair o usuário é redirecionado novamente para a página de login.
+
+  </details>
+</div>
+
+--------------------
+
+<div>
+  <h3>Aprendizados</h3>
+  <p>foi muito divertido fazer esté desafio e poder colocar em prática todos os meus conhecimentos. Apliquei a arquitetura MSC(model, service, controler) e fiz uma aplicação de boa usabiliade com possibilidade de escalonamento! Agradeço desde já a Softmakers pela oportuniadade de prestar essse desafio!</p>
+</div>
+
+--------------------
+
+<div>
+  <h3>Feedback</h3>
+  <p>Se você tiver algum feedback, por favor deixe-me saber por meio de joaoheldermartins@hotmail.com
+
+  ou
+
+  https://www.linkedin.com/in/joaohelder0/</p>
 </div>
