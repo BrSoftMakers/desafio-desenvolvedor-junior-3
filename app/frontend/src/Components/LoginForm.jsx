@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, Redirect } from 'react-router-dom';
 import MyContext from '../context/MyContext';
 import '../styles/login.css';
@@ -13,20 +13,31 @@ function LoginForm() {
   } = useContext(MyContext);
 
   const history = useHistory();
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   useEffect(() => {
     resetInputs();
-  }, [resetInputs]);
+
+    if (failedTryLogin) {
+      setShowErrorMessage(true);
+
+      const timer = setTimeout(() => {
+        setShowErrorMessage(false);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [failedTryLogin, resetInputs]);
 
   const { loginEmailInput, loginPasswordInput } = formsInfo;
 
-  if (isLogged) return <Redirect to="/posts" /> 
+  if (isLogged) return <Redirect to="/posts" />;
 
   return (
     <main className="main-login">
       <section className="right-login">
         <div className="login_logo">
-          <img src={ logo } alt="logo imagem" />
+          <img src={logo} alt="logo imagem" />
         </div>
         <form className="card-login">
           <h1>Login</h1>
@@ -37,7 +48,7 @@ function LoginForm() {
               type="email"
               name="loginEmailInput"
               id="email-input"
-              onChange={ handleChange }
+              onChange={handleChange}
             />
           </label>
           <label htmlFor="password-input" className="text-field">
@@ -47,24 +58,23 @@ function LoginForm() {
               type="password"
               name="loginPasswordInput"
               id="password-input"
-              onChange={ handleChange }
+              onChange={handleChange}
             />
           </label>
-          {
-            failedTryLogin
-              && (
-                <p>
-                  E-mail ou senha incorretos.
-                </p>
-              )
-          }
+          {showErrorMessage && (
+            <p>
+              E-mail ou senha incorretos.
+            </p>
+          )}
           <button
             type="submit"
-            disabled={ isLoginDisabled }
-            onClick={ (event) => login(event, {
-              email: loginEmailInput,
-              password: loginPasswordInput,
-            }) }
+            disabled={isLoginDisabled}
+            onClick={(event) =>
+              login(event, {
+                email: loginEmailInput,
+                password: loginPasswordInput,
+              })
+            }
             className="btn-login"
           >
             LOGIN
@@ -72,7 +82,7 @@ function LoginForm() {
           <button
             type="button"
             id="register-btn"
-            onClick={ () => history.push('/register') }
+            onClick={() => history.push('/register')}
             className="btn-register"
           >
             Ainda não tem cadastro?
