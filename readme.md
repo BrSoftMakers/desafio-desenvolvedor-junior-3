@@ -191,7 +191,7 @@
 
 <div>
   <h3>Aprendizados</h3>
-  <p>foi muito divertido fazer esté desafio e poder colocar em prática todos os meus conhecimentos. Apliquei a arquitetura MSC(model, service, controler) e fiz uma aplicação de boa usabiliade com possibilidade de escalonamento! Agradeço desde já a Softmakers pela oportuniadade de prestar essse desafio!</p>
+  <p>foi muito divertido fazer esté desafio e poder colocar em prática todos os meus conhecimentos. Apliquei a arquitetura MSC(model, service, controler) e fiz uma aplicação de boa usabiliade com possibilidade de escalonamento! Agradeço desde já a Softmakers pela oportuniadade de prestar esse desafio!</p>
 </div>
 
 --------------------
