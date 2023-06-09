@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #0B1424;
+}
+
+.main-login {
+  align-content: center;
+  align-items: center;
+  background-position: bottom;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 95vh;
+  margin-top: 4%;
+  justify-content: center;
+}
+
+.login_logo {
+  position: relative;
+  margin-bottom: 2%;
+}
+
+.card-login {
+  align-items: center;
+  background: #2b2a2a;
+  border-radius: 10px;
+  box-shadow: 0 10px 40px #00000056;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 100px;
+  min-width: 500px;
+  padding: 30px 35px;
+}
+
+.card-login > h1 {
+  color: #3B5999;
+  font-weight: 800;
+  margin: 0;
+}
+
+.card-login > p {
+  color: #59bae4;
+  font-weight: 800;
+  margin: 0;
+}
+
+.text-field {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.text-field > input {
+  background: #f0efee;
+  border-radius: 5px;
+  box-shadow: 0 10px 40px #00000056;
+  box-sizing: border-box;
+  color: black;
+  font-size: 12pt;
+  outline: none;
+  padding: 15px;
+  width: 100%;
+}
+
+.text-field > input::placeholder {
+  color: rgb(100, 98, 98);
+}
+
+.text-field > input:focus {
+  border: 2px solid #3B5999;
+}
+
+.text-field > h4 {
+  color: #f0ffffde;
+  margin-bottom: 10px;
+}
+
+.btn-login {
+  background: #59bae4;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin: 25px 0 1px;
+  outline: none;
+  padding: 16px 0;
+  text-transform: uppercase;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.btn-login:hover {
+  background: #0395d4d2;
+  color: black;
+}
+
+.btn-login:disabled {
+  background: #377C99;
+  color: black;
+  cursor: default;
+}
+
+.btn-register {
+  background: transparent;
+  border: 2px solid #377C99;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin: 15px;
+  outline: none;
+  padding: 16px 0;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.btn-register:hover {
+  background: #0395d4d2;
+  color: black;
+  transition: 0.3s;
+}

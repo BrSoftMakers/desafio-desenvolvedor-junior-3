@@ -1,0 +1,41 @@
+version: '3.9'
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - 3000:3000
+    platform: linux/x86_64
+    working_dir: /app-frontend
+    depends_on:
+      - backend
+  backend:
+    container_name: app_backend
+    build: ./backend
+    ports:
+      - 3001:3001
+    platform: linux/x86_64
+    working_dir: /app-backend
+    command: dev 
+    volumes: 
+      - ./backend/src:/app-backend/src
+    depends_on:
+      - db
+    environment:
+      - APP_PORT=3001
+      - JWT_SECRET=jwt_secret
+      # Os dados abaixo se referem ao container `db`
+      - DB_USER=root
+      - DB_PASS=password
+      - DB_HOST=db
+      - DB_PORT=3306
+  db:
+    image: mysql:8.0.21
+    container_name: db
+    platform: linux/x86_64
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    restart: 'always'
+    cap_add:
+      - SYS_NICE

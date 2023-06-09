@@ -1,0 +1,32 @@
+{
+  "name": "desafio-desenvolvedor-junior-3-softmakers",
+  "version": "1.0.0",
+  "description": "projeto feito para o desafio full-stack da softmakers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compose:up": "cd app && docker-compose up -d --build",
+    "compose:down": "cd app && docker-compose down --remove-orphans"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/J0a0Helder/desafio-desenvolvedor-junior-3-softmakers.git"
+  },
+  "author": "joão H.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/J0a0Helder/desafio-desenvolvedor-junior-3-softmakers/issues"
+  },
+  "homepage": "https://github.com/J0a0Helder/desafio-desenvolvedor-junior-3-softmakers#readme",
+  "devDependencies": {
+    "axios": "^1.4.0",
+    "dotenv": "^16.1.4",
+    "moment": "^2.29.4",
+    "mysql2": "^3.3.3",
+    "sequelize": "^6.32.0",
+    "sequelize-cli": "^6.6.1"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.0"
+  }
+}
