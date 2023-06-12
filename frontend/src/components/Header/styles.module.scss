@@ -1,0 +1,72 @@
+@import '../../assets/styles/variables.scss';
+
+.header {
+  display: flex;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  background-color: whitesmoke;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  border-bottom: 2px solid rgb(132, 125, 125);
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+
+  .actionsContainer {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .inputOrder {
+    display: flex;
+    border-radius: 4px;
+    gap: 5px;
+    align-items: center;
+  }
+
+  .rightContainer {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    img {
+      width: 40px;
+      border: 1px solid black;
+      border-radius: 50%;
+    }
+  }
+
+  .btnLogout {
+    background: rgb(234, 234, 65);
+    color: black;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+
+  .createPost {
+    display: flex;
+    background: whitesmoke;
+    color: $green;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid $green;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+}
+
+@media (max-width: 490px) {
+  .header {
+    .actionsContainer {
+      flex-direction: column;
+    }
+  }
+}

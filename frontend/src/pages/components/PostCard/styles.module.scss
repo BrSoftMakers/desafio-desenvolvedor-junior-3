@@ -1,0 +1,83 @@
+@import '../../../assets/styles/variables.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: fit-content;
+
+  .cardContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    border: 1px solid $green;
+    border-radius: 4px;
+    padding: 10px 15px;
+    text-align: left;
+
+    .infoContainer {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+
+      strong {
+        font-size: 16px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+
+    .textContainer {
+      .readMore {
+        color: $green;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+          filter: brightness(1.2);
+        }
+      }
+
+      div > span {
+        word-break: break-word;
+      }
+    }
+
+    .datesContainer {
+      align-self: flex-end;
+      font-size: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      height: fit-content;
+    }
+  }
+
+  .btnContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-self: center;
+    padding: 5px 0px;
+    border: 1px solid $green;
+    margin-top: 10px;
+    border-radius: 4px;
+    background-color: rgba(66, 210, 66, 0.2);
+
+    span {
+      align-items: center;
+      display: flex;
+      gap: 10px;
+      cursor: pointer;
+      padding: 5px 10px;
+      border-bottom: 1px solid $green;
+    }
+
+    & > span:nth-of-type(1) {
+      border-bottom: red 1px solid;
+    }
+  }
+}

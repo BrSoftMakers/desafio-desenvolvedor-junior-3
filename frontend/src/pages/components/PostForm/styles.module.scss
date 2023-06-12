@@ -1,0 +1,46 @@
+@import '../../../assets/styles/variables.scss';
+
+.postForm {
+  .inputsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .btnContainer {
+    display: flex;
+    gap: 25px;
+    margin-top: 30px;
+
+    & > button:nth-of-type(1) {
+      background: white;
+      border: 1px solid $green;
+      color: $green;
+
+      &:hover {
+        background: $green;
+        border: 1px solid $green;
+        color: #fff;
+        filter: brightness(0.8);
+      }
+    }
+
+    & > button:nth-of-type(2) {
+      background: $green;
+      border: 1px solid $green;
+      color: #fff;
+
+      &:disabled {
+        background: rgba(143, 140, 140, 0.639);
+        border: 1px solid #fff;
+        color: #fff;
+      }
+
+      &:hover {
+        filter: brightness(0.8);
+      }
+    }
+  }
+}

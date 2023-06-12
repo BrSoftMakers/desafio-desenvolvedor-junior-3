@@ -1,0 +1,72 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 48px;
+  border-radius: 4px;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  gap: 5px;
+  line-height: 24.5px;
+  height: 100%;
+  width: 100%;
+
+  &[role='ok'] {
+    border: green 2px solid;
+    label {
+      color: green;
+    }
+  }
+
+  &[role='notOk'] {
+    border: red 2px solid;
+
+    label {
+      color: red;
+    }
+  }
+
+  &:focus-within {
+    border: 2px solid rgba(0, 0, 255, 0.8);
+
+    &[role='notOk'] {
+      border: red 2px solid;
+
+      label {
+        color: red;
+      }
+    }
+
+    label {
+      color: blue;
+    }
+  }
+
+  label {
+    position: absolute;
+    top: -15px;
+    left: 10px;
+    z-index: 1;
+    padding: 1px;
+    background-color: whitesmoke;
+  }
+
+  input {
+    outline: none;
+    padding: 5px;
+    background-color: whitesmoke;
+    border: 0;
+    outline: 0;
+    &:focus {
+      outline: none !important;
+    }
+    margin-top: 5px;
+  }
+
+  .errorMessage {
+    padding: 5px;
+    color: red;
+    font-size: 14px;
+    background-color: rgba(240, 0, 0, 0.1);
+    width: inherit;
+  }
+}

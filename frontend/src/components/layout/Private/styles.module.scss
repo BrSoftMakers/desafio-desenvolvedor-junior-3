@@ -1,0 +1,19 @@
+.layoutContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: whitesmoke;
+  margin: 100px auto 40px;
+  max-width: 1200px;
+  gap: 25px;
+  padding: 20px 10px;
+  padding-top: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  flex-wrap: wrap;
+  height: fit-content;
+  max-height: 550px;
+  overflow-y: auto;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+    rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}

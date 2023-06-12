@@ -1,0 +1,69 @@
+.formContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 20px;
+  background-color: whitesmoke;
+  width: 300px;
+
+  .inputsContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    height: fit-content;
+    padding: 20px;
+    background-color: whitesmoke;
+  }
+
+  .registerBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: rgba(0, 0, 255, 0.5);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: #45a049;
+    }
+
+    &:active {
+      background-color: #3e8e41;
+    }
+
+    &:disabled {
+      background-color: #ccc;
+      color: #666;
+      cursor: not-allowed;
+    }
+  }
+
+  .backLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 0px;
+
+    span {
+      color: black;
+    }
+
+    a {
+      cursor: pointer;
+      color: rgba(0, 0, 255, 0.5);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

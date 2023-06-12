@@ -1,0 +1,24 @@
+@import '../../assets/styles/variables.scss';
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+
+  .btnFilterOn {
+    display: flex;
+    justify-content: center;
+    border: 1px solid $green;
+    border-radius: 4px;
+    text-decoration: none;
+    color: $green;
+    padding: 10px 20px;
+    width: 140px;
+    background-color: white;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+}
