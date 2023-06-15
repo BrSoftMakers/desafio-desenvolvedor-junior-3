@@ -1,4 +1,4 @@
-const PostsModel = (sequelize, DataTypes) => {
+const Posts = (sequelize, DataTypes) => {
   const Posts = sequelize.define('Posts', {
     id: {
       type: DataTypes.INTEGER,
@@ -15,7 +15,7 @@ const PostsModel = (sequelize, DataTypes) => {
   });
 
   Posts.associate = (models) => {
-    Posts.hasOne(models.Users, {
+    Posts.hasOne(models.User, {
       foreignKey: 'id',
       as: 'user',
     });
@@ -23,3 +23,5 @@ const PostsModel = (sequelize, DataTypes) => {
 
   return Posts;
 }
+
+module.exports = Posts;
