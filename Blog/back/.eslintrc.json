@@ -10,6 +10,7 @@
       "node": true
     },
     "rules": {
+      "import/no-dynamic-require":"false",
       "arrow-body-style": ["error", "always"],
       "curly": ["error", "all"],
       "consistent-return" : 0,
