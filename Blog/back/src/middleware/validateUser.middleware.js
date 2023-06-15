@@ -17,7 +17,7 @@ const validatePassword = (password) => {
 }
 
 const validateIfUserExists = async (email) => {
-  const alereadyExists = await UserModel.findOne({ where: { email } })
+  const alereadyExists = await User.findOne({ where: { email } })
 
   if (alereadyExists) return { status: httpStatus.CONFLICT, message: 'User already registered' }
 
@@ -29,8 +29,14 @@ const validateUser = (userData) => {
 
   if (validateEmail(email).status !== httpStatus.OK) return validateEmail(email)
   if (validatePassword(password).status !== httpStatus.OK) return validatePassword(password)
+  if (validateIfUserExists(email).status !== httpStatus.OK) return validateIfUserExists(email)
 
   return { status: httpStatus.OK, message: 'OK' }
 }
 
-module.exports = validateUser
+module.exports = {
+  validateEmail,
+  validatePassword,
+  validateIfUserExists,
+  validateUser
+};
