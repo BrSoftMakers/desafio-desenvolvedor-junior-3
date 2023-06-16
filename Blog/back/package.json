@@ -12,7 +12,6 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
