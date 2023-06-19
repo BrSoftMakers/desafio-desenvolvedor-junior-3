@@ -13,7 +13,7 @@ Esse projeto consiste em um Blog com front e back integrados.
 
 ## Visualizar:
  - Primeiro clone o repositório:
-    - ``` git@github.com:Tiagoabranges/desafio-desenvolvedor-junior-3
+    - ``` git@github.com:Tiagoabranges/desafio-desenvolvedor-junior-3.git
 .git ```
  - Entre no repositório: 
    - ``` cd desafio-desenvolvedor-junior-3
