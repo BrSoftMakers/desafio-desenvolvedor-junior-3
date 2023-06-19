@@ -54,6 +54,8 @@ Esse projeto consiste em um Blog com front e back integrados.
 ### Back-end
 
 + `Nodejs`
++ `Docker`
++ `Sequelize`
 + `Express`
 + `Mysql`
 + `Nodemon`
