@@ -1,0 +1,84 @@
+*{
+  margin: 0;
+  
+}
+.main{
+  align-items: center;
+  background-color: cyan;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  mix-blend-mode: luminosity;
+}
+
+.container {
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  height: 356px;
+  flex-direction: column;
+  justify-content: center;
+  width: 525px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.inputEmail {
+  border: 2px solid rgba(0, 59, 229, 1);
+  border-radius: 5px;
+  color: rgba(0, 59, 229, 1);
+  height: 40px;
+  outline: none;
+  padding-left: 5px;
+  width: 330px;
+}
+
+.inputEmail::placeholder {
+  color: rgba(0, 59, 229, 0.8);
+  padding-left: 2px;
+}
+
+.inputPassword {
+  border: 2px solid rgba(0, 59, 229, 1);
+  border-radius: 5px;
+  color: rgba(0, 59, 229, 1);
+  height: 40px;
+  outline: none;
+  padding-left: 5px;
+  width: 330px;
+}
+
+.inputPassword::placeholder {
+  color: rgba(0, 59, 229, 0.8);
+  padding-left: 2px;
+}
+
+.buttonSubmit {
+  background-color: rgba(0, 59, 229, 1);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  height: 40px;
+  line-height: 14.35px;
+  padding-left: 5px;
+  text-align: center;
+  width: 330px;
+}
+
+.buttonSubmit:hover {
+  cursor: pointer;
+}
+
+.logo {
+  height: 56.14px;
+  margin: 0 auto;
+  margin-bottom: 44px;
+  width: 268.6px;
+}
