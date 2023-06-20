@@ -1,0 +1,23 @@
+{
+  "name": "desafio-desenvolvedor-junior-3",
+  "version": "1.0.0",
+  "description": "![SoftMakers](https://vagas.softmakers.com.br/assets/img/logotipo14xxhdpi.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GiovaniAP-VANOengenharia/desafio-desenvolvedor-junior-3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GiovaniAP-VANOengenharia/desafio-desenvolvedor-junior-3/issues"
+  },
+  "homepage": "https://github.com/GiovaniAP-VANOengenharia/desafio-desenvolvedor-junior-3#readme",
+  "devDependencies": {
+    "eslint": "^8.43.0"
+  }
+}
