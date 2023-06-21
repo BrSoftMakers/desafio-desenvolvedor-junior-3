@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon src/server.js",
     "start": "cross-env NODE_ENV=production node src/server.js",
-    "test": "mocha './specs/*/.spec.js' --watch"
+    "test": "mocha './specs/*/.spec.js' --watch",
+    "setup": "sequelize db:migrate && sequelize db:seed:all"
   },
   "author": "Tiago Abranges (tiagoabranges)",
   "license": "MIT",
