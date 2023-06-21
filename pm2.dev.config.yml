@@ -1,0 +1,20 @@
+apps:
+- name: app-backend
+  cwd: ./backend
+  script: npm
+  args: "start"
+  exec_mode: fork
+  max_restarts: 3
+  max_memory_restart: 200M
+  watch: true
+  env:
+    PORT: 3001
+- name: app-frontend
+  cwd: ./frontend
+  script: npm
+  args: "start"
+  exec_mode: fork
+  max_restarts: 3
+  max_memory_restart: 200M
+  env:
+    PORT: 3000
