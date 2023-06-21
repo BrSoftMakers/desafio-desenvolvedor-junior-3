@@ -26,9 +26,7 @@ Esse projeto consiste em um Blog com front e back integrados.
   
 ### Back end
 
- - ```modifique o arquivo .envEXEMPLE e coloque suas credencias do banco de dados mysql```
-
-  1. Altere os dados do banco mySQL no arquivo `.env`
+  1. Altere os dados do banco mySQL no arquivo `.envEXEMPLE`
   2. `$ cd back`
   3. `$ npm install`
   4. `$ npm run setup` para criar as tabelas
