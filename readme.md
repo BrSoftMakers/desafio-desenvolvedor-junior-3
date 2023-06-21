@@ -63,6 +63,3 @@ Esse projeto consiste em um Blog com front e back integrados.
 
 ### Observações: Não consegui terminar o frontend totalmente, más o backend esta 100% finalizado!!!
 
-    <h3 align="left"> Foto do Projeto </h3>
- <img src="./src/images/" alt="foto do projeto" />
- 
