@@ -19,5 +19,8 @@
   "homepage": "https://github.com/GiovaniAP-VANOengenharia/desafio-desenvolvedor-junior-3#readme",
   "devDependencies": {
     "eslint": "^8.43.0"
+  },
+  "dependencies": {
+    "cors": "2.8.5"
   }
 }
