@@ -1,9 +1,8 @@
-![SoftMakers](https://vagas.softmakers.com.br/assets/img/logotipo14xxhdpi.png)
+# SoftMakers Blog 💻📝
 
 
-Esse projeto consiste em um Blog com front e back integrados.
 
-:zap: Necessario ter Mysql instalado na maquina ou rodando em algum container.
+O SoftMakers é um projeto de um blog com frontend e backend integrados. Ele oferece funcionalidades para criação de usuários, autenticação com email e senha, criação, edição, visualização e exclusão de posts no blog.
 
 
 ## Desenvolvimento
@@ -11,6 +10,12 @@ Esse projeto consiste em um Blog com front e back integrados.
  - Email: - tiagoabranges@gmail.com
  - Linkedin: <a href="https://www.linkedin.com/in/tiagoabranges/" target="_blank">tiagoabranges</a>
 
+
+## Requisitos
+
+Antes de prosseguir, certifique-se de ter os seguintes requisitos atendidos:
+- MySQL instalado na máquina ou em execução em um container.
+  
 ## Visualizar:
  - Primeiro clone o repositório:
     - ``` git@github.com:Tiagoabranges/desafio-desenvolvedor-junior-3.git ```
