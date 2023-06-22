@@ -26,6 +26,7 @@
     "eslint": "^8.43.0",
     "mocha": "8.4.0",
     "nodemon": "^2.0.22",
+    "sequelize-cli": "6.2.0",
     "sinon": "11.1.1"
   }
 }

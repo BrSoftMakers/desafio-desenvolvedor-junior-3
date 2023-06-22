@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     content: DataTypes.STRING,
     userId: DataTypes.INTEGER,
     published: DataTypes.DATE,
-    edited: DataTypes.DATE,
+    updated: DataTypes.DATE,
   }, 
   {
     timestamps: false,
