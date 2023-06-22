@@ -1,0 +1,32 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/api/server.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "4.17.1",
+    "joi": "^17.9.2",
+    "jsonwebtoken": "9.0.0",
+    "md5": "^2.3.0",
+    "mysql2": "2.3.3",
+    "sequelize": "6.3.4"
+  },
+  "devDependencies": {
+    "chai": "4.3.4",
+    "eslint": "^8.43.0",
+    "mocha": "8.4.0",
+    "nodemon": "^2.0.22",
+    "sequelize-cli": "6.2.0",
+    "sinon": "11.1.1"
+  }
+}
