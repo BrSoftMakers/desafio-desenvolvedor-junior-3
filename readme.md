@@ -18,8 +18,8 @@ Desenvolva uma Restful API utilizando Node.JS que contenha as seguintes rotas:
 
 **Front-end:**
 Desenvolva uma aplicação web utilizando o framework front-end react e esta deve atender as seguintes histórias de usuário:
-- [ ] Eu como usuário desejo me cadastrar;
-- [ ] Eu como usuário desejo realizar login;
+- [X] Eu como usuário desejo me cadastrar;
+- [X] Eu como usuário desejo realizar login;
 - [ ] Eu como usuário autenticado desejo visualizar todas as postagens;
 - [ ] Eu como usuário autenticado desejo visualizar os detalhes de uma postagem;
 - [ ] Eu como usuário autenticado desejo visualizar todas as minhas postagens;

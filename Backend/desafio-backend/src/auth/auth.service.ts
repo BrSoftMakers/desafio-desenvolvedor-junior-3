@@ -10,8 +10,8 @@ export class AuthService{
         private jwtService: JwtService
     ){}
 
-    async validarUsuario(id: number, senha: string){
-        const user = await this.usuarioRepository.getUsuarioId(id);
+    async validarUsuario(usuario: string, senha: string){
+        const user = await this.usuarioRepository.getUsuarioId(usuario);
         if(!user){
             throw new UnauthorizedException("Usuario e/ou senha invalidos!")
         }
@@ -24,7 +24,7 @@ export class AuthService{
     async gerarToken(payload: UsuarioModel){
         return {
             access_token: this.jwtService.sign(
-              { id: payload.id },
+              { usuario: payload.usuario },
               {
                 secret: '123456abcd',
                 expiresIn: '120s',

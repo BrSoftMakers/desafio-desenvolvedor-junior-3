@@ -16,9 +16,9 @@ export class UsuarioService {
         return await this.usuarioRepository.find();
     }
 
-    // Busca um unico usuario pelo Id
-    async getUsuarioId(id: number): Promise<UsuarioModel> {
-        return await this.usuarioRepository.findOne({ where: { id } })
+    // Busca um unico usuario pelo usuario
+    async getUsuarioId(usuario: string): Promise<UsuarioModel> {
+        return await this.usuarioRepository.findOne({ where: { usuario } })
     }
 
     async postUsuario(@Body() body: UsuarioModel): Promise<UsuarioModel>{

@@ -8,6 +8,6 @@ export class AuthController{
 
     @Post("login")
     async login(@Body() body: UsuarioModel){
-        return this.authService.validarUsuario(body.id, body.senha);
+        return this.authService.validarUsuario(body.usuario, body.senha);
     }
 }

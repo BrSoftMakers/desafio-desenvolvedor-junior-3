@@ -13,9 +13,9 @@ export class UsuarioController {
         return await this.usuarioRepository.getUsuarios();
     }
 
-    @Get("/{id}")
-    async buscarId(@Param("id") id: number){
-        return await this.usuarioRepository.getUsuarioId(id);
+    @Get("/:usuario")
+    async buscarId(@Param("usuario") usuario: string){
+        return await this.usuarioRepository.getUsuarioId(usuario);
     }
 
     @Post("")
