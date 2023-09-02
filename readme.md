@@ -25,5 +25,5 @@ Desenvolva uma aplicação web utilizando o framework front-end react e esta dev
 - [X] Eu como usuário autenticado desejo visualizar todas as minhas postagens;
 - [X] Eu como usuário autenticado desejo criar uma postagem;
 - [ ] Eu como usuário autenticado desejo editar uma postagem que eu criei;
-- [ ] Eu como usuário autenticado desejo deletar uma postagem que eu criei.
+- [X] Eu como usuário autenticado desejo deletar uma postagem que eu criei.
 

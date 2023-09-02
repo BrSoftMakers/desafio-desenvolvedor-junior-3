@@ -21,16 +21,12 @@ export const Postagem = styled.div`
         cursor: pointer;
         background-color: #E8E8E8;
     }
-    button{
-        width: 100px;
-        height: 30px;
-        border: none;
-        border-radius: 10px;
-        background-color: #04B3C8;
-        color: #FFF;
+    img{
+        width: 20px;
+        height: 20px;
         margin: 5px;
     }
-    button:hover{
+    img:hover{
         cursor: pointer;
     }
 `

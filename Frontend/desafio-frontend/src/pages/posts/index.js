@@ -55,6 +55,18 @@ export const Posts = () => {
         setPostAberto(true);
     }
 
+    async function deletarPost(post){
+        fetch(`http://localhost:8090/posts/${post.id}`,{
+            method: "DELETE"
+        })
+        .then((resp)=>{
+            if(resp.status === 200){
+                alert("Deletado!");
+                fetchData();
+            }
+        })
+    }
+
     useEffect(()=>{
         fetchData();
     },[filtro])
@@ -85,8 +97,8 @@ export const Posts = () => {
                             <h5>Autor: {post.usuario_insercao} / Publicado: {dataMask(post.dataCreatedAt)}</h5>
                             {post.id_usuario_insercao === user.id ? (
                                 <div>
-                                    <button>editar</button>
-                                    <button style={{backgroundColor: "red"}}>deletar</button>
+                                    <img alt="editar" src="/images/editar.png"/>
+                                    <img alt="lixeira" src="/images/excluir.png" onClick={deletarPost.bind(this, post)}/>
                                 </div>
                             ): null}
                         </P.Postagem>
