@@ -22,7 +22,7 @@ export const Login = () => {
 
     async function login() {
         try {
-            const resp = await fetch("http://localhost:8090/login", {
+            const resp = await fetch(process.env.REACT_APP_HOST+":8090/login", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export const Login = () => {
     
             const data = await resp.json();
             if(data){
-                const usuario = await fetch(`http://localhost:8090/register/${dadosLogin.usuario}`);
+                const usuario = await fetch(process.env.REACT_APP_HOST+`:8090/register/${dadosLogin.usuario}`);
                 const dadoUsuario = await usuario.json();
                 localStorage.setItem("usuario", JSON.stringify(dadoUsuario));
                 localStorage.setItem("token", JSON.stringify(data.access_token));
@@ -49,7 +49,7 @@ export const Login = () => {
 
     async function cadastrar() {
         if(dadosCadastro.nome && dadosCadastro.email && dadosCadastro.senha && dadosCadastro.usuario){
-            fetch("http://localhost:8090/register", {
+            fetch(process.env.REACT_APP_HOST+":8090/register", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(dadosCadastro)
@@ -98,7 +98,7 @@ export const Login = () => {
                         <h1>Cadastro</h1>
                         <form  onSubmit={(e)=>e.preventDefault()}>
                             <div>
-                                <label>Nome completo:</label>
+                                <label>Nome:</label>
                                 <label>Email: </label>
                                 <label>Usuario:</label>
                                 <label>Senha:</label>

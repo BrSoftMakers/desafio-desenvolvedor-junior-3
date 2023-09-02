@@ -21,7 +21,7 @@ export const CriarPost = () => {
     });
 
     async function postar() {
-        fetch("http://localhost:8090/posts",{
+        fetch(process.env.REACT_APP_HOST+":8090/posts",{
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(dadosPost)

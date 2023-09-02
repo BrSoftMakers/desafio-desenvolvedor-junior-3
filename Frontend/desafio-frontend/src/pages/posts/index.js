@@ -31,7 +31,7 @@ export const Posts = () => {
 
     async function fetchData(){
         const token = localStorage.getItem("token");
-        const response = await fetch(`http://localhost:8090/posts/${filtro.usuario ? user.id : 0}/${filtro.crescente ? "asc" : "desc"}`,{
+        const response = await fetch(process.env.REACT_APP_HOST+`:8090/posts/${filtro.usuario ? user.id : 0}/${filtro.crescente ? "asc" : "desc"}`,{
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${JSON.parse(token)}`,
@@ -57,7 +57,7 @@ export const Posts = () => {
     }
 
     async function deletarPost(post){
-        fetch(`http://localhost:8090/posts/${post.id}`,{
+        fetch(process.env.REACT_APP_HOST+`:8090/posts/${post.id}`,{
             method: "DELETE"
         })
         .then((resp)=>{
@@ -80,7 +80,7 @@ export const Posts = () => {
         <P.Container>
             <Header/>
             {!postAberto ? (
-                <div style={{width: "90%",display: "flex", alignItems: "center", justifyContent: "end", marginRight: "10px"}}>
+                <div style={{width: "100%",display: "flex", alignItems: "center", justifyContent: "end",marginLeft: "10px", marginRight: "10px"}}>
                     <button style={{border: "none", borderRadius: "10px", marginRight:"10px"}} onClick={()=> {setFiltro({...filtro, crescente: !filtro.crescente})}}><img alt="filtro" src={filtro.crescente ? "/images/ordenar_menor.png" : "/images/ordenar_maior.png"} style={{height: "30px", width: "30px"}}/></button>
                     <input type="checkbox" style={{margin: "5px"}} checked={filtro.usuario ? true : false} onChange={()=> {setFiltro({...filtro, usuario: !filtro.usuario})}}/>
                     <label>Minhas postagens</label>

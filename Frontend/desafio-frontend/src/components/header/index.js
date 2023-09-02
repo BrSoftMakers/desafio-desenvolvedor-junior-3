@@ -13,12 +13,14 @@ export const Header = () => {
 
     return (
         <H.Container>
-            <h1>Blog</h1>
-            <H.Button onClick={()=> navigate("/posts")}>Postagens</H.Button>
-            <H.Button onClick={()=> navigate("/post/novo")}>Criar</H.Button>
             <div style={{display: "flex", alignItems: "center", position: "fixed", top: "5px", right: "10px"}}>
                 <label >{usuario.nome}</label>
                 <H.Button onClick={sair} style={{ color: "red", margin: "0px 5px" }}>Sair</H.Button>
+            </div>
+            <div style={{width: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
+                <h1>Blog</h1>
+                <H.Button onClick={()=> navigate("/posts")}>Postagens</H.Button>
+                <H.Button onClick={()=> navigate("/post/novo")}>Criar</H.Button>
             </div>
         </H.Container>
     )

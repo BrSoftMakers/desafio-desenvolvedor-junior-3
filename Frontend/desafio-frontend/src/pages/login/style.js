@@ -4,6 +4,9 @@ export const Container = styled.div`
     height: 100%;
     width: 100%;
     display: flex;
+    @media(max-width: 460px){
+        flex-direction: column;
+    }
 `
 
 export const Apresentacao = styled.div`
@@ -39,6 +42,11 @@ export const Apresentacao = styled.div`
     button:hover{
         cursor: pointer;
         background-color: white;
+    }
+    
+    @media(max-width: 460px ){
+        width: 100%;
+        height: 100%;
     }
 `
 export const Acesso = styled.div`
@@ -97,5 +105,9 @@ export const Acesso = styled.div`
             background-color: #E8E8E8;
             color: #04B3C8;
         }
+    }
+    @media(max-width: 460px ){
+        width: 100%;
+        height: 100%;
     }
 `

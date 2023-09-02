@@ -27,7 +27,7 @@ export class AuthService{
               { usuario: payload.usuario },
               {
                 secret: '123456abcd',
-                expiresIn: '120s',
+                expiresIn: '300s',
               },
             ),
           };
