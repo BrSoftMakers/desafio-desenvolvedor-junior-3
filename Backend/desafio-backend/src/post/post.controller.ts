@@ -17,7 +17,7 @@ export class PostController{
     }
 
     // Rota para buscar um Post pelo id
-    @Get("/posts/:id")
+    @Get("/:id")
     async buscarPostUsuario(@Param("id") id: number) {
         return await this.postRepository.getPostId(id);
     }

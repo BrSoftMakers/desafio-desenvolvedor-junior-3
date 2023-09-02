@@ -22,8 +22,8 @@ export const Posts = () => {
         var dia = dataHora.getUTCDate();
         var mes = dataHora.getUTCMonth() + 1;
         var ano = dataHora.getUTCFullYear();
-        var horas = dataHora.getUTCHours();
-        var minutos = dataHora.getUTCMinutes();
+        var horas = dataHora.getHours();
+        var minutos = dataHora.getMinutes();
     
         var dataHoraFormatada = `${dia}/${mes}/${ano} ${horas}:${minutos}`;
         return dataHoraFormatada;
@@ -46,6 +46,7 @@ export const Posts = () => {
             setPostagens(data);
         }
     }
+    
     useEffect(()=>{
         fetchData();
     },[])
@@ -65,6 +66,11 @@ export const Posts = () => {
                 fetchData();
             }
         })
+    }
+
+    function abrirEditar(post){
+        navigate(`/post/${post.id}`);
+        localStorage.setItem("idPost", post.id);
     }
 
     useEffect(()=>{
@@ -97,7 +103,7 @@ export const Posts = () => {
                             <h5>Autor: {post.usuario_insercao} / Publicado: {dataMask(post.dataCreatedAt)}</h5>
                             {post.id_usuario_insercao === user.id ? (
                                 <div>
-                                    <img alt="editar" src="/images/editar.png"/>
+                                    <img alt="editar" src="/images/editar.png" onClick={abrirEditar.bind(this, post)}/>
                                     <img alt="lixeira" src="/images/excluir.png" onClick={deletarPost.bind(this, post)}/>
                                 </div>
                             ): null}

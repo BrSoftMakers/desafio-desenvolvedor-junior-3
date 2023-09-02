@@ -12,7 +12,7 @@ function App() {
         <Route path="" Component={Login} />
         <Route path="/posts" Component={Posts} />
         <Route path="/post/novo" Component={CriarPost} />
-        <Route path="/post/{id}" Component={EditarPost} />
+        <Route path="/post/:id" Component={EditarPost} />
       </Routes>
     </div>
   );
