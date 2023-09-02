@@ -1,8 +1,11 @@
 # Desafio - Desenvolvedor Fullstack Junior 3.
 Desafio realizado para vaga de Desenvolvedor Fullstack Junior 3.
+Abaixo estão as instruções para executar o desafio, estou a disposição para tirar qualquer duvida sobre o projeto e para ajudar na execução caso precise.
+Whatsapp: (81) 9 9359-0099.
 
 ## Instruções
 **Pre-requisitos**
+- Baixar o projeto no site: https://github.com/MylennaAlcantara/desafio-desenvolvedor-junior-3, clicando no botão verde com nome de "code" e em seguida em "Download ZIP", após finalizar o download, descompacte a parta.
 - Installar o Node js, site para realizar o donwload: https://nodejs.org/pt-br/download instalar a versão LTS.
 - Instalar o https://dev.mysql.com/downloads/installer/, caso ainda não tenha instalado.
 
@@ -10,6 +13,7 @@ Desafio realizado para vaga de Desenvolvedor Fullstack Junior 3.
 - Abra o MySql e crie um novo schema com o nome: desafio_junior_3.
 
 **Passo a passo para rodar o backend**
+- Abra a pasta que realizou o download e descompactou.
 - Dentro da pasta backend, abra a pasta desafio-backend, abra o arquivo com nome "ormconfig.ts" para editar clicando com o botão direito do mouse em cima do arquivo, selecionando a opção "abrir com" e selecione o bloco de notas.
 - Após aberto altere "username": "root" para "username": "seu usuario de acesso ao banco" e "password": "root" para "password": "sua senha de acesso ao banco".
 - Volte para a pasta "desafio-backend", segure a tecla "shift" do teclado e clique com o botão em qualquer canto da pasta aberta, em seguida selecione a opção "abrir janela do powershell aqui".
