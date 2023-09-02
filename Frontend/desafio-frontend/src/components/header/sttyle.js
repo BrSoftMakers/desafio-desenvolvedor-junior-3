@@ -16,6 +16,10 @@ export const Container = styled.div`
     h1:hover{
         cursor: default;
     }
+    label{
+        color: #323232;
+        font-weight: bold;
+    }
 `
 
 export const Button = styled.button`

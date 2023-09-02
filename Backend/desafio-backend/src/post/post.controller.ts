@@ -10,10 +10,10 @@ export class PostController{
     ){}
 
     // Rota para buscar todos os Posts
-    @Get("")
+    @Get("/:usuario/:ordem")
     @UseGuards(AuthGuard('jwt'))
-    async buscarPosts(){
-        return await this.postRepository.getPosts()
+    async buscarPosts(@Param("usuario") usuario: number, @Param("ordem") ordem: string){
+        return await this.postRepository.getPosts(usuario, ordem);
     }
 
     // Rota para buscar um Post pelo id

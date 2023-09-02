@@ -1,5 +1,6 @@
 import { Column, PrimaryColumn, PrimaryGeneratedColumn, Entity } from "typeorm";
 
+@Entity("post")
 export class PostModel {
     @PrimaryGeneratedColumn('increment')
     @PrimaryColumn()
@@ -8,16 +9,19 @@ export class PostModel {
     @Column()
     id_usuario_insercao: number;
 
-    @Column({length: 100})
+    @Column()
+    usuario_insercao: string;
+
+    @Column({length: 100, nullable: false})
     titulo: string;
 
-    @Column()
+    @Column({length: 1000, nullable: false})
     artigo: string;
 
-    @Column()
+    @Column({type: 'datetime', nullable: false})
     dataCreatedAt: Date;
 
-    @Column()
+    @Column({type: 'datetime', nullable: true})
     dataUpdatedAt: Date;
 
 }

@@ -36,6 +36,9 @@ export const Login = () => {
     
             const data = await resp.json();
             if(data){
+                const usuario = await fetch(`http://localhost:8090/register/${dadosLogin.usuario}`);
+                const dadoUsuario = await usuario.json();
+                localStorage.setItem("usuario", JSON.stringify(dadoUsuario));
                 localStorage.setItem("token", JSON.stringify(data.access_token));
                 navigate("/posts");
             }
