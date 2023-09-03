@@ -7,6 +7,7 @@ export const Login = () => {
     const navigate = useNavigate();
     const [acesso, setAcesso] = useState(false);
     const [cadastro, setCadastro] = useState(false);
+    const [usuarioErrado, setUsuarioErrado] = useState(false)
 
     const [dadosCadastro, setDadosCadastro] = useState({
         nome: "",
@@ -21,6 +22,7 @@ export const Login = () => {
     });
 
     async function login() {
+        setUsuarioErrado(false)
         try {
             const resp = await fetch(process.env.REACT_APP_HOST+":8090/login", {
                 method: "POST",
@@ -31,6 +33,7 @@ export const Login = () => {
             });
     
             if (!resp.ok) {
+                setUsuarioErrado(true)
                 throw new Error('Falha na requisição.');
             }
     
@@ -41,6 +44,8 @@ export const Login = () => {
                 localStorage.setItem("usuario", JSON.stringify(dadoUsuario));
                 localStorage.setItem("token", JSON.stringify(data.access_token));
                 navigate("/posts");
+            }else{
+                setUsuarioErrado(true)
             }
         } catch (erro) {
             console.error('Ocorreu um erro:', erro);
@@ -78,6 +83,9 @@ export const Login = () => {
                 !cadastro ? (
                     <L.Acesso>
                         <h1>Login</h1>
+                        {usuarioErrado ? (
+                            <h3 style={{color: "red"}}>Usuario e/ou senha invalidos!</h3>
+                        ): null}
                         <form onSubmit={(e)=>e.preventDefault()}>
                             <div>
                                 <label>Usuario:</label>

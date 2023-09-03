@@ -1,6 +1,8 @@
 # Desafio - Desenvolvedor Fullstack Junior 3.
 Desafio realizado para vaga de Desenvolvedor Fullstack Junior 3.
+Realizei um aplicativo mobile do desafio com as mesmas funcionalidade do frontend como extra utilizando o react native.
 Abaixo estão as instruções para executar o desafio, estou a disposição para tirar qualquer duvida sobre o projeto e para ajudar na execução caso precise.
+
 Whatsapp: (81) 9 9359-0099.
 
 ## Instruções
@@ -8,6 +10,7 @@ Whatsapp: (81) 9 9359-0099.
 - Baixar o projeto no site: https://github.com/MylennaAlcantara/desafio-desenvolvedor-junior-3, clicando no botão verde com nome de "code" e em seguida em "Download ZIP", após finalizar o download, descompacte a parta.
 - Installar o Node js, site para realizar o donwload: https://nodejs.org/pt-br/download instalar a versão LTS.
 - Instalar o https://dev.mysql.com/downloads/installer/, caso ainda não tenha instalado.
+- Installar o aplicativo do expo go no celular.
 
 **Para o banco de dados**
 - Abra o MySql e crie um novo schema com o nome: desafio_junior_3.
@@ -22,6 +25,7 @@ Whatsapp: (81) 9 9359-0099.
 - Após o serviço iniciar, minimize a janela do powershell.
 
 **Passo a passo para rodar o frontend**
+- Certifique-se de que o aplicativo backend esta rodando.
 - Abra a pasta "Frontend", em seguida abra a pasta "desafio-frontend", abra o arquivo com nome ".env" para editar clicando com o botão direito do mouse no arquivo, em seguida selecione "abrir com", e selecione o bloco de notas.
 - Com o arquivo ".env" aberto, altere aonde tem REACT_APP_HOST=http://192.168.3.7 para REACT_APP_HOST=http://seu ip do computador e salve.
 - Em seguida volte para a pasta "desafio-frontend", segure a tecla "shift" do teclado e clique com o botão direito do mouse em qualquer canto da pasta aberta.
@@ -30,6 +34,19 @@ Whatsapp: (81) 9 9359-0099.
 - Espere o processo finalizar, e em seguida digite o comando: npm start.
 - Após o serviço iniciar, irá abrir automaticamente uma janela do navegador com o projeto executando, minimize a janela do powershell.
 - Caso a janela do navegador não abra, ou acabe fechando, basta abrir uma guia do navegador e digitar o endereço: seuIpDoComputador:3000, exemplo: se meu ip é 192.168.240 então basta digitar 192.168.240:3000 e apertar o enter que irá entrar na pagina do projeto.
+
+**Passo a passo para rodar o mobile**
+- Certifique-se de que o aplicativo backend esta rodando.
+- Abra a pasta mobile, e em seguida a basta "desafio-mobile".
+- Procure pelo arquivo "variavelAmbiente.js", clique com o botão direito do mouse.
+- Selecione "abrir com" e escolha o bloco de notas.
+- Com o arquivo aberto subistitua aonde tem: REACT_APP_HOST: "http://192.168.3.7" por: REACT_APP_HOST: "http://seuIpDoComputador" e salve.
+- Em seguida volte para a pasta "desafio-mobile".
+- Após aberto, aperte a tecla "shift" do teclado e click com o botão direito do mouse em qualquer parte da pasta aberta.
+- Selecione  a opção "abrir janela do powershell aqui".
+- Com a janela aberta do powershell, digite o comando: npm install.
+- Após concluir as instalações, digite o comando: npm start.
+- Quando a aplicação iniciar, irá aparecer um QR Code, abra o aplicativo do expo go para scanear o QR Code.
 
 ## Proposta
 Você deverá desenvolver um blog. Para isso, separamos a proposta desse desafio em duas etapas:

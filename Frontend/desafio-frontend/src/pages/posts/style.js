@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const Container = styled.div`
     height: 100%;
     width: 100%
+`
+export const Content = styled.div`
+    height: 90%;
+    width: 100%
     overflow: auto;
 `
 export const Postagem = styled.div`
