@@ -1,13 +1,18 @@
 # Desafio - Desenvolvedor Fullstack Junior 3.
 Desafio realizado para vaga de Desenvolvedor Fullstack Junior 3.
-Realizei um aplicativo mobile do desafio com as mesmas funcionalidade do frontend como extra utilizando o react native.
-Abaixo estão as instruções para executar o desafio, estou a disposição para tirar qualquer duvida sobre o projeto e para ajudar na execução caso precise.
+Realizei um aplicativo mobile do desafio com as mesmas funcionalidades do frontend como extra utilizando o react native.
+
+Também realizei o deploy da aplicação frontend e backend: 
+- link para o front: https://desafio-desenvolvedor-junior-3-pi.vercel.app
+- link para o backend: https://desafio-desenvolvedor-junior-3.onrender.com
+
+Abaixo estão as instruções para executar o desafio localmente, estou a disposição para tirar qualquer duvida sobre o projeto e para ajudar na execução caso precise.
 
 Whatsapp: (81) 9 9359-0099.
 
 ## Instruções
 **Pre-requisitos**
-- Baixar o projeto no site: https://github.com/MylennaAlcantara/desafio-desenvolvedor-junior-3, clicando no botão verde com nome de "code" e em seguida em "Download ZIP", após finalizar o download, descompacte a parta.
+- Baixar o projeto no site: https://github.com/MylennaAlcantara/desafio-desenvolvedor-junior-3, clicando no botão verde com nome de "code" e em seguida em "Download ZIP", após finalizar o download, descompacte a pasta.
 - Installar o Node js, site para realizar o donwload: https://nodejs.org/pt-br/download instalar a versão LTS.
 - Instalar o https://dev.mysql.com/downloads/installer/, caso ainda não tenha instalado.
 - Installar o aplicativo do expo go no celular.
@@ -18,7 +23,7 @@ Whatsapp: (81) 9 9359-0099.
 **Passo a passo para rodar o backend**
 - Abra a pasta que realizou o download e descompactou.
 - Dentro da pasta backend, abra a pasta desafio-backend, abra o arquivo com nome "ormconfig.ts" para editar clicando com o botão direito do mouse em cima do arquivo, selecionando a opção "abrir com" e selecione o bloco de notas.
-- Após aberto altere "username": "root" para "username": "seu usuario de acesso ao banco" e "password": "root" para "password": "sua senha de acesso ao banco".
+- Após aberto altere "database": "blpvdpisjtnfbb6c13jk" para "database": "desafio_junior_3", "host": "blpvdpisjtnfbb6c13jk-mysql.services.clever-cloud.com" para "host": "ip do seu computador", "username": "uzozut4jzpeqdwkk" para "username": "seu usuario de acesso ao banco" e "password": "4t5mhh2G05ssbNkCm08f" para "password": "sua senha de acesso ao banco".
 - Volte para a pasta "desafio-backend", segure a tecla "shift" do teclado e clique com o botão em qualquer canto da pasta aberta, em seguida selecione a opção "abrir janela do powershell aqui".
 - Após a janela do powershell abrir, digite o comando: npm install.
 - Espere o processo finalizar, e em seguida digite o comando: npm run start:dev.
@@ -27,7 +32,7 @@ Whatsapp: (81) 9 9359-0099.
 **Passo a passo para rodar o frontend**
 - Certifique-se de que o aplicativo backend esta rodando.
 - Abra a pasta "Frontend", em seguida abra a pasta "desafio-frontend", abra o arquivo com nome ".env" para editar clicando com o botão direito do mouse no arquivo, em seguida selecione "abrir com", e selecione o bloco de notas.
-- Com o arquivo ".env" aberto, altere aonde tem REACT_APP_HOST=http://192.168.3.7 para REACT_APP_HOST=http://seu ip do computador e salve.
+- Com o arquivo ".env" aberto, altere aonde tem REACT_APP_HOST=https://desafio-desenvolvedor-junior-3.onrender.com para REACT_APP_HOST=http://seu ip do computador e salve.
 - Em seguida volte para a pasta "desafio-frontend", segure a tecla "shift" do teclado e clique com o botão direito do mouse em qualquer canto da pasta aberta.
 - Selecione a opção "abrir janela do powershell aqui".
 - Após a janela do powershell abrir, digite o comando: npm install.
