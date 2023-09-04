@@ -31,7 +31,7 @@ export const Posts = () => {
 
     async function fetchData() {
         const token = localStorage.getItem("token");
-        const response = await fetch(process.env.REACT_APP_HOST + `:8090/posts/${filtro.usuario ? user.id : 0}/${filtro.crescente ? "asc" : "desc"}`, {
+        const response = await fetch(process.env.REACT_APP_HOST + `/posts/${filtro.usuario ? user.id : 0}/${filtro.crescente ? "asc" : "desc"}`, {
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${JSON.parse(token)}`,
@@ -57,7 +57,7 @@ export const Posts = () => {
     }
 
     async function deletarPost(post) {
-        fetch(process.env.REACT_APP_HOST + `:8090/posts/${post.id}`, {
+        fetch(process.env.REACT_APP_HOST + `/posts/${post.id}`, {
             method: "DELETE"
         })
             .then((resp) => {

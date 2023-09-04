@@ -24,7 +24,7 @@ export const Login = () => {
     async function login() {
         setUsuarioErrado(false)
         try {
-            const resp = await fetch(process.env.REACT_APP_HOST+":8090/login", {
+            const resp = await fetch(process.env.REACT_APP_HOST+"/login", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export const Login = () => {
     
             const data = await resp.json();
             if(data){
-                const usuario = await fetch(process.env.REACT_APP_HOST+`:8090/register/${dadosLogin.usuario}`);
+                const usuario = await fetch(process.env.REACT_APP_HOST+`/register/${dadosLogin.usuario}`);
                 const dadoUsuario = await usuario.json();
                 localStorage.setItem("usuario", JSON.stringify(dadoUsuario));
                 localStorage.setItem("token", JSON.stringify(data.access_token));
@@ -54,7 +54,7 @@ export const Login = () => {
 
     async function cadastrar() {
         if(dadosCadastro.nome && dadosCadastro.email && dadosCadastro.senha && dadosCadastro.usuario){
-            fetch(process.env.REACT_APP_HOST+":8090/register", {
+            fetch(process.env.REACT_APP_HOST+"/register", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(dadosCadastro)

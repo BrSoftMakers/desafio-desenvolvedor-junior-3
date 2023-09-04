@@ -32,7 +32,7 @@ Whatsapp: (81) 9 9359-0099.
 **Passo a passo para rodar o frontend**
 - Certifique-se de que o aplicativo backend esta rodando.
 - Abra a pasta "Frontend", em seguida abra a pasta "desafio-frontend", abra o arquivo com nome ".env" para editar clicando com o botão direito do mouse no arquivo, em seguida selecione "abrir com", e selecione o bloco de notas.
-- Com o arquivo ".env" aberto, altere aonde tem REACT_APP_HOST=https://desafio-desenvolvedor-junior-3.onrender.com para REACT_APP_HOST=http://seu ip do computador e salve.
+- Com o arquivo ".env" aberto, altere aonde tem REACT_APP_HOST=https://desafio-desenvolvedor-junior-3.onrender.com para REACT_APP_HOST=http://seuIpDoComputador:8090 e salve.
 - Em seguida volte para a pasta "desafio-frontend", segure a tecla "shift" do teclado e clique com o botão direito do mouse em qualquer canto da pasta aberta.
 - Selecione a opção "abrir janela do powershell aqui".
 - Após a janela do powershell abrir, digite o comando: npm install.
@@ -45,7 +45,7 @@ Whatsapp: (81) 9 9359-0099.
 - Abra a pasta mobile, e em seguida a basta "desafio-mobile".
 - Procure pelo arquivo "variavelAmbiente.js", clique com o botão direito do mouse.
 - Selecione "abrir com" e escolha o bloco de notas.
-- Com o arquivo aberto subistitua aonde tem: REACT_APP_HOST: "http://192.168.3.7" por: REACT_APP_HOST: "http://seuIpDoComputador" e salve.
+- Com o arquivo aberto subistitua aonde tem: REACT_APP_HOST: "http://192.168.3.7" por: REACT_APP_HOST: "http://seuIpDoComputador:8090" e salve.
 - Em seguida volte para a pasta "desafio-mobile".
 - Após aberto, aperte a tecla "shift" do teclado e click com o botão direito do mouse em qualquer parte da pasta aberta.
 - Selecione  a opção "abrir janela do powershell aqui".

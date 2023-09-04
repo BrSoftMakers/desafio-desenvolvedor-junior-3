@@ -37,7 +37,7 @@ export const EditarPost = () => {
 
     useEffect(()=>{
         async function fetchPost(){
-            fetch(process.env.REACT_APP_HOST+`:8090/posts/${idPost}`)
+            fetch(process.env.REACT_APP_HOST+`/posts/${idPost}`)
             .then((resp)=> resp.json())
             .then((data)=> setDadosPost(data))
         }
@@ -45,7 +45,7 @@ export const EditarPost = () => {
     },[])
 
     async function editarPost() {
-        fetch(process.env.REACT_APP_HOST+`:8090/posts/${idPost}`,{
+        fetch(process.env.REACT_APP_HOST+`/posts/${idPost}`,{
             method: "PUT",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
