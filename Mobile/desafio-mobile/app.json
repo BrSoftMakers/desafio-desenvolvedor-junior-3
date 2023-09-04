@@ -14,14 +14,13 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
-    },
+    "ios": { 
+      "bundleIdentifier": "com.mylenna.desafiomobile", 
+      "buildNumber": "1.0.0" 
+    }, 
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+      "package": "com.mylenna.desafiomobile",
+          "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
