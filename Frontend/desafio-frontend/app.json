@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "eeae1e93-727f-4bb1-8e11-c9b1595fdae8"
+      }
+    },
+    "owner": "mylenna",
+    "android": {
+      "package": "com.mylenna.desafiomobile"
+    }
+  }
+}
